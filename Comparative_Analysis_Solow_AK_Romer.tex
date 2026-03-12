@@ -1,0 +1,181 @@
+%==============================================================================
+% Comparative Analysis: Solow vs AK vs Romer Growth Models
+% Exam-Focused Reference for Macroeconomics I
+%==============================================================================
+
+\section{Comparative Analysis: Solow vs AK vs Romer}
+
+%------------------------------------------------------------------------------
+\subsection*{1. Source of Growth}
+%------------------------------------------------------------------------------
+
+\begin{tabular}{p{0.25\linewidth}p{0.25\linewidth}p{0.25\linewidth}p{0.2\linewidth}}
+\toprule
+\textbf{Model} & \textbf{Source of Growth} & \textbf{Technology} & \textbf{Growth Driver} \\
+\midrule
+Solow & Capital accumulation & Exogenous $A$ & $g$ (exogenous) \\
+AK & Capital accumulation & Endogenous (constant $A$) & Linear production \\
+Romer & Innovation/variety & Endogenous $M$ & R\&D sector \\
+\bottomrule
+\end{tabular}
+
+\bigskip
+\begin{tcolorbox}[colback=blue!5,colframe=blue3,title=Key Insight]
+\begin{itemize}
+    \item \textbf{Solow}: Growth comes from outside the model ($g$ is exogenous)
+    \item \textbf{AK}: Growth comes from accumulation; technology treated as constant
+    \item \textbf{Romer}: Growth comes from creation of new ideas/varieties ($M$)
+\end{itemize}
+\end{tcolorbox}
+
+%------------------------------------------------------------------------------
+\subsection*{2. Returns to Capital}
+%------------------------------------------------------------------------------
+
+\begin{tabular}{p{0.25\linewidth}p{0.35\linewidth}p{0.35\linewidth}}
+\toprule
+\textbf{Model} & \textbf{Returns to $K$} & \textbf{Implication} \\
+\midrule
+Solow & $\alpha < 1$ (diminishing) & Convergent dynamics \\
+AK & $\alpha = 1$ (constant) & Endogenous growth possible \\
+Romer & No direct role & Growth from $M$, not $K$ \\
+\bottomrule
+\end{tabular}
+
+\bigskip
+\begin{resultbox}
+\begin{align*}
+\text{Solow: } & f'(k) = \alpha k^{\alpha-1} \to 0 \text{ as } k \to \infty \\
+\text{AK: } & f'(k) = A = \text{ constant} \\
+\text{Romer: } & \text{MPK depends on } M \text{, not directly on } K
+\end{align*}
+\end{resultbox}
+
+%------------------------------------------------------------------------------
+\subsection*{3. Convergence}
+%------------------------------------------------------------------------------
+
+\begin{tabular}{p{0.2\linewidth}p{0.35\linewidth}p{0.4\linewidth}}
+\toprule
+\textbf{Model} & \textbf{Convergence} & \textbf{Scale Effects} \\
+\midrule
+Solow & Conditional ($\beta > 0$) & No (steady state independent of $L$) \\
+AK & No convergence & No (BGP independent of $L$) \\
+Romer & Yes (to BGP) & Yes ($\gamma \propto L$ in original) \\
+\bottomrule
+\end{tabular}
+
+\bigskip
+\begin{tcolorbox}[colback=yellow!10,colframe=yellow!60,title=Scale Effects]
+Romer (1990) original model predicts that larger economies grow faster because more resources are devoted to R\&D. This is a \textbf{scale effect} - a key prediction to remember for exams.
+\end{tcolorbox}
+
+%------------------------------------------------------------------------------
+\subsection*{4. Role of Savings (s)}
+%------------------------------------------------------------------------------
+
+\begin{tabular}{p{0.2\linewidth}p{0.4\linewidth}p{0.35\linewidth}}
+\toprule
+\textbf{Model} & \textbf{Effect of $s$} & \textbf{Channel} \\
+\midrule
+Solow & Affects LEVEL only & Determines $\ktilde^*$, not $\gamma$ \\
+AK & Affects GROWTH RATE & $\gamma = sA - \delta - \rho$ \\
+Romer & Allocates resources & Determines R\&D vs. intermediates \\
+\bottomrule
+\end{tabular}
+
+\bigskip
+\begin{resultbox}
+\begin{align*}
+\text{Solow: } & \ktilde^* = \left[\frac{s}{n+g+\delta}\right]^{1/(1-\alpha)}, \quad \gamma^* = g \\
+\text{AK: } & \gamma = \frac{sA - \delta - \rho}{\sigma} \\
+\text{Romer: } & \gamma = \frac{\lambda(1-\alpha)L - \rho}{\sigma}
+\end{align*}
+\end{resultbox}
+
+%------------------------------------------------------------------------------
+\subsection*{5. Market Structure}
+%------------------------------------------------------------------------------
+
+\begin{tabular}{p{0.2\linewidth}p{0.4\linewidth}p{0.35\linewidth}}
+\toprule
+\textbf{Model} & \textbf{Competition} & \textbf{Intermediate Goods} \\
+\midrule
+Solow & Perfect competition & None (single final good) \\
+AK & Perfect competition & None (single final good) \\
+Romer & Monopolistic competition & $M$ differentiated goods \\
+\bottomrule
+\end{tabular}
+
+\bigskip
+\begin{tcolorbox}[colback=green!5,colframe=green3,title=Romer Key Feature]
+The Romer model features \textbf{monopolistic competition} in intermediate goods:
+\begin{itemize}
+    \item Firms produce differentiated intermediates
+    \item Each firm has market power (pricing > marginal cost)
+    \item This provides incentives for R\&D (patent protection)
+    \item $p_M = 1/\alpha$ in equilibrium
+\end{itemize}
+\end{tcolorbox}
+
+%------------------------------------------------------------------------------
+\subsection*{6. Transitional Dynamics}
+%------------------------------------------------------------------------------
+
+\begin{tabular}{p{0.2\linewidth}p{0.35\linewidth}p{0.4\linewidth}}
+\toprule
+\textbf{Model} & \textbf{Transitional Dynamics} & \textbf{BGP} \\
+\midrule
+Solow & Yes (convergence to SS) & $k \to k^*$ \\
+AK & No (immediate BGP) & All paths are BGP \\
+Romer & Yes (transition to BGP) & $k \to k^*$, $M \to M^*$ \\
+\bottomrule
+\end{tabular}
+
+\bigskip
+\begin{tcolorbox}[colback=orange!10,colframe=orange3,title=Key Insight]
+\textbf{AK model has no transitional dynamics}: Because returns are constant, the economy jumps immediately onto a balanced growth path. This is a key distinction from Solow and Romer.
+\end{tcolorbox}
+
+%------------------------------------------------------------------------------
+\subsection*{7. Growth Rates Summary}
+%------------------------------------------------------------------------------
+
+\begin{tcolorbox}[colback=red!5,colframe=red!60,title=Final Growth Rates]
+\begin{align*}
+\boxed{\text{Solow: } \gamma^* = g} \quad &\text{(exogenous, unaffected by parameters)} \\[4pt]
+\boxed{\text{AK: } \gamma = \frac{sA - \delta - \rho}{\sigma}} \quad &\text{(depends on savings, technology)} \\[4pt]
+\boxed{\text{Romer: } \gamma = \frac{\lambda(1-\alpha)L - \rho}{\sigma}} \quad &\text{(scale effects: } \gamma \propto L\text{)}
+\end{align*}
+\end{tcolorbox}
+
+%------------------------------------------------------------------------------
+\subsection*{Quick Comparison Table}
+%------------------------------------------------------------------------------
+
+\begin{center}
+\begin{tabular}{lccccccc}
+\toprule
+\textbf{Model} & $g$ & $\alpha$ & Conv. & $s \to \gamma$ & Scale & Trans. & Market \\
+\midrule
+Solow & exo. & $<1$ & Yes & No & No & Yes & PC \\
+AK & const & $=1$ & No & Yes & No & No & PC \\
+Romer & endo & — & Yes & No & Yes & Yes & MC \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\medskip
+\noindent \textit{Notes: $g$ = tech growth, Conv. = convergence, Trans. = transitional dynamics, PC = perfect competition, MC = monopolistic competition}
+
+%------------------------------------------------------------------------------
+\subsection*{Exam Tips}
+%------------------------------------------------------------------------------
+
+\begin{enumerate}
+    \item \textbf{Identify the model}: Look for constant vs. diminishing returns, exogenous vs. endogenous technology
+    \item \textbf{Growth channels}: Solow (exogenous $A$), AK (linear $Y=AK$), Romer ($M$ variety)
+    \item \textbf{Policy implications}: $s$ in Solow only affects level; $s$ in AK affects growth
+    \item \textbf{Scale effects}: Romer (original) predicts larger $L$ $\to$ faster growth; AK does not
+    \item \textbf{Convergence}: Solow and Romer have transitional dynamics; AK does not
+\end{enumerate}

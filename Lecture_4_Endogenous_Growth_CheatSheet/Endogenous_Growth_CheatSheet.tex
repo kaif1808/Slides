@@ -1,0 +1,558 @@
+%==============================================================================
+% Endogenous Growth Cheatsheet - AK + Romer Model
+% Exam-Focused Reference for Macroeconomics I
+%==============================================================================
+
+\documentclass[a4paper,11pt]{article}
+
+\usepackage{geometry}
+\geometry{margin=1in}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{graphicx}
+
+\usepackage{xcolor}
+\definecolor{blue3}{RGB}{0,0,180}
+\definecolor{green3}{RGB}{0,120,0}
+\definecolor{orange3}{RGB}{200,100,0}
+
+\usepackage{siunitx}
+\sisetup{detect-all}
+
+\usepackage[colorlinks=true,linkcolor=blue3,citecolor=blue3,urlcolor=blue3]{hyperref}
+
+\usepackage{cleveref}
+
+\usepackage{tcolorbox}
+\tcbuselibrary{skins,breakable}
+
+\newtcolorbox{derivationbox}[1][]{
+    colback=blue!10,
+    colframe=blue3,
+    coltitle=blue3,
+    title={Derivation:},
+    fonttitle=\bfseries,
+    #1
+}
+
+\newtcolorbox{resultbox}[1][]{
+    colback=green!10,
+    colframe=green3,
+    coltitle=green3,
+    title={Result:},
+    fonttitle=\bfseries,
+    #1
+}
+
+\usepackage{booktabs}
+
+% Title
+\title{\textbf{Endogenous Growth Cheatsheet}}
+\subtitle{AK Model + Romer Model}
+\author{Macroeconomics I - Exam Reference}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\clearpage
+\pagestyle{plain}
+
+%==============================================================================
+\section{Notation and Definitions}
+%==============================================================================
+
+\subsection*{Core Variables}
+\begin{center}
+\begin{tabular}{lcl}
+$Y$ & = & output \\
+$K$ & = & capital \\
+$L$ & = & labor \\
+$A$ & = & technology \\
+$s$ & = & savings rate \\
+$\delta$ & = & depreciation \\
+$n$ & = & population growth \\
+$g$ & = & technology growth \\
+$\alpha$ & = & capital share ($0<\alpha<1$) \\
+$\sigma$ & = & risk aversion (CRRA) \\
+$\rho$ & = & time preference
+\end{tabular}
+\end{center}
+
+\medskip
+\subsection*{Per-Worker Variables}
+\[
+k = K/L, \qquad y = Y/L
+\]
+
+\medskip
+\subsection*{Romer-Specific}
+\[
+M = \text{varieties}, \quad x_i = \text{intermediate good}, \quad \lambda = \text{R\&D productivity}
+\]
+\[
+\pi = \text{monopoly profits}, \quad r = \text{interest rate}
+\]
+
+\clearpage
+
+%==============================================================================
+\section{AK Model: Basic Setup and Growth}
+%==============================================================================
+
+\subsection*{Production Function}
+\[
+Y = AK \quad \text{or} \quad y = Ak
+\tag{AK-Production}
+\]
+
+\textbf{No diminishing returns:} $f'(k) = A$, $f''(k) = 0$
+
+\subsection*{Capital Accumulation}
+\[
+\dot{K} = sY - \delta K = sAK - \delta K
+\]
+\[
+\dot{K}/K = sA - \delta
+\]
+
+Since $Y = AK$, output grows at same rate:
+\[
+\gamma_Y = \gamma_K = sA - \delta
+\tag{AK-Growth}
+\]
+
+\subsection*{Growth Condition}
+\begin{center}
+\begin{tabular}{ll}
+$sA > \delta$ & sustained positive growth \\
+$sA < \delta$ & economy shrinks \\
+$sA = \delta$ & steady state (zero growth)
+\end{tabular}
+\end{center}
+
+\begin{tcolorbox}[colback=yellow!10,colframe=yellow!60,title=Key Point]
+$\alpha = 1$: $MPK = A$ (constant). $\alpha < 1$ (Solow): $MPK$ diminishes.
+Constant MPK $\Rightarrow$ sustained growth from capital accumulation.
+\end{tcolorbox}
+
+\clearpage
+
+%==============================================================================
+\section{AK-Ramsey: Endogenous Consumption}
+%==============================================================================
+
+Utility: $U = \int_0^\infty \frac{c^{1-\sigma}}{1-\sigma} e^{(n-\rho)t} dt$
+
+Production: $y = Ak$
+
+Law of motion: $\dot{k}_t = Ak_t - c_t - (\delta + n)k_t$
+
+\subsection*{Interest Rate}
+Firm optimization gives:
+\[
+r = A - \delta
+\tag{Interest Rate}
+\]
+
+\subsection*{Euler Equation}
+\[
+\frac{\dot{c}}{c} = \frac{r - \rho}{\sigma} = \frac{A - \delta - \rho}{\sigma}
+\tag{EE}
+\]
+
+Transversality: $\lim_{t\to\infty} k_t e^{(n-r)t} = 0$
+
+\subsection*{Growth Rate}
+\[
+\gamma_c = \gamma_k = \gamma_y = \frac{A - \delta - \rho}{\sigma}
+\tag{Growth Rate}
+\]
+
+Determinants: $A$ (+), $\delta$ (-), $\rho$ (-), $\sigma$ (-)
+
+If $A > \delta + \rho$: positive growth
+
+\clearpage
+
+%==============================================================================
+\section{Externalities and Market Inefficiency}
+%==============================================================================
+
+\subsection*{Arrow Learning-by-Doing}
+Firm: $Y_j = \bar{A} K_j^\alpha L_j^{1-\alpha}$, with $\bar{A} = A_0 (\int K_i)^\eta$, $\eta > 0$
+
+Aggregate: $Y = A_0 K^{\alpha+\eta} L^{1-\alpha}$
+
+Set $\alpha + \eta = 1$: $Y = AK$
+
+\subsection*{Private vs. Social MPK}
+Private MPK: $r + \delta = \alpha A$
+
+Social MPK: $r + \delta = (\alpha + \eta)A$
+
+Since $\eta > 0$: Social MPK > Private MPK
+
+Market under-accumulates capital.
+
+\subsection*{Growth Comparison}
+Private: $\gamma_c = (\alpha A - \delta - \rho)/\sigma$
+
+Planner: $\gamma_c^{SP} = ((\alpha+\eta)A - \delta - \rho)/\sigma$
+
+Result: $\gamma_c^{SP} > \gamma_c$ (planner grows faster)
+
+\clearpage
+
+%==============================================================================
+\section{Romer Model: Market Equilibrium}
+%==============================================================================
+
+Romer (1990): Monopolistic competition in intermediate goods. Growth from new varieties $M$.
+
+\subsection*{Final Good Production}
+\[
+Y = \frac{L^{1-\alpha}}{\alpha} \int_0^M x_i^\alpha di
+\tag{Final-Good}
+\]
+$\alpha \in (0,1)$, $M$ = number of varieties.
+
+\subsection*{Intermediate Goods Market}
+Inverse demand: $p_i = L^{1-\alpha} x_i^{\alpha-1}$
+
+Monopoly pricing: $p_i = 1/\alpha$
+
+Optimal quantity: $x_i = L$
+
+Monopoly profits: $\pi_i = L(1-\alpha)$
+
+\subsection*{Firm Value}
+$V = \pi/r = L(1-\alpha)/r$
+
+\subsection*{Free Entry in R\&D}
+Research cost = 1, productivity = $\lambda$
+
+Free entry: $1 = \lambda V \Rightarrow r = \lambda\pi = \lambda L(1-\alpha)$
+
+\subsection*{Market Growth Rate}
+Euler: $\dot{c}/c = (r - \rho)/\sigma$
+
+Free entry: $r = \lambda L(1-\alpha)$
+
+Combine: $\rho + \sigma\gamma = \lambda L(1-\alpha)$
+
+\[
+\gamma = \frac{\lambda(1-\alpha)L - \rho}{\sigma}
+\tag{Romer Growth}
+\]
+
+Scale effects: $\partial\gamma/\partial L > 0$ (empirically rejected)
+
+\clearpage
+
+%==============================================================================
+\section{Romer Model: Social Planner Solution}
+%==============================================================================
+
+Market has markup $p_i = 1/\alpha > \alpha$ (MC). Planner eliminates distortion.
+
+\subsection*{Static Planner Problem}
+Maximize: $Y = \frac{L^{1-\alpha}}{\alpha} \int x_i^\alpha di - \alpha \int x_i di$
+
+FOC: $L^{1-\alpha} x_i^{\alpha-1} = \alpha$
+
+Solution: $x^* = L \alpha^{1/(\alpha-1)}$
+
+Since $\alpha \in (0,1)$: $\alpha^{1/(\alpha-1)} > 1$, so $x^* > x$ (market)
+
+Planner uses more machines (no monopoly distortion).
+
+\subsection*{Output}
+$Y^* = \frac{M}{\alpha} L \alpha^{\alpha/(\alpha-1)} > Y$
+
+Planner produces more net output.
+
+\subsection*{Planner Growth Rate}
+\[
+\gamma^* = \frac{1}{\sigma}\left(\lambda L (1-\alpha)\alpha^{1/(\alpha-1)-1} - \rho\right)
+\tag{Planner Growth}
+\]
+
+Result: $\gamma^* > \gamma$ (planner grows faster)
+
+Optimal subsidy: $s = (1-\alpha^2)/\alpha$
+
+\clearpage
+
+%==============================================================================
+\section{Scale Effects and Jones Fix}
+%==============================================================================
+
+Romer knowledge: $\dot{M} = \lambda M L_R$
+
+Growth: $\gamma = \lambda(1-\alpha)L - \rho$
+
+$\partial\gamma/\partial L > 0$: Larger economies grow faster (empirically rejected!)
+
+Jones (1995): R\&D personnel increased 10$\times$ since 1950s, but growth did NOT accelerate.
+
+\subsection*{Jones Fix: Decreasing Returns to R\&D}
+Original: $\dot{M} = \lambda M L_R$ (CRS to $M$)
+
+Jones: $\dot{M} = \lambda M^\phi L_R$ with $\phi < 1$
+
+Free entry: $r = \lambda\alpha M^{\phi-1} L_E$
+
+On BGP: $\rho = \lambda\alpha M^{\phi-1} L_E$
+
+Knowledge: $\dot{M}/M = \lambda M^{\phi-1} L_R$
+
+With $L_R/L_E = (1-\phi)n$:
+\[
+\gamma = \frac{n}{1-\phi}
+\tag{Jones Growth}
+\]
+
+No scale effects! Growth depends on $n$ (population growth).
+
+If $n = 0$, then $\gamma = 0$ (semi-endogenous growth).
+
+\clearpage
+
+%==============================================================================
+\section{Comparative Analysis}
+%==============================================================================
+
+\subsection*{Source of Growth}
+\begin{center}
+\begin{tabular}{lll}
+Solow & Capital accumulation & $g$ (exog) \\
+AK & Capital accumulation & Linear $Y=AK$ \\
+Romer & Innovation & R\&D sector
+\end{tabular}
+\end{center}
+
+\subsection*{Returns to Capital}
+\begin{center}
+\begin{tabular}{ll}
+Solow & $\alpha < 1$ (diminishing) \\
+AK & $\alpha = 1$ (constant) \\
+Romer & No direct role
+\end{tabular}
+\end{center}
+
+\subsection*{Convergence}
+\begin{center}
+\begin{tabular}{ll}
+Solow & Conditional ($\beta > 0$) \\
+AK & No convergence \\
+Romer & Yes
+\end{tabular}
+\end{center}
+
+\subsection*{Scale Effects}
+\begin{center}
+\begin{tabular}{ll}
+Solow & No \\
+AK & No \\
+Romer & Yes ($\gamma \propto L$) - Empirically rejected
+\end{tabular}
+\end{center}
+
+\subsection*{Role of Savings}
+Solow: $s$ affects LEVEL only
+
+AK: $s$ affects GROWTH RATE
+
+Romer: $s$ allocates resources
+
+\subsection*{Market Structure}
+Solow/AK: Perfect competition
+
+Romer: Monopolistic competition
+
+\subsection*{Growth Rates Summary}
+\[
+\text{Solow: } \gamma = g \quad
+\text{AK: } \gamma = \frac{A - \delta - \rho}{\sigma} \quad
+\text{Romer: } \gamma = \frac{\lambda(1-\alpha)L - \rho}{\sigma}
+\]
+
+\clearpage
+
+%==============================================================================
+\section{Problem-Solving Templates}
+%==============================================================================
+
+\subsection*{(a) Derive Growth Rate in AK Model}
+\begin{enumerate}
+    \item Capital: $\dot{K} = sY - \delta K$
+    \item With $Y = AK$: $\dot{K} = sAK - \delta K$
+    \item Growth: $\gamma_K = \dot{K}/K = sA - \delta$
+    \item AK-Ramsey: $r = A - \delta$, EE: $\gamma_c = (A - \delta - \rho)/\sigma$
+\end{enumerate}
+
+Result: $\gamma = sA - \delta$ (AK), $\gamma = (A - \delta - \rho)/\sigma$ (AK-Ramsey)
+
+\subsection*{(b) Compare Market vs Planner in Romer}
+\begin{enumerate}
+    \item Market: $p = 1/\alpha$, $x = L$, $\pi = L(1-\alpha)$
+    \item Planner: $p = \alpha$, $x^* = L\alpha^{1/(\alpha-1)} > L$
+    \item Compare: $\gamma^* > \gamma$
+    \item Subsidy: $s = (1-\alpha^2)/\alpha$
+\end{enumerate}
+
+\subsection*{(c) Equilibrium Interest Rate (Free Entry R\&D)}
+\begin{enumerate}
+    \item Profits: $\pi = L(1-\alpha)$
+    \item Value: $V = \pi/r$
+    \item Free entry: $\lambda V = 1 \Rightarrow r = \lambda\pi$
+    \item Result: $r^* = \lambda L(1-\alpha)$
+\end{enumerate}
+
+\subsection*{(d) Analyze Scale Effects}
+\begin{enumerate}
+    \item Write $\gamma = \gamma(L,\dots)$
+    \item Check $d\gamma/dL > 0$?
+    \item If yes: scale effects (empirically problematic)
+    \item Fix: Jones $\phi < 1$, then $\gamma = n/(1-\phi)$
+\end{enumerate}
+
+\subsection*{(e) TFP Gains from Removing Monopoly}
+$x^*/x = \alpha^{1/(\alpha-1)}$
+
+Output ratio: $Y^*/Y = \alpha^{\alpha/(\alpha-1)}$
+
+Result: $Y^*/Y = \alpha^{\alpha/(\alpha-1)} > 1$
+
+\subsection*{(f) AK-Ramsey Growth Derivation}
+\begin{enumerate}
+    \item Utility: CRRA, Euler: $\dot{c}/c = (r - \rho)/\sigma$
+    \item Firm: $Y = AK$, FOC: $r = A - \delta$
+    \item Combine: $\gamma = (A - \delta - \rho)/\sigma$
+    \item TVC: $A > \delta + \rho$
+\end{enumerate}
+
+\clearpage
+
+%==============================================================================
+\section{Common Pitfalls and Tips}
+%==============================================================================
+
+\subsection*{Common Pitfalls}
+
+\begin{enumerate}
+    \item \textbf{Confusing AK ($\alpha=1$) with Solow ($\alpha<1$)}
+    \begin{itemize}
+        \item AK: constant MPK $\Rightarrow$ sustained growth
+        \item Solow: diminishing MPK $\Rightarrow$ need exogenous $g$
+    \end{itemize}
+
+    \item \textbf{Forgetting AK Has No Transitional Dynamics}
+    \begin{itemize}
+        \item Growth rate constant immediately
+        \item No convergence to SS
+    \end{itemize}
+
+    \item \textbf{Missing Private vs. Social Returns}
+    \begin{itemize}
+        \item With $\eta > 0$: private MPK = $\alpha A$, social = $(\alpha+\eta)A$
+    \end{itemize}
+
+    \item \textbf{Confusing Scale Effects}
+    \begin{itemize}
+        \item Romer: $\gamma \propto L$
+        \item Solow: no scale effects
+    \end{itemize}
+
+    \item \textbf{Forgetting Monopolistic Competition in Romer}
+    \begin{itemize}
+        \item Need monopoly profits to fund R\&D
+        \item Price = $1/\alpha > \alpha$ (MC)
+    \end{itemize}
+
+    \item \textbf{Mixing Up Markup Formula}
+    \begin{itemize}
+        \item Markup = $1/\alpha$
+        \item Price = MC $\times$ markup = $\alpha \times (1/\alpha) = 1$
+    \end{itemize}
+
+    \item \textbf{Confusing Growth Rates}
+    \begin{itemize}
+        \item AK: $\gamma = sA - \delta$ or $\gamma = (A-\delta-\rho)/\sigma$
+        \item Romer: $\gamma = (\lambda(1-\alpha)L - \rho)/\sigma$
+    \end{itemize}
+
+    \item \textbf{Jones Fix Misconception}
+    \begin{itemize}
+        \item Needs $n > 0$ for growth
+        \item Semi-endogenous, not fully endogenous
+    \end{itemize}
+\end{enumerate}
+
+\subsection*{Tips}
+
+\begin{itemize}
+    \item Model identification: $\alpha < 1$ (Solow), $\alpha = 1$ (AK), monopoly (Romer)
+    \item Competitive markets: $r =$ MPK $-\delta$
+    \item Romer growth = growth of $M$ (varieties)
+    \item Scale effects: $d\gamma/dL > 0$ is key test
+\end{itemize}
+
+\clearpage
+
+%==============================================================================
+\section{Quick Reference Formulas}
+%==============================================================================
+
+\subsection*{AK Model}
+\[
+y = Ak, \quad \dot{k} = Ak - c - (\delta+n)k
+\]
+\[
+\gamma = sA - \delta
+\]
+\[
+\gamma_c = \frac{A - \delta - \rho}{\sigma}, \quad r = A - \delta
+\]
+
+\subsection*{AK with Externalities}
+\[
+r + \delta = \alpha A \text{ (Private MPK)}, \quad r + \delta = (\alpha+\eta)A \text{ (Social MPK)}
+\]
+\[
+\gamma = \frac{\alpha A - \delta - \rho}{\sigma} \text{ (Private)}, \quad
+\gamma^* = \frac{(\alpha+\eta)A - \delta - \rho}{\sigma} \text{ (Planner)}
+\]
+
+\subsection*{Romer Model}
+\[
+Y = \frac{L^{1-\alpha}}{\alpha} \int_0^M x_i^\alpha di, \quad p_i = 1/\alpha, \quad x_i = L
+\]
+\[
+\pi = L(1-\alpha), \quad V = \pi/r, \quad r = \lambda L(1-\alpha)
+\]
+\[
+\gamma = \frac{\lambda(1-\alpha)L - \rho}{\sigma} \text{ (Market)}
+\]
+
+Planner: $x^* = L\alpha^{1/(\alpha-1)}$, $\gamma^* > \gamma$
+
+\subsection*{Jones No-Scale}
+\[
+\gamma = \frac{n}{1-\phi} \quad (\phi < 1)
+\]
+
+\subsection*{Key Inequalities}
+\[
+\text{AK}: A > \delta + \rho, \quad
+\text{Romer}: \lambda(1-\alpha)L > \rho, \quad
+\text{Planner}: \gamma^* > \gamma
+\]
+
+\clearpage
+
+\end{document}

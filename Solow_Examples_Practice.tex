@@ -1,0 +1,399 @@
+\section{Solow Model: Worked Examples and Practice Problems}
+
+%==============================================================================
+\subsection{1. Variable Transformation and Log-Differentiation}
+%==============================================================================
+
+\begin{frame}{Worked Example 1: Deriving Per-Capita Law of Motion}
+\textbf{Problem:} Given the aggregate law of motion $\dot{K} = sY - \delta K$, derive the per-capita law of motion $\dot{k} = sf(k) - (\delta + n)k$ for the production function $Y = K^\alpha L^{1-\alpha}$.
+
+\bigskip
+\textbf{Solution:}
+
+\begin{itemize}
+\item Start with the definition of per-capita capital: $k \equiv \frac{K}{L}$
+\item Differentiate using the quotient rule:
+\end{itemize}
+
+\[
+\dot{k} = \frac{d}{dt}\left(\frac{K}{L}\right) = \frac{\dot{K}L - K\dot{L}}{L^2} = \frac{\dot{K}}{L} - \frac{K\dot{L}}{L^2}
+\]
+
+\begin{itemize}
+\item Since $\dot{L} = nL$ (labor grows at rate $n$):
+\end{itemize}
+
+\[
+\dot{k} = \frac{\dot{K}}{L} - n\frac{K}{L} = \frac{\dot{K}}{L} - nk
+\]
+
+\begin{itemize}
+\item Substitute $\dot{K} = sY - \delta K$ and divide by $L$:
+\end{itemize}
+
+\[
+\frac{\dot{K}}{L} = s\frac{Y}{L} - \delta\frac{K}{L} = sy - \delta k
+\]
+
+\begin{itemize}
+\item Substitute into $\dot{k}$ equation:
+\end{itemize}
+
+\[
+\dot{k} = (sy - \delta k) - nk = sy - (\delta + n)k
+\]
+
+\begin{itemize}
+\item Divide by $y = f(k) = k^\alpha$ to get:
+\end{itemize}
+
+\[
+\boxed{\dot{k} = sf(k) - (\delta + n)k}
+\]
+
+\end{frame}
+
+\begin{frame}{Worked Example 1: Log-Differentiation}
+\textbf{Problem:} Given the production function $Y = K^\alpha (AL)^{1-\alpha}$, find the growth rate $\gamma_Y$ using log-differentiation. Assume technology grows at rate $g$ and labor at rate $n$.
+
+\bigskip
+\textbf{Solution:}
+
+\begin{itemize}
+\item Take natural logs:
+\end{itemize}
+
+\[
+\ln Y = \alpha \ln K + (1-\alpha)[\ln A + \ln L]
+\]
+
+\begin{itemize}
+\item Differentiate with respect to time:
+\end{itemize}
+
+\[
+\frac{d\ln Y}{dt} = \alpha \frac{d\ln K}{dt} + (1-\alpha)\left[\frac{d\ln A}{dt} + \frac{d\ln L}{dt}\right]
+\]
+
+\begin{itemize}
+\item Recognize that $\frac{d\ln X}{dt} = \frac{\dot{X}}{X} = \gamma_X$:
+\end{itemize}
+
+\[
+\gamma_Y = \alpha \gamma_K + (1-\alpha)(g + n)
+\]
+
+\boxed{\gamma_Y = \alpha \gamma_K + (1-\alpha)g + (1-\alpha)n}
+
+\end{frame}
+
+\begin{frame}{Practice Problem 1: Variable Transformation}
+\textbf{Problem:} Starting from the aggregate resource constraint $Y = C + I + \delta K$ and the capital accumulation equation $\dot{K} = I - \delta K$, derive the law of motion for capital per efficiency unit $\tilde{k} = K/(AL)$ when technology grows at rate $g$.
+
+\bigskip
+\textbf{Hints:}
+\begin{itemize}
+\item Use the quotient rule: $\frac{d}{dt}\left(\frac{K}{AL}\right) = \frac{\dot{K} \cdot AL - K \cdot \frac{d}{dt}(AL)}{(AL)^2}$
+\item Remember that $\frac{d(AL)}{dt} = \dot{A}L + A\dot{L} = gAL + nAL = (g+n)AL$
+\item Substitute $\dot{K} = sY - \delta K$ where $s$ is the savings rate
+\item Express everything in terms of $\tilde{k}$ and the per-efficiency-unit production function $\tilde{y} = f(\tilde{k})$
+\end{itemize}
+
+\end{frame}
+
+%==============================================================================
+\subsection{2. Characterizing Steady State/BGP}
+%==============================================================================
+
+\begin{frame}{Worked Example 2: Finding Steady State}
+\textbf{Problem:} For the Solow model with Cobb-Douglas production $Y = K^\alpha L^{1-\alpha}$ where $\alpha = 0.33$, $s = 0.3$, $\delta = 0.05$, and $n = 0.02$, find:
+\begin{enumerate}
+\item The steady-state capital per worker $k^*$
+\item The steady-state output per worker $y^*$
+\item The steady-state consumption per worker $c^*$
+\end{enumerate}
+
+\bigskip
+\textbf{Solution:}
+
+\begin{enumerate}
+\item At steady state, set $\dot{k} = 0$:
+\[
+sf(k^*) = (\delta + n)k^*
+\]
+For Cobb-Douglas, $f(k) = k^\alpha$, so:
+\[
+s(k^*)^\alpha = (\delta + n)k^* \implies k^* = \left(\frac{s}{\delta + n}\right)^{\frac{1}{1-\alpha}}
+\]
+Substituting values:
+\[
+k^* = \left(\frac{0.3}{0.05 + 0.02}\right)^{\frac{1}{1-0.33}} = \left(\frac{0.3}{0.07}\right)^{\frac{1}{0.67}} = (4.286)^{1.493} \approx 11.3
+\]
+
+\item Steady-state output:
+\[
+y^* = (k^*)^\alpha = (11.3)^{0.33} \approx 2.77
+\]
+
+\item Steady-state consumption:
+\[
+c^* = (1-s)y^* = (1-0.3)(2.77) = 0.7 \times 2.77 \approx 1.94
+\]
+\end{enumerate}
+
+\boxed{k^* \approx 11.3,\; y^* \approx 2.77,\; c^* \approx 1.94}
+
+\end{frame}
+
+\begin{frame}{Practice Problem 2: Steady State Calculation}
+\textbf{Problem:} Consider an economy with:
+\begin{itemize}
+\item Production function: $Y = K^{0.5} L^{0.5}$ (so $\alpha = 0.5$)
+\item Savings rate: $s = 0.4$
+\item Depreciation rate: $\delta = 0.08$
+\item Population growth: $n = 0.02$
+\end{itemize}
+Calculate the steady-state capital-output ratio $K^*/Y^*$.
+
+\bigskip
+\textbf{Hints:}
+\begin{itemize}
+\item At steady state: $sf(k^*) = (\delta + n)k^*$
+\item For Cobb-Douglas with $\alpha = 0.5$: $k^* = \frac{s}{\delta + n}$
+\item The capital-output ratio is $K^*/Y^* = K^*/(K^{*\alpha}L^{1-\alpha}) = K^*/K^* = 1$ when expressed correctly
+\item Actually solve for $k^* = K^*/L$ first, then compute $K^*/Y^* = k^*/(k^{*\alpha}) = k^{*(1-\alpha)}$
+\end{itemize}
+
+\end{frame}
+
+%==============================================================================
+\subsection{3. Transitional Dynamics and Convergence Speed}
+%==============================================================================
+
+\begin{frame}{Worked Example 3: Convergence Speed}
+\textbf{Problem:} Derive the speed of convergence $\beta$ for the Solow model by log-linearizing around the steady state. Show that $\beta = (1-\alpha)(n + \delta + sg')$.
+
+\bigskip
+\textbf{Solution:}
+
+\begin{itemize}
+\item Start with the law of motion: $\dot{k} = sf(k) - (\delta + n)k$
+\item Define the gap: $\hat{k}_t \equiv k^* - k_t$
+\item Log-linearize around steady state. First, define $h(k) \equiv sf(k) - (\delta + n)k$
+\item Linear approximation: $\dot{\hat{k}} \approx h'(k^*) \hat{k}$
+\item Compute $h'(k)$:
+\[
+h'(k) = sf'(k) - (\delta + n)
+\]
+At steady state $k^*$: $sf'(k^*) = \delta + n$ (from $sf(k^*) = (\delta + n)k^*$)
+\item For Cobb-Douglas: $f'(k) = \alpha k^{\alpha-1} = \alpha \frac{k^\alpha}{k} = \alpha \frac{f(k)}{k}$
+So at steady state:
+\[
+h'(k^*) = s\alpha \frac{f(k^*)}{k^*} - (\delta + n) = \alpha \frac{sf(k^*)}{k^*} - (\delta + n) = \alpha(\delta + n) - (\delta + n) = -(1-\alpha)(\delta + n)
+\]
+\item The solution is $\hat{k}_t = \hat{k}_0 e^{-\beta t}$ where $\beta = (1-\alpha)(n + \delta)$
+\item More generally including the effect of saving: $\boxed{\beta = (1-\alpha)(n + \delta + sg')}$
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Practice Problem 3: Convergence Analysis}
+\textbf{Problem:} An economy has $\alpha = 0.33$, $s = 0.2$, $\delta = 0.05$, and $n = 0.01$.
+\begin{enumerate}
+\item Calculate the speed of convergence $\beta$.
+\item If the initial capital is $k_0 = 2$ and the steady-state capital is $k^* = 8$, what is the half-life of convergence (time to close half the gap)?
+\item How long does it take to close 90\% of the gap?
+\end{enumerate}
+
+\bigskip
+\textbf{Hints:}
+\begin{itemize}
+\item Use $\beta = (1-\alpha)(n + \delta)$ for basic Cobb-Douglas
+\item Half-life: solve $e^{-\beta t} = 0.5 \implies t_{1/2} = \ln(2)/\beta$
+\item For 90\%: solve $e^{-\beta t} = 0.1 \implies t_{90} = \ln(10)/\beta$
+\item The gap at time $t$ is $(k^* - k_t) = (k^* - k_0)e^{-\beta t}$
+\end{itemize}
+
+\end{frame}
+
+%==============================================================================
+\subsection{4. Golden Rule Capital}
+%==============================================================================
+
+\begin{frame}{Worked Example 4: Golden Rule Saving Rate}
+\textbf{Problem:} Find the golden rule saving rate $s^*$ that maximizes steady-state consumption per worker for the Cobb-Douglas case with parameters $\alpha = 0.5$, $\delta = 0.05$, $n = 0.02$.
+
+\bigskip
+\textbf{Solution:}
+
+\begin{itemize}
+\item Steady-state consumption: $c^* = (1-s)f(k^*) = (1-s)(k^*)^\alpha$
+\item From steady state: $k^* = \left(\frac{s}{\delta + n}\right)^{\frac{1}{1-\alpha}}$
+\item Substitute:
+\[
+c^* = (1-s)\left(\frac{s}{\delta + n}\right)^{\frac{\alpha}{1-\alpha}}
+\]
+\item Maximize w.r.t. $s$. Take log and differentiate, or use FOC:
+\[
+\frac{d c^*}{ds} = 0
+\]
+Let $\theta = \frac{\alpha}{1-\alpha}$. Then:
+\[
+c^* = (1-s)(\delta + n)^{-\theta} s^{\theta}
+\]
+\[
+\frac{d c^*}{ds} = (\delta + n)^{-\theta}[\theta s^{\theta-1}(1-s) - s^{\theta}] = 0
+\]
+\[
+\theta(1-s) = s \implies \theta - \theta s = s \implies \theta = s(1+\theta)
+\]
+\[
+s^* = \frac{\theta}{1+\theta} = \frac{\alpha}{1-\alpha} \cdot \frac{1}{1 + \frac{\alpha}{1-\alpha}} = \frac{\alpha}{1-\alpha} \cdot \frac{1-\alpha}{1} = \alpha
+\]
+\item For $\alpha = 0.5$: $s^* = 0.5$
+\item Check: at $s^*$, MPK = $\delta + n$:
+\[
+f'(k^*) = \alpha (k^*)^{\alpha-1} = \frac{\alpha}{k^*} = \delta + n \implies k^* = \frac{\alpha}{\delta + n}
+\]
+\[
+s^* = \frac{f(k^*)}{k^*} \cdot \frac{1}{\delta + n} = \frac{f(k^*)}{\delta + n} = \alpha \quad \checkmark
+\]
+\end{itemize}
+
+\boxed{s^* = \alpha = 0.5}
+
+\end{frame}
+
+\begin{frame}{Practice Problem 4: Golden Rule Analysis}
+\textbf{Problem:} An economy has $\alpha = 0.33$, $\delta = 0.08$, and $n = 0.01$.
+\begin{enumerate}
+\item Find the golden rule saving rate $s^*$.
+\item Find the golden rule capital stock $k^{**}$.
+\item If the actual saving rate is $s = 0.2$, is the economy over-accumulating or under-accumulating capital relative to the Golden Rule?
+\item What is the "wasted" consumption per period at $s = 0.2$ compared to $s^*$?
+\end{enumerate}
+
+\bigskip
+\textbf{Hints:}
+\begin{itemize}
+\item Golden rule: $f'(k^{**}) = \delta + n$
+\item For Cobb-Douglas: $k^{**} = \left(\frac{\alpha}{\delta + n}\right)^{\frac{1}{1-\alpha}}$
+\item Compare $k^*$ at actual $s$ to $k^{**}$: if $k^* < k^{**}$, under-accumulation; if $k^* > k^{**}$, over-accumulation
+\item Wasted consumption = consumption loss from not being at Golden Rule
+\item $c^{**} - c^*$ where $c^{**} = (1-s^*)f(k^{**})$ and $c^* = (1-s)f(k^*)$
+\end{itemize}
+
+\end{frame}
+
+%==============================================================================
+\subsection{5. Phase Diagrams}
+%==============================================================================
+
+\begin{frame}{Worked Example 5: Phase Diagram Analysis}
+\textbf{Problem:} Draw the phase diagram for the Solow model. Identify the $\dot{k}=0$ locus, the $\dot{c}=0$ locus (for Ramsey), and determine stability. Use parameters $\alpha = 0.33$, $s = 0.3$, $\delta = 0.05$, $n = 0.02$.
+
+\bigskip
+\textbf{Solution:}
+
+\begin{enumerate}
+\item \textbf{$\dot{k} = 0$ locus (vertical line in Solow):}
+\[
+sf(k) = (\delta + n)k
+\]
+For Cobb-Douglas: $k^* = \left(\frac{s}{\delta + n}\right)^{\frac{1}{1-\alpha}} = \left(\frac{0.3}{0.07}\right)^{1.493} \approx 11.3$
+\begin{itemize}
+\item Above $k^*$: $\dot{k} < 0$ (capital depletes)
+\item Below $k^*$: $\dot{k} > 0$ (capital accumulates)
+\end{itemize}
+
+\item \textbf{Direction arrows:} Arrow points LEFT for $k > k^*$, RIGHT for $k < k^*$
+
+\item \textbf{Steady state properties:}
+\begin{itemize}
+\item Unique and globally stable
+\item Saddle path = vertical line at $k^*$
+\item No oscillation (no $\dot{c}=0$ locus in basic Solow)
+\end{itemize}
+
+\item \textbf{Phase diagram shape:}
+\[
+\begin{tikzpicture}[scale=0.8]
+\draw[->] (-0.5,0) -- (5,0) node[right] {$k$};
+\draw[->] (0,-0.5) -- (0,4) node[above] {$\dot{k}$};
+\draw[thick,blue] plot[smooth,domain=0:4.5] (\x,{2.5*exp(\x*ln(0.33))/exp(\x*ln(0.33)/4.5*4.5) - 0.07*\x});
+\node at (2.8,-0.3) {$k^* = 11.3$};
+\draw[dashed] (2.8,-0.2) -- (2.8,3.5);
+\draw[->,thick] (3.5,1) -- (3.2,1) node[below] {$\dot{k}<0$};
+\draw[->,thick] (1.5,1) -- (1.8,1) node[below] {$\dot{k}>0$};
+\end{tikzpicture}
+\]
+\end{enumerate}
+
+\end{frame}
+
+\begin{frame}{Practice Problem 5: Phase Diagram}
+\textbf{Problem:} Consider a Solow economy with:
+\begin{itemize}
+\item Production: $Y = K^{0.5} L^{0.5}$ ($\alpha = 0.5$)
+\item Savings rate: $s = 0.4$
+\item Depreciation: $\delta = 0.1$
+\item Population growth: $n = 0.01$
+\end{itemize}
+\begin{enumerate}
+\item Find the steady-state $k^*$.
+\item Draw the phase diagram showing the $\dot{k}=0$ locus.
+\item Suppose the economy starts at $k_0 = 2$. Using arrows, show the transition path to the steady state.
+\item What is the long-run growth rate of output per worker? What about output per effective worker?
+\end{enumerate}
+
+\bigskip
+\textbf{Hints:}
+\begin{itemize}
+\item Solve $0.4\sqrt{k} = (0.1 + 0.01)k = 0.11k$ to find $k^* = (0.4/0.11)^2 \approx 13.2$
+\item For the phase diagram: x-axis is $k$, y-axis is $\dot{k}$. Plot $sf(k)$ and $(\delta+n)k$, intersection is $k^*$
+\item Above intersection: $\dot{k} < 0$ (point left); below: $\dot{k} > 0$ (point right)
+\item Output per worker $y = \sqrt{k}$ grows during transition, then constant in steady state
+\item Output per effective worker $\tilde{y} = \tilde{k}^{0.5}$ is constant in steady state
+\item Output $Y$ grows at rate $g$ in steady state (from $A$ growth)
+\end{itemize}
+
+\end{frame}
+
+%==============================================================================
+\subsection{Summary Table}
+%==============================================================================
+
+\begin{frame}{Solow Model Key Formulas}
+\begin{table}
+\centering
+\begin{tabular}{|l|c|}
+\hline
+\textbf{Concept} & \textbf{Formula} \\
+\hline
+Production Function & $Y = K^\alpha L^{1-\alpha}$ \\
+\hline
+Per-capita production & $y = f(k) = k^\alpha$ \\
+\hline
+Law of motion (per worker) & $\dot{k} = sf(k) - (\delta + n)k$ \\
+\hline
+Law of motion (efficiency units) & $\dot{\tilde{k}} = sf(\tilde{k}) - (\delta + n + g)\tilde{k}$ \\
+\hline
+Steady state $k^*$ & $k^* = \left(\frac{s}{\delta + n}\right)^{\frac{1}{1-\alpha}}$ \\
+\hline
+Steady state $y^*$ & $y^* = \left(\frac{s}{\delta + n}\right)^{\frac{\alpha}{1-\alpha}}$ \\
+\hline
+Steady state $c^*$ & $c^* = (1-s)y^*$ \\
+\hline
+Golden rule $k^{**}$ & $k^{**} = \left(\frac{\alpha}{\delta + n}\right)^{\frac{1}{1-\alpha}}$ \\
+\hline
+Golden rule $s^*$ & $s^* = \alpha$ \\
+\hline
+Convergence speed $\beta$ & $\beta = (1-\alpha)(n + \delta)$ \\
+\hline
+Growth rate (BGP) & $g_Y = g$ (only technology grows) \\
+\hline
+\end{tabular}
+\end{table}
+\end{frame}
+
+\end{document}

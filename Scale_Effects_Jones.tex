@@ -1,0 +1,152 @@
+%==============================================================================
+% Scale Effects and Jones Fix - Exam Reference
+% Endogenous Growth Theory
+%==============================================================================
+
+\section{Scale Effects and the Jones (1995) Fix}
+%==============================================================================
+
+\subsection*{The Scale Effects Problem}
+
+In the basic Romer (1990) model, knowledge creation exhibits constant returns to the
+stock of ideas $M$ and R\&D labor $L_R$:
+
+\[
+\dot{M} = \lambda M L_R
+\tag{Romer Knowledge}
+\]
+
+On a balanced growth path with $L_R \propto L$ (population), this implies:
+
+\[
+\gamma = \frac{\dot{M}}{M} = \lambda (1-\alpha)L - \rho
+\tag{Romer Growth}
+\]
+
+\begin{tcolorbox}[colback=red!10,colframe=red!60,title=Scale Effects Problem]
+Growth rate $\gamma$ increases with $L$ (population/labor force).
+\bigskip
+
+\textbf{Prediction:} Larger economies should grow faster.
+\bigskip
+
+\textbf{Problem (Jones 1995):} Empirically rejected!
+\end{tcolorbox}
+
+%-----------------------------------------------------------------------------
+\subsection{Jones (1995): Empirical Rejection}
+
+\begin{itemize}
+    \item R\&D personnel increased $\sim 10\times$ since 1950s
+    \item GDP growth did \textbf{NOT} accelerate
+    \item If scale effects held, we should have seen acceleration
+\end{itemize}
+
+\begin{tcolorbox}[colback=orange!10,colframe=orange3,title=Key Insight]
+The original Romer model generates \textbf{scale effects} because
+constant returns to $M$ implies that having more ideas makes it easier
+to create new ideas.
+\end{tcolorbox}
+
+%-----------------------------------------------------------------------------
+\subsection{Jones' Fix: Decreasing Returns to R\&D}
+
+Jones (1995) proposes decreasing returns to the stock of ideas:
+
+\begin{derivationbox}
+Original Romer: $\dot{M} = \lambda M L_R$ \quad (CRS to $M$)
+
+Jones Fix: $\dot{M} = \lambda M^\phi L_R$ \quad with $\phi < 1$
+\bigskip
+
+Key difference: $\phi < 1$ implies decreasing returns to the stock of ideas.
+Having \textbf{more ideas makes it harder} (not easier) to generate new ones.
+\end{derivationbox}
+
+%-----------------------------------------------------------------------------
+\subsection{Derivation of No-Scale Growth}
+
+\begin{derivationbox}
+\textbf{Step 1: Free entry condition}
+\[
+r = \frac{\partial \pi}{\partial M} = \lambda \alpha M^{\phi-1} L_E
+\tag{Arbitrage}
+\]
+
+\textbf{Step 2: On BGP, $r = \rho$}
+\[
+\rho = \lambda \alpha M^{\phi-1} L_E
+\tag{BGP Rate}
+\]
+
+\textbf{Step 3: Knowledge accumulation}
+\[
+\frac{\dot{M}}{M} = \lambda M^{\phi-1} L_R
+\tag{Knowledge}
+\]
+
+\textbf{Step 4: Using BGP condition}
+\[
+\frac{\dot{M}}{M} = \frac{\rho}{\alpha} \frac{L_R}{L_E}
+\tag{}
+\]
+
+With $L_R / L_E = (1-\phi) n$ (from resource constraint):
+\[
+\boxed{\gamma = \frac{n}{1-\phi}}
+\tag{Jones Growth}
+\]
+\end{derivationbox}
+
+\begin{resultbox}
+\textbf{Key Result:} $\gamma = \dfrac{n}{1-\phi}$
+\bigskip
+
+\textbf{No scale effects!} Growth depends on:
+\begin{itemize}
+    \item $n$ = population growth rate
+    \item $\phi$ = R\&D curvature parameter ($0 < \phi < 1$)
+\end{itemize}
+\bigskip
+
+\textbf{IMPORTANT:} If $n = 0$, then $\gamma = 0$!
+This is called \textbf{semi-endogenous} growth.
+\end{resultbox}
+
+%-----------------------------------------------------------------------------
+\subsection{Key Implications}
+
+\begin{enumerate}
+    \item \textbf{Higher population growth $\Rightarrow$ higher growth}
+    \item \textbf{Zero population growth $\Rightarrow$ no growth}
+    \item Growth is \textbf{not} endogenous in the same way as Romer (1990)
+    \item Scale (size of economy) does \textbf{not} affect long-run growth
+\end{enumerate}
+
+\begin{tcolorbox}[colback=blue!10,colframe=blue3,title=Semi-Endogenous Growth]
+Jones (1995) model is called "semi-endogenous" because:
+\begin{itemize}
+    \item Growth rate is determined by exogenous $n$ (population growth)
+    \item Level effects from $s$ (savings rate) but no growth effects
+    \item Need population growth for sustained growth
+\end{itemize}
+\end{tcolorbox}
+
+%-----------------------------------------------------------------------------
+\subsection{Model Comparison}
+
+\begin{center}
+\begin{tabular}{lccc}
+\toprule
+\textbf{Model} & \textbf{Scale Effects?} & \textbf{Growth Driver} & \textbf{Type} \\
+\midrule
+Solow & No & Exogenous $g$ & Exogenous \\
+AK & No & $s$ (level only) & Endogenous \\
+Romer (1990) & Yes ($\gamma \propto L$) & Endogenous ($L$) & Endogenous \\
+Jones (1995) & No & $n$ (population growth) & Semi-Endogenous \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+%==============================================================================
+\end{document}

@@ -1,0 +1,109 @@
+\subsection*{Section 2: Growth Accounting Framework (Primal Approach)}
+
+The primal approach to growth accounting starts with an aggregate production function that describes how output $Y$ is produced using capital $K$ and labor $L$:
+
+\begin{equation}
+    Y = F(K, B \cdot L) \quad \text{or} \quad Y = A \cdot F(K, L)
+\end{equation}
+
+where:
+\begin{itemize}
+    \item $K$ = capital stock
+    \item $L$ = labor input (raw labor or effective labor)
+    \item $B$ = labor-augmenting technology (or $A$ = Hicks-neutral TFP)
+    \item $F(\cdot)$ = production technology
+\end{itemize}
+
+\vspace{0.3cm}
+
+\textbf{TFP as a Residual:} Total Factor Productivity (TFP) is measured as the residual --- the portion of output growth that cannot be explained by growth in capital or labor inputs. This is known as the \textbf{Solow residual}:
+
+\begin{equation}
+    \boxed{\text{TFP Growth} = \text{Output Growth} - \text{Input Contribution}}
+\end{equation}
+
+\vspace{0.3cm}
+
+\textbf{What Goes into TFP?} The TFP residual captures many factors:
+
+\begin{itemize}
+    \item \textbf{Technology}: True technological progress and innovation
+    \item \textbf{Misallocation}: Inefficient resource allocation across firms
+    \item \textbf{Mismeasurement}: Errors in measuring $K$, $L$, or $Y$
+    \item \textbf{Other factors}: Institutional quality, management practices, etc.
+\end{itemize}
+
+\vspace{0.3cm}
+
+\textbf{Key Insight:} TFP is often described as a \textbf{``measure of our ignorance''} because it represents everything we cannot explain with capital and labor inputs alone. It is a catch-all residual that absorbs any factor affecting output growth beyond measurable inputs.
+
+\vspace{0.5cm}
+
+\subsection*{Section 3: Derivation of Growth Accounting Equation}
+
+\begin{derivationbox}{Step-by-Step Derivation}
+    
+    \textbf{Step 1: Start with production function}
+    \begin{equation}
+        Y = A \cdot F(K, L)
+    \end{equation}
+    
+    \textbf{Step 2: Take logs}
+    \begin{equation}
+        \log Y = \log A + \log F(K, L)
+    \end{equation}
+    
+    \textbf{Step 3: Time derivative (using dots for growth rates)}
+    \begin{align}
+        \frac{\dot{Y}}{Y} &= \frac{\dot{A}}{A} + \frac{F_K \cdot K}{F} \cdot \frac{\dot{K}}{K} + \frac{F_L \cdot L}{F} \cdot \frac{\dot{L}}{L} \tag{3.1}
+    \end{align}
+    where $F_K = \partial F / \partial K$ and $F_L = \partial F / \partial L$.
+    
+    \textbf{Step 4: Define capital share $\alpha$}
+    \begin{equation}
+        \alpha = \frac{F_K \cdot K}{F} \quad \text{(capital share)} \tag{3.2}
+    \end{equation}
+    Under constant returns to scale: $F_K \cdot K + F_L \cdot L = F$, so $(1-\alpha) = \frac{F_L \cdot L}{F}$.
+    
+    \textbf{Step 5: Final growth accounting equation}
+    \begin{align}
+        \gamma_Y &= \gamma_A + \alpha \cdot \gamma_K + (1-\alpha) \cdot \gamma_L \tag{3.3}
+    \end{align}
+    
+\end{derivationbox}
+
+\vspace{0.3cm}
+
+\begin{resultbox}{Growth Accounting Equation}
+    
+    \begin{equation}
+        \boxed{\gamma_Y = \gamma_A + \alpha \cdot \gamma_K + (1-\alpha) \cdot \gamma_L}
+    \end{equation}
+    
+    where:
+    \begin{itemize}
+        \item $\gamma_Y$ = growth rate of output ($Y$)
+        \item $\gamma_A$ = growth rate of TFP (technology)
+        \item $\gamma_K$ = growth rate of capital ($K$)
+        \item $\gamma_L$ = growth rate of labor ($L$)
+        \item $\alpha$ = capital share in income (typically around 0.3-0.4)
+        \item $(1-\alpha)$ = labor share in income (typically around 0.6-0.7)
+    \end{itemize}
+    
+\end{resultbox}
+
+\vspace{0.5cm}
+
+\textbf{Solow Residual:} Rearranging the growth accounting equation to isolate TFP growth:
+
+\begin{resultbox}{Solow Residual}
+    
+    \begin{equation}
+        \boxed{\gamma_A = \gamma_Y - \alpha \cdot \gamma_K - (1-\alpha) \cdot \gamma_L}
+    \end{equation}
+    
+    This shows that TFP growth is the residual --- output growth minus the weighted contributions of capital and labor growth.
+
+\end{resultbox}
+
+\clearpage

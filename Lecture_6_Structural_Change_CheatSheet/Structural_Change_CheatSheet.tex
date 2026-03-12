@@ -1,0 +1,817 @@
+%==============================================================================
+% Structural Change Cheatsheet
+% Exam-Focused Reference for Macroeconomics I
+%==============================================================================
+
+\documentclass[a4paper,11pt]{article}
+
+\usepackage{geometry}
+\geometry{margin=1in}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{graphicx}
+
+\usepackage{xcolor}
+\definecolor{blue3}{RGB}{0,0,180}
+\definecolor{green3}{RGB}{0,120,0}
+\definecolor{orange3}{RGB}{200,100,0}
+\definecolor{red3}{RGB}{180,0,0}
+\definecolor{purple3}{RGB}{120,0,120}
+
+\usepackage{siunitx}
+\sisetup{detect-all}
+
+\usepackage[colorlinks=true,linkcolor=blue3,citecolor=blue3,urlcolor=blue3]{hyperref}
+
+\usepackage{cleveref}
+
+\usepackage{tcolorbox}
+\tcbuselibrary{skins,breakable}
+
+\newtcolorbox{derivationbox}[1][]{
+    colback=blue!10,
+    colframe=blue3,
+    coltitle=blue3,
+    title={Derivation:},
+    fonttitle=\bfseries,
+    #1
+}
+
+\newtcolorbox{resultbox}[1][]{
+    colback=green!10,
+    colframe=green3,
+    coltitle=green3,
+    title={Result Summary:},
+    fonttitle=\bfseries,
+    #1
+}
+
+\newtcolorbox{keyformulabox}[1][]{
+    colback=orange!10,
+    colframe=orange3,
+    coltitle=orange3,
+    title={Key Formula:},
+    fonttitle=\bfseries,
+    #1
+}
+
+\newtcolorbox{warningbox}[1][]{
+    colback=red!10,
+    colframe=red3,
+    coltitle=red3,
+    title={Warning:=\bfseries,
+},
+    fonttitle    #1
+}
+
+\newtcolorbox{intuitionbox}[1][]{
+    colback=purple!10,
+    colframe=purple3,
+    coltitle=purple3,
+    title={Intuition:},
+    fonttitle=\bfseries,
+    #1
+}
+
+\usepackage{booktabs}
+
+\usepackage{enumitem}
+
+% Custom commands
+\newcommand{\subtitle}[1]{\par\vspace{0.5em}\large\textit{#1}\par\vspace{1em}}
+
+% Title
+\title{\textbf{Structural Change Cheatsheet}}
+\author{Macroeconomics I - Exam Reference}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\tableofcontents
+
+\clearpage
+\pagestyle{plain}
+
+%==============================================================================
+\section{Notation and Definitions}
+%==============================================================================
+
+\subsection*{Core Variables}
+\begin{align*}
+&Y_{it} && \text{output in sector } i \in \{A, M, S\} \text{ (Agriculture, Manufacturing, Services)} \\
+&K_{it}, L_{it} && \text{capital and labor in sector } i \\
+&k_t = K_{1t}/K_t && \text{capital share in sector 1} \\
+&\lambda_t = L_{1t}/L_t && \text{labor share in sector 1} \\
+&B_i && \text{sector-specific TFP level} \\
+&X_t && \text{time-varying labor-augmenting productivity} \\
+&\gamma_i && \text{subsistence level for good } i \\
+&\eta_i && \text{weight in Stone-Geary utility} \\
+&\epsilon && \text{substitution elasticity in CES aggregator} \\
+&\omega && \text{weight in CES aggregator}
+\end{align*}
+
+\subsection*{Key Concepts}
+\begin{center}
+\begin{tabular}{lp{0.4\linewidth}}
+\toprule
+Concept & Definition \\
+\midrule
+Structural Change & Reallocation of employment/output across sectors \\
+Homothetic Preferences & Utility homogeneous of degree 1; linear Engel curves \\
+Non-homothetic & Engel curves non-linear; income effects matter \\
+Engel Curve & Demand as function of income: $x_i = x_i(I, p_i)$ \\
+Necessities & Income elasticity $\epsilon_I < 1$ \\
+Luxuries & Income elasticity $\epsilon_I > 1$ \\
+CGP & Constant Growth Path: aggregate grows at const. rate, sectors don't \\
+Baumol's Cost Disease & Slow-growing sectors absorb labor as economy expands \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\clearpage
+
+%==============================================================================
+\section{Stylized Facts: Structural Change}
+%==============================================================================
+
+\subsection*{Employment Shares Over Time (US)}
+\begin{center}
+\begin{tabular}{lll}
+\toprule
+Sector & Pattern & Key Observation \\
+\midrule
+Agriculture & Sharp decline & From ~70\% (1800) to ~2\% (2000) \\
+Manufacturing & Inverse-U shape & Peaks ~30\% mid-20th century, then declines \\
+Services & Sharp rise & From ~10\% to ~80\% \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\subsection*{Cross-Country Patterns}
+\begin{center}
+\begin{tabular}{lll}
+\toprule
+Relationship & Pattern & Interpretation \\
+\midrule
+Agriculture share vs GDP & Negative & Rich countries have smaller Ag \\
+Industry share vs GDP & Inverted-U & Peaks at middle income \\
+Services share vs GDP & Positive & Rich countries have larger Services \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\begin{intuitionbox}
+Structural change is one of the most salient features of economic development that single-sector growth models cannot generate.
+\end{intuitionbox}
+
+\clearpage
+
+%==============================================================================
+\section{Demand-Side Explanations: Engel Curves}
+%==============================================================================
+
+\subsection*{Homothetic vs Non-Homothetic Preferences}
+\begin{center}
+\begin{tabular}{lp{0.35\linewidth}p{0.35\linewidth}}
+\toprule
+Type & Engel Curve & Implication for SC \\
+\midrule
+Homothetic & Linear: doubling income $\Rightarrow$ doubling demand & No demand-driven SC \\
+Necessities & Concave: $x' > 0$, $x'' < 0$ & Declining share as income rises \\
+Luxuries & Convex: $x' > 0$, $x'' > 0$ & Rising share as income rises \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\subsection*{Engel's Law}
+As income increases, the percentage spent on food (necessity) decreases, even though total food expenditure increases.
+
+\clearpage
+
+%==============================================================================
+\section{Stone-Geary Preferences}
+%==============================================================================
+
+\subsection*{Utility Function}
+\[
+c_t = (c_t^A - \gamma^A)^{\eta_A} c_t^{M^{\eta_M}} (c_t^S + \gamma^S)^{\eta_S}
+\tag{Stone-Geary}
+\]
+
+\medskip
+\noindent where $\gamma^A, \gamma^S > 0$ are subsistence levels and $\eta_A + \eta_M + \eta_S = 1$.
+
+\medskip
+\noindent \textbf{Special cases:}
+\begin{itemize}
+    \item $\gamma_i = 0, \forall i$: Cobb-Douglas (homothetic)
+    \item $\gamma^A > 0$: food is a necessity
+    \item $\gamma^S > 0$: services is a luxury (negative threshold)
+\end{itemize}
+
+\subsection*{Demand Derivation}
+\begin{derivationbox}{Derivation of Stone-Geary Demand}
+Household solves:
+\[
+\max_{\{c_i\}} \mathcal{L} = \prod_i (c_i - \gamma_i)^{\eta_i} + \lambda\left[I - \sum_i p_i c_i\right]
+\]
+
+FOC:
+\[
+\eta_i (c_i - \gamma_i)^{-1} \prod_k (c_k - \gamma_k)^{\eta_k} = \lambda p_i
+\]
+
+Dividing FOC for $i$ by FOC for $j$:
+\[
+\frac{\eta_i}{\eta_j} \frac{c_j - \gamma_j}{c_i - \gamma_i} = \frac{p_i}{p_j}
+\]
+
+Solving the system:
+\[
+c_j = \gamma_j + \frac{\eta_j (I - \sum_i p_i \gamma_i)}{p_j}
+\tag{Stone-Geary Demand}
+\]
+\end{derivationbox}
+
+\begin{resultbox}
+\[
+\boxed{c_j = \gamma_j + \frac{\eta_j (I - \sum_i p_i \gamma_i)}{p_j}}
+\tag{Demand Schedule}
+\]
+\end{resultbox}
+
+\medskip
+\noindent \textbf{Key insight:} Engel curve is linear but shifted by subsistence level. When income is low, only necessity goods are consumed.
+
+\clearpage
+
+%==============================================================================
+\section{Demand-Side Model: Production and Equilibrium}
+%==============================================================================
+
+\subsection*{Sectoral Production Functions}
+\[
+Y_{it} = B_i F(K_{it}, X_t L_{it}) \quad i = \{A, M, S\}
+\tag{Sectoral Production}
+\]
+
+\medskip
+\noindent where $B_i$ is sector-specific TFP and $X_t$ grows at rate $g$.
+
+\subsection*{Market Clearing}
+\[
+\sum_i K_{it} = K_t, \quad \sum_i L_{it} = L_t
+\tag{Factor Market Clearing}
+\]
+
+\medskip
+\begin{tcolorbox}[colback=yellow!10,colframe=yellow!60,title=Key Assumption]
+Investment good is made from manufacturing good (no depreciation):
+\[
+Y_{Mt} = \dot{K}_t + c_t^M L_t
+\]
+\end{tcolorbox}
+
+\subsection*{Price Relations (Manufacturing = Numeraire)}
+\[
+p_t^A = \frac{B_M}{B_A}, \quad p_t^M = 1, \quad p_t^S = \frac{B_M}{B_S}
+\tag{Relative Prices}
+\]
+
+\subsection*{Competitive Factor Markets}
+\[
+w_t = MPL_{it}, \quad r_t = MPK_{it} \quad \forall i
+\tag{Factor Price Equalization}
+\]
+
+This implies:
+\[
+\frac{K_{it}}{X_t L_{it}} = k_t \quad \forall i
+\tag{Common Capital-Output Ratio}
+\]
+
+\clearpage
+
+%==============================================================================
+\section{Constant Growth Path (CGP)}
+%==============================================================================
+
+\subsection*{Definition}
+A \textbf{Constant Growth Path (CGP)} is when the consumption aggregate grows at a constant rate but sectoral consumptions do not.
+
+\medskip
+\noindent \textbf{Existence condition:} CGP exists (unique) iff $\gamma^A / B_A = \gamma^S / B_S$.
+
+\subsection*{Consumption Growth Rates on CGP}
+\begin{derivationbox}{Derivation of Sectoral Growth Rates}
+From intratemporal optimization:
+\[
+\eta^M \frac{B_M (c_t^A - \gamma^A)}{B_A \eta^A} = c_t^M = \eta^M \frac{B_M (c_t^S + \gamma^S)}{B_S \eta^S}
+\]
+
+With technology growth $g$ (i.e., $X_t = X_0 e^{gt}$):
+\[
+\frac{\dot{c}_t^A}{c_t^A} = g \frac{c_t^A - \gamma^A}{c_t^A} < g
+\tag{Agriculture}
+\]
+\[
+\frac{\dot{c}_t^M}{c_t^M} = g
+\tag{Manufacturing}
+\]
+\[
+\frac{\dot{c}_t^S}{c_t^S} = g \frac{c_t^S + \gamma^S}{c_t^S} > g
+\tag{Services}
+\]
+\end{derivationbox}
+
+\begin{resultbox}
+\[
+\boxed{\frac{\dot{c}^A}{c} < g < \frac{\dot{c}^S}{c} = g = \frac{\dot{c}^M}{c}}
+\tag{CGP Consumption Growth}
+\]
+\end{resultbox}
+
+\begin{intuitionbox}
+As economy grows: agricultural consumption shrinks as share, manufacturing stays constant, services expand. This is Engel's Law in action.
+\end{intuitionbox}
+
+\clearpage
+
+%==============================================================================
+\section{Employment Dynamics (Demand Side)}
+%==============================================================================
+
+\subsection*{Employment Growth Rates}
+\begin{derivationbox}{Derivation of Employment Reallocation}
+Using factor market clearing and production functions:
+\[
+\frac{\dot{L}_{At}}{L_{At}} = n - g \frac{\gamma^A L_t}{B_A L_{At} X_t F(k^*,1)} < n
+\tag{Agriculture}
+\]
+\[
+\frac{\dot{L}_{Mt}}{L_{Mt}} = n
+\tag{Manufacturing}
+\]
+\[
+\frac{\dot{L}_{St}}{L_{St}} = n + g \frac{\gamma^S L_t}{B_S L_{St} X_t F(k^*,1)} > n
+\tag{Services}
+\]
+\end{derivationbox}
+
+\begin{resultbox}
+\[
+\boxed{\dot{L}_A/L_A < n < \dot{L}_S/L_S = n = \dot{L}_M/L_M}
+\tag{Employment Growth}
+\]
+\end{resultbox}
+
+\medskip
+\begin{tcolorbox}[colback=blue!5,colframe=blue3,title=Key Result: Demand-Driven SC]
+With Stone-Geary preferences (Engel's Law):
+\begin{itemize}
+    \item Agricultural employment share declines
+    \item Service employment share rises
+    \item Manufacturing employment share stays constant (at CGP)
+\end{itemize}
+\end{tcolorbox}
+
+\clearpage
+
+%==============================================================================
+\section{Supply-Side Explanations: Baumol's Cost Disease}
+%==============================================================================
+
+\subsection*{Core Idea}
+If two sectors grow at different rates and share common production factors, there will be reallocation between them. There cannot be a BGP with constant sectoral shares.
+
+\medskip
+\begin{intuitionbox}
+Baumol's Cost Disease: Sectors with slower productivity growth see rising relative prices and absorb increasing labor shares because wages equalize across sectors.
+\end{intuitionbox}
+
+\subsection*{Productivity Growth Differentials (Duarte \& Restuccia)}
+\begin{center}
+\begin{tabular}{lc}
+\toprule
+Sector & Avg Growth Rate (1956-2004) \\
+\midrule
+Agriculture & 3.8\% \\
+Manufacturing & 2.4\% \\
+Services & 1.3\% \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\clearpage
+
+%==============================================================================
+\section{Supply-Side Model: CES Aggregator}
+%==============================================================================
+
+\subsection*{Final Good Aggregator (CES)}
+\[
+Y_t = \left[\omega Y_{1t}^{\frac{\epsilon-1}{\epsilon}} + (1-\omega) Y_{2t}^{\frac{\epsilon-1}{\epsilon}}\right]^{\frac{\epsilon}{\epsilon-1}}
+\tag{CES Aggregator}
+\]
+
+\medskip
+\noindent where $\epsilon > 0$ is the substitution elasticity.
+
+\subsection*{Sectoral Production}
+\[
+Y_{it} = A_{it} K_{it}^{\alpha_i} L_{it}^{1-\alpha_i} \quad i = 1, 2
+\tag{Cobb-Douglas Sectors}
+\]
+
+\medskip
+\noindent Assume $\alpha_1 < \alpha_2$: sector 1 is more labor-intensive.
+
+\subsection*{Productivity Growth}
+\[
+\frac{\dot{A}_{it}}{A_{it}} = a_i > 0
+\tag{Exogenous Tech Growth}
+\]
+
+\clearpage
+
+%==============================================================================
+\section{Supply-Side: Factor Allocation}
+%==============================================================================
+
+\subsection*{Capital and Labor Shares}
+Define:
+\[
+k_t \equiv \frac{K_{1t}}{K_t}, \quad \lambda_t \equiv \frac{L_{1t}}{L_t}
+\tag{Allocation Fractions}
+\]
+
+\begin{derivationbox}{Derivation of Capital Allocation}
+From equalized MPKs:
+\[
+\alpha_1 \omega Y_{1t}^{-\frac{1}{\epsilon}} \frac{Y_{1t}}{K_{1t}} = \alpha_2 (1-\omega) Y_{2t}^{-\frac{1}{\epsilon}} \frac{Y_{2t}}{K_{2t}}
+\]
+
+Simplifying:
+\[
+k_t = \left[1 + \frac{1-\omega}{\omega} \frac{\alpha_2}{\alpha_1} \left(\frac{Y_{2t}}{Y_{1t}}\right)^{\frac{\epsilon-1}{\epsilon}}\right]^{-1}
+\tag{Capital Share}
+\]
+
+Similarly for labor:
+\[
+\lambda_t = \left[1 + \frac{1-\alpha_2}{1-\alpha_1} \frac{\alpha_1}{\alpha_2} \frac{1-k_t}{k_t}\right]^{-1}
+\tag{Labor Share}
+\]
+\end{derivationbox}
+
+\begin{resultbox}
+\[
+\boxed{k_t = \left[1 + \frac{1-\omega}{\omega} \frac{\alpha_2}{\alpha_1} \left(\frac{Y_{2t}}{Y_{1t}}\right)^{\frac{\epsilon-1}{\epsilon}}\right]^{-1}}
+\tag{Capital Allocation}
+\]
+\end{resultbox}
+
+\medskip
+\noindent \textbf{Key property:} $\lambda_t$ is increasing in $k_t$; labor and capital flow to the same sector.
+
+\clearpage
+
+%==============================================================================
+\section{Supply-Side: Response to Capital Accumulation}
+%==============================================================================
+
+\subsection*{Capital Response to Economy Expansion}
+\begin{derivationbox}{Derivation of Capital Reallocation Response}
+Taking logs and differentiating $k_t$ with respect to $K_t$:
+\[
+\frac{\partial \log k_t}{\partial \log K_t} > 0 \iff (\alpha_2 - \alpha_1)(1 - \epsilon) > 0
+\tag{Capital Response}
+\]
+
+This implies:
+\begin{itemize}
+    \item If $\epsilon < 1$ (complements) and $\alpha_2 > \alpha_1$: capital flows to labor-intensive sector
+    \item If $\epsilon > 1$ (substitutes) and $\alpha_2 > \alpha_1$: capital flows to capital-intensive sector
+\end{itemize}
+\end{derivationbox}
+
+\begin{resultbox}
+\[
+\boxed{\frac{\partial \log k_t}{\partial \log K_t} > 0 \iff (\alpha_2 - \alpha_1)(1 - \epsilon) > 0}
+\tag{Key Condition}
+\]
+\end{resultbox}
+
+\subsection*{Response to Technology Changes}
+\[
+\frac{\partial \log k_t}{\partial \log A_{2t}} = -\frac{\partial \log k_t}{\partial \log A_{1t}} > 0 \iff \epsilon < 1
+\tag{Tech Response}
+\]
+
+\medskip
+\begin{intuitionbox}
+When goods are complements ($\epsilon < 1$), faster technology growth in one sector causes capital to reallocate AWAY from that sector.
+\end{intuitionbox}
+
+\clearpage
+
+%==============================================================================
+\section{Supply-Side: Long-Run Dynamics}
+%==============================================================================
+
+\subsection*{Growth and Reallocation}
+\begin{derivationbox}{Derivation of Sectoral Growth Relation}
+From MRP equalization in logs, taking time derivatives:
+\[
+\frac{\epsilon-1}{\epsilon} \gamma_{Y_1} - \gamma_{K_1} = \frac{\epsilon-1}{\epsilon} \gamma_{Y_2} - \gamma_{K_2}
+\]
+
+This implies:
+\[
+\gamma_{K_1} - \gamma_{K_2} = \frac{\epsilon-1}{\epsilon} (\gamma_{Y_1} - \gamma_{Y_2})
+\]
+
+Therefore:
+\[
+\text{sign}(\gamma_{K_1} - \gamma_{K_2}) = \text{sign}(\gamma_{Y_1} - \gamma_{Y_2}) \iff \epsilon > 1
+\]
+\end{derivationbox}
+
+\begin{resultbox}
+\[
+\boxed{
+\begin{aligned}
+&\gamma_{L_1} > \gamma_{L_2} \iff \gamma_{K_1} > \gamma_{K_2} \iff \gamma_{Y_1} < \gamma_{Y_2} \quad \text{if } \epsilon < 1 \\
+&\gamma_{L_1} < \gamma_{L_2} \iff \gamma_{K_1} < \gamma_{K_2} \iff \gamma_{Y_1} < \gamma_{Y_2} \quad \text{if } \epsilon > 1
+\end{aligned}}
+\tag{Sectoral Growth Relation}
+\]
+\end{resultbox}
+
+\clearpage
+
+%==============================================================================
+\section{Long-Run Equilibrium}
+%==============================================================================
+
+\subsection*{Factor Allocation in the Limit}
+\begin{center}
+\begin{tabular}{lp{0.4\linewidth}p{0.4\linewidth}}
+\toprule
+Condition & Goods Complements ($\epsilon < 1$) & Goods Substitutes ($\epsilon > 1$) \\
+\midrule
+Outcome & All factors go to slow-growing sector & All factors go to fast-growing sector \\
+Growth rate & $\gamma = \min\{\gamma_{Y_1}, \gamma_{Y_2}\}$ & $\gamma = \max\{\gamma_{Y_1}, \gamma_{Y_2}\}$ \\
+Mechanism & Rising relative price attracts labor & Productivity advantage dominates \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\subsection*{Role of Investment Sector}
+If capital is made from one sector (e.g., manufacturing), in the limit:
+\begin{itemize}
+    \item Employment goes to slowest-growing non-capital-goods sector
+    \item Capital-goods sector survives due to its role in capital creation
+\end{itemize}
+
+\clearpage
+
+%==============================================================================
+\section{Testing Demand vs Supply Explanations}
+%==============================================================================
+
+\subsection*{Identification Problem}
+To distinguish demand-driven from supply-driven structural change, we need identifying moments:
+
+\begin{center}
+\begin{tabular}{lp{0.3\linewidth}p{0.3\linewidth}}
+\toprule
+Driver & Effect on Quantity & Effect on Price \\
+\midrule
+Demand increase & $\uparrow$ & $\uparrow$ \\
+Productivity increase & $\uparrow$ & $\downarrow$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\medskip
+\begin{intuitionbox}
+With both quantity and price data, we can distinguish demand from supply shocks. For structural change: changes in employment associated with income changes (demand) vs relative price changes (supply).
+\end{intuitionbox}
+
+\clearpage
+
+%==============================================================================
+\section{Empirical Findings}
+%==============================================================================
+
+\subsection*{Key Papers and Conclusions}
+\begin{center}
+\begin{tabular}{lp{0.5\linewidth}p{0.3\linewidth}}
+\toprule
+Paper & Method & Conclusion \\
+\midrule
+Buera \& Kaboski (2009) & Stone-Geary + supply-side & Cannot match steep decline in manufacturing; needs low $\epsilon$ \\
+Herrendorf et al. (2013) & Non-homothetic CES & Both channels matter; final exp. vs value-added matters \\
+Boppart (2014) & PIGL preferences & Income effects don't vanish; ~50/50 split \\
+Comin et al. (2021) & Non-homothetic CES & Non-homotheticities explain 3/4 of reallocation \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\subsection*{Parameter Estimates (Herrendorf et al.)}
+\begin{center}
+\begin{tabular}{lcc}
+\toprule
+Parameter & Final Expenditure & Value Added \\
+\midrule
+$\sigma$ & 0.85 & 0.002 (Leontief) \\
+$\overline{c}_A$ & -1,350 & -139 \\
+$\overline{c}_S$ & 11,237 & 4,262 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\clearpage
+
+%==============================================================================
+\section{Problem-Solving Templates}
+%==============================================================================
+
+\subsection*{(a) Derive Demand from Stone-Geary Preferences}
+
+\begin{enumerate}
+    \item Set up Lagrangian: $\mathcal{L} = \prod_i (c_i - \gamma_i)^{\eta_i} + \lambda(I - \sum_i p_i c_i)$
+    \item Take FOCs: $\eta_i (c_i - \gamma_i)^{-1} \prod_k (c_k - \gamma_k)^{\eta_k} = \lambda p_i$
+    \item Divide FOC $i$ by FOC $j$ to get ratio form
+    \item Solve system for $c_i$ in terms of $I$ and $p_i$
+    \item Result: $c_i = \gamma_i + \frac{\eta_i (I - \sum_j p_j \gamma_j)}{p_i}$
+\end{enumerate}
+
+\subsection*{(b) Analyze CGP in Demand-Side Model}
+
+\begin{enumerate}
+    \item Check CGP existence: $\gamma^A/B_A = \gamma^S/B_S$
+    \item From intratemporal FOCs, derive consumption ratios
+    \item Use technology growth rate $g$ to find consumption growth rates
+    \item Result: $\dot{c}^A/c < g < \dot{c}^S/c$
+    \item Derive employment growth: $\dot{L}_A/L < n < \dot{L}_S/L$
+\end{enumerate}
+
+\subsection*{(c) Analyze Supply-Side Reallocation}
+
+\begin{enumerate}
+    \item Set up CES aggregator and sectoral production functions
+    \item Derive factor allocation: $k_t$ and $\lambda_t$
+    \item Compute responses to $K$ and $A$ changes
+    \item Apply condition: $(\alpha_2 - \alpha_1)(1 - \epsilon) > 0$
+    \item Determine long-run: complements $\Rightarrow$ slow sector wins
+\end{enumerate}
+
+\subsection*{(d) Compare Demand vs Supply Explanations}
+
+\begin{enumerate}
+    \item Identify key predictions of each theory
+    \item Demand: Engel curves $\Rightarrow$ consumption shares shift with income
+    \item Supply: productivity differentials $\Rightarrow$ relative price changes
+    \item Find identifying moment: prices vs quantities
+    \item Use data to assess relative importance
+\end{enumerate}
+
+\clearpage
+
+%==============================================================================
+\section{Common Pitfalls}
+%==============================================================================
+
+\begin{enumerate}
+    \item \textbf{Confusing homothetic with non-homothetic}
+    \begin{itemize}
+        \item Homothetic: linear Engel curves, no demand-driven SC
+        \item Non-homothetic: non-linear Engel curves, demand-driven SC possible
+    \end{itemize}
+
+    \item \textbf{Forgetting CGP existence condition}
+    \begin{itemize}
+        \item CGP exists iff $\gamma^A/B_A = \gamma^S/B_S$
+        \item Without this, sectoral growth rates are not constant
+    \end{itemize}
+
+    \item \textbf{Misinterpreting complementarity}
+    \begin{itemize}
+        \item $\epsilon < 1$: goods are complements; faster tech $\Rightarrow$ reallocation AWAY
+        \item $\epsilon > 1$: goods are substitutes; faster tech $\Rightarrow$ reallocation TOWARD
+    \end{itemize}
+
+    \item \textbf{Confusing sectoral growth with reallocation}
+    \begin{itemize}
+        \item Fast-growing sector can still see employment decline if reallocation is strong enough
+    \end{itemize}
+
+    \item \textbf{Ignoring the role of the investment sector}
+    \begin{itemize}
+        \item Sector that produces capital goods survives even if slow-growing
+    \end{itemize}
+
+    \item \textbf{Misinterpreting Engel curves}
+    \begin{itemize}
+        \item Necessity: share declines but absolute consumption rises
+        \item Luxury: share rises and absolute consumption rises faster
+    \end{itemize}
+
+    \item \textbf{Confusing final expenditure with value-added}
+    \begin{itemize}
+        \item These give very different parameter estimates
+        \item Affects conclusions about demand vs supply importance
+    \end{itemize}
+\end{enumerate}
+
+\clearpage
+
+%==============================================================================
+\section{Quick Reference Formulas}
+%==============================================================================
+
+\subsection*{Stone-Geary Preferences}
+\begin{align*}
+c_t &= (c_t^A - \gamma^A)^{\eta_A} c_t^{M^{\eta_M}} (c_t^S + \gamma^S)^{\eta_S} \\
+c_j &= \gamma_j + \frac{\eta_j (I - \sum_i p_i \gamma_i)}{p_j}
+\end{align*}
+
+\subsection*{Production}
+\begin{align*}
+Y_{it} &= B_i F(K_{it}, X_t L_{it}) \\
+Y_t &= [\omega Y_{1t}^{\frac{\epsilon-1}{\epsilon}} + (1-\omega) Y_{2t}^{\frac{\epsilon-1}{\epsilon}}]^{\frac{\epsilon}{\epsilon-1}}
+\end{align*}
+
+\subsection*{CGP Growth Rates (Demand Side)}
+\begin{align*}
+\frac{\dot{c}^A}{c} &= g \frac{c^A - \gamma^A}{c^A} < g \\
+\frac{\dot{c}^M}{c} &= g \\
+\frac{\dot{c}^S}{c} &= g \frac{c^S + \gamma^S}{c^S} > g
+\end{align*}
+
+\subsection*{Employment Growth (Demand Side)}
+\begin{align*}
+\frac{\dot{L}_A}{L} &< n \\
+\frac{\dot{L}_M}{L} &= n \\
+\frac{\dot{L}_S}{L} &> n
+\end{align*}
+
+\subsection*{Capital Allocation (Supply Side)}
+\begin{align*}
+k_t &= \left[1 + \frac{1-\omega}{\omega} \frac{\alpha_2}{\alpha_1} \left(\frac{Y_{2t}}{Y_{1t}}\right)^{\frac{\epsilon-1}{\epsilon}}\right]^{-1} \\
+\frac{\partial \log k}{\partial \log K} &> 0 \iff (\alpha_2 - \alpha_1)(1 - \epsilon) > 0
+\end{align*}
+
+\subsection*{Key Conditions}
+\begin{itemize}
+    \item CGP exists: $\gamma^A/B_A = \gamma^S/B_S$
+    \item Capital response: $(\alpha_2 - \alpha_1)(1 - \epsilon) > 0$
+    \item Long-run: $\epsilon < 1 \Rightarrow$ slow sector wins; $\epsilon > 1 \Rightarrow$ fast sector wins
+\end{itemize}
+
+\clearpage
+
+%==============================================================================
+\section{Implementation Notes}
+%==============================================================================
+
+\subsection*{Source Material}
+\begin{itemize}
+    \item Lecture 6: Structural Change
+    \item Key Focuses: Multi-sector models, demand/supply explanations, Engel curves
+\end{itemize}
+
+\subsection*{Structure}
+Following the Quality Ladder Cheatsheet style with:
+\begin{itemize}
+    \item Derivation boxes for step-by-step derivations
+    \item Result boxes for key formulas
+    \item Intuition boxes for economic interpretations
+    \item Warning boxes for common mistakes
+    \item Tables for comparisons
+\end{itemize}
+
+\subsection*{Packages Used}
+\begin{itemize}
+    \item amsmath, amssymb, mathtools: Mathematics
+    \item graphicx: Graphics
+    \item xcolor: Color support
+    \item siunitx: Number formatting
+    \item cleveref: Cross-references
+    \item hyperref: Hyperlinks
+    \item tcolorbox: Colored boxes
+    \item booktabs: Tables
+\end{itemize}
+
+\subsection*{Compilation}
+Compile with: \texttt{pdflatex} or \texttt{lualatex}
+
+\clearpage
+
+\end{document}

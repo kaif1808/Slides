@@ -1,0 +1,90 @@
+%==============================================================================
+% Endogenous Growth - Quick Reference Formulas
+% Self-contained module for cheatsheet
+%==============================================================================
+
+\section{Quick Reference Formulas}
+
+%==============================================================================
+\subsection{AK Model Formulas}
+%==============================================================================
+
+\begin{align*}
+y &= Ak \tag{Production} \\
+\dot{k} &= Ak - c - (\delta + n)k \tag{Law of Motion}
+\end{align*}
+
+\medskip
+\noindent\textbf{Growth Rates:}
+\begin{align*}
+\gamma &= sA - \delta \tag{Exog. Savings} \\
+\boxed{\gamma_c = \frac{A - \delta - \rho}{\sigma}} \tag{Ramsey} \\
+r &= A - \delta \tag{Interest Rate}
+\end{align*}
+
+%==============================================================================
+\subsection{AK with Externalities}
+%==============================================================================
+
+\begin{align*}
+r + \delta &= \alpha A \tag{Private MPK} \\
+r + \delta &= (\alpha + \eta)A \tag{Social MPK} \\
+\boxed{\gamma = \frac{\alpha A - \delta - \rho}{\sigma}} \tag{Private Growth} \\
+\boxed{\gamma^* = \frac{(\alpha + \eta)A - \delta - \rho}{\sigma}} \tag{Planner Growth}
+\end{align*}
+
+%==============================================================================
+\subsection{Romer Model (1990)}
+%==============================================================================
+
+\begin{align*}
+Y &= \frac{L^{1-\alpha}}{\alpha} \int_0^1 x_i^\alpha \, di \tag{Final Good} \\
+p_i &= \frac{1}{\alpha} \tag{Intermediate Price} \\
+x_i &= L \tag{Intermediate Quantity} \\
+\pi &= L(1-\alpha) \tag{Monopoly Profits} \\
+V &= \frac{\pi}{r} \tag{Firm Value} \\
+r &= \lambda \pi = \lambda L(1-\alpha) \tag{Free Entry} \\
+\boxed{\gamma = \frac{\lambda(1-\alpha)L - \rho}{\sigma}} \tag{Market Growth}
+\end{align*}
+
+\medskip
+\noindent\textbf{Planner:}
+\begin{align*}
+x^* &= L \,\alpha^{\frac{1}{\alpha-1}} \tag{Planner x*} \\
+\boxed{\gamma^* = \frac{\lambda L(1-\alpha)\alpha^{\frac{1}{\alpha-1}-1} - \rho}{\sigma}} \tag{Planner Growth} \\
+\gamma^* &> \gamma \tag{Monopoly Distortion}
+\end{align*}
+
+%==============================================================================
+\subsection{Jones No-Scale Effects}
+%==============================================================================
+
+\begin{align*}
+\dot{M} &= \lambda M^\phi L_R \tag{R\&D Technology} \\
+\boxed{\gamma = \frac{n}{1-\phi}} \tag{Growth, $\phi < 1$}
+\end{align*}
+
+%==============================================================================
+\subsection{Key Inequalities}
+%==============================================================================
+
+\begin{align*}
+\text{AK positive growth:} &\quad A > \delta + \rho \\
+\text{Romer positive growth:} &\quad \lambda(1-\alpha)L > \rho \\
+\text{Market vs Planner:} &\quad \gamma^* > \gamma
+\end{align*}
+
+%==============================================================================
+\subsection{Variable Definitions}
+%==============================================================================
+
+\begin{align*}
+\alpha &: \text{capital share / elasticity} &
+\sigma &: \text{risk aversion (CRRA)} \\
+\rho &: \text{time preference} &
+\lambda &: \text{research productivity} \\
+\delta &: \text{depreciation} &
+n &: \text{population growth} \\
+\eta &: \text{externality parameter} &
+\phi &: \text{R\&D elasticity}
+\end{align*}

@@ -1,0 +1,188 @@
+%==============================================================================
+% Externalities and Market Inefficiency - Endogenous Growth
+% Arrow Learning-by-Doing Framework
+%==============================================================================
+
+\subsection*{Arrow Learning-by-Doing Framework}
+
+\medskip
+\noindent\textbf{Individual Firm Production:}
+
+\begin{align*}
+Y_j = \bar{A} K_j^\alpha L_j^{1-\alpha} \tag{Firm Production}
+\end{align*}
+
+\medskip
+\noindent\textbf{External Effect (Learning-by-Doing):}
+
+\begin{align*}
+\bar{A} = A_0 \left(\int K_i \, di\right)^\eta = A_0 K^\eta, \qquad \eta > 0
+\tag{Externality}
+\end{align*}
+
+\medskip
+\noindent\textbf{Aggregate Production:}
+
+\begin{align*}
+Y = A_0 K^{\alpha+\eta} L^{1-\alpha} \equiv A K^{\alpha+\eta} \tag{Aggregate}
+\end{align*}
+
+\medskip
+\begin{tcolorbox}[colback=blue!5,colframe=blue3,title=Key Insight]
+Firms treat $\bar{A}$ as given, but each firm's capital contributes to aggregate knowledge, raising $\bar{A}$ for all.
+\end{tcolorbox}
+
+\clearpage
+
+%==============================================================================
+\subsection*{The Knife-Edge Case (Solow-AK)}
+
+\begin{derivationbox}
+Set $\alpha + \eta = 1$ (externality exactly offsets diminishing returns):
+
+\begin{align*}
+Y &= A_0 K^{\alpha+\eta} L^{1-\alpha} = A_0 K L^{1-\alpha} \\
+  &= A K \quad \text{where } A = A_0 L^{1-\alpha}
+\end{align*}
+
+\medskip
+Output is linear in capital. This gives a \textbf{constant marginal product of capital}.
+\end{derivationbox}
+
+\begin{resultbox}
+\begin{align*}
+\boxed{Y = AK} \tag{AK Production}
+\end{align*}
+\end{resultbox}
+
+\medskip
+\noindent Under AK production:
+\[
+\text{MPK} = \frac{\partial Y}{\partial K} = A = \text{constant}
+\]
+
+\clearpage
+
+%==============================================================================
+\subsection*{Private vs. Social Marginal Product}
+
+\begin{derivationbox}
+\textbf{Private MPK} (firm takes $A$ as given):
+\[
+r + \delta = \frac{\partial Y_j}{\partial K_j} = \alpha \bar{A} K_j^{\alpha-1} L_j^{1-\alpha} = \alpha A
+\tag{Private MPK}
+\]
+
+\medskip
+\textbf{Social MPK} (accounts for externality):
+\[
+r + \delta = \frac{\partial Y}{\partial K} = (\alpha + \eta) A
+\tag{Social MPK}
+\]
+\end{derivationbox}
+
+\begin{resultbox}
+\[
+\boxed{r + \delta = \underbrace{\alpha A}_{\text{Private MPK}} < \underbrace{(\alpha + \eta)A}_{\text{Social MPK}}}
+\]
+\end{resultbox}
+
+\medskip
+\begin{keyformulabox}
+Since $\eta > 0$: \textbf{Social MPK > Private MPK}
+\end{keyformulabox}
+
+\clearpage
+
+%==============================================================================
+\subsection*{Growth Comparison: Private vs. Planner}
+
+\medskip
+\noindent With CRRA utility $u(c) = \frac{c^{1-\sigma} - 1}{1-\sigma}$ and AK technology:
+
+\medskip
+\noindent\textbf{Private Economy Growth Rate:}
+\begin{align*}
+\gamma_c = \frac{\alpha A - \delta - \rho}{\sigma}
+\tag{Private Growth}
+\end{align*}
+
+\medskip
+\noindent\textbf{Social Planner Growth Rate:}
+\begin{align*}
+\gamma_c^{SP} = \frac{(\alpha + \eta)A - \delta - \rho}{\sigma}
+\tag{Planner Growth}
+\end{align*}
+
+\medskip
+\begin{resultbox}
+\[
+\boxed{\gamma_c^{SP} = \gamma_c + \frac{\eta A}{\sigma} > \gamma_c}
+\]
+\end{resultbox}
+
+\medskip
+\begin{tcolorbox}[colback=orange!10,colframe=orange3,title=Result]
+The planner grows faster because it internalizes the positive externality from learning-by-doing.
+\end{tcolorbox}
+
+\clearpage
+
+%==============================================================================
+\subsection*{Inefficiency Result and Policy}
+
+\begin{derivationbox}
+The market economy is inefficient because:
+
+\begin{enumerate}
+    \item \textbf{Positive externality}: Each firm's investment increases $A$ for all firms
+    \item \textbf{Under-accumulation}: Private agents don't internalize the learning-by-doing effect
+    \item \textbf{Result}: Market saves less than the socially optimal level
+\end{enumerate}
+\end{derivationbox}
+
+\begin{resultbox}
+\begin{center}
+\textbf{Social MPK > Private MPK} $\Rightarrow$ \textbf{Market under-accumulates capital}
+\end{center}
+\end{resultbox}
+
+\medskip
+\subsection*{Policy Implication}
+
+\begin{center}
+\begin{tabular}{ll}
+\toprule
+\textbf{Problem} & \textbf{Solution} \\
+\midrule
+Positive externality & Capital accumulation subsidy \\
+from learning-by-doing & to align private and social returns \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\medskip
+The optimal subsidy raises the private return to match the social return, inducing higher savings and growth.
+
+\clearpage
+
+%==============================================================================
+\subsection*{Summary Table: Private vs. Social Planner}
+
+\begin{center}
+\begin{tabular}{lccc}
+\toprule
+ & Private Economy & Social Planner & Difference \\
+\midrule
+Production Function & $Y = A_0 K^\alpha L^{1-\alpha}$ & $Y = A_0 K^{\alpha+\eta} L^{1-\alpha}$ & $\eta$ term \\
+Effective Returns & $\alpha A$ & $(\alpha + \eta)A$ & $+\eta A$ \\
+Growth Rate & $\frac{\alpha A - \delta - \rho}{\sigma}$ & $\frac{(\alpha+\eta)A - \delta - \rho}{\sigma}$ & $+\frac{\eta A}{\sigma}$ \\
+Capital Level & Lower & Higher & Subsidy needed \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\medskip
+\begin{tcolorbox}[colback=green!10,colframe=green3,title=Key Takeaway]
+The positive learning-by-doing externality ($\eta > 0$) creates a wedge between private and social returns, leading to under-accumulation of capital. A capital subsidy can restore efficiency.
+\end{tcolorbox}

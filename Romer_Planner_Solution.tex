@@ -1,0 +1,306 @@
+%==============================================================================
+% Romer Model: Social Planner Solution
+% Endogenous Growth Theory - Cheatsheet Section
+%==============================================================================
+
+\section{Romer Model: Social Planner Solution}
+
+%------------------------------------------------------------------------------
+\subsection*{Motivation: Why Study the Planner?}
+In the market equilibrium, monopolistic competition in the intermediate goods
+sector creates a markup $p_i = 1/\alpha > \alpha$ (marginal cost). The social
+planner internalizes the externality and eliminates this distortion.
+
+%------------------------------------------------------------------------------
+\subsection{Static Planner Problem}
+
+The social planner maximizes total welfare by choosing machine varieties $x_i$:
+
+\begin{derivationbox}
+Objective: Maximize net output
+\[
+\max_{\{x_i\}} \; Y = \frac{L^{1-\alpha}}{\alpha} \int_0^M x_i^\alpha \, di - \alpha \int_0^M x_i \, di
+\]
+where the second term is the \textbf{social cost} of producing machines.
+
+\medskip
+First-Order Condition for each $x_i$:
+\[
+\frac{\partial Y}{\partial x_i} = L^{1-\alpha} x_i^{\alpha-1} - \alpha = 0
+\]
+
+Solving for the planner's optimal $x^*$:
+\[
+L^{1-\alpha} x_i^{\alpha-1} = \alpha \quad \Rightarrow \quad
+x_i^* = L \, \alpha^{\frac{1}{\alpha-1}}
+\tag{Planner-x^*}
+\]
+
+Since $\alpha \in (0,1)$, we have $\alpha^{\frac{1}{\alpha-1}} > 1$.
+\end{derivationbox}
+
+\begin{resultbox}
+\[
+\boxed{x^* = L \, \alpha^{\frac{1}{\alpha-1}}}
+\]
+
+Comparison: The planner chooses $x^* > x$ (market equilibrium).
+The market uses fewer machines because of the monopoly markup.
+\end{resultbox}
+
+%------------------------------------------------------------------------------
+\subsection{Key Distortion: Market vs. Planner}
+
+\begin{derivationbox}
+\textbf{Market (Monopoly)}:
+\[
+p_i = \frac{1}{\alpha} > \alpha = \text{marginal cost}
+\]
+
+The monopolist sets price equal to markup over marginal cost.
+
+\medskip
+\textbf{Social Planner}:
+\[
+\text{Social Marginal Cost (SMC)} = \alpha
+\]
+
+The planner uses marginal cost directly without markup.
+\end{derivationbox}
+
+\begin{resultbox}
+\[
+\boxed{\text{Monopoly Markup} = \frac{p_i}{\text{MC}} = \frac{1/\alpha}{\alpha} = \frac{1}{\alpha^2} > 1}
+\]
+
+The distortion is the ratio $p_i / \alpha = 1/\alpha$.
+\end{resultbox}
+
+%------------------------------------------------------------------------------
+\subsection{Planner Output}
+
+\begin{derivationbox}
+Substituting $x^* = L \, \alpha^{\frac{1}{\alpha-1}}$ into the production function:
+
+\[
+Y^* = \frac{L^{1-\alpha}}{\alpha} \int_0^M \left(L \, \alpha^{\frac{1}{\alpha-1}}\right)^\alpha di
+     = \frac{L^{1-\alpha}}{\alpha} \cdot M \cdot L^\alpha \alpha^{\frac{\alpha}{\alpha-1}}
+\]
+
+\[
+Y^* = \frac{M}{\alpha} \, L \, \alpha^{\frac{\alpha}{\alpha-1}}
+\tag{Planner-Y^*}
+\]
+
+\medskip
+Net output (accounting for machine costs):
+\[
+\tilde{Y}^* = Y^* - \alpha X = Y^* - \alpha M x^*
+\]
+
+Since $X = M x^* = M L \alpha^{\frac{1}{\alpha-1}}$:
+\[
+\tilde{Y}^* = \frac{M}{\alpha} L \alpha^{\frac{\alpha}{\alpha-1}} (1 - \alpha)
+            = \frac{M}{\alpha} L \alpha^{\frac{\alpha}{\alpha-1}} (1-\alpha)
+\]
+\end{derivationbox}
+
+\begin{resultbox}
+\[
+\boxed{Y^* = \frac{M}{\alpha} L \alpha^{\frac{\alpha}{\alpha-1}} > Y}
+\]
+
+\[
+\boxed{\tilde{Y}^* = Y^* - \alpha X = \frac{M}{\alpha} L \alpha^{\frac{\alpha}{\alpha-1}} (1-\alpha) > \tilde{Y}}
+\]
+
+The planner produces more net output than the market equilibrium.
+\end{resultbox}
+
+%------------------------------------------------------------------------------
+\subsection{Dynamic Planner Problem}
+
+The planner chooses consumption to maximize welfare subject to resource constraints:
+
+\begin{derivationbox}
+\textbf{Resource Constraint}:
+\[
+\dot{M} = \lambda (\tilde{Y}^* - c)
+\]
+
+where $\tilde{Y}^* = \frac{M}{\alpha} L \alpha^{\frac{\alpha}{\alpha-1}} (1-\alpha)$ is
+the planner's net output.
+
+\medskip
+\textbf{Hamiltonian}:
+\[
+\mathcal{H} = u(c) + \lambda \left[ \frac{M}{\alpha} L \alpha^{\frac{\alpha}{\alpha-1}} (1-\alpha) - c \right]
+\]
+
+\medskip
+\textbf{First-Order Conditions}:
+\begin{align*}
+\frac{\partial \mathcal{H}}{\partial c}: & \quad u'(c) = \lambda \tag{FOC-c} \\
+\frac{\partial \mathcal{H}}{\partial M}: & \quad -\dot{\lambda} = \frac{\partial \mathcal{H}}{\partial M}
+   = \lambda \cdot \frac{1}{\alpha} L \alpha^{\frac{\alpha}{\alpha-1}} (1-\alpha) \tag{FOC-M}
+\end{align*}
+\end{derivationbox}
+
+\begin{resultbox}
+Combining FOCs yields the \textbf{Euler Equation}:
+\[
+\frac{\dot{c}}{c} = \frac{1}{\sigma} \left( \frac{1}{\alpha} L \alpha^{\frac{\alpha}{\alpha-1}} (1-\alpha) - \rho \right)
+\tag{Planner Euler}
+\]
+where $\sigma$ is the intertemporal elasticity of substitution.
+\end{resultbox}
+
+%------------------------------------------------------------------------------
+\subsection{Planner Growth Rate}
+
+\begin{derivationbox}
+The growth rate of consumption (and output) under the planner is:
+\[
+\gamma^* = \frac{\dot{c}}{c} = \frac{1}{\sigma} \left( \lambda \frac{\partial \tilde{Y}^*}{\partial M} - \rho \right)
+\]
+
+Since $\frac{\partial \tilde{Y}^*}{\partial M} = \frac{1}{\alpha} L \alpha^{\frac{\alpha}{\alpha-1}} (1-\alpha)$:
+
+\[
+\gamma^* = \frac{1}{\sigma} \left( \lambda \frac{L (1-\alpha) \alpha^{\frac{\alpha}{\alpha-1}}}{\alpha} - \rho \right)
+\]
+
+Simplifying the exponent:
+\[
+\frac{\alpha}{\alpha-1} - 1 = \frac{\alpha - (\alpha-1)}{\alpha-1} = \frac{1}{\alpha-1}
+\]
+
+Thus:
+\[
+\gamma^* = \frac{1}{\sigma} \left( \lambda L (1-\alpha) \alpha^{\frac{1}{\alpha-1}-1} - \rho \right)
+\]
+\end{derivationbox}
+
+\begin{resultbox}
+\[
+\boxed{\gamma^* = \frac{1}{\sigma} \left( \lambda L (1-\alpha) \alpha^{\frac{1}{\alpha-1}-1} - \rho \right)}
+\tag{Romer Planner Growth}
+\]
+
+Since $\alpha \in (0,1)$: $\alpha^{\frac{1}{\alpha-1}} > 1$ and $\alpha^{\frac{1}{\alpha-1}-1} > 1$.
+\end{resultbox}
+
+%------------------------------------------------------------------------------
+\subsection{Market vs Planner Comparison}
+
+\begin{derivationbox}
+Recall the market equilibrium growth rate:
+\[
+\gamma = \frac{1}{\sigma} \left( \lambda L \alpha^{\frac{1}{\alpha-1}} (1-\alpha) - \rho \right)
+\tag{Market Growth}
+\]
+
+The key difference is the exponent term:
+\[
+\alpha^{\frac{1}{\alpha-1}-1} \; \text{(planner)} \quad \text{vs} \quad
+\alpha^{\frac{1}{\alpha-1}} \; \text{(market)}
+\]
+
+Since $\alpha \in (0,1)$:
+\[
+\alpha^{\frac{1}{\alpha-1}-1} = \alpha^{\frac{1}{\alpha-1}} \cdot \alpha^{-1}
+= \frac{1}{\alpha} \cdot \alpha^{\frac{1}{\alpha-1}}
+\]
+
+Therefore:
+\[
+\frac{\text{Planner term}}{\text{Market term}} = \frac{1}{\alpha} > 1
+\]
+\end{derivationbox}
+
+\begin{resultbox}
+\[
+\boxed{\gamma^* > \gamma}
+\]
+
+The planner achieves a \textbf{higher growth rate} because it eliminates
+the monopoly distortion. The ratio is exactly the markup $1/\alpha$.
+\end{resultbox}
+
+\begin{tcolorbox}[colback=blue!10,colframe=blue3,title=Intuition]
+The social planner internalizes the knowledge spillover externality from new
+machine varieties. By setting $p_i = \alpha$ (marginal cost pricing), the
+planner induces more machine production, leading to higher innovation
+and faster growth.
+\end{tcolorbox}
+
+%------------------------------------------------------------------------------
+\subsection{Optimal Policy: Subsidies to Eliminate Distortion}
+
+\begin{derivationbox}
+The market equilibrium has price $p_i = 1/\alpha$. To replicate the planner's
+outcome, the government should set a \textbf{subsidy} that makes the
+effective price faced by consumers equal to marginal cost:
+
+\[
+p_i^{\text{effective}} = p_i - \text{subsidy} = \alpha
+\]
+
+Solving for the subsidy rate $s$:
+\[
+\frac{1}{\alpha} - s = \alpha \quad \Rightarrow \quad s = \frac{1}{\alpha} - \alpha
+\]
+\[
+\boxed{s = \frac{1-\alpha^2}{\alpha}}
+\]
+
+Alternatively, expressed as a fraction of price:
+\[
+\text{Subsidy rate} = \frac{s}{p_i} = \frac{(1-\alpha^2)/\alpha}{1/\alpha} = 1 - \alpha^2
+\]
+\end{derivationbox}
+
+\begin{resultbox}
+\[
+\boxed{\text{Subsidy rate} = \frac{1-\alpha^2}{\alpha} = \frac{1}{\alpha} - \alpha}
+\]
+
+With this subsidy, the market allocates resources exactly as the social planner would.
+This eliminates the monopoly distortion and achieves the planner's growth rate $\gamma^*$.
+\end{resultbox}
+
+%------------------------------------------------------------------------------
+\subsection{Comparison Table}
+
+\begin{center}
+\begin{tabular}{lccc}
+\toprule
+ & \textbf{Market Equilibrium} & \textbf{Social Planner} & \textbf{Difference} \\
+\midrule
+Machine price & $p_i = 1/\alpha$ & $p_i = \alpha$ & Markup: $1/\alpha$ \\
+Marginal cost & $\alpha$ & $\alpha$ & Same \\
+Machine use & $x = L \alpha^{\frac{1}{\alpha-1}} \alpha^{\frac{1}{\alpha-1}}$ & $x^* = L \alpha^{\frac{1}{\alpha-1}}$ & $x^* < x$ \\
+Output & $Y$ & $Y^* > Y$ & Higher net output \\
+Growth rate & $\gamma$ & $\gamma^* > \gamma$ & $\gamma^* = \gamma / \alpha$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+%------------------------------------------------------------------------------
+\subsection{Key Takeaways}
+
+\begin{enumerate}
+    \item The Romer model features a \textbf{knowledge spillover externality} that
+          leads to too little innovation in the market equilibrium.
+    \item The \textbf{monopoly markup} $1/\alpha$ distorts resource allocation.
+    \item The \textbf{social planner} eliminates this distortion by pricing at
+          marginal cost.
+    \item The planner achieves \textbf{higher long-run growth} $\gamma^* > \gamma$.
+    \item An optimal \textbf{subsidy} to intermediate goods producers can
+          replicate the planner's outcome.
+\end{enumerate}
+
+\clearpage
+
+%==============================================================================
+\end{document}

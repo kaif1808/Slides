@@ -1,0 +1,270 @@
+%==============================================================================
+% Endogenous Growth - Problem-Solving Templates
+% Exam-Focused Reference for Macroeconomics I
+%==============================================================================
+
+\section{Problem-Solving Templates: Endogenous Growth}
+
+\subsection*{(a) Derive Growth Rate in AK Model}
+
+\begin{enumerate}
+    \item \textbf{Start from capital accumulation:}
+    \[
+    \dot{K} = sY - \delta K
+    \]
+    
+    \item \textbf{Substitute AK production function ($Y = AK$):}
+    \[
+    \dot{K} = sAK - \delta K
+    \]
+    
+    \item \textbf{Divide by $K$ to get growth rate:}
+    \[
+    \gamma_K = \frac{\dot{K}}{K} = sA - \delta
+    \]
+    
+    \item \textbf{For AK-Ramsey (optimal growth):}
+    \begin{itemize}
+        \item Consumer Euler Equation: $\frac{\dot{c}}{c} = \frac{1}{\sigma}(r - \rho)$
+        \item Firm FOC: $r = MPK - \delta = A - \delta$
+        \item Combine: $\gamma_c = \frac{A - \delta - \rho}{\sigma}$
+    \end{itemize}
+\end{enumerate}
+
+\begin{resultbox}
+\boxed{\gamma_K = sA - \delta \quad \text{(AK Model)}}
+\quad
+\boxed{\gamma_c = \frac{A - \delta - \rho}{\sigma} \quad \text{(AK-Ramsey)}}
+\end{resultbox}
+
+\medskip
+
+\subsection*{(b) Compare Market vs Planner in Romer Model}
+
+\begin{enumerate}
+    \item \textbf{Market equilibrium:}
+    \begin{itemize}
+        \item Monopoly pricing: $p = \frac{1}{\alpha}$ (inverse elasticity pricing)
+        \item Quantity: $x = L \cdot \frac{1-\alpha}{\alpha}$ (from $p = MC$ logic)
+        \item Profits: $\pi = (p - MC) \cdot x = \frac{1-\alpha}{\alpha} \cdot L \cdot \frac{1-\alpha}{\alpha}$
+        \item In Romer: $\pi = L \cdot \frac{1-\alpha}{\alpha}$
+    \end{itemize}
+    
+    \item \textbf{Social planner (first best):}
+    \begin{itemize}
+        \item Set price = marginal cost: $p = 1$
+        \item Quantity: $x^* = L$ (all labor goes to intermediates)
+    \end{itemize}
+    
+    \item \textbf{Compare growth rates:}
+    \begin{itemize}
+        \item Market: $\gamma = g \cdot L$ where $g = \frac{\text{knowledge}}{L}$
+        \item Planner: $\gamma^* > \gamma$ (more varieties $\Rightarrow$ higher growth)
+    \end{itemize}
+    
+    \item \textbf{Optimal subsidy (to achieve planner allocation):}
+    \begin{itemize}
+        \item Subsidize intermediate producers
+        \item Subsidy rate $s = 1 - \alpha$ (makes $p = 1$)
+    \end{itemize}
+\end{enumerate}
+
+\begin{resultbox}
+\text{Market growth: } \gamma \quad
+\text{Planner growth: } \gamma^* > \gamma
+\quad
+\text{Optimal subsidy: } s^* = 1 - \alpha
+\end{resultbox}
+
+\medskip
+
+\subsection*{(c) Solve for Equilibrium Interest Rate (Free Entry R\&D)}
+
+\begin{enumerate}
+    \item \textbf{Find monopoly profits:}
+    \[
+    \pi = \text{revenue} - \text{cost} = L(1-\alpha)
+    \]
+    (Profit per intermediate firm in Romer model)
+    
+    \item \textbf{Firm value (present discounted profits):}
+    \[
+    V = \frac{\pi}{r}
+    \]
+    where $r$ is the interest rate (discount rate)
+    
+    \item \textbf{Research cost per variety:}
+    \begin{itemize}
+        \item Cost = 1 (normalized)
+        \item Research productivity = $\lambda$
+    \end{itemize}
+    
+    \item \textbf{Free entry condition (zero-profit):}
+    \[
+    \lambda V = 1 \quad \Rightarrow \quad r = \lambda \pi
+    \]
+    
+    \item \textbf{Substitute $\pi = L(1-\alpha)$:}
+    \[
+    r^* = \lambda L (1-\alpha)
+    \]
+\end{enumerate}
+
+\begin{resultbox}
+\boxed{r^* = \lambda L (1-\alpha) \quad \text{(Equilibrium interest rate)}}
+\end{resultbox}
+
+\medskip
+
+\subsection*{(d) Analyze Scale Effects}
+
+\begin{enumerate}
+    \item \textbf{Write growth rate as function of $L$:}
+    \[
+    \gamma = \gamma(L, \text{other parameters})
+    \]
+    Example: In basic Romer, $\gamma \propto L$ (population size)
+    
+    \item \textbf{Check for scale effects:}
+    \[
+    \frac{d\gamma}{dL} \begin{cases}
+    > 0 & \text{scale effects present} \\
+    = 0 & \text{no scale effects}
+    \end{cases}
+    \]
+    
+    \item \textbf{If scale effects present ($d\gamma/dL > 0$):}
+    \begin{itemize}
+        \item Larger economies grow faster
+        \item Empirical prediction: no strong evidence for this
+        \item This is a key criticism of basic endogenous growth models
+    \end{itemize}
+    
+    \item \textbf{To fix scale effects (Jones 1995, Kortum 1997):}
+    \begin{itemize}
+        \item Introduce decreasing returns to ideas: $\dot{A} = \delta A^\phi L_R$, $\phi < 1$
+        \item Or: Semi-endogenous growth - growth depends on $L_R$, not $L$
+    \end{itemize}
+\end{enumerate}
+
+\begin{resultbox}
+\text{Scale effects: } \frac{d\gamma}{dL} > 0 \Rightarrow \text{problematic}
+\quad
+\text{Fix: } \phi < 1 \text{ (decreasing returns to ideas)}
+\end{resultbox}
+
+\medskip
+
+\subsection*{(e) Compute TFP Gains from Removing Monopoly}
+
+\begin{enumerate}
+    \item \textbf{Compare market vs planner intermediate quantities:}
+    \begin{itemize}
+        \item Market: $x = \frac{1-\alpha}{\alpha} \cdot \frac{L}{A}$
+        \item Planner: $x^* = \frac{L}{A}$
+    \end{itemize}
+    
+    \item \textbf{Relationship between $x$ and $x^*$:}
+    \[
+    x^* = \frac{x}{\alpha} \quad \text{or} \quad x = \alpha x^*
+    \]
+    Actually: $x^* = \frac{x}{\alpha^{\frac{1}{1-\alpha}}}$ or equivalently $x^* = x \cdot \alpha^{\frac{1}{\alpha-1}}$
+    
+    \item \textbf{Compute output ratio (efficiency gain):}
+    \[
+    \frac{Y^*}{Y} = \left(\frac{x^*}{x}\right)^{\alpha} = \left(\frac{1}{\alpha}\right)^{\frac{\alpha}{1-\alpha}}
+    \]
+    
+    \item \textbf{Alternative expression (using $x^* = x/\alpha^{1/(1-\alpha)}$):}
+    \[
+    \frac{Y^*}{Y} = \alpha^{\frac{\alpha}{\alpha-1}} = \frac{1}{\alpha^{\frac{\alpha}{1-\alpha}}}
+    \]
+    This is the efficiency gain from removing monopoly power.
+\end{enumerate}
+
+\begin{resultbox}
+\boxed{\frac{Y^*}{Y} = \alpha^{\frac{\alpha}{\alpha-1}} = \left(\frac{1}{\alpha}\right)^{\frac{\alpha}{1-\alpha}} > 1}
+\quad
+\text{Efficiency gain from removing monopoly}
+\end{resultbox}
+
+\medskip
+
+\subsection*{(f) AK-Ramsey Growth Derivation}
+
+\begin{enumerate}
+    \item \textbf{Consumer optimization (Ramsey-Cass-Koopmans):}
+    \begin{itemize}
+        \item Utility: $U = \int_0^\infty e^{-\rho t} \frac{c^{1-\sigma} - 1}{1-\sigma} \, dt$
+        \item Euler Equation: $\frac{\dot{c}}{c} = \frac{1}{\sigma}(r - \rho)$
+    \end{itemize}
+    
+    \item \textbf{Firm side (AK production):}
+    \begin{itemize}
+        \item Production: $Y = AK$
+        \item FOC for capital: $r = MPK - \delta = A - \delta$
+    \end{itemize}
+    
+    \item \textbf{Combine EE with firm FOC:}
+    \[
+    \gamma_c = \frac{\dot{c}}{c} = \frac{1}{\sigma}(A - \delta - \rho)
+    \]
+    
+    \item \textbf{Check Transversality Condition (TVC):}
+    \[
+    \lim_{t \to \infty} e^{-(r-\rho)t} K_t = 0
+    \]
+    For AK: TVC holds if $r > \rho$ (i.e., $A - \delta > \rho$)
+    
+    \item \textbf{Steady-state growth:}
+    \[
+    \gamma^* = \frac{A - \delta - \rho}{\sigma}
+    \]
+    Positive growth requires $A > \delta + \rho$.
+\end{enumerate}
+
+\begin{resultbox}
+\boxed{\gamma^* = \frac{A - \delta - \rho}{\sigma} \quad \text{(AK-Ramsey steady-state growth)}}
+\quad
+\text{TVC: } r > \rho \text{ (or } A > \delta + \rho\text{)}
+\end{resultbox}
+
+\clearpage
+
+%==============================================================================
+% Quick Reference: Key Formulas
+%==============================================================================
+
+\subsection*{Quick Reference: Key Formulas}
+
+\begin{center}
+\begin{tabular}{p{0.45\linewidth}p{0.45\linewidth}}
+\toprule
+\textbf{Model} & \textbf{Growth Rate} \\
+\midrule
+AK Model & $\gamma = sA - \delta$ \\
+AK-Ramsey & $\gamma = \frac{A - \delta - \rho}{\sigma}$ \\
+Romer (market) & $\gamma \propto L$ (scale effects) \\
+Romer (planner) & $\gamma^* > \gamma$ \\
+\midrule
+\textbf{Key Parameters} & \textbf{Formula} \\
+\midrule
+Monopoly price & $p = 1/\alpha$ \\
+Monopoly profit & $\pi = L(1-\alpha)$ \\
+Equilibrium interest rate & $r = \lambda L(1-\alpha)$ \\
+Efficiency gain (remove monopoly) & $Y^*/Y = \alpha^{\alpha/(\alpha-1)}$ \\
+Subsidy to achieve planner & $s = 1 - \alpha$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\subsection*{Common Derivations Checklist}
+
+\begin{enumerate}
+    \item \textbf{For any growth model:} Identify $\dot{K}$ equation $\rightarrow$ divide by $K$ $\rightarrow$ get $\gamma$
+    \item \textbf{For Romer comparison:} Market: monopoly pricing $\rightarrow$ $\pi$; Planner: $p = MC$ $\rightarrow$ $x^*$
+    \item \textbf{For free entry R\&D:} $\pi = L(1-\alpha)$ $\rightarrow$ $V = \pi/r$ $\rightarrow$ $\lambda V = 1$ $\rightarrow$ $r = \lambda\pi$
+    \item \textbf{For scale effects:} Check if $\partial\gamma/\partial L > 0$
+    \item \textbf{For efficiency gains:} Compare $Y^*$ to $Y$ using intermediate quantities
+    \item \textbf{For AK-Ramsey:} Combine consumer EE with firm FOC: $r = A - \delta$
+\end{enumerate}

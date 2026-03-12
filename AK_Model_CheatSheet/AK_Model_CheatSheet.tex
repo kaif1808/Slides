@@ -1,0 +1,158 @@
+%==============================================================================
+% AK Model Cheatsheet - Basic Setup and Growth
+% Exam-Focused Reference for Macroeconomics I
+%==============================================================================
+
+\documentclass[a4paper,11pt]{article}
+
+\usepackage{geometry}
+\geometry{margin=1in}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathtools}
+
+\usepackage{xcolor}
+\definecolor{blue3}{RGB}{0,0,180}
+\definecolor{green3}{RGB}{0,120,0}
+\definecolor{orange3}{RGB}{200,100,0}
+
+\usepackage{tcolorbox}
+\tcbuselibrary{skins,breakable}
+
+\newtcolorbox{derivationbox}[1][]{
+    colback=blue!10,
+    colframe=blue3,
+    coltitle=blue3,
+    title={Derivation:},
+    fonttitle=\bfseries,
+    #1
+}
+
+\newtcolorbox{resultbox}[1][]{
+    colback=green!10,
+    colframe=green3,
+    coltitle=green3,
+    title={Result Summary:},
+    fonttitle=\bfseries,
+    #1
+}
+
+\title{\textbf{AK Model Cheatsheet}}
+\author{Macroeconomics I - Exam Reference}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+%==============================================================================
+\section{AK Model: Basic Setup and Growth}
+%==============================================================================
+
+\subsection*{Key Insight}
+Unlike Solow (diminishing returns, $\alpha < 1$), the AK model assumes constant returns to capital ($\alpha = 1$), eliminating convergence and generating endogenous growth.
+
+%==============================================================================
+\subsection{Production Function}
+%==============================================================================
+
+The AK production function is linear in capital:
+\begin{align*}
+Y = A K \quad \text{or} \quad y = f(k) = A k
+\tag{AK-Production}
+\end{align*}
+
+\begin{derivationbox}{No Diminishing Returns}
+The marginal product of capital:
+\[
+f'(k) = \frac{d}{dk}(Ak) = A
+\]
+
+Key property: $f''(k) = 0$ — NO diminishing returns. MPK is constant $= A$, unlike Solow where $MPK = \alpha k^{\alpha-1}$ diminishes as $k$ rises.
+\end{derivationbox}
+
+%==============================================================================
+\subsection{Capital Accumulation}
+%==============================================================================
+
+\begin{derivationbox}{Derivation of Growth Rate}
+Starting with capital accumulation:
+\[
+\dot{K} = sY - \delta K = sAK - \delta K
+\]
+
+Divide by $K$:
+\[
+\frac{\dot{K}}{K} = sA - \delta
+\]
+
+Since $Y = AK$, output grows at the same rate:
+\[
+\gamma_Y = \gamma_K = sA - \delta
+\tag{Growth-Rate}
+\]
+\end{derivationbox}
+
+\begin{resultbox}
+\[
+\boxed{\gamma_K = \gamma_Y = sA - \delta}
+\tag{AK-Growth}
+\]
+\end{resultbox}
+
+%==============================================================================
+\subsection{Growth Condition}
+%==============================================================================
+
+\begin{align*}
+&\text{If } sA > \delta: && \text{sustained positive growth} \\
+&\text{If } sA < \delta: && \text{economy shrinks} \\
+&\text{If } sA = \delta: && \text{steady state (zero growth)}
+\end{align*}
+
+Note: $\gamma_y = \gamma_k$ since $Y \propto K$ linearly.
+
+%==============================================================================
+\subsection{Key Properties vs. Solow}
+%==============================================================================
+
+\begin{center}
+\begin{tabular}{p{0.45\linewidth}p{0.45\linewidth}}
+\toprule
+\textbf{AK Model ($\alpha = 1$)} & \textbf{Solow Model ($\alpha < 1$)} \\
+\midrule
+No convergence & Conditional convergence \\
+$s$ affects growth rate & $s$ affects only level \\
+No transitional dynamics & Transitional dynamics exist \\
+$\gamma = sA - \delta$ (constant) & $\gamma = 0$ in steady state \\
+MPK = $A$ (constant) & MPK diminishes \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\begin{tcolorbox}[colback=yellow!10,colframe=yellow!60,title=Why No Diminishing Returns Matters]
+\begin{itemize}
+    \item With $\alpha = 1$: $MPK = f_k = A$ — constant, does not diminish
+    \item With $\alpha < 1$ (Solow): $MPK = \alpha k^{\alpha-1}$ — diminishes as $k$ rises
+    \item Constant MPK $\Rightarrow$ infinite scale returns to capital alone
+    $\Rightarrow$ sustained growth from capital accumulation alone
+\end{itemize}
+\end{tcolorbox}
+
+%==============================================================================
+\subsection{Immediate Steady-State Growth}
+%==============================================================================
+
+Unlike Solow (transitional dynamics to steady state), the AK model has:
+\begin{itemize}
+    \item NO transitional dynamics: economy jumps immediately to balanced growth path
+    \item Growth rate is constant from period 0: $\gamma = sA - \delta$
+    \item All variables ($K$, $Y$, $y$) grow at the same rate
+\end{itemize}
+
+\begin{resultbox}
+\textbf{Key Takeaway:} In AK, savings rate $s$ affects long-run growth rate (unlike Solow). This is the foundation for endogenous growth theory — policies affecting $s$ or $A$ can affect long-run growth.
+\end{resultbox}
+
+\end{document}

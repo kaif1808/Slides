@@ -1,0 +1,198 @@
+%==============================================================================
+% Notation and Definitions - Endogenous Growth (AK + Romer Model)
+%==============================================================================
+
+\subsection*{Core Variables: Aggregate}
+\begin{align*}
+& Y = \text{aggregate output} & K &= \text{aggregate capital stock} \\
+& L = \text{labor force (workforce)} & A &= \text{technology / TFP} \\
+& s = \text{savings rate} & \delta &= \text{depreciation rate} \\
+& n = \text{population growth rate} & g &= \text{technology growth rate} \\
+& \alpha = \text{capital share } (0 < \alpha < 1) & \sigma &= \text{risk aversion (CRRA)} \\
+& \rho = \text{time preference rate}
+\end{align*}
+
+\medskip
+\subsection*{Per-Worker Variables}
+\[
+k \equiv \frac{K}{L}, \qquad y \equiv \frac{Y}{L}
+\]
+
+\medskip
+\subsection*{Per-Effective-Worker Variables (AK Model)}
+\[
+\ktilde \equiv \frac{K}{AL}, \qquad \ytilde \equiv \frac{Y}{AL}
+\]
+
+\medskip
+\subsection*{Romer Model: Variety-Specific Variables}
+\begin{align*}
+& M = \text{number of varieties (designs)} & x_i &= \text{intermediate good } i \text{ (machines)} \\
+& \lambda = \text{research productivity (R\&D efficiency)} & \pi &= \text{monopoly profits} \\
+& r = \text{interest rate} & L_Y &= \text{labor in final goods sector} \\
+& L_A = \text{labor in research sector}
+\end{align*}
+
+\medskip
+\subsection*{Key Relationships: AK Model}
+\begin{derivationbox}{Derivation: AK Production Function}
+The AK model assumes linear technology in capital:
+\[
+Y = A K
+\]
+where $A > 0$ is a constant technology parameter.
+
+Divide by $L$ to get per-worker output:
+\[
+y = \frac{Y}{L} = A \frac{K}{L} = A k
+\]
+
+Divide by $AL$ to get per-effective-worker output:
+\[
+\ytilde = \frac{Y}{AL} = \frac{AK}{AL} = \frac{K}{AL} = \ktilde
+\]
+\end{derivationbox}
+
+\begin{resultbox}
+\[
+\boxed{y = Ak}, \qquad \boxed{\ytilde = \ktilde}, \qquad \boxed{f(\ktilde) = \ktilde}
+\tag{AK-Production}
+\]
+\end{resultbox}
+
+\medskip
+\subsection*{AK Model: Dynamic Equation}
+\begin{derivationbox}{Derivation: Per-Effective Capital Accumulation}
+Starting with capital accumulation:
+\[
+\dot{K} = sY - \delta K = sAK - \delta K
+\]
+
+Define $\ktilde = K/(AL)$. Using the product rule:
+\[
+\dot{\ktilde} = \frac{\dot{K}}{AL} - \frac{K}{(AL)^2}(A\dot{L} + \dot{A}L)
+\]
+
+Since $\dot{L}/L = n$ and $\dot{A}/A = g$:
+\[
+\dot{\ktilde} = \frac{sAK}{AL} - \frac{K}{AL}(n+g) - \delta\frac{K}{AL}
+\]
+
+Simplify: $AK/AL = \ktilde$:
+\[
+\dot{\ktilde} = s\ktilde - (n+g+\delta)\ktilde = [s - (n+g+\delta)]\ktilde
+\]
+\end{derivationbox}
+
+\begin{resultbox}
+\[
+\boxed{\dot{\ktilde} = [s - (n+g+\delta)]\ktilde}
+\tag{AK-Dynamics}
+\]
+\end{resultbox}
+
+\medskip
+\subsection*{AK Model: Steady State}
+\begin{resultbox}
+\[
+\dot{\ktilde} = 0 \implies s = n + g + \delta
+\tag{AK-SS-Condition}
+\]
+
+\[
+\ktilde^* \text{ is indeterminate (no convergence to SS)}
+\tag{AK-SS}
+\]
+\end{resultbox}
+
+\begin{tcolorbox}[colback=blue!5,colframe=blue3,title=Key Difference: AK vs Solow]
+\begin{itemize}
+    \item \textbf{Solow}: $\dot{\ktilde} = sf(\ktilde) - (n+g+\delta)\ktilde$ $\Rightarrow$ unique SS
+    \item \textbf{AK}: $\dot{\ktilde} = s\ktilde - (n+g+\delta)\ktilde$ $\Rightarrow$ no unique SS
+    \item In AK: $s > n+g+\delta \implies \ktilde$ grows forever (endogenous growth)
+    \item In AK: $s < n+g+\delta \implies \ktilde \to 0$ (collapse)
+\end{itemize}
+\end{tcolorbox}
+
+\medskip
+\subsection*{Romer Model: Production Functions}
+\begin{align*}
+Y &= \left[ \int_0^M x_i^{\frac{\sigma-1}{\sigma}} di \right]^{\frac{\sigma}{\sigma-1}} L_Y^{1-\alpha}
+\tag{Final Goods} \\
+x_i &= \frac{L_i}{\lambda} \quad &\text{(intermediate production)}
+\tag{Intermediate}
+\end{align*}
+
+\medskip
+\subsection*{Romer Model: Knowledge Production}
+\[
+\dot{A} = \lambda L_A A
+\tag{R\&D}
+\]
+
+\begin{resultbox}
+\[
+\boxed{g_A = \frac{\dot{A}}{A} = \lambda L_A}
+\tag{Romer-Growth}
+\]
+\end{resultbox}
+
+\medskip
+\subsection*{Romer Model: Monopoly Profits}
+\begin{derivationbox}{Derivation: Monopoly Pricing}
+The intermediate goods sector has monopoly power. Profit maximization yields:
+\[
+p_i = \frac{\sigma}{\sigma-1} \cdot \frac{w}{A}
+\tag{Monopoly-Price}
+\]
+
+where $\sigma > 1$ is the elasticity of substitution between varieties.
+\end{derivationbox}
+
+\begin{resultbox}
+\[
+\boxed{\pi_i = \frac{1}{\sigma-1} \cdot \frac{w L_i}{A}}
+\tag{Profit}
+\]
+\end{resultbox}
+
+\medskip
+\subsection*{Free Entry in R\&D}
+\[
+\lambda \int_t^\infty e^{-r(\tau-t)} \frac{\pi_\tau}{A_\tau} d\tau = w
+\tag{No-Arbitrage}
+\]
+
+\medskip
+\subsection*{Growth Rate in Romer Model}
+\begin{resultbox}
+\[
+\boxed{g = g_A = g_Y = \lambda L_A - \rho}
+\tag{Romer-Growth-Rate}
+\]
+\end{resultbox}
+
+\begin{tcolorbox}[colback=green!5,colframe=green3,title=Intuition: Endogenous Growth]
+\begin{itemize}
+    \item $g$ depends on $L_A$ (research effort) - not exogenous
+    \item Higher $\lambda$ (R\&D productivity) $\Rightarrow$ higher $g$
+    \item $\rho$ (time preference) affects growth through intertemporal allocation
+    \item Market structure: monopoly in intermediates drives innovation incentives
+\end{itemize}
+\end{tcolorbox}
+
+\medskip
+\subsection*{Summary: Key Distinctions}
+\begin{center}
+\begin{tabular}{lcc}
+\toprule
+Feature & AK Model & Romer Model \\
+\midrule
+Source of growth & Capital accumulation & New varieties (innovation) \\
+Technology & Linear in $K$: $Y=AK$ & Horizontal differentiation: $Y = \left(\int x_i^{\frac{\sigma-1}{\sigma}} di\right)^{\frac{\sigma}{\sigma-1}}$ \\
+TFP & Constant $A$ & $A$ evolves with $L_A$ \\
+Growth rate & $g = s - n - g - \delta$ & $g = \lambda L_A$ \\
+Scale effects & No & Yes (more $L_A$ $\Rightarrow$ higher $g$) \\
+\bottomrule
+\end{tabular}
+\end{center}

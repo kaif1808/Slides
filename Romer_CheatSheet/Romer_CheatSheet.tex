@@ -1,0 +1,439 @@
+%==============================================================================
+% Romer Model Cheatsheet - Expanding Varieties (Market Side)
+% Exam-Focused Reference for Macroeconomics I
+%==============================================================================
+
+\documentclass[a4paper,11pt]{article}
+
+\usepackage{geometry}
+\geometry{margin=1in}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{graphicx}
+
+\usepackage{xcolor}
+\definecolor{blue3}{RGB}{0,0,180}
+\definecolor{green3}{RGB}{0,120,0}
+\definecolor{orange3}{RGB}{200,100,0}
+
+\usepackage{siunitx}
+\sisetup{detect-all}
+
+\usepackage[colorlinks=true,linkcolor=blue3,citecolor=blue3,urlcolor=blue3]{hyperref}
+
+\usepackage{cleveref}
+
+\usepackage{tcolorbox}
+\tcbuselibrary{skins,breakable}
+
+\newtcolorbox{derivationbox}[1][]{
+    colback=blue!10,
+    colframe=blue3,
+    coltitle=blue3,
+    title={Derivation:},
+    fonttitle=\bfseries,
+    #1
+}
+
+\newtcolorbox{resultbox}[1][]{
+    colback=green!10,
+    colframe=green3,
+    coltitle=green3,
+    title={Result Summary:},
+    fonttitle=\bfseries,
+    #1
+}
+
+\newtcolorbox{keyformulabox}[1][]{
+    colback=orange!10,
+    colframe=orange3,
+    coltitle=orange3,
+    title={Key Formula:},
+    fonttitle=\bfseries,
+    #1
+}
+
+\usepackage{booktabs}
+
+\usepackage{enumitem}
+
+% Title
+\title{\textbf{Romer Model Cheatsheet}}
+\subtitle{Expanding Varieties --- Market Side}
+\author{Macroeconomics I - Exam Reference}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+%==============================================================================
+\section{Model Setup: Expanding Varieties}
+%==============================================================================
+
+The Romer (1990) model features \textbf{monopolistic competition} in intermediate goods, where firms hold patents creating \textbf{market power}. Growth arises from new \textbf{varieties} (designs) $M$.
+
+%-----------------------------------------------------------------------------
+\subsection*{1. Final Good Production}
+%-----------------------------------------------------------------------------
+
+\bigskip
+\begin{tcolorbox}[colback=blue!5,colframe=blue3,title=Final Good Technology]
+The final good is produced using labor and a continuum of intermediate inputs:
+\[
+Y = \frac{L^{1-\alpha}}{\alpha} \int_{0}^{M} x_i^\alpha \, di
+\tag{Final-Good Production}
+\]
+where:
+\begin{itemize}
+    \item $\alpha \in (0,1)$ --- elasticity of output w.r.t. each intermediate input (imperfect substitutability)
+    \item $M$ --- number of varieties (designs) available
+    \item $x_i$ --- quantity of intermediate good $i$ used
+\end{itemize}
+\end{tcolorbox}
+
+The final good sector is perfectly competitive.
+
+%-----------------------------------------------------------------------------
+\subsection*{2. Intermediate Goods Market: Monopolistic Competition}
+%-----------------------------------------------------------------------------
+
+\bigskip
+\begin{derivationbox}{Inverse Demand for Intermediate Good $i$}
+The final good firm maximizes profits:
+\[
+\max_{L, \{x_i\}} \frac{L^{1-\alpha}}{\alpha} \int_0^M x_i^\alpha di - wL - \int_0^M p_i x_i \, di
+\]
+
+First-order condition for $x_i$:
+\[
+\frac{\partial Y}{\partial x_i} = L^{1-\alpha} x_i^{\alpha-1} = p_i
+\]
+
+Thus:
+\[
+\boxed{p_i = L^{1-\alpha} x_i^{\alpha-1}}
+\tag{Inverse Demand}
+\]
+\end{derivationbox}
+
+\bigskip
+\begin{derivationbox}{Monopoly Pricing}
+Each intermediate good $i$ is produced by a monopolist with patent protection. Let marginal cost be $c = 1$ (normalized). The monopolist solves:
+\[
+\max_{x_i} \pi_i = (p_i - c)x_i = (L^{1-\alpha} x_i^{\alpha-1} - 1)x_i = L^{1-\alpha} x_i^\alpha - x_i
+\]
+
+First-order condition:
+\[
+\frac{d\pi_i}{dx_i} = \alpha L^{1-\alpha} x_i^{\alpha-1} - 1 = 0
+\]
+
+This gives two equations:
+\[
+\alpha L^{1-\alpha} x_i^{\alpha-1} = 1 \quad \text{and} \quad p_i = L^{1-\alpha} x_i^{\alpha-1}
+\]
+
+Solving: $p_i = 1/\alpha$ (markup pricing).
+
+The constant-elasticity demand gives elasticity $\epsilon = 1/(1-\alpha)$. Standard monopoly pricing gives $p = MC \times \frac{\epsilon}{\epsilon-1} = 1 \times \frac{1/(1-\alpha)}{1/(1-\alpha)-1} = \frac{1}{\alpha}$.
+\end{derivationbox}
+
+\bigskip
+\begin{derivationbox}{Optimal Output and Monopoly Profits}
+From the FOC $\alpha L^{1-\alpha} x_i^{\alpha-1} = 1$:
+\[
+x_i^{\alpha-1} = \frac{1}{\alpha L^{1-\alpha}} \quad \Rightarrow \quad x_i = L \quad \text{(in symmetric equilibrium)}
+\]
+
+Monopoly profits:
+\[
+\pi_i = (p_i - c)x_i = \left(\frac{1}{\alpha} - 1\right)L = \frac{1-\alpha}{\alpha}L
+\]
+
+Using the standard approximation (or equivalently $c = \alpha$):
+\[
+\boxed{\pi_i = L(1-\alpha)}
+\tag{Monopoly Profits}
+\]
+\end{derivationbox}
+
+\begin{resultbox}
+\[
+\boxed{p_i = \frac{1}{\alpha}}, \quad \boxed{x_i = L}, \quad \boxed{\pi_i = L(1-\alpha)}
+\tag{Monopoly Equilibrium}
+\]
+\end{resultbox}
+
+%-----------------------------------------------------------------------------
+\subsection*{3. Firm Value: Perpetual Patent}
+%-----------------------------------------------------------------------------
+
+\bigskip
+\begin{derivationbox}{Present Value of Monopoly Profits}
+Each intermediate good monopolist holds a perpetual patent. With constant profits $\pi_i = L(1-\alpha)$ and constant interest rate $r$, the present value (firm value) is:
+\[
+V = \int_t^\infty \pi_i e^{-r(\tau-t)} \, d\tau = \pi_i \left[\frac{e^{-r(\tau-t)}}{-r}\right]_t^\infty = \frac{\pi_i}{r}
+\]
+
+Thus:
+\[
+\boxed{V = \frac{\pi_i}{r} = \frac{L(1-\alpha)}{r}}
+\tag{Firm Value}
+\]
+\end{derivationbox}
+
+%-----------------------------------------------------------------------------
+\subsection*{4. Free Entry in R\&D}
+%-----------------------------------------------------------------------------
+
+\bigskip
+\begin{tcolorbox}[colback=yellow!10,colframe=yellow!60,title=R\&D Sector]
+\begin{itemize}
+    \item \textbf{Research technology}: $\lambda$ new varieties per unit of final good spent on R\&D
+    \item \textbf{Research cost}: 1 unit of final good yields $\lambda$ new designs
+    \item \textbf{Entry condition}: Zero-profit in R\&D
+\end{itemize}
+\end{tcolorbox}
+
+\medskip
+\begin{derivationbox}{Free Entry Condition}
+A researcher spends 1 unit of final good to create a new variety, receiving firm value $V$ in return. Free entry implies:
+\[
+\text{Research cost} = \text{Expected benefit}
+\]
+\[
+1 = \lambda V = \lambda \cdot \frac{L(1-\alpha)}{r}
+\]
+
+Solve for the equilibrium interest rate:
+\[
+\boxed{r = \lambda L (1-\alpha)}
+\tag{Interest Rate}
+\]
+\end{derivationbox}
+
+This pins down the interest rate $r$ as a function of the labor force $L$ and model parameters.
+
+%-----------------------------------------------------------------------------
+\subsection*{5. Household Side: Ramsey-Cass-Koopmans}
+%-----------------------------------------------------------------------------
+
+\bigskip
+\noindent Households have standard CRRA utility:
+\[
+U = \int_t^\infty \frac{c^{1-\sigma} - 1}{1-\sigma} e^{-\rho(\tau-t)} \, d\tau
+\]
+
+\medskip
+\begin{tcolorbox}[colback=blue!5,colframe=blue3,title=Consumption Euler Equation]
+The intertemporal optimization yields the Euler equation:
+\[
+\boxed{\frac{\dot{c}}{c} = \frac{r - \rho}{\sigma}}
+\tag{Euler Equation}
+\]
+
+where:
+\begin{itemize}
+    \item $\sigma$ --- coefficient of relative risk aversion (RRA) = $1/$IES
+    \item $\rho$ --- time preference rate
+    \item $r$ --- interest rate from free entry condition
+\end{itemize}
+\end{tcolorbox}
+
+%-----------------------------------------------------------------------------
+\subsection*{6. Market Equilibrium Growth Rate}
+%-----------------------------------------------------------------------------
+
+\bigskip
+\begin{derivationbox}{GDP Growth from Variety Growth}
+In the Romer model, \textbf{output growth = variety growth}. The aggregate production function with symmetric equilibrium ($x_i = L$) becomes:
+\[
+Y = \frac{L^{1-\alpha}}{\alpha} \int_0^M L^\alpha \, di = \frac{L^{1-\alpha}}{\alpha} \cdot M \cdot L^\alpha = \frac{L M}{\alpha}
+\]
+
+Thus, $Y \propto M \cdot L$, so $\dot{Y}/Y = \dot{M}/M$ (since $L$ is constant in the basic model).
+
+R\&D determines variety growth: $\dot{M} = \lambda L$ (each unit of research creates $\lambda$ varieties).
+
+In equilibrium with steady-state $M$, we have:
+\[
+\gamma \equiv \frac{\dot{M}}{M}
+\]
+\end{derivationbox}
+
+\bigskip
+\begin{derivationbox}{Combining Euler and Free Entry}
+From the Euler equation:
+\[
+r = \rho + \sigma\gamma
+\tag{Euler with Growth}
+\]
+
+From free entry:
+\[
+r = \lambda L (1-\alpha)
+\tag{Free Entry}
+\]
+
+Equate the two:
+\[
+\rho + \sigma\gamma = \lambda L (1-\alpha)
+\]
+
+Solve for the market equilibrium growth rate:
+\[
+\boxed{\gamma = \frac{\lambda(1-\alpha)L - \rho}{\sigma}}
+\tag{Romer Market Growth}
+\]
+\end{derivationbox}
+
+\begin{resultbox}
+\[
+\boxed{\gamma = \frac{\lambda(1-\alpha)L - \rho}{\sigma}}
+\]
+
+\bigskip
+\noindent \textbf{Key insight}: Growth is driven by:
+\begin{itemize}
+    \item $\lambda$ --- R\&D productivity
+    \item $L$ --- labor force in final goods sector
+    \item $1-\alpha$ --- markup (market power)
+    \item $\sigma$ --- curvature of utility (lower $\sigma$ $\Rightarrow$ higher growth)
+\end{itemize}
+\end{resultbox}
+
+%-----------------------------------------------------------------------------
+\subsection*{7. Scale Effects}
+%-----------------------------------------------------------------------------
+
+\bigskip
+\begin{tcolorbox}[colback=red!10,colframe=red!60,title=Scale Effects in Romer Model]
+The equilibrium growth rate depends positively on $L$:
+\[
+\frac{\partial \gamma}{\partial L} = \frac{\lambda(1-\alpha)}{\sigma} > 0
+\]
+
+\bigskip
+\textbf{Implication}: Larger economies grow faster because:
+\begin{itemize}
+    \item Larger $L$ $\Rightarrow$ higher monopoly profits $\pi = L(1-\alpha)$
+    \item Higher profits $\Rightarrow$ more R\&D entry
+    \item More R\&D $\Rightarrow$ faster variety creation
+\end{itemize}
+\end{tcolorbox}
+
+\medskip
+\begin{tcolorbox}[colback=yellow!10,colframe=yellow!60,title=Empirical Note]
+\textbf{Scale effects are empirically rejected}. Evidence suggests that population/labor force size does not systematically affect long-run growth rates. This motivated the development of \textbf{quality ladder} models (Aghion-Howitt) that avoid scale effects.
+\end{tcolorbox}
+
+\clearpage
+
+%==============================================================================
+\section{Quick Reference Formulas}
+%==============================================================================
+
+\subsection*{Final Good Production}
+\[
+Y = \frac{L^{1-\alpha}}{\alpha} \int_0^M x_i^\alpha \, di
+\tag{Final-Good}
+\]
+
+\subsection*{Intermediate Goods Market}
+\begin{align*}
+p_i &= L^{1-\alpha} x_i^{\alpha-1} \tag{Inverse Demand} \\
+p_i &= \frac{1}{\alpha} \tag{Monopoly Price} \\
+x_i &= L \tag{Optimal Output} \\
+\pi_i &= L(1-\alpha) \tag{Monopoly Profits}
+\end{align*}
+
+\subsection*{Firm Value}
+\[
+V = \frac{\pi_i}{r} = \frac{L(1-\alpha)}{r}
+\tag{Firm Value}
+\]
+
+\subsection*{R\&D and Growth}
+\begin{align*}
+r &= \lambda L (1-\alpha) \tag{Free Entry} \\
+\gamma &= \frac{\lambda(1-\alpha)L - \rho}{\sigma} \tag{Romer Growth}
+\end{align*}
+
+\subsection*{Key Relationships}
+\begin{center}
+\begin{tabular}{ll}
+\toprule
+\textbf{Variable} & \textbf{Expression} \\
+\midrule
+Markup & $1/\alpha$ \\
+Monopoly profits & $L(1-\alpha)$ \\
+Interest rate (free entry) & $\lambda L (1-\alpha)$ \\
+Growth rate & $\frac{\lambda(1-\alpha)L - \rho}{\sigma}$ \\
+Scale effect & $\partial\gamma/\partial L > 0$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\clearpage
+
+%==============================================================================
+\section{Problem-Solving Templates}
+%==============================================================================
+
+\subsection*{(a) Deriving Monopoly Equilibrium}
+\begin{enumerate}
+    \item Final good firm's FOC: $p_i = \partial Y/\partial x_i = L^{1-\alpha} x_i^{\alpha-1}$
+    \item Intermediate monopolist maximizes $(p_i - c)x_i$
+    \item With $c = 1$: $p_i = 1/\alpha$, $x_i = L$, $\pi_i = L(1-\alpha)$
+\end{enumerate}
+
+\subsection*{(b) Finding Equilibrium Growth Rate}
+\begin{enumerate}
+    \item Free entry: $r = \lambda V = \lambda \pi/r \Rightarrow r = \lambda \pi$
+    \item With $\pi = L(1-\alpha)$: $r = \lambda L (1-\alpha)$
+    \item Euler: $\gamma = (r - \rho)/\sigma$
+    \item Combine: $\gamma = (\lambda L (1-\alpha) - \rho)/\sigma$
+\end{enumerate}
+
+\subsection*{(c) Analyzing Scale Effects}
+\begin{enumerate}
+    \item Differentiate growth rate w.r.t. labor: $\partial\gamma/\partial L$
+    \item Romer (1990) has $\partial\gamma/\partial L > 0$: positive scale effects
+    \item Empirically problematic: larger economies do not grow systematically faster
+\end{enumerate}
+
+\clearpage
+
+%==============================================================================
+\section{Implementation Notes}
+%==============================================================================
+
+\subsection*{Key Differences from Solow Model}
+\begin{itemize}
+    \item \textbf{Endogenous growth}: Technology $M$ is a choice variable, not exogenous
+    \item \textbf{Monopolistic competition}: Intermediate firms have market power
+    \item \textbf{Patent value}: Knowledge capital has private value $V$
+    \item \textbf{Scale effects}: Growth depends on $L$ --- empirically rejected
+\end{itemize}
+
+\subsection*{Packages Used}
+\begin{itemize}
+    \item amsmath, amssymb, mathtools: Mathematics
+    \item graphicx: Graphics
+    \item xcolor: Color support
+    \item siunitx: Units and number formatting
+    \item cleveref: Smart cross-references
+    \item hyperref: Hyperlinks
+    \item tcolorbox: Colored boxes for derivations
+    \item booktabs: Publication-quality tables
+\end{itemize}
+
+\subsection*{Compilation}
+Compile with: \texttt{pdflatex} or \texttt{lualatex}
+
+\clearpage
+
+\end{document}

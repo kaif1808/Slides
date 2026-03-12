@@ -1,0 +1,162 @@
+%==============================================================================
+% AK-Ramsey: Endogenous Consumption Cheatsheet
+% Exam-Focused Reference for Macroeconomics I
+%==============================================================================
+
+\documentclass[a4paper,11pt]{article}
+
+\usepackage{geometry}
+\geometry{margin=1in}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathtools}
+
+\usepackage{xcolor}
+\definecolor{blue3}{RGB}{0,0,180}
+\definecolor{green3}{RGB}{0,120,0}
+\definecolor{orange3}{RGB}{200,100,0}
+
+\usepackage{tcolorbox}
+\tcbuselibrary{skins,breakable}
+
+\newtcolorbox{derivationbox}[1][]{
+    colback=blue!10,
+    colframe=blue3,
+    coltitle=blue3,
+    title={Derivation:},
+    fonttitle=\bfseries,
+    #1
+}
+
+\newtcolorbox{resultbox}[1][]{
+    colback=green!10,
+    colframe=green3,
+    coltitle=green3,
+    title={Result Summary:},
+    fonttitle=\bfseries,
+    #1
+}
+
+%==============================================================================
+\section{AK-Ramsey: Endogenous Consumption}
+%==============================================================================
+
+%-----------------------------------------------------------------------------
+\subsection*{Setup}
+%-----------------------------------------------------------------------------
+
+\medskip
+\noindent\textbf{Utility Function (CRRA):}
+\[
+U = \int_{0}^{\infty} \frac{c^{1-\sigma}}{1-\sigma} e^{(\hat{n}-\rho)t} \, dt
+\quad \text{where} \quad \hat{n} = n
+\tag{Utility}
+\]
+
+\medskip
+\noindent\textbf{Production Function (Linear AK):}
+\[
+y = Ak
+\tag{AK-Production}
+\]
+
+\medskip
+\noindent\textbf{Law of Motion:}
+\[
+\dot{k}_t = Ak_t - c_t - (\delta + n)k_t
+\tag{LOM}
+\]
+
+%-----------------------------------------------------------------------------
+\subsection*{Interest Rate (Competitive Factor Markets)}
+%-----------------------------------------------------------------------------
+
+\medskip
+\begin{derivationbox}{Derivation of $r$}
+Firm optimization: $\max_{K} \ Ak - rK - \delta K$
+
+FOC: $A - r - \delta = 0$
+
+\[
+\boxed{r = A - \delta}
+\tag{Interest Rate}
+\]
+
+\textbf{Key Insight:} MPK is constant in AK model (no diminishing returns).
+\end{derivationbox}
+
+%-----------------------------------------------------------------------------
+\subsection*{Euler Equation (Consumer Optimization)}
+%-----------------------------------------------------------------------------
+
+\medskip
+\begin{derivationbox}{Derivation of Euler Equation}
+Skip full Hamiltonian. Key condition from intertemporal optimization:
+
+\[
+\frac{\dot{c}}{c} = \frac{r_t - \rho}{\sigma}
+\]
+
+Substitute $r_t = A - \delta$:
+\[
+\frac{\dot{c}}{c} = \frac{A - \delta - \rho}{\sigma}
+\]
+\end{derivationbox}
+
+\begin{resultbox}
+\[
+\boxed{\gamma_c = \frac{\dot{c}}{c} = \frac{A - \delta - \rho}{\sigma}}
+\tag{EE}
+\]
+
+\textbf{Note:} $\gamma_c$ is constant --- no transitional dynamics in AK model.
+\end{resultbox}
+
+%-----------------------------------------------------------------------------
+\subsection*{Transversality Condition}
+%-----------------------------------------------------------------------------
+
+\[
+\lim_{t \to \infty} k_t e^{(n-r)t} = 0
+\tag{TVC}
+\]
+
+%-----------------------------------------------------------------------------
+\subsection*{Growth Rate}
+%-----------------------------------------------------------------------------
+
+\medskip
+\begin{resultbox}
+From capital accumulation $\dot{k} = Ak - c - (\delta+n)k$:
+
+\[
+\boxed{\gamma_c = \gamma_k = \gamma_y = \frac{A - \delta - \rho}{\sigma}}
+\tag{Growth Rate}
+\]
+
+\textbf{Determinants of Growth:}
+\begin{itemize}
+    \item $A$: Technology (positive effect)
+    \item $\delta$: Depreciation (negative effect)
+    \item $\rho$: Time preference/patience (negative effect --- more patient = higher growth)
+    \item $\sigma$: Risk aversion (negative effect --- higher $\sigma$ = lower growth)
+\end{itemize}
+\end{resultbox}
+
+\medskip
+\noindent\textbf{Key Difference from Solow:} In AK-Ramsey, the savings rate $s$ does NOT affect the growth rate (only affects the level of $k, y, c$).
+
+%-----------------------------------------------------------------------------
+\subsection*{Key Insight}
+%-----------------------------------------------------------------------------
+
+\[
+\begin{aligned}
+\text{If } A > \delta + \rho &: \text{ positive growth} \\
+\text{If } A < \delta + \rho &: \text{ economy shrinks to zero}
+\end{aligned}
+\tag{Condition}
+\]
+
+\end{document}
