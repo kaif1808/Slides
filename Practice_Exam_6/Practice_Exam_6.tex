@@ -1,0 +1,255 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage{geometry}
+\geometry{margin=1in, headheight=15pt}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\definecolor{blue3}{RGB}{0,0,180}
+\definecolor{green3}{RGB}{0,120,0}
+\definecolor{orange3}{RGB}{200,100,0}
+\definecolor{red3}{RGB}{180,0,0}
+\definecolor{grey3}{RGB}{80,80,80}
+\usepackage{siunitx}
+\sisetup{detect-all}
+\usepackage[colorlinks=true,linkcolor=blue3,citecolor=blue3,urlcolor=blue3]{hyperref}
+\usepackage{cleveref}
+\usepackage{tcolorbox}
+\tcbuselibrary{skins,breakable}
+\newtcolorbox{pointsbox}[1][]{colback=grey3!8,colframe=grey3,fonttitle=\bfseries\small,#1}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\newcommand{\ktilde}{\tilde{k}}
+\newcommand{\ytilde}{\tilde{y}}
+\newcommand{\ctilde}{\tilde{c}}
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\bgp}{\mathrm{BGP}}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\textbf{14E022 Macroeconomics I} \quad Practice Exam 6}
+\rhead{BSE 2025--26}
+\cfoot{\thepage}
+
+\begin{document}
+
+% ============================================================
+%  TITLE
+% ============================================================
+\begin{center}
+  {\LARGE\bfseries 14E022 --- Macroeconomics I}\\[6pt]
+  {\Large Practice Exam 6}\\[4pt]
+  {\large BSE Master in Economics \quad 2025--26}\\[10pt]
+  \rule{\linewidth}{0.6pt}\\[6pt]
+  {\normalsize \textbf{Duration:} 2 hours \quad
+   \textbf{Total:} 100 points \quad
+   \textbf{Permitted:} Calculator, one A4 formula sheet}\\[4pt]
+  {\small Read each question carefully. Show all working. Partial credit is awarded.}\\[2pt]
+  \rule{\linewidth}{0.4pt}
+\end{center}
+
+\vspace{4pt}
+\begin{pointsbox}[title=Point Allocation]
+  \begin{tabular}{lll}
+    \textbf{Q1} & Solow Model with Human Capital (MRW) & 25 pts \\
+    \textbf{Q2} & AK Model and Arrow Learning-by-Doing & 25 pts \\
+    \textbf{Q3} & Romer Expanding Varieties + Patent Policy & 25 pts \\
+    \textbf{SQ} & Short Questions (SQ1 + SQ2 + SQ3) & 25 pts \\
+    \multicolumn{2}{l}{\textbf{Total}} & \textbf{100 pts}
+  \end{tabular}
+\end{pointsbox}
+
+\clearpage
+
+% ============================================================
+%  QUESTION 1
+% ============================================================
+\section*{Question 1 --- Solow Model with Human Capital: MRW \hfill (25 points)}
+
+Consider the Mankiw--Romer--Weil (1992) model. Output at time $t$ in country $i$ is:
+\[
+  Y_t = K_t^{\alpha}\, H_t^{\beta}\,(A_t L_t)^{1-\alpha-\beta}
+\]
+where $K_t$ is physical capital, $H_t$ is human capital, $A_t L_t$ is effective labour, and $\alpha,\beta>0$ with $\alpha+\beta<1$. Population grows at rate $n$, TFP grows at rate $g$ (both exogenous), and both capitals depreciate at rate $\delta$. Investment rates in physical and human capital are $s_K$ and $s_H$ respectively (exogenous constant shares of output).
+
+\bigskip
+\begin{enumerate}[label=\textbf{(\arabic*)},leftmargin=*]
+
+\item \textbf{[7 pts]}
+Define per-effective-worker variables $\ktilde = K/(AL)$, $\tilde{h} = H/(AL)$, $\ytilde = Y/(AL)$. Derive the laws of motion $\dot{\ktilde}$ and $\dot{\tilde{h}}$. Show that the production function in intensive form is:
+\[
+  \ytilde = \ktilde^{\alpha}\,\tilde{h}^{\,\beta}
+\]
+
+\item \textbf{[7 pts]}
+Solve for the unique steady state $(\ktilde^{\!*}, \tilde{h}^*)$ and hence the steady-state output per worker $y^* = Y/L$ as a function of $A$, $s_K$, $s_H$, $n$, $g$, $\delta$, $\alpha$, $\beta$. Take logs to write a linear regression equation for $\ln(y^*)$. Identify the coefficient on $\ln s_K$ and $\ln s_H$ and their relationship to $\alpha$ and $\beta$.
+
+\item \textbf{[6 pts]}
+The MRW model predicts \emph{slower} convergence toward the steady state than the basic Solow model. Explain why augmenting with human capital slows the convergence speed $\beta_{\mathrm{conv}}$. Relate $\beta_{\mathrm{conv}}$ to the parameters $\alpha$, $\beta$, $n$, $g$, $\delta$.
+
+\item \textbf{[5 pts]}
+The MRW model treats $s_H$ as an exogenous constant. Discuss one key limitation of this assumption, with reference to a specific empirical or theoretical consideration. How might endogenising $s_H$ change the model's predictions?
+
+\end{enumerate}
+
+\clearpage
+
+% ============================================================
+%  QUESTION 2
+% ============================================================
+\section*{Question 2 --- AK Model and Arrow Learning-by-Doing with Optimal Policy \hfill (25 points)}
+
+Consider an economy with a continuum of firms of measure 1. Each firm $j$ produces output using:
+\[
+  y_j = a_j\, k_j^{\alpha}\, l_j^{1-\alpha}
+\]
+where $k_j$ and $l_j$ are firm-level capital and labour, and $a_j$ is firm-level productivity. Following Arrow (1962), each firm's productivity depends on the aggregate capital stock $K$ via:
+\[
+  a_j = K^{1-\alpha}
+\]
+Firms take $K$ as given (the externality is non-appropriable). Labour markets are competitive and labour is normalised: $L = 1$, $l_j = 1$ for each firm.
+
+\bigskip
+\begin{enumerate}[label=\textbf{(\arabic*)},leftmargin=*]
+
+\item \textbf{[5 pts]}
+Derive the aggregate production function. Show that $Y = \int_0^1 y_j\,\dd j$ reduces to $Y = AK$ (specify what constant $A$ equals in terms of the model parameters). Interpret: what is the private return to capital in this economy, and how does it differ from the social return?
+
+\item \textbf{[6 pts]}
+Households solve the standard Ramsey problem. Write the household's Euler equation. Characterise the market BGP growth rate $\gamma^{\mathrm{mkt}}$ in terms of $A$, $\rho$, $\sigma$, $\delta$, $\alpha$. Show that if $\alpha > \rho + \delta$, a positive BGP growth rate exists.
+
+\item \textbf{[7 pts]}
+The social planner internalises the externality $a_j = K^{1-\alpha}$ when choosing aggregate $K$. Derive the planner's Euler equation and BGP growth rate $\gamma^{\mathrm{plnr}}$. Show that $\gamma^{\mathrm{plnr}} > \gamma^{\mathrm{mkt}}$. Explain the wedge intuitively: which effect does the market fail to internalise?
+
+\item \textbf{[4 pts]}
+Derive the optimal capital income subsidy $s^*$ that aligns the market return to capital with the social return. Express $s^*$ in terms of $\alpha$ only and interpret.
+
+\item \textbf{[3 pts]}
+Discuss two practical challenges to implementing the optimal subsidy in real economies.
+
+\end{enumerate}
+
+\clearpage
+
+% ============================================================
+%  QUESTION 3
+% ============================================================
+\section*{Question 3 --- Romer Expanding Varieties + Patent Policy \hfill (25 points)}
+
+Consider the standard Romer (1990) expanding-varieties model. Final output uses a CES aggregator over $A_t$ differentiated intermediates:
+\[
+  Y_t = L_{Y,t}^{1-\alpha}\int_0^{A_t} x_i^{\alpha}\,\dd i, \qquad \alpha \in (0,1)
+\]
+Each variety $i$ is produced one-for-one from capital (unit cost $= r_t$). The R\&D sector creates new blueprints: $\dot{A}_t = \delta_A L_{A,t}$, where $\delta_A > 0$ and $L_{A,t}$ is labour employed in R\&D. Labour market: $L_{Y,t} + L_{A,t} = L$ (total labour fixed, $\dot{L} = 0$).
+
+\bigskip
+\begin{enumerate}[label=\textbf{(\arabic*)},leftmargin=*]
+
+\item \textbf{[5 pts]}
+Derive the demand for variety $i$ from the final-goods firm's profit-maximisation. Show that the profit-maximising monopoly price is $p_i^* = r_t/\alpha$ and derive the equilibrium monopoly profit $\pi_i$.
+
+\item \textbf{[7 pts]}
+Let $V_t$ be the value of a blueprint (no creative destruction: $\iota = 0$). Write the no-arbitrage Bellman equation for $V_t$. On the BGP, use $\dot{V}/V = g_A$ and constancy of $\pi_t$ to solve for $V$. State the free-entry condition. Combine to characterise the equilibrium BGP growth rate:
+\[
+  g_A^* = \delta_A L_A^* = \delta_A(L - L_Y^*)
+\]
+Briefly indicate how $L_Y^*$ is determined.
+
+\item \textbf{[5 pts]}
+Identify the \textbf{scale effect} in this model. What does the model predict about the effect of a permanent increase in $L$? What is the empirical problem with this prediction? Explain how Jones (1995) modifies the knowledge accumulation equation to remove the scale effect, and state what must drive long-run growth instead.
+
+\item \textbf{[5 pts]}
+Compare the market BGP to the social planner's optimum. Identify two wedges: (a) the monopoly markup distortion and (b) the appropriability externality. What is the sign of the overall bias ($g_A^{\mathrm{mkt}}$ vs.\ $g_A^{\mathrm{plnr}}$)? Propose a policy mix to correct both distortions.
+
+\item \textbf{[3 pts]}
+Suppose patents have a finite lifetime of $T$ years (after which the variety becomes a competitive public good). How does increasing $T$ affect the equilibrium $g_A$ and welfare? Is $T = \infty$ necessarily optimal?
+
+\end{enumerate}
+
+\clearpage
+
+% ============================================================
+%  SHORT QUESTIONS
+% ============================================================
+\section*{Short Questions \hfill (25 points)}
+
+\textit{Short, sharp answers receive the highest marks. Aim for 3--6 sentences per question.}
+
+\bigskip
+
+\begin{enumerate}[label=\textbf{SQ\arabic*.},leftmargin=*]
+
+\item \textbf{[8 pts] Scale Effects: Mechanism, Problem, Fix}
+
+Explain the scale effect in the Romer (1990) model: what is the precise mechanism and what empirical prediction does it make? What is the empirical problem with this prediction? Explain how Jones (1995) modifies the R\&D equation to eliminate scale effects, and state the theoretical cost of this modification (what must drive long-run growth instead?).
+
+\bigskip
+
+\item \textbf{[9 pts] Monopolistic Competition and Endogenous Growth}
+
+Explain why perfect competition cannot sustain endogenous R\&D-based growth. What role does the monopoly markup play in funding innovation? Define the \emph{appropriability externality} and the \emph{under-use distortion} (static inefficiency of monopoly). Why do both distortions point in the same direction for R\&D subsidies but create a conflict for patent policy?
+
+\bigskip
+
+\item \textbf{[8 pts] Non-Homotheticity and Structural Change}
+
+Define a non-homothetic utility function and explain how it differs from homothetic preferences in terms of income elasticities. In a two-sector economy (manufacturing and services), how does non-homotheticity generate structural change even without Baumol cost disease? When both non-homotheticity and Baumol cost disease operate simultaneously, do they reinforce or offset each other in driving the employment share of services upward?
+
+\end{enumerate}
+
+\clearpage
+
+% ============================================================
+%  APPENDIX
+% ============================================================
+\appendix
+\section*{Appendix: Permitted Reference Formulas}
+
+\begin{pointsbox}[title=A.1 \quad Log-Differentiation]
+If $Z = X^a Y^b$, then $\ln Z = a \ln X + b \ln Y$ and $\dot{Z}/Z = a\,\dot{X}/X + b\,\dot{Y}/Y$.
+\end{pointsbox}
+
+\bigskip
+\begin{pointsbox}[title=A.2 \quad MRW Steady State]
+\[
+  \ktilde^* = \left(\frac{s_K^{1-\beta}\,s_H^{\beta}}{n+g+\delta}\right)^{\!1/(1-\alpha-\beta)}, \qquad
+  \tilde{h}^* = \left(\frac{s_K^{\alpha}\,s_H^{1-\alpha}}{n+g+\delta}\right)^{\!1/(1-\alpha-\beta)}
+\]
+\end{pointsbox}
+
+\bigskip
+\begin{pointsbox}[title=A.3 \quad Hamiltonian First-Order Conditions]
+Current-value Hamiltonian $\mathcal{H} = u(c) + \mu f(k,c)$. FOCs:
+$\partial \mathcal{H}/\partial c = 0$, \quad $\dot{\mu} - \rho\mu = -\partial\mathcal{H}/\partial k$, \quad TVC: $\lim_{t\to\infty} e^{-\rho t}\mu k = 0$.
+\end{pointsbox}
+
+\bigskip
+\begin{pointsbox}[title=A.4 \quad Cobb-Douglas Factor Payments]
+$Y = K^\alpha L^{1-\alpha}$: $\quad r = \alpha Y/K$, $\quad w = (1-\alpha)Y/L$.
+\end{pointsbox}
+
+\bigskip
+\begin{pointsbox}[title=A.5 \quad Romer Monopoly Pricing]
+\[
+  p^* = \frac{r}{\alpha}, \qquad \pi = \frac{1-\alpha}{\alpha}\cdot r\, x^*
+\]
+\end{pointsbox}
+
+\bigskip
+\begin{pointsbox}[title=A.6 \quad Romer BGP Bellman (No Creative Destruction)]
+\[
+  r_t V_t = \pi_t + \dot{V}_t \quad \Longrightarrow \quad V = \frac{\pi}{r - g_A}
+\]
+\end{pointsbox}
+
+\bigskip
+\begin{pointsbox}[title=A.7 \quad Jones (1995) BGP Growth Rate]
+R\&D equation: $\dot{A} = \delta_A A^{\phi} L_A$, $\phi < 1$. BGP:
+\[
+  g_A^* = \frac{n}{1 - \phi}
+\]
+Growth driven by population growth $n$, not by the level of $L$.
+\end{pointsbox}
+
+\end{document}

@@ -1,15 +1,15 @@
 \contentsline {section}{\numberline {1}Notation and Definitions}{2}{section.1}%
-\contentsline {section}{\numberline {2}Model Setup}{3}{section.2}%
-\contentsline {section}{\numberline {3}Household Optimization}{3}{section.3}%
-\contentsline {section}{\numberline {4}Firm Problem and Equilibrium}{4}{section.4}%
-\contentsline {section}{\numberline {5}Dynamic System}{5}{section.5}%
-\contentsline {section}{\numberline {6}Steady State Analysis}{5}{section.6}%
-\contentsline {section}{\numberline {7}Transversality Condition and Dynamic Efficiency}{6}{section.7}%
-\contentsline {section}{\numberline {8}Phase Diagram and Transitional Dynamics}{7}{section.8}%
-\contentsline {section}{\numberline {9}Comparative Statics}{8}{section.9}%
-\contentsline {section}{\numberline {10}Problem-Solving Templates}{8}{section.10}%
-\contentsline {section}{\numberline {11}Common Pitfalls}{10}{section.11}%
-\contentsline {section}{\numberline {12}Quick Reference Formulas}{10}{section.12}%
-\contentsline {section}{\numberline {13}Key Formulas Summary Table}{11}{section.13}%
-\contentsline {section}{\numberline {14}Ramsey vs. Solow Comparison}{11}{section.14}%
-\contentsline {section}{\numberline {15}Implementation Notes}{12}{section.15}%
+\contentsline {section}{\numberline {2}Environment and Welfare Theorems}{2}{section.2}%
+\contentsline {section}{\numberline {3}Household Problem}{3}{section.3}%
+\contentsline {section}{\numberline {4}Hamiltonian Derivation}{3}{section.4}%
+\contentsline {section}{\numberline {5}CRRA Utility and the Euler Equation}{4}{section.5}%
+\contentsline {section}{\numberline {6}Firm Problem}{5}{section.6}%
+\contentsline {section}{\numberline {7}Dynamic System}{5}{section.7}%
+\contentsline {section}{\numberline {8}Steady State and Modified Golden Rule}{6}{section.8}%
+\contentsline {section}{\numberline {9}Phase Diagram}{7}{section.9}%
+\contentsline {section}{\numberline {10}Comparative Statics}{8}{section.10}%
+\contentsline {section}{\numberline {11}Comparison to Solow Model}{8}{section.11}%
+\contentsline {section}{\numberline {12}Data Application and Savings Rate Puzzle}{9}{section.12}%
+\contentsline {section}{\numberline {13}Problem-Solving Templates}{9}{section.13}%
+\contentsline {section}{\numberline {14}Common Pitfalls}{10}{section.14}%
+\contentsline {section}{\numberline {15}Quick Reference Formulas}{11}{section.15}%

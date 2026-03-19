@@ -1,0 +1,545 @@
+%==============================================================================
+% Quality Ladder / Schumpeterian Growth Cheatsheet
+% Exam-Focused Reference for Macroeconomics I
+%==============================================================================
+
+\documentclass[a4paper,11pt]{article}
+
+\usepackage{geometry}
+\geometry{margin=1in}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{graphicx}
+
+\usepackage{xcolor}
+\definecolor{blue3}{RGB}{0,0,180}
+\definecolor{green3}{RGB}{0,120,0}
+\definecolor{orange3}{RGB}{200,100,0}
+\definecolor{red3}{RGB}{180,0,0}
+
+\usepackage{siunitx}
+\sisetup{detect-all}
+
+\usepackage[colorlinks=true,linkcolor=blue3,citecolor=blue3,urlcolor=blue3]{hyperref}
+
+\usepackage{cleveref}
+
+\usepackage{tcolorbox}
+\tcbuselibrary{skins,breakable}
+
+\newtcolorbox{derivationbox}[1][]{
+    colback=blue!10,
+    colframe=blue3,
+    coltitle=blue3,
+    title={Derivation:},
+    fonttitle=\bfseries,
+    #1
+}
+
+\newtcolorbox{resultbox}[1][]{
+    colback=green!10,
+    colframe=green3,
+    coltitle=green3,
+    title={Result:},
+    fonttitle=\bfseries,
+    #1
+}
+
+\newtcolorbox{keyformulabox}[1][]{
+    colback=orange!10,
+    colframe=orange3,
+    coltitle=orange3,
+    title={Key Formula:},
+    fonttitle=\bfseries,
+    #1
+}
+
+\newtcolorbox{warningbox}[1][]{
+    colback=red!10,
+    colframe=red3,
+    coltitle=red3,
+    title={Warning:},
+    fonttitle=\bfseries,
+    #1
+}
+
+\usepackage{booktabs}
+
+\usepackage{enumitem}
+
+% Custom commands
+\newcommand{\subtitle}[1]{\par\vspace{0.5em}\large\textit{#1}\par\vspace{1em}}
+
+% Title
+\title{\textbf{Quality Ladder / Schumpeterian Growth Cheatsheet}}
+\author{Macroeconomics I - Exam Reference}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\tableofcontents
+
+\clearpage
+\pagestyle{plain}
+
+%==============================================================================
+\section{Notation and Definitions}
+%==============================================================================
+
+\subsection*{Core Parameters and Variables}
+\begin{align*}
+& q = \text{step size (quality jump, } q \geq \alpha^{-1}\text{)} \\
+& k(s) = \text{quality rung in sector } s \\
+& N = \text{number of products (fixed in QL, endogenous in Romer)} \\
+& \tilde{X}_t(s) = q^{k(s)} X_t(s) = \text{quality-adjusted input} \\
+& Q_t = \int_0^N q^{k(s)\frac{\alpha}{1-\alpha}} ds = \text{aggregate quality index} \\
+& p = \text{innovation probability (Poisson arrival rate)} \\
+& \xi = \text{R\&D cost parameter} \\
+& \overline{\pi} = \frac{1-\alpha}{\alpha}\alpha^{\frac{2}{1-\alpha}}L = \text{baseline profits} \\
+& \pi(k) = \overline{\pi}q^{\frac{\alpha}{1-\alpha}k} = \text{monopoly profits at rung } k
+\end{align*}
+
+\medskip
+\subsection*{Key Distinctions}
+\begin{center}
+\begin{tabular}{lll}
+\toprule
+\textbf{Feature} & \textbf{Quality Ladder} & \textbf{Expanding Varieties} \\
+\midrule
+Innovation type & Vertical (quality improvement) & Horizontal (new products) \\
+$N$ & Fixed & Endogenous \\
+Growth engine & Creative destruction & Love for variety \\
+$\gamma^* \lesseqqgtr \gamma$ & Ambiguous & $\gamma^* > \gamma$ (too little) \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\clearpage
+
+%==============================================================================
+\section{Model Setup: Final Good Production}
+%==============================================================================
+
+\subsection*{Final Good Production Function}
+\begin{align*}
+Y_t = L^{1-\alpha} \int_0^N \tilde{X}_t^\alpha(s) \, ds
+\quad \text{where} \quad \tilde{X}_t(s) = q^{k(s)} X_t(s)
+\tag{Final Good}
+\end{align*}
+
+\subsection*{Vertical vs Horizontal Differentiation}
+\begin{itemize}
+    \item \textbf{Vertical (Quality Ladder):} Same products improve in quality $q^{k(s)}$
+    \item \textbf{Horizontal (Expanding Varieties):} New different products added to $N$
+\end{itemize}
+
+\subsection*{Key Assumption: $q \geq \alpha^{-1}$}
+This ensures monopolist prices above marginal cost, making innovation profitable.
+
+\subsection*{Quality-Adjusted Input}
+\[
+\tilde{X}_t(s) = q^{k(s)} X_t(s)
+\]
+
+\medskip
+\noindent \textbf{Interpretation:} A product at rung $k$ is $q^k$ times more productive than the baseline.
+
+\subsection*{Quality Index}
+\[
+Q_t = \int_0^N q^{k(s)\frac{\alpha}{1-\alpha}} ds
+\]
+
+\medskip
+\noindent \textbf{Output with quality index:}
+\[
+Y_t = L^{1-\alpha} \overline{X}^\alpha Q_t = \alpha^{\frac{2\alpha}{1-\alpha}} L Q_t
+\]
+
+\clearpage
+
+%==============================================================================
+\section{Research Firms and Monopoly Profits}
+%==============================================================================
+
+\subsection*{Monopoly Pricing}
+Firms set price equal to markup over marginal cost ($mc = 1$):
+\[
+P(s) = \frac{1}{\alpha}
+\tag{Optimal Price}
+\]
+
+\subsection*{Monopoly Profits}
+\begin{derivationbox}{Derivation of $\pi(k)$}
+Firm with quality $k$ maximizes:
+\[
+\pi = [P(s) - 1] X(s) \quad \text{s.t.} \quad X(s) = L\left(\frac{\alpha q^{\alpha k}}{P(s)}\right)^{\frac{1}{1-\alpha}}
+\]
+Substituting $P = 1/\alpha$:
+\[
+\pi(k) = \frac{1-\alpha}{\alpha}\alpha^{\frac{2}{1-\alpha}} L q^{\frac{\alpha}{1-\alpha}k} = \overline{\pi} q^{\frac{\alpha}{1-\alpha}k}
+\]
+\end{derivationbox}
+
+\[
+\boxed{\pi(k) = \overline{\pi} \, q^{\frac{\alpha}{1-\alpha}k}}
+\quad \text{where} \quad \overline{\pi} = \frac{1-\alpha}{\alpha}\alpha^{\frac{2}{1-\alpha}}L
+\tag{Profits}
+\]
+
+\subsection*{Poisson Innovation Process}
+Innovation arrives with probability $p \, dt$ in time $dt$. If innovation occurs, old firm gets zero profits thereafter.
+
+\subsection*{Firm Value}
+\begin{derivationbox}{Derivation of $V$}
+With constant interest rate $r$ and innovation probability $p$, the expected firm value satisfies:
+\[
+rV = \pi(k) + p \cdot 0 - pV \quad \Rightarrow \quad V = \frac{\pi(k)}{r + p}
+\]
+\end{derivationbox}
+
+\[
+\boxed{V(k) = \frac{\pi(k)}{r + p} = \frac{\overline{\pi} \, q^{\frac{\alpha}{1-\alpha}k}}{r + p}}
+\tag{Firm Value}
+\]
+
+\subsection*{R\&D Investment and Free Entry}
+\begin{derivationbox}{Derivation of Innovation Probability}
+R\&D cost: $Z = \xi p q^{\frac{\alpha}{1-\alpha}(k+1)}$
+
+Free entry condition ($V =$ cost of innovation):
+\[
+\frac{\overline{\pi} q^{\frac{\alpha}{1-\alpha}(k+1)}}{(r+p)\xi q^{\frac{\alpha}{1-\alpha}(k+1)}} = 1 \quad \Rightarrow \quad p = \frac{\overline{\pi}}{\xi} - r
+\]
+\end{derivationbox}
+
+\[
+\boxed{p = \frac{\overline{\pi}}{\xi} - r}
+\quad \text{(Same across all sector)}
+\tag{Innovation Prob}
+\]
+
+\begin{warningbox}
+Requires $\overline{\pi}/\xi > r$ for interior solution (positive innovation).
+\end{warningbox}
+
+\clearpage
+
+%==============================================================================
+\section{Growth Derivation}
+%==============================================================================
+
+\subsection*{Quality Index Dynamics}
+\begin{derivationbox}{Derivation of $\dot{Q}/Q$}
+In sector $s$, quality $q^{k(s)}$ stays same with prob $1-p$, jumps to $q^{k(s)+1}$ with prob $p$:
+\[
+\mathbb{E}[\Delta Q] = \int_0^N p\left[q^{(k(s)+1)\frac{\alpha}{1-\alpha}} - q^{k(s)\frac{\alpha}{1-\alpha}}\right]ds
+= p(q^{\frac{\alpha}{1-\alpha}} - 1)Q
+\]
+\end{derivationbox}
+
+\begin{resultbox}
+\[
+\boxed{\frac{\dot{Q}}{Q} = p\left[q^{\frac{\alpha}{1-\alpha}} - 1\right]}
+\tag{Quality Growth}
+\end{resultbox}
+
+\subsection*{Balanced Growth Path Conditions}
+On BGP, all variables grow at same rate:
+\[
+\gamma = \frac{\dot{C}}{C} = \frac{\dot{Q}}{Q} = \frac{\dot{Y}}{Y} = \frac{\dot{Z}}{Z} = \frac{\dot{X}}{X}
+\tag{BGP}
+\]
+
+\subsection*{Market Growth Rate}
+\begin{resultbox}
+\[
+\boxed{\gamma = p\left[q^{\frac{\alpha}{1-\alpha}} - 1\right]}
+\tag{Market Growth}
+\end{resultbox}
+
+\medskip
+\noindent \textbf{Intuition:} Growth comes from quality improvements (vertical innovation), not new varieties.
+
+\clearpage
+
+%==============================================================================
+\section{Market Equilibrium}
+%==============================================================================
+
+\subsection*{Euler Equation}
+Households with CRRA utility ($\sigma$ is IES):
+\[
+\frac{\dot{c}_t}{c_t} = \frac{1}{\sigma}(r_t - \rho)
+\tag{EE}
+\]
+
+\subsection*{Interest Rate}
+From free entry in R\&D:
+\[
+r = \frac{\overline{\pi}}{\xi} - p
+\tag{Interest Rate}
+\]
+
+\subsection*{Solving for Equilibrium $p$ and $\gamma$}
+\begin{derivationbox}{Derivation}
+From Euler: $\gamma = \frac{1}{\sigma}(\frac{\overline{\pi}}{\xi} - p - \rho)$
+
+From quality growth: $\gamma = p(q^{\frac{\alpha}{1-\alpha}} - 1)$
+
+Set equal and solve for $p$:
+\[
+p\left[q^{\frac{\alpha}{1-\alpha}} - 1\right] = \frac{1}{\sigma}\left(\frac{\overline{\pi}}{\xi} - \rho\right) - \frac{p}{\sigma}
+\]
+\[
+p\left[q^{\frac{\alpha}{1-\alpha}} - 1 + \frac{1}{\sigma}\right] = \frac{1}{\sigma}\left(\frac{\overline{\pi}}{\xi} - \rho\right)
+\]
+For $\sigma = 1$ (log utility):
+\[
+p = \left[\frac{\overline{\pi}}{\xi} - \rho\right] q^{-\frac{\alpha}{1-\alpha}}
+\]
+\end{derivationbox}
+
+\begin{resultbox}
+\[
+\boxed{p = \left[\frac{\overline{\pi}}{\xi} - \rho\right] q^{-\frac{\alpha}{1-\alpha}}}
+\tag{Innovation Prob Eqm}
+\end{resultbox}
+
+\begin{resultbox}
+\[
+\boxed{\gamma = \left[\frac{\overline{\pi}}{\xi} - \rho\right]\left[1 - q^{-\frac{\alpha}{1-\alpha}}\right]}
+\tag{Market Growth Eqm}
+\end{resultbox}
+
+\begin{resultbox}
+\[
+\boxed{r = \frac{\overline{\pi}}{\xi}\left[1 - q^{-\frac{\alpha}{1-\alpha}}\right] + \rho q^{-\frac{\alpha}{1-\alpha}}}
+\tag{Interest Rate Eqm}
+\end{resultbox}
+
+\clearpage
+
+%==============================================================================
+\section{Planner Solution}
+%==============================================================================
+
+\subsection*{Planner vs Market Allocation}
+The planner sets price equal to marginal cost ($P^* = 1$), while market sets $P = 1/\alpha > 1$.
+
+\begin{derivationbox}{Derivation of $X^*$}
+Market FOC: $1/\alpha = \alpha L^{1-\alpha} q^{\alpha k} X^{\alpha-1} \Rightarrow X = L\alpha^{\frac{2}{1-\alpha}} q^{\frac{\alpha k}{1-\alpha}}$
+
+Planner FOC: $1 = \alpha L^{1-\alpha} q^{\alpha k} X^{*\alpha-1} \Rightarrow X^* = L\alpha^{\frac{1}{1-\alpha}} q^{\frac{\alpha k}{1-\alpha}}$
+\end{derivationbox}
+
+\begin{resultbox}
+\[
+X^* = L\alpha^{\frac{1}{1-\alpha}} q^{\frac{\alpha k}{1-\alpha}} \quad > \quad X = L\alpha^{\frac{2}{1-\alpha}} q^{\frac{\alpha k}{1-\alpha}}
+\tag{Input Comparison}
+\]
+\end{resultbox}
+
+Since $\alpha^{\frac{1}{1-\alpha}} > \alpha^{\frac{2}{1-\alpha}}$, we have $X^* > X$.
+
+\subsection*{Output Comparison}
+\begin{resultbox}
+\[
+Y = L\alpha^{\frac{2\alpha}{1-\alpha}} Q \quad < \quad Y^* = L\alpha^{\frac{\alpha}{1-\alpha}} Q
+\tag{Output Comparison}
+\]
+\end{resultbox}
+
+The planner achieves higher output for given $Q$ because of lower markup (no monopoly distortion).
+
+\subsection*{Planner Growth Rate}
+\begin{derivationbox}{Derivation of $\gamma^*$}
+Planner interest rate (implicit):
+\[
+r^* = \frac{\pi^*}{\xi}\left[1 - q^{-\frac{\alpha}{1-\alpha}}\right]
+\]
+where $\pi^* = L\frac{1-\alpha}{\alpha}\alpha^{\frac{1}{1-\alpha}} > \overline{\pi}$
+
+Planner growth:
+\[
+\gamma^* = \frac{1}{\sigma}\left[r^* - \rho\right]
+\]
+\end{derivationbox}
+
+\begin{resultbox}
+\[
+\boxed{\gamma^* \gtrless \gamma \quad \text{(ambiguous)}} \quad \text{vs. Romer: } \gamma^* > \gamma
+\tag{Growth Comparison}
+\end{resultbox}
+
+\begin{warningbox}
+Unlike Expanding Varieties where market always underinvests, QL has ambiguous welfare result due to competing externalities.
+\end{warningbox}
+
+\clearpage
+
+%==============================================================================
+\section{Externalities and Inefficiency}
+%==============================================================================
+
+\subsection*{Two Conflicting Externalities}
+
+\begin{center}
+\begin{tabular}{p{0.45\linewidth}p{0.45\linewidth}}
+\toprule
+\textbf{Business Stealing Effect} & \textbf{Temporary Returns Effect} \\
+\midrule
+Entrants don't internalize that they destroy incumbent profits & Present innovators ignore that future innovators benefit from their innovation \\
+Leads to \textbf{too much innovation} & Leads to \textbf{too little innovation} \\
+Negative externality & Positive externality \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\subsection*{Mathematical Representation}
+\begin{itemize}
+    \item Business stealing: $\rho q^{-\frac{\alpha}{1-\alpha}} > 0$ added to interest rate
+    \item This term represents extraction of monopoly profit from predecessor
+\end{itemize}
+
+\subsection*{Planner vs Market: $\gamma^* \lesseqqgtr \gamma$}
+\begin{keyformulabox}
+\[
+\pi^* = L\frac{1-\alpha}{\alpha}\alpha^{\frac{1}{1-\alpha}} > \overline{\pi} = L\frac{1-\alpha}{\alpha}\alpha^{\frac{2}{1-\alpha}}
+\]
+Planner values innovation more than individual inventors.
+\end{keyformulabox}
+
+\subsection*{Comparison with Other Models}
+\begin{center}
+\begin{tabular}{lll}
+\toprule
+\textbf{Model} & \textbf{Externality} & \textbf{Welfare} \\
+\midrule
+Lab-Equipment & Positive (knowledge spillover) & $\gamma^* > \gamma$ (too little) \\
+Expanding Varieties & Positive (love for variety) & $\gamma^* > \gamma$ (too little) \\
+Quality Ladder & Both positive and negative & $\gamma^* \lesseqqgtr \gamma$ (ambiguous) \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\clearpage
+
+%==============================================================================
+\section{Competition and Innovation (Aghion et al., 2005)}
+%==============================================================================
+
+\subsection*{Neck-and-Neck vs Unlevel Sectors}
+\begin{center}
+\begin{tabular}{p{0.45\linewidth}p{0.45\linewidth}}
+\toprule
+\textbf{Neck-and-Neck} & \textbf{Unlevel} \\
+\midrule
+Both firms at same quality rung & One firm ahead (leader) \\
+Competition reduces profits ($\pi_0 < \pi_1$) & Leader earns $\pi_1$, follower earns 0 \\
+Escape competition effect dominates & Schumpeterian effect dominates \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\subsection*{Innovation Incentives}
+\begin{itemize}
+    \item \textbf{Unlevel sector:} Laggard innovates to catch up; leader has no incentive
+    \item \textbf{Neck-and-neck sector:} Both innovate to escape competition and get monopoly profits
+\end{itemize}
+
+\subsection*{U-Shaped Relationship}
+\begin{derivationbox}{Derivation of Innovation-Competition Relation}
+Let $\Delta \in [0,1]$ parameterize competition ($\Delta \to 1$: competition, $\Delta \to 0$: collusion).
+
+Innovation in unlevel: $n_{-1} = (1-\Delta)\frac{\pi_1}{\psi}$
+
+Innovation in neck-and-neck: $n_0 = \frac{\Delta\pi_1}{\psi}$
+
+Steady-state innovation rate:
+\[
+I = \frac{2\pi_1}{\psi(1 + \psi h/\pi_1)} \Delta\left(1 - \Delta + \frac{\psi h}{\pi_1}\right)
+\]
+\end{derivationbox}
+
+\begin{resultbox}
+\[
+\boxed{\frac{\partial I}{\partial \Delta} \propto 1 - 2\Delta + \frac{\psi h}{\pi_1}}
+\tag{Competition-Innovation}
+\end{resultbox}
+
+\subsection*{Interpretation}
+\begin{itemize}
+    \item \textbf{Low competition ($\Delta < 1/2$):} Escape competition effect dominates $\Rightarrow$ more competition $\Rightarrow$ more innovation
+    \item \textbf{High competition ($\Delta > 1/2$):} Schumpeterian effect dominates $\Rightarrow$ more competition $\Rightarrow$ less innovation
+\end{itemize}
+
+\begin{tcolorbox}[colback=purple!10,colframe=purple,title=Empirical Prediction]
+U-shaped relationship between competition and innovation (Aghion et al., 2005).
+\end{tcolorbox}
+
+\clearpage
+
+%==============================================================================
+\section{Policy Analysis}
+%==============================================================================
+
+\subsection*{R\&D Tax Effects}
+Consider a tax $\tau$ on R\&D investment. The free entry condition becomes:
+\[
+\frac{V(k+1)}{\xi q^{\frac{\alpha}{1-\alpha}(k+1)}} = 1 + \tau
+\]
+
+\begin{derivationbox}{Derivation of $p(\tau)$}
+With tax, R\&D cost increases. For free entry to hold, expected benefit must rise:
+\[
+r(\tau) = \frac{\pi q^{-\frac{\alpha}{1-\alpha}(k+1)}}{\xi(1+\tau)} - p(\tau)
+\]
+Since $p(\tau)$ decreases with $\tau$ (higher cost lowers innovation), and $r$ falls:
+\[
+\gamma(\tau) = \frac{1}{\sigma}[r(\tau) - \rho] \quad \Rightarrow \quad \frac{\partial\gamma}{\partial\tau} < 0
+\]
+\end{derivationbox}
+
+\[
+\boxed{p(\tau) \text{ is decreasing in } \tau}
+\tag{Tax on Innovation}
+\]
+
+\subsection*{Key Parameters}
+\begin{align*}
+\overline{\pi} &= \frac{1-\alpha}{\alpha}\alpha^{\frac{2}{1-\alpha}}L \\
+\pi^* &= \frac{1-\alpha}{\alpha}\alpha^{\frac{1}{1-\alpha}}L
+\end{align*}
+
+\clearpage
+
+%==============================================================================
+\section{Implementation Notes}
+%==============================================================================
+
+\subsection*{Key Differences from Expanding Varieties}
+\begin{enumerate}
+    \item Growth engine: Quality improvements (vertical) vs new varieties (horizontal)
+    $N$ fixed vs endogenous
+    Creative destruction vs no destruction
+    $\gamma^* \lesseqqgtr \gamma$ vs $\gamma^* > \gamma$
+\end{enumerate}
+
+\subsection*{Exam Tips}
+\begin{itemize}
+    \item Always distinguish vertical from horizontal differentiation
+    \item Remember the two externalities in QL: business stealing (too much) and temporary returns (too little)
+    \item Know the U-shaped competition-innovation relationship
+    \item Don't assume market underinvests in R\&D (unlike Romer!)
+\end{itemize}
+
+\subsection*{Compilation}
+Compile with: \texttt{pdflatex} or \texttt{lualatex}
+
+\clearpage
+
+\end{document}

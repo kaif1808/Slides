@@ -1,0 +1,742 @@
+\documentclass[a4paper,11pt]{article}
+
+% ─── Geometry ────────────────────────────────────────────────────────────────
+\usepackage{geometry}
+\geometry{margin=1in, headheight=15pt}
+
+% ─── Mathematics ─────────────────────────────────────────────────────────────
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathtools}
+
+% ─── Graphics / Colours ──────────────────────────────────────────────────────
+\usepackage{graphicx}
+\usepackage{xcolor}
+\definecolor{blue3}{RGB}{0,0,180}
+\definecolor{green3}{RGB}{0,120,0}
+\definecolor{orange3}{RGB}{200,100,0}
+\definecolor{red3}{RGB}{180,0,0}
+\definecolor{grey3}{RGB}{80,80,80}
+
+% ─── Units ───────────────────────────────────────────────────────────────────
+\usepackage{siunitx}
+\sisetup{detect-all}
+
+% ─── Links ───────────────────────────────────────────────────────────────────
+\usepackage[colorlinks=true,linkcolor=blue3,citecolor=blue3,urlcolor=blue3]{hyperref}
+\usepackage{cleveref}
+
+% ─── Boxes ───────────────────────────────────────────────────────────────────
+\usepackage{tcolorbox}
+\tcbuselibrary{skins,breakable}
+
+\newtcolorbox{answerbox}[1][]{
+    colback=red3!5,
+    colframe=red3!60,
+    coltitle=red3,
+    title={Solution:},
+    fonttitle=\bfseries,
+    breakable,
+    #1
+}
+
+% ─── Tables / Lists ──────────────────────────────────────────────────────────
+\usepackage{booktabs}
+\usepackage{enumitem}
+
+% ─── Notation commands ───────────────────────────────────────────────────────
+\newcommand{\ktilde}{\tilde{k}}
+\newcommand{\ytilde}{\tilde{y}}
+\newcommand{\ctilde}{\tilde{c}}
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\bgp}{\mathrm{BGP}}
+
+% ─── Header / Footer ─────────────────────────────────────────────────────────
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\textbf{14E022 Macroeconomics I} \quad Practice Exam 5 -- Solutions}
+\rhead{BSE 2025--26}
+\cfoot{\thepage}
+
+% ═════════════════════════════════════════════════════════════════════════════
+\begin{document}
+% ═════════════════════════════════════════════════════════════════════════════
+
+\begin{center}
+    {\LARGE \textbf{14E022 Macroeconomics I}}\\[6pt]
+    {\Large \textbf{Practice Exam 5 --- Answer Key}}\\[8pt]
+    {\large BSE --- Academic Year 2025--26}
+\end{center}
+
+\noindent\rule{\textwidth}{0.4pt}
+
+% ═════════════════════════════════════════════════════════════════════════════
+\section{Question 1 --- Ramsey Model with Labour Income Tax}
+% ═════════════════════════════════════════════════════════════════════════════
+
+\subsection*{1.\ (6 points)}
+
+\begin{answerbox}
+\textbf{Step 1: Household budget constraint.}
+
+The household receives after-tax labour income $(1-\tau)w_t$, capital income $r_t a_t$
+(untaxed), and the lump-sum transfer $T_t = \tau w_t$. The flow budget constraint is:
+\[
+    \dot{a}_t = r_t a_t + (1-\tau)w_t + \tau w_t - c_t
+    = r_t a_t + w_t - c_t.
+\]
+The tax and transfer cancel \emph{exactly}: the household's effective budget constraint is
+identical to the no-tax case.
+
+\textbf{Step 2: Current-value Hamiltonian.}
+
+Let $a_t$ be the state variable and $c_t$ the control. The current-value Hamiltonian is:
+\[
+    \mathcal{H} = \frac{c^{1-\sigma}-1}{1-\sigma} + \mu\bigl[r a + w - c\bigr].
+\]
+
+\textbf{Step 3: First-order conditions.}
+
+\begin{align*}
+    \frac{\partial\mathcal{H}}{\partial c} = 0: &\quad c^{-\sigma} = \mu. \\
+    \dot{\mu} = \rho\mu - \frac{\partial\mathcal{H}}{\partial a}: &\quad
+    \dot{\mu} = \rho\mu - \mu r.
+\end{align*}
+
+Differentiating $\mu = c^{-\sigma}$ with respect to time gives
+$\dot{\mu} = -\sigma c^{-\sigma-1}\dot{c}$.  Substituting into the costate equation:
+\[
+    -\sigma c^{-\sigma-1}\dot{c} = (\rho - r)\,c^{-\sigma}
+    \implies
+    \boxed{\frac{\dot{c}}{c} = \frac{r - \rho}{\sigma}.}
+\]
+
+\textbf{Step 4: Why $\tau$ does not appear.}
+
+The tax $\tau$ is absent because the lump-sum rebate $T_t = \tau w_t$ exactly offsets the
+labour income tax: the household's disposable income is unchanged. This is
+\emph{Ricardian equivalence for lump-sum rebates}: any revenue the government takes from
+one hand, it returns through the other, leaving the intertemporal consumption decision
+unaltered. Only the after-tax return to capital $r_t$ governs the Euler equation, and
+that is untouched by the tax.
+\end{answerbox}
+
+\subsection*{2.\ (7 points)}
+
+\begin{answerbox}
+\textbf{Steady-state conditions.}
+
+On the BGP, $\dot{c} = 0$ and $\dot{k} = 0$.
+
+\textit{Condition 1 (Modified Golden Rule).} Setting $\dot{c}/c = 0$ in the Euler equation:
+\[
+    r^* = \rho \implies f'(k^*) - \delta = \rho \implies
+    \boxed{f'(k^*) = \rho + \delta.}
+\]
+
+\textit{Condition 2 (Market clearing / resource constraint).} With $n = 0$ and no public
+spending, capital market clearing requires:
+\[
+    \dot{k} = f(k) - \delta k - c = 0 \implies \boxed{c^* = f(k^*) - \delta k^*.}
+\]
+
+\textbf{Comparison to no-tax steady state.}
+
+The modified Golden Rule $f'(k^*) = \rho + \delta$ is \emph{identical} to the no-tax
+Ramsey condition, since $\tau$ does not enter either equation. Therefore $k^*$ is
+\emph{unchanged} by the labour income tax with lump-sum rebate.
+
+\textbf{Comparison to the Golden Rule.}
+
+The Golden Rule satisfies $f'(k^{GR}) = \delta$ (with $n=0$). Since $\rho > 0$, we have
+$f'(k^*) = \rho + \delta > \delta = f'(k^{GR})$, and by diminishing returns
+$k^* < k^{GR}$. The Ramsey economy is always below the Golden Rule (it is impatient).
+
+\textbf{Is the labour income tax distortionary?}
+
+No. Because the tax and the lump-sum rebate cancel in the budget constraint, the tax does
+not alter the intertemporal price of consumption (governed only by $r$), nor the
+steady-state capital stock. The allocation of resources is identical to the no-tax economy.
+The labour income tax with full lump-sum rebate is \emph{non-distortionary}.
+\end{answerbox}
+
+\subsection*{3.\ (6 points)}
+
+\begin{answerbox}
+\textbf{Transition dynamics.}
+
+Since the economy was already at the no-tax Ramsey steady state $(k^*, c^*)$, and since
+the introduction of $\tau > 0$ with a full lump-sum rebate leaves \emph{both} the Euler
+equation and the resource constraint unchanged (as shown in parts 1 and 2), the steady
+state $(k^*, c^*)$ is unaffected.
+
+On impact at $t=0$: \emph{nothing changes}. Consumption does not jump; capital does not
+change (it is a state variable). The household's budget set is identical to what it was
+before.
+
+Along the transition path: there \emph{is} no transition. The economy was at the
+(unchanged) steady state and remains there.
+
+\textbf{Phase diagram interpretation.}
+
+The phase diagram has two loci:
+\begin{itemize}[itemsep=2pt]
+    \item $\dot{c}=0$ locus: defined by $f'(k) = \rho + \delta$. Vertical line at $k^*$.
+    \item $\dot{k}=0$ locus: defined by $c = f(k) - \delta k$. Hump-shaped.
+\end{itemize}
+Both loci are determined solely by $f$, $\delta$, and $\rho$ --- none of which depend on
+$\tau$. The tax leaves the phase diagram completely unchanged. The economy sits at the
+intersection point and stays there.
+\end{answerbox}
+
+\subsection*{4.\ (6 points)}
+
+\begin{answerbox}
+\textbf{Change to budget constraint.}
+
+If revenue finances a public good $G_t = \tau w_t$ with no utility or production value,
+the household no longer receives the lump-sum transfer. The budget constraint becomes:
+\[
+    \dot{a}_t = r_t a_t + (1-\tau)w_t - c_t.
+\]
+The term $\tau w_t$ is now absent from disposable income.
+
+\textbf{Effect on the Euler equation.}
+
+The current-value Hamiltonian is now:
+\[
+    \mathcal{H} = \frac{c^{1-\sigma}-1}{1-\sigma} + \mu\bigl[r a + (1-\tau)w - c\bigr].
+\]
+The FOC with respect to $c$ still gives $c^{-\sigma} = \mu$, and the costate equation
+still gives $\dot{\mu} = (\rho - r)\mu$. Therefore:
+\[
+    \frac{\dot{c}}{c} = \frac{r - \rho}{\sigma}.
+\]
+The Euler equation is \emph{unchanged}. The $\dot{c} = 0$ locus is still $f'(k^*) = \rho + \delta$,
+so the steady-state capital stock $k^*$ is still the same.
+
+\textbf{Effect on steady-state consumption.}
+
+The resource constraint (economy-wide) is:
+\[
+    \dot{k} = f(k) - \delta k - c - G = f(k) - \delta k - c - \tau w.
+\]
+In steady state $\dot{k} = 0$:
+\[
+    c^* = f(k^*) - \delta k^* - \tau w^*,
+\]
+where $w^* = f(k^*) - k^* f'(k^*)$. Consumption is \emph{lower} by $\tau w^*$ compared
+to the no-tax case, since government spending crowds out private consumption
+one-for-one.
+
+\textbf{Is the tax distortionary?}
+
+In terms of capital accumulation: no. The $k^*$ is unchanged because the Euler equation
+and the $\dot{c}=0$ locus are the same. The tax does not distort the intertemporal
+margin between present and future consumption (which is governed only by $r$).
+
+However, the tax \emph{does} reduce household welfare: steady-state consumption falls by
+$\tau w^* > 0$, and on the new BGP households are worse off. The tax distorts the
+consumption level (a level effect) but not the capital allocation or growth rate. In this
+narrow sense it is a \emph{non-distortionary} tax on allocative efficiency, but it
+imposes a welfare cost through the reduction in private consumption.
+
+\textbf{Transition dynamics.}
+
+On impact at $t=0$, the tax is implemented. The steady state shifts from
+$(k^*, f(k^*)-\delta k^*)$ to $(k^*, f(k^*)-\delta k^* - \tau w^*)$: the $\dot{k}=0$
+locus shifts down by $\tau w^*$ at every $k$. The $\dot{c}=0$ locus is unchanged.
+On impact, $c$ must jump \emph{down} to the new saddle path leading to the lower
+consumption steady state. Capital $k$ remains at $k^*$ on impact (state variable), then
+remains there (since $k^*$ is unchanged). So the transition is instantaneous: $c$ jumps
+down to the new $c^*$ immediately, and no further adjustment is needed.
+\end{answerbox}
+
+\clearpage
+
+% ═════════════════════════════════════════════════════════════════════════════
+\section{Question 2 --- Aghion--Howitt Quality Ladders}
+% ═════════════════════════════════════════════════════════════════════════════
+
+\subsection*{1.\ (5 points)}
+
+\begin{answerbox}
+\textbf{Step 1: Final-good firm's demand for intermediates.}
+
+The final-good firm maximises profits taking $q_t$ and $p$ as given:
+\[
+    \max_x \; A q_t x^{\alpha} - p\,x.
+\]
+First-order condition:
+\[
+    \alpha A q_t x^{\alpha-1} = p \implies x = \left(\frac{\alpha A q_t}{p}\right)^{1/(1-\alpha)}.
+\]
+
+\textbf{Step 2: Monopoly price.}
+
+The current quality leader produces the intermediate good one-for-one from labour at
+marginal cost $w$ (wage). With limit pricing against the previous-generation technology
+(which would set price equal to $w/\alpha$ to deter entry by the previous leader at quality
+$q_t/\lambda$), the unconstrained monopoly price is:
+\[
+    p^* = \frac{w}{\alpha},
+\]
+which is a markup $1/\alpha > 1$ over marginal cost $w$.
+
+\textbf{Step 3: Monopoly profits.}
+
+Profits are revenue minus cost:
+\[
+    \pi = (p^* - w)\,x^* = \left(\frac{w}{\alpha} - w\right)x^*
+    = \frac{1-\alpha}{\alpha}\,w\,x^*.
+\]
+Substituting $x^* = (\alpha^2 A q_t/w)^{1/(1-\alpha)}$:
+\[
+    \boxed{\pi = \frac{1-\alpha}{\alpha}\,w\,\left(\frac{\alpha^2 A q_t}{w}\right)^{1/(1-\alpha)}.}
+\]
+Note that $\pi$ is proportional to $q_t$, consistent with BGP scaling.
+\end{answerbox}
+
+\subsection*{2.\ (7 points)}
+
+\begin{answerbox}
+\textbf{Step 1: Bellman equation for the quality leader.}
+
+Being the current quality leader generates flow profits $\pi$ but the leader is displaced
+at Poisson rate $\iota$ (the aggregate rate of creative destruction). The no-arbitrage
+Bellman equation is:
+\[
+    r V = \pi - \iota V + \dot{V},
+\]
+or equivalently $(r + \iota)V = \pi + \dot{V}$.
+
+\textbf{Step 2: BGP value.}
+
+On the BGP, $r$, $\iota$, and $\pi$ are constant. Conjecture $\dot{V} = 0$ (the value of
+leadership is constant in BGP units). Then:
+\[
+    \boxed{V^* = \frac{\pi}{r + \iota}.}
+\]
+The value equals the discounted flow of profits, with $r + \iota$ as the effective
+discount rate (combining time preference and the risk of displacement).
+
+\textbf{Step 3: Free-entry condition.}
+
+Each unit of research labour generates a successful innovation at rate $\lambda$. A
+successful innovation delivers value $V^*$ (the new leader captures the prize). The
+expected return per unit of research labour per unit of time is $\lambda V^*$. The cost
+of one unit of research labour is the wage $w$. Free entry drives expected profits to zero:
+\[
+    \lambda V^* = w.
+\]
+
+\textbf{Step 4: Equilibrium creative destruction rate.}
+
+Substituting $V^* = \pi/(r+\iota)$ into the free-entry condition:
+\[
+    \frac{\lambda \pi}{r + \iota} = w
+    \implies r + \iota = \frac{\lambda\pi}{w}
+    \implies \iota^* = \frac{\lambda\pi}{w} - r.
+\]
+Using $\pi = \frac{1-\alpha}{\alpha}w x^*$:
+\[
+    \boxed{\iota^* = \lambda\,\frac{1-\alpha}{\alpha}\,x^* - r,}
+\]
+where $x^* = L - L_R = L - \iota^*/\lambda$ gives a fixed-point equation in $\iota^*$.
+This pins down the equilibrium jointly with the labour market clearing condition.
+\end{answerbox}
+
+\subsection*{3.\ (5 points)}
+
+\begin{answerbox}
+\textbf{Business-stealing externality.}
+
+When an entrant researcher successfully innovates, she displaces the incumbent quality
+leader. From the incumbent's perspective, this is a loss of $V^*$ (the value of
+leadership vanishes). From the social planner's perspective, this transfer of leadership
+is a pure redistribution of monopoly rents --- no new real resources are created by
+displacement itself. The entrant ignores the loss she imposes on the incumbent and
+focuses only on the prize $V^*$ she gains. This leads researchers to over-invest in R\&D
+relative to what a social planner would choose. \textbf{Direction: pushes $\iota$ above
+the social optimum.}
+
+\textbf{Appropriability (consumer-surplus) externality.}
+
+A quality improvement raises the productivity of the intermediate good, generating
+surplus for all downstream final-good producers and ultimately consumers. The
+innovating monopolist, however, captures only her monopoly profits $\pi$, which are a
+fraction of the total social value of the innovation. The rest --- the consumer surplus
+triangle between the competitive price $w$ and the monopoly price $w/\alpha$ ---
+goes uncaptured by the innovator. Because the innovator cannot appropriate the full
+social return, private incentives to innovate are too low. \textbf{Direction: pushes
+$\iota$ below the social optimum.}
+\end{answerbox}
+
+\subsection*{4.\ (4 points)}
+
+\begin{answerbox}
+\textbf{Condition for $\iota^* > \iota^{\text{opt}}$.}
+
+Equilibrium R\&D exceeds the social optimum when the \textbf{business-stealing
+externality dominates} the appropriability externality. This occurs when the value
+destroyed by displacing the incumbent ($V^*$, lost to the old leader) is large relative
+to the consumer surplus that the innovator fails to capture.
+
+Formally, define the social value of innovation as $W^* = V^* + CS^*$, where $CS^*$ is
+the consumer surplus gain from the quality improvement. The social planner equates the
+marginal cost of research to the full social return $\lambda W^*$. The decentralised
+equilibrium equates it to $\lambda V^*$. Over-investment occurs when:
+\[
+    \lambda V^* > \lambda W^* \iff V^* > W^*,
+\]
+which requires the loss imposed on the incumbent ($V^*$, internalised by the social
+planner as a cost) to outweigh the consumer surplus gain. Since $V^* = \pi/(r+\iota)$,
+this is more likely when monopoly profits $\pi$ are large relative to the consumer
+surplus --- i.e., when the markup $1/\alpha$ is large (small $\alpha$) and the step size
+$\lambda$ is not too large (so the consumer surplus gain is modest).
+\end{answerbox}
+
+\subsection*{5.\ (4 points)}
+
+\begin{answerbox}
+\textbf{Policy mix to implement the social optimum.}
+
+Two externalities operate in opposite directions, so a single instrument cannot correct
+both simultaneously. A proposed mix:
+
+\textbf{Instrument 1: R\&D subsidy $s_R$.} A per-unit subsidy to research labour raises
+the private return to innovation, correcting the appropriability externality (which makes
+private $\iota$ too low). The subsidy effectively raises the private prize from $\lambda
+V^*$ to $\lambda V^* + s_R$, encouraging more R\&D.
+
+\textbf{Instrument 2: Innovation tax / patent narrowing.} A tax on the profits of
+successful innovators (or equivalently, patent policies that shorten the effective
+monopoly period) reduces $V^*$, correcting the business-stealing externality (which makes
+private $\iota$ too high). By reducing the prize for displacement, this instrument
+internalises the rent-destruction cost.
+
+\textbf{Why a single instrument fails.} A pure R\&D subsidy would correct appropriability
+but exacerbate business-stealing. A pure R\&D tax would reduce business-stealing but
+worsen the appropriability problem. The social optimum requires calibrating both: the
+subsidy to close the appropriability gap and the tax (or patent design) to close the
+business-stealing gap simultaneously. Patent breadth and duration policies that
+independently affect $\pi$ and $V^*$ are a natural two-dimensional instrument set.
+\end{answerbox}
+
+\clearpage
+
+% ═════════════════════════════════════════════════════════════════════════════
+\section{Question 3 --- Development Accounting with Heterogeneous Human Capital}
+% ═════════════════════════════════════════════════════════════════════════════
+
+\subsection*{1.\ (6 points)}
+
+\begin{answerbox}
+\textbf{Step 1: Divide by $L_i$.}
+
+\[
+    \frac{Y_i}{L_i} = \frac{K_i^{\alpha}(h_i L_i)^{1-\alpha} A_i}{L_i}
+    = K_i^{\alpha}\,h_i^{1-\alpha}\,L_i^{1-\alpha-1}\,A_i
+    = K_i^{\alpha}\,L_i^{-\alpha}\,h_i^{1-\alpha}\,A_i.
+\]
+
+\textbf{Step 2: Re-express capital in terms of the capital-output ratio.}
+
+Write $K_i = (K_i/Y_i)\cdot Y_i$. Then:
+\[
+    K_i^{\alpha} = \left(\frac{K_i}{Y_i}\right)^{\!\alpha} Y_i^{\alpha}.
+\]
+Substituting and using $y_i \equiv Y_i/L_i$:
+\[
+    y_i = \left(\frac{K_i}{Y_i}\right)^{\!\alpha} y_i^{\alpha}\,h_i^{1-\alpha}\,A_i.
+\]
+Collect $y_i^{\alpha}$ on the right and $y_i$ on the left:
+\[
+    y_i^{1-\alpha} = \left(\frac{K_i}{Y_i}\right)^{\!\alpha} h_i^{1-\alpha} A_i
+    \implies
+    y_i = \left(\frac{K_i}{Y_i}\right)^{\!\alpha/(1-\alpha)} h_i\,A_i.
+\]
+
+\textbf{Development accounting identity:}
+\[
+    \boxed{y_i = \underbrace{\left(\frac{K_i}{Y_i}\right)^{\!\alpha/(1-\alpha)}}_{\text{capital intensity}}
+    \cdot\underbrace{h_i}_{\text{human capital}}
+    \cdot\underbrace{A_i}_{\text{TFP}}.}
+\]
+With $\alpha = 1/3$, the exponent $\alpha/(1-\alpha) = 1/2$.
+\end{answerbox}
+
+\subsection*{2.\ (8 points)}
+
+\begin{answerbox}
+\textbf{Step 1: Total log income gap.}
+
+\[
+    \ln\!\left(\frac{y_{US}}{y_E}\right) = \ln\!\left(\frac{1.00}{0.10}\right) = \ln 10 \approx 2.303.
+\]
+
+\textbf{Step 2: Contribution of physical capital intensity.}
+
+With $\alpha/(1-\alpha) = 1/2$:
+\[
+    \Delta\ln y_{\text{capital}} = \frac{1}{2}\ln\!\left(\frac{\kappa_{US}}{\kappa_E}\right)
+    = \frac{1}{2}\ln\!\left(\frac{3.00}{2.00}\right)
+    = \frac{1}{2}\ln(1.5) = \frac{1}{2}(0.405) \approx 0.203.
+\]
+Share of gap: $0.203 / 2.303 \approx \mathbf{8.8\%}$.
+
+\textbf{Step 3: Contribution of human capital.}
+
+\[
+    \Delta\ln y_{\text{human}} = \ln\!\left(\frac{h_{US}}{h_E}\right)
+    = \ln\!\left(\frac{1.00}{0.55}\right) = \ln(1.818) \approx 0.598.
+\]
+Share of gap: $0.598 / 2.303 \approx \mathbf{26.0\%}$.
+
+\textbf{Step 4: TFP residual.}
+
+\[
+    \Delta\ln y_{\text{TFP}} = 2.303 - 0.203 - 0.598 = 1.502.
+\]
+Share of gap: $1.502 / 2.303 \approx \mathbf{65.2\%}$.
+
+\textbf{Summary table.}
+
+\begin{center}
+\begin{tabular}{lcc}
+\toprule
+Source & Log contribution & Share of gap \\
+\midrule
+Capital intensity $\kappa^{1/2}$ & 0.203 & 8.8\% \\
+Human capital $h$                & 0.598 & 26.0\% \\
+TFP residual $A$                 & 1.502 & 65.2\% \\
+\midrule
+Total                            & 2.303 & 100\% \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+TFP accounts for roughly \textbf{65\%} of the log income gap, consistent with the
+Hall--Jones (1999) finding that TFP differences dominate cross-country income variation.
+\end{answerbox}
+
+\subsection*{3.\ (6 points)}
+
+\begin{answerbox}
+\textbf{The misallocation critique.}
+
+The development accounting exercise attributes the TFP residual $A_i$ to ``technology.''
+Hsieh and Klenow (2009) argue that a substantial portion of this residual instead reflects
+\emph{resource misallocation}: capital and labour are not allocated to their most
+productive uses across firms within an economy.
+
+\textbf{TFPR and its equalization under no distortions.}
+
+In the Hsieh--Klenow framework, each firm $s$ has physical TFP (TFPQ$_s$) but also faces
+firm-specific output wedges $\tau_{Y,s}$ and capital wedges $\tau_{K,s}$. Revenue TFP is:
+\[
+    \mathrm{TFPR}_s \equiv P_s \cdot \mathrm{TFPQ}_s.
+\]
+Under perfect competition with no distortions, profit maximisation with a common markup
+equates TFPR across all firms: higher-productivity firms charge lower prices so that
+$P_s \cdot \mathrm{TFPQ}_s$ is the same for all $s$. Dispersion in TFPR is therefore a
+signal that distortions are present.
+
+\textbf{How TFPR dispersion reduces aggregate TFP.}
+
+When wedges prevent resources from flowing to high-TFPQ firms, aggregate TFP falls below
+its frictionless benchmark. Hsieh and Klenow show:
+\[
+    \frac{A_i}{A_i^*} = \prod_s \left(\frac{\overline{\mathrm{TFPR}}}{\mathrm{TFPR}_s}\right)^{\text{share}_s} < 1
+    \quad \text{whenever TFPR is dispersed.}
+\]
+High-productivity firms are constrained to operate below efficient scale; low-productivity
+firms survive and absorb resources they would not in a frictionless equilibrium. The
+cross-sectional standard deviation of log TFPR quantifies the severity of this
+misallocation.
+
+\textbf{Implication for development accounting.}
+
+The TFP residual $A_i$ in the standard decomposition conflates true technology differences
+with misallocation losses. Two countries could have identical production technologies at
+the firm level yet exhibit large measured TFP gaps if one suffers from severe misallocation.
+Policies that reduce wedges (entry barriers, credit distortions, product market regulations)
+can raise measured aggregate TFP without any technology transfer.
+\end{answerbox}
+
+\subsection*{4.\ (5 points)}
+
+\begin{answerbox}
+\textbf{Implication: policy should target the sources of wedges, not just accumulation.}
+
+Since TFP (including misallocation) explains most of the income gap, and since much of
+the TFP gap may reflect misallocation rather than technology, development policy should
+focus on reducing the distortions that cause TFPR dispersion --- not just subsidising
+investment in physical or human capital.
+
+\textbf{Policy recommendation 1: Reduce barriers to firm entry, exit, and reallocation.}
+
+Entry barriers (licensing, regulatory costs) prevent high-productivity entrants from
+displacing low-productivity incumbents. Exit barriers (bail-outs, labour regulations that
+prevent layoffs) keep low-productivity firms alive. Removing these barriers allows
+resources to flow toward high-TFPQ firms, raising aggregate TFP through reallocation.
+\textit{Limitation}: identifying the binding barrier requires firm-level data. Reforms
+that open entry may also increase exit, causing short-run disruption and political
+resistance. The appropriate speed of liberalisation is context-dependent.
+
+\textbf{Policy recommendation 2: Deepen and reform financial markets.}
+
+Capital wedges $\tau_{K,s}$ often arise because high-productivity firms --- frequently
+small, young, or informal --- cannot borrow at the same terms as large established firms.
+Strengthening creditor rights, improving information asymmetry (credit registries), and
+developing equity markets enables productive firms to access capital and expand.
+\textit{Limitation}: credit market deepening can also fuel misallocation if lenders
+themselves have poor information (financing connected firms over productive ones).
+Financial sector reforms require complementary institutional improvements (rule of law,
+accounting standards) to be effective, making them slow and difficult to implement.
+\end{answerbox}
+
+\clearpage
+
+% ═════════════════════════════════════════════════════════════════════════════
+\section{Short Questions}
+% ═════════════════════════════════════════════════════════════════════════════
+
+\subsection*{SQ1.\ (8 points) Kaldor Facts and Balanced Growth}
+
+\begin{answerbox}
+\textbf{Three Kaldor stylised facts.}
+
+\begin{enumerate}[label=(\roman*), itemsep=3pt]
+    \item The growth rate of output per worker is roughly constant over long periods.
+    \item The capital-output ratio $K/Y$ is roughly constant over time.
+    \item The return to capital $r$ is roughly constant over time, and labour and capital
+    shares of income are roughly constant.
+\end{enumerate}
+(Additional Kaldor facts include persistent cross-country differences in growth rates and
+the positive correlation between the investment rate and output per worker.)
+
+\textbf{Which production functions are consistent with balanced growth?}
+
+Balanced growth requires constant growth rates of all per-worker quantities and constant
+factor shares simultaneously. Uzawa (1961) showed that balanced growth in a
+neoclassical model requires that technical progress be \emph{labour-augmenting}
+(Harrod-neutral). Given Harrod-neutral technology, the production function must satisfy
+certain conditions on the elasticity of substitution. Specifically, constant factor
+shares on a BGP require that the elasticity of substitution between capital and
+labour-augmenting technology converges to 1 as the economy grows --- which is exactly the
+property of \emph{Cobb-Douglas} production functions, and more generally of functions
+that approach Cobb-Douglas asympotically (such as CES with unit elasticity in the limit).
+
+\textbf{The privileged role of Cobb-Douglas.}
+
+The Cobb-Douglas function $Y = K^{\alpha}(AL)^{1-\alpha}$ delivers constant factor
+shares \emph{exactly and for all input ratios}, not merely asymptotically. Capital's
+share is always $\alpha$ regardless of the capital-labour ratio, and the labour share is
+always $1-\alpha$. This makes Cobb-Douglas the unique production function that is
+simultaneously consistent with all Kaldor facts at every point along the transition path,
+not only on the BGP. It is therefore the workhorse of both growth theory and empirical
+work: it is simple, tractable, and exactly consistent with the long-run regularities
+identified by Kaldor.
+\end{answerbox}
+
+\subsection*{SQ2.\ (9 points) TVC and the No-Ponzi Condition}
+
+\begin{answerbox}
+\textbf{The Transversality Condition (TVC).}
+
+The TVC for the household's optimal control problem in the Ramsey model (with costate
+variable $\mu_t$ = shadow price of wealth, discount $\rho$, capital $k_t$) is:
+\[
+    \lim_{t\to\infty} e^{-\rho t}\,\mu_t\,k_t = 0.
+\]
+Equivalently, since $\mu_t = u'(c_t)$ and using the transversality interpretation in
+terms of asset value:
+\[
+    \lim_{t\to\infty} e^{-\int_0^t r_s\,\dd s}\,k_t = 0.
+\]
+Economically: the present value of the terminal capital stock must be zero. The household
+should not arrive at ``infinity'' with assets that still have positive value --- it would
+have been optimal to consume more instead.
+
+\textbf{The No-Ponzi Condition (NPC).}
+
+The NPC constrains the household to not run explosive debt:
+\[
+    \lim_{t\to\infty} a_t\,e^{-\int_0^t r_s\,\dd s} \geq 0.
+\]
+The household cannot borrow more than the present value of its future repayments. Without
+this constraint, households could finance unlimited current consumption by rolling over
+debt forever (a Ponzi scheme). The NPC closes the household's optimisation problem.
+
+\textbf{How the TVC rules out over-accumulation.}
+
+Suppose the economy follows a path with $k_t \to \infty$. As $k$ grows without bound,
+$f'(k) \to 0 < \rho + \delta$, so the capital return falls below the discount rate.
+Along such a path, the costate $\mu_t = u'(c_t)$ must be growing fast enough to satisfy
+the costate equation $\dot{\mu} = (\rho - r)\mu > 0$. This means $\mu_t$ grows
+explosively and $e^{-\rho t}\mu_t k_t \to \infty$, violating the TVC. The TVC therefore
+rules out all over-accumulation paths as sub-optimal: the household would do better to
+consume more and let capital fall back toward $k^*$.
+
+\textbf{Contrast with the Solow model.}
+
+In the Solow model, the saving rate $s$ is fixed exogenously. If $s$ is set above the
+Golden Rule saving rate $s^{GR} = \alpha$ (Cobb-Douglas), the economy accumulates capital
+beyond $k^{GR}$ and enters the dynamically inefficient region where $f'(k) < \delta + n$.
+There is no optimising household to impose the TVC, and no mechanism to prevent
+over-accumulation. The Solow model therefore admits dynamically inefficient equilibria as
+possible steady states, while the Ramsey model does not.
+\end{answerbox}
+
+\subsection*{SQ3.\ (8 points) Baumol Cost Disease and Aggregate Productivity}
+
+\begin{answerbox}
+\textbf{What is Baumol's cost disease?}
+
+Baumol's cost disease (Baumol and Bowen, 1966) refers to the phenomenon by which the
+relative price of labour-intensive services rises persistently over time, and the
+employment share of these services tends to increase, even without any change in their
+productivity.
+
+\textbf{Mechanism: why the stagnant sector's relative price rises.}
+
+In a two-sector economy with a progressive sector (productivity grows at rate $g > 0$)
+and a stagnant sector (productivity fixed), a competitive labour market equalises wages
+across sectors at $w_t = A_{P,t}$. Since the stagnant sector's productivity does not
+grow, the real cost of producing a unit of stagnant output rises at rate $g$: a unit of
+stagnant output requires the same amount of labour as always, but that labour now costs
+$w_t = A_0 e^{gt}$. The relative price $p_S/p_P$ rises at rate $g$, reflecting the rising
+opportunity cost of the labour that must be devoted to the stagnant sector.
+
+\textbf{What drives rising employment in the stagnant sector.}
+
+For a given expenditure share on stagnant services, constant productivity in that sector
+means that more labour is required to produce the demanded quantity as wages rise. If
+preferences are non-homothetic with an income elasticity of stagnant goods exceeding one,
+rising income further increases the demand for services, amplifying the employment shift.
+
+\textbf{Does rising service employment imply lower aggregate productivity growth?}
+
+Not necessarily. In the Baumol two-sector model, aggregate productivity growth equals the
+weighted average of sectoral productivity growth rates. If the employment share of the
+stagnant sector rises, this weight shifts toward zero and aggregate productivity growth
+falls over time. However, under \textbf{Cobb-Douglas preferences}, expenditure shares are
+constant, which implies employment shares are also constant (since both sectors' outputs
+are produced with labour alone). In this case, aggregate productivity growth equals
+$\beta g$ (the expenditure-weighted average), and it remains constant over time regardless
+of the rising relative price of services. Rising service \emph{employment} as a share of
+total employment does not materialise under Cobb-Douglas preferences precisely because
+the unit-elastic substitution keeps spending shares pinned, and the labour allocation
+tracks spending.
+\end{answerbox}
+
+\vspace{20pt}
+\noindent\rule{\textwidth}{0.4pt}
+
+\begin{center}
+    \textit{End of Practice Exam 5 Answer Key.}
+\end{center}
+
+\end{document}

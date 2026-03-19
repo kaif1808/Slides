@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.10.1)  11 MAR 2026 21:09
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.10.1)  18 MAR 2026 12:58
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -755,55 +755,44 @@ Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
 \@lastruleclass=\count342
 \@thisrulewidth=\dimen301
 )
-! Undefined control sequence.
-l.53 \subtitle
-              {AK Model + Romer Model}
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-
-! LaTeX Error: Missing \begin{document}.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.53 \subtitle{A
-                K Model + Romer Model}
-You're in trouble here.  Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
+(/usr/local/texlive/2025/texmf-dist/tex/latex/enumitem/enumitem.sty
+Package: enumitem 2025/02/06 v3.11 Customized lists
+\labelindent=\skip61
+\enit@outerparindent=\dimen302
+\enit@toks=\toks39
+\enit@inbox=\box89
+\enit@count@id=\count343
+\enitdp@description=\count344
+)
 Package translations Info: No language package found. I am going to use `englis
-h' as default language. on input line 57.
+h' as default language. on input line 72.
+
 (/usr/local/texlive/2025/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
 File: l3backend-pdftex.def 2024-05-08 L3 backend support: PDF output (pdfTeX)
-\l__color_backend_stack_int=\count343
-\l__pdf_internal_box=\box89
+\l__color_backend_stack_int=\count345
+\l__pdf_internal_box=\box90
 )
 (./Endogenous_Growth_CheatSheet.aux)
 \openout1 = `Endogenous_Growth_CheatSheet.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 57.
-LaTeX Font Info:    ... okay on input line 57.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 57.
-LaTeX Font Info:    ... okay on input line 57.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 57.
-LaTeX Font Info:    ... okay on input line 57.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 57.
-LaTeX Font Info:    ... okay on input line 57.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 57.
-LaTeX Font Info:    ... okay on input line 57.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 57.
-LaTeX Font Info:    ... okay on input line 57.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 57.
-LaTeX Font Info:    ... okay on input line 57.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 57.
-LaTeX Font Info:    ... okay on input line 57.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 57.
-LaTeX Font Info:    ... okay on input line 57.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 72.
+LaTeX Font Info:    ... okay on input line 72.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 72.
+LaTeX Font Info:    ... okay on input line 72.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 72.
+LaTeX Font Info:    ... okay on input line 72.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 72.
+LaTeX Font Info:    ... okay on input line 72.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 72.
+LaTeX Font Info:    ... okay on input line 72.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 72.
+LaTeX Font Info:    ... okay on input line 72.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 72.
+LaTeX Font Info:    ... okay on input line 72.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 72.
+LaTeX Font Info:    ... okay on input line 72.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 72.
+LaTeX Font Info:    ... okay on input line 72.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -821,8 +810,8 @@ LaTeX Font Info:    ... okay on input line 57.
 * \textheight=700.50687pt
 * \oddsidemargin=0.0pt
 * \evensidemargin=0.0pt
-* \topmargin=-37.0pt
-* \headheight=12.0pt
+* \topmargin=-40.0pt
+* \headheight=15.0pt
 * \headsep=25.0pt
 * \topskip=11.0pt
 * \footskip=30.0pt
@@ -841,17 +830,17 @@ LaTeX Font Info:    ... okay on input line 57.
 
 (/usr/local/texlive/2025/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count344
-\scratchdimen=\dimen302
-\scratchbox=\box90
-\nofMPsegments=\count345
-\nofMParguments=\count346
-\everyMPshowfont=\toks39
-\MPscratchCnt=\count347
-\MPscratchDim=\dimen303
-\MPnumerator=\count348
-\makeMPintoPDFobject=\count349
-\everyMPtoPDFconversion=\toks40
+\scratchcounter=\count346
+\scratchdimen=\dimen303
+\scratchbox=\box91
+\nofMPsegments=\count347
+\nofMParguments=\count348
+\everyMPshowfont=\toks40
+\MPscratchCnt=\count349
+\MPscratchDim=\dimen304
+\MPnumerator=\count350
+\makeMPintoPDFobject=\count351
+\everyMPtoPDFconversion=\toks41
 ) (/usr/local/texlive/2025/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
@@ -867,118 +856,213 @@ File: translations-basic-dictionary-english.trsl (english translation file `tra
 nslations-basic-dictionary')
 )
 Package translations Info: loading dictionary `translations-basic-dictionary' f
-or `english'. on input line 57.
-Package hyperref Info: Link coloring ON on input line 57.
+or `english'. on input line 72.
+Package hyperref Info: Link coloring ON on input line 72.
  (./Endogenous_Growth_CheatSheet.out)
 (./Endogenous_Growth_CheatSheet.out)
 \@outlinefile=\write4
 \openout4 = `Endogenous_Growth_CheatSheet.out'.
+
+LaTeX Font Info:    Trying to load font information for U+msa on input line 75.
+
+
+(/usr/local/texlive/2025/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Trying to load font information for U+msb on input line 75.
+
+
+(/usr/local/texlive/2025/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+)
+(./Endogenous_Growth_CheatSheet.toc)
+\tf@toc=\write5
+\openout5 = `Endogenous_Growth_CheatSheet.toc'.
 
 
 
 [1
 
 {/usr/local/texlive/2025/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-LaTeX Font Info:    Trying to load font information for U+msa on input line 60.
+Overfull \hbox (3.56944pt too wide) detected at line 100
+[]
+ []
 
 
-(/usr/local/texlive/2025/texmf-dist/tex/latex/amsfonts/umsa.fd
-File: umsa.fd 2013/01/14 v3.01 AMS symbols A
-)
-LaTeX Font Info:    Trying to load font information for U+msb on input line 60.
+Overfull \hbox (8.5873pt too wide) detected at line 109
+[]
+ []
 
 
-(/usr/local/texlive/2025/texmf-dist/tex/latex/amsfonts/umsb.fd
-File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-)
 
-[2]
+[2
+
+{/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}]
+
 
 [3
 
 ]
 
-[4
-
-]
+[4]
 
 [5
 
 ]
 
-[6
-
-]
+[6]
 
 [7
 
 ]
 
-[8
-
-]
+[8]
 
 [9
 
 ]
 
-[10
+[10]
 
-]
-
-[11
-
-]
+[11]
 
 [12
 
-{/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}]
+]
+
+[13]
+
+[14
+
+]
+
+[15]
+Underfull \hbox (badness 10000) in paragraph at lines 722--722
+[]|\OT1/cmr/m/n/10.95 Exogenous TFP
+ []
 
 
-[13
+Underfull \hbox (badness 10000) in paragraph at lines 722--722
+[]|\OT1/cmr/m/n/10.95 Endogenous va-ri-ety
+ []
 
-] (./Endogenous_Growth_CheatSheet.aux)
+
+Underfull \hbox (badness 10000) in paragraph at lines 723--723
+[]|\OT1/cmr/bx/n/10.95 Long-run
+ []
+
+
+Underfull \hbox (badness 4048) in paragraph at lines 723--723
+[]|$\OML/cmm/m/it/10.95 sA \OMS/cmsy/m/n/10.95 ^^@ \OML/cmm/m/it/10.95 ^^N$ \OT
+1/cmr/m/n/10.95 (en-doge-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 724--724
+[]|\OT1/cmr/m/n/10.95 Conditional con-
+ []
+
+
+Underfull \hbox (badness 2932) in paragraph at lines 726--726
+[]|\OT1/cmr/m/n/10.95 Growth ef-fect (more
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 728--728
+[]|\OT1/cmr/m/n/10.95 Determines $\OML/cmm/m/it/10.95 k[]$
+ []
+
+
+Underfull \hbox (badness 1509) in paragraph at lines 728--728
+[]|\OT1/cmr/m/n/10.95 Determines R&D in-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 729--729
+[]|\OT1/cmr/bx/n/10.95 Market struc-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 729--729
+[]|\OT1/cmr/m/n/10.95 Perfect com-pe-ti-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 729--729
+[]|\OT1/cmr/m/n/10.95 Perfect com-pe-ti-
+ []
+
+
+Underfull \hbox (badness 4569) in paragraph at lines 730--730
+[]|\OT1/cmr/m/n/10.95 Inefficient (monopoly
+ []
+
+
+
+[16
+
+]
+Overfull \hbox (34.59784pt too wide) in paragraph at lines 800--801
+[]\OT1/cmr/m/n/10.95 Write free en-try (re-searcher FOC): $^^E\OML/cmm/m/it/10.
+95 ^^UM[]=\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 rM\OT1/cmr/m/n/10.95 ) = \OML
+/cmm/m/it/10.95 w=L[]$ $\OMS/cmsy/m/n/10.95 )$ \OT1/cmr/m/n/10.95 af-ter sim-pl
+i-fi-ca-tion: $\OML/cmm/m/it/10.95 L[]^^UM[]=r \OT1/cmr/m/n/10.95 =
+ []
+
+
+
+[17
+
+]
+
+[18]
+
+[19
+
+]
+
+[20
+
+]
+
+[21] (./Endogenous_Growth_CheatSheet.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
  ***********
-
-
-Package rerunfilecheck Warning: File `Endogenous_Growth_CheatSheet.out' has cha
-nged.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `Endogenous_Growth_CheatSheet.out':
-(rerunfilecheck)             Before: FBFBE3EE3BADEE89FE5DC9BD17389C74;2086
-(rerunfilecheck)             After:  88EB7318FB1FFD75F426CF16399DD896;2132.
+Package rerunfilecheck Info: File `Endogenous_Growth_CheatSheet.out' has not ch
+anged.
+(rerunfilecheck)             Checksum: 5A346C093439A16B6768F425773C4843;2662.
  ) 
 Here is how much of TeX's memory you used:
- 30423 strings out of 473190
- 650769 string characters out of 5715800
- 1019538 words of memory out of 5000000
- 53181 multiletter control sequences out of 15000+600000
- 567197 words of font info for 67 fonts, out of 8000000 for 9000
+ 30829 strings out of 473190
+ 657777 string characters out of 5715800
+ 1033491 words of memory out of 5000000
+ 53557 multiletter control sequences out of 15000+600000
+ 567543 words of font info for 68 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 98i,7n,101p,474b,1042s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 98i,15n,101p,474b,1161s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
 ></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
 </usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><
-/usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></
-usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></us
-r/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/
-local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/lo
-cal/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/loca
-l/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/t
-exlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texl
-ive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texli
-ve/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive
-/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2
-025/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb>
-Output written on Endogenous_Growth_CheatSheet.pdf (13 pages, 190997 bytes).
+/usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex8.pf
+b></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb
+></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb>
+</usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></
+usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></us
+r/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/
+local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/lo
+cal/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local
+/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/te
+xlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/tex
+live/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texli
+ve/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive
+/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/
+2025/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb>
+Output written on Endogenous_Growth_CheatSheet.pdf (21 pages, 266617 bytes).
 PDF statistics:
- 281 PDF objects out of 1000 (max. 8388607)
- 235 compressed objects within 3 object streams
- 103 named destinations out of 1000 (max. 500000)
- 93 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 362 PDF objects out of 1000 (max. 8388607)
+ 301 compressed objects within 4 object streams
+ 125 named destinations out of 1000 (max. 500000)
+ 101 words of extra memory for PDF output out of 10000 (max. 10000000)
 

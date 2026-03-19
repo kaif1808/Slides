@@ -1,0 +1,718 @@
+\documentclass[a4paper,11pt]{article}
+
+\usepackage{geometry}
+\geometry{margin=1in}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\definecolor{blue3}{RGB}{0,0,180}
+\definecolor{green3}{RGB}{0,120,0}
+\definecolor{orange3}{RGB}{200,100,0}
+
+\usepackage{siunitx}
+\sisetup{detect-all}
+
+\usepackage[colorlinks=true,linkcolor=blue3,citecolor=blue3,urlcolor=blue3]{hyperref}
+\usepackage{cleveref}
+
+\usepackage{tcolorbox}
+\tcbuselibrary{skins,breakable}
+
+\newtcolorbox{derivationbox}[1][]{
+    colback=blue!10,
+    colframe=blue3,
+    coltitle=blue3,
+    title={Derivation:},
+    fonttitle=\bfseries,
+    #1
+}
+
+\newtcolorbox{resultbox}[1][]{
+    colback=green!10,
+    colframe=green3,
+    coltitle=green3,
+    title={Result Summary:},
+    fonttitle=\bfseries,
+    #1
+}
+
+\usepackage{booktabs}
+\usepackage{enumitem}
+
+% Custom notation commands for Growth Accounting
+\newcommand{\gammay}{\gamma_Y}
+\newcommand{\gammaA}{\gamma_A}
+\newcommand\gammaK{\gamma_K}
+\newcommand\gammaL{\gamma_L}
+\newcommand{\tfp}{A}
+\newcommand{\tfpQ}{A}
+\newcommand{\tfpr}{TFPR}
+\newcommand{\ky}{\frac{K}{Y}}
+\newcommand{\ly}{\frac{L}{Y}}
+\newcommand{\hatA}{\hat{A}}
+\newcommand{\hatB}{\hat{B}}
+
+\begin{document}
+
+\title{Growth Accounting Cheatsheet}
+\author{Macroeconomics I - Lecture 3}
+\date{January 2026}
+
+\maketitle
+
+\tableofcontents
+
+\newpage
+
+%==============================================================================
+\section{Notation and Definitions}
+%==============================================================================
+
+\subsection*{Core Variables}
+\begin{itemize}
+    \item $Y_t$: Aggregate output
+    \item $K_t$: Aggregate capital stock
+    \item $L_t$: Labor force
+    \item $B_t$: Technology level (TFP)
+    \item $A_t$: Labor productivity (often used interchangeably with $B_t$)
+    \item $H_t$: Human capital-adjusted labor ($H_t = e^{\phi(E_t)}L_t$)
+    \item $E_t$: Years of schooling
+    \item $w_t$: Real wage
+    \item $r_t$: Real interest rate
+    \item $\delta$: Depreciation rate
+    \item $I_t$: Investment
+\end{itemize}
+
+\subsection*{Growth Rates}
+\begin{itemize}
+    \item $\gammay \equiv \dot{Y}/Y$: Output growth rate
+    \item $\gammaA \equiv \dot{A}/A$: TFP growth rate
+    \item $\gammaK \equiv \dot{K}/K$: Capital growth rate
+    \item $\gammaL \equiv \dot{L}/L$: Labor growth rate
+\end{itemize}
+
+\subsection*{Key Ratios}
+\begin{itemize}
+    \item $\ky$: Capital-output ratio
+    \item $\alpha$: Capital share (typically $1/3$)
+    \item $1-\alpha$: Labor share
+\end{itemize}
+
+%==============================================================================
+\section{Growth Accounting Framework}
+%==============================================================================
+
+\subsection*{Primal Approach: Basic Setup}
+
+Production function (CRS):
+\[
+Y_t = F(K_t, B_t L_t)
+\]
+
+Taking logs and time derivatives:
+\begin{derivationbox}
+\textbf{From production function to growth accounting:}
+
+\[
+\frac{\dot{Y}}{Y} = \frac{F_K K}{F}\frac{\dot{K}}{K} + \frac{F_L L}{F}\frac{\dot{L}}{L} + \frac{F_B B}{F}\frac{\dot{B}}{B}
+\]
+
+Define output elasticities:
+\[
+\alpha_t = \frac{F_K K}{F}, \quad 1-\alpha_t = \frac{F_L L}{F}
+\]
+
+Under CRS (Euler's theorem): $\alpha_t + (1-\alpha_t) = 1$
+
+\[
+\boxed{\gammay = \gammaA + \alpha_t \gammaK + (1-\alpha_t)\gammaL}
+\tag{Growth-Accounting}
+\]
+\end{derivationbox}
+
+\subsection*{Solow Residual}
+
+Everything except measured capital and labor goes into TFP:
+\[
+\boxed{\gammaA = \gammay - \alpha_t \gammaK - (1-\alpha_t)\gammaL}
+\tag{Solow-Residual}
+\]
+
+\begin{resultbox}
+\textbf{Components of $\gamma_A$ (what's inside the black box):}
+\begin{enumerate}
+    \item True technology progress
+    \item Misallocation (market efficiency, regulations, cronyism)
+    \item Mismeasurement of capital and labor quality
+    \item Returns to scale violations
+    \item Externalities
+\end{enumerate}
+\end{resultbox}
+
+%==============================================================================
+\section{Measuring Capital Stock}
+%==============================================================================
+
+\subsection*{Perpetual Inventory Method}
+
+\begin{derivationbox}
+\textbf{Law of motion for capital:}
+
+\[
+K_{t+1} = (1-\delta)K_t + I_t
+\tag{PIM-Motion}
+\]
+
+Where:
+\begin{itemize}
+    \item $I_t$: Investment (from national accounts)
+    \item $\delta$: Depreciation rate (easy to estimate)
+    \item $K_0$: Initial capital stock (most complicated part)
+\end{itemize}
+
+With constant growth assumption for initial period:
+\[
+K_0 = \frac{I_0}{g + \delta}
+\tag{PIM-Initial}
+\]
+
+where $g$ is the steady-state growth rate.
+\end{derivationbox}
+
+%==============================================================================
+\section{Cobb-Douglas Special Case}
+%==============================================================================
+
+With Cobb-Douglas production $Y = K^\alpha (BL)^{1-\alpha}$:
+
+\begin{resultbox}
+\begin{align*}
+\gammay &= \gammaA + \alpha\gammaK + (1-\alpha)\gammaL \tag{CD-Growth-Accounting} \\
+\gammaA &= \gammay - \alpha\gammaK - (1-\alpha)\gammaL
+\end{align*}
+\end{resultbox}
+
+Alternative decomposition (output per capita):
+\[
+\frac{Y}{N} = B \frac{L}{N} \left(\frac{K}{Y}\right)^{\frac{\alpha}{1-\alpha}}
+\tag{CD-Decomposition}
+\]
+
+Growth rates:
+\[
+\gamma_{Y/N} = \gamma_B + \gamma_{L/N} + \frac{\alpha}{1-\alpha}\gamma_{K/Y}
+\tag{CD-PerCapita}
+\]
+
+%==============================================================================
+\section{Empirical Results}
+%==============================================================================
+
+\subsection*{Historical Growth Accounting (1947-1990)}
+
+\begin{center}
+\begin{tabular}{lcccc}
+\toprule
+Country & $\gammay$ & $\alpha\frac{\gammaK}{\gammay}$ & $(1-\alpha)\frac{\gammaL}{\gammay}$ & $\frac{\gammaA}{\gammay}$ \\
+\midrule
+ & \multicolumn{4}{c}{1947-1973} \\
+\midrule
+US & 4.02\% & 42.7\% & 23.7\% & 33.6\% \\
+UK & 3.73\% & 47.2\% & 0.9\% & 51.9\% \\
+France & 5.42\% & 41.5\% & 3.9\% & 54.5\% \\
+Germany & 6.61\% & 40.6\% & 2.8\% & 56.6\% \\
+\midrule
+ & \multicolumn{4}{c}{1960-1990} \\
+\midrule
+US & 3.10\% & 45.2\% & 41.5\% & 13.2\% \\
+UK & 2.49\% & 52.3\% & -4.2\% & 51.9\% \\
+France & 3.50\% & 58.1\% & 0.5\% & 41.4\% \\
+Germany & 3.20\% & 58.7\% & -8.1\% & 49.4\% \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Key finding: TFP accounts for 1/3 to 1/2 of output growth (not 70\% as early studies suggested).
+
+\subsection*{US Decomposition (Jones 2015)}
+
+\begin{center}
+\begin{tabular}{lcccc}
+\toprule
+Period & $Y/N$ & $B$ & $L/N$ & $K/Y$ \\
+\midrule
+1948-2013 & 2.5 & 2.0 & 0.3 & 0.1 \\
+1948-1973 & 3.3 & 3.2 & 0.3 & -0.2 \\
+1973-1995 & 1.6 & 0.8 & 0.4 & 0.4 \\
+1995-2007 & 2.8 & 2.2 & 0.3 & 0.2 \\
+2007-2013 & 1.7 & 1.1 & 0.5 & 0.1 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\begin{resultbox}
+\textbf{Key Observations:}
+\begin{itemize}
+    \item Capital deepening of little importance (US near BGP)
+    \item Large importance of Solow residual
+    \item Productivity slowdown in 1970s-80s and post-2007
+\end{itemize}
+\end{resultbox}
+
+%==============================================================================
+\section{Dual Approach}
+%==============================================================================
+
+\subsection*{From Primal to Dual}
+
+Starting from national accounting identity (no profits):
+\[
+Y_t = w_t L_t + r_t K_t
+\]
+
+Taking log derivatives:
+\[
+\frac{\dot{Y}}{Y} = \alpha_K\left(\frac{\dot{r}}{r} + \frac{\dot{K}}{K}\right) + \alpha_L\left(\frac{\dot{w}}{w} + \frac{\dot{L}}{L}\right)
+\tag{Dual-Accounting}
+\]
+
+TFP growth via dual approach:
+\[
+\boxed{\gammaA = \alpha_K \frac{\dot{r}}{r} + \alpha_L \frac{\dot{w}}{w}}
+\tag{Dual-TFP}
+\]
+
+\begin{resultbox}
+\textbf{Comparison: Primal vs. Dual}
+
+\begin{itemize}
+    \item Primal: Uses production function elasticities ($F_K K/F$)
+    \item Dual: Uses factor cost shares ($rK/Y$, $wL/Y$)
+    \item Should coincide in theory, differ in practice
+    \item Dual is more robust (no functional form assumptions)
+\end{itemize}
+\end{resultbox}
+
+\subsection*{Dual vs Primal: Country Evidence}
+
+\begin{center}
+\begin{tabular}{lcc}
+\toprule
+Country & Primal & Dual \\
+\midrule
+Hong Kong ('66-'91) & 2.3\% & 2.7\% \\
+Singapore ('72-'90) & -0.7\% & 2.2\% \\
+South Korea ('66-'90) & 1.7\% & 1.5\% \\
+Taiwan ('66-'90) & 2.1\% & 3.7\% \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+%==============================================================================
+\section{Factor Shares vs. Elasticities}
+%==============================================================================
+
+\subsection*{The Key Insight}
+
+Under perfect competition, factor shares equal output elasticities:
+\[
+\frac{F_x x}{Y} = \frac{w_x x}{pY}
+\tag{Share-Elasticity}
+\]
+
+This is why we can use measured income shares in growth accounting.
+
+\subsection*{Problem 1: Market Power}
+
+With monopoly power:
+\[
+\frac{\epsilon_D - 1}{\epsilon_D} \frac{F_x x}{Y} = \frac{w_x x}{pY}
+\tag{Market-Power}
+\]
+
+The markup is $\mu = \frac{\epsilon_D}{\epsilon_D - 1}$.
+
+With profits, elasticity = cost share (not revenue share).
+
+\subsection*{Problem 2: Fixed Costs}
+
+If there are fixed costs $\Gamma$:
+\[
+\frac{F_x x}{Y} = \frac{w_x x}{pY} \neq \frac{w_x(x+\Gamma)}{pY}
+\tag{Fixed-Costs}
+\]
+
+Factor share $\neq$ elasticity when fixed costs exist.
+
+\subsection*{Problem 3: Externalities}
+
+Private marginal product $\neq$ social marginal product with externalities.
+
+\begin{resultbox}
+\textbf{Required conditions for Share = Elasticity:}
+\begin{enumerate}
+    \item Perfect competition (no market power)
+    \item Variable costs only (no fixed costs)
+    \item No externalities (private = social MP)
+\end{enumerate}
+\end{resultbox}
+
+%==============================================================================
+\section{Development Accounting}
+%==============================================================================
+
+\subsection*{Framework}
+
+Cross-sectional comparison at a point in time:
+\[
+\log Y_i = \log A_i + \alpha \log K_i + (1-\alpha)\log L_i
+\tag{Dev-Accounting}
+\]
+
+Goal: Decompose income differences into:
+\begin{itemize}
+    \item Factor quantities ($K$, $L$)
+    \item TFP ($A$)
+\end{itemize}
+
+Key result (Caselli 2005): TFP differences account for $>50\%$ of income variation.
+
+\begin{center}
+\begin{tabular}{lccc}
+\toprule
+Sample & obs & $y_{90}/y_{10}$ & Variance Explained \\
+\midrule
+Whole sample & 105 & 24.8 & 61.5\% \\
+OECD & 24 & 1.7 & 39.4\% \\
+Non-OECD & 81 & 14.7 & 64.4\% \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+%==============================================================================
+\section{Hall-Jones Framework}
+%==============================================================================
+
+\subsection*{Production Function}
+
+\[
+Y_i = K_i^\alpha (A_i H_i)^{1-\alpha}
+\tag{HJ-Production}
+\]
+
+where:
+\begin{itemize}
+    \item $K_i$: Physical capital
+    \item $H_i = e^{\phi(E_i)}L_i$: Human capital
+    \item $A_i$: Labor productivity (TFP)
+    \item $E_i$: Years of schooling
+\end{itemize}
+
+\subsection*{Returns to Education}
+
+\[
+\phi(s) = 
+\begin{cases}
+0.134 \times s & \text{first 4 years} \\
+0.134 \times 4 + 0.101 \times (s-4) & \text{years 4-8} \\
+0.134 \times 4 + 0.101 \times 4 + 0.068 \times (s-8) & \text{year 9+} \\
+\end{cases}
+\tag{Returns-Education}
+\]
+
+Output per worker:
+\[
+y_i = \left(\frac{K_i}{Y_i}\right)^{\alpha/(1-\alpha)} h_i A_i
+\tag{HJ-PerWorker}
+\]
+
+Measure TFP as residual:
+\[
+A_i = \frac{y_i}{\left(\frac{K_i}{Y_i}\right)^{\alpha/(1-\alpha)}h_i}
+\tag{HJ-TFP}
+\]
+
+\subsection*{Hall-Jones Results (Ratios to US)}
+
+\begin{center}
+\begin{tabular}{lcccc}
+\toprule
+Country & $Y/L$ & $(K/Y)^{\alpha/(1-\alpha)}$ & $H/L$ & $A$ \\
+\midrule
+United States & 1.000 & 1.000 & 1.000 & 1.000 \\
+Canada & 0.941 & 1.002 & 0.908 & 1.034 \\
+Italy & 0.834 & 1.063 & 0.650 & 1.207 \\
+West Germany & 0.818 & 1.118 & 0.802 & 0.912 \\
+France & 0.818 & 1.091 & 0.666 & 1.126 \\
+UK & 0.727 & 0.891 & 0.808 & 1.011 \\
+Hong Kong & 0.608 & 0.741 & 0.735 & 1.115 \\
+Singapore & 0.606 & 1.031 & 0.545 & 1.078 \\
+Japan & 0.587 & 1.119 & 0.797 & 0.658 \\
+Mexico & 0.433 & 0.868 & 0.538 & 0.926 \\
+India & 0.086 & 0.709 & 0.454 & 0.267 \\
+China & 0.060 & 0.891 & 0.632 & 0.106 \\
+\midrule
+Average, 127 countries & 0.296 & 0.853 & 0.565 & 0.516 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Key finding: Most income differences come from TFP ($A$).
+
+Decomposition of top5/bottom5 gap:
+\[
+y_{top5} = 1.8 \times 2.2 \times 8.3 \times y_{bottom5}
+\tag{Decomposition}
+\]
+(Capital $\times$ Human Cap $\times$ TFP)
+
+%==============================================================================
+\section{Institutions and TFP}
+%==============================================================================
+
+Hypothesis: Better institutions $\Rightarrow$ higher TFP $\Rightarrow$ higher income.
+
+Basic regression:
+\[
+\log y_i = \gamma + \beta S_i + \epsilon_i
+\tag{Institutions-Reg}
+\]
+
+Problem: Reverse causality (income $\to$ institutions).
+
+Solution: Instrument for institutions with:
+\begin{itemize}
+    \item Distance from equator
+    \item Percentage speaking Western languages
+    \item Predicted trade share (Frankel-Romer)
+\end{itemize}
+
+Results (Hall-Jones 1999):
+\begin{center}
+\begin{tabular}{lccc}
+\toprule
+Specification & Social Infrastructure & $\hat{\sigma}_z$ & OverID p-value \\
+\midrule
+Main specification & 5.14 & 0.84 & 0.256 \\
+Instruments: Dist, FR & 5.00 & 0.82 & 0.208 \\
+OLS & 3.29 & 0.70 & — \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\begin{resultbox}
+\textbf{Conclusion:} Institutions (social infrastructure) strongly correlated with TFP and output per worker.
+\end{resultbox}
+
+%==============================================================================
+\section{Misallocation: Hsieh-Klenow (2009)}
+%==============================================================================
+
+\subsection*{Setup}
+
+Monopolistic competition with heterogeneous productivity $A_i$:
+\[
+y_i = A_i k_i^\alpha l_i^{1-\alpha}
+\tag{HK-Production}
+\]
+
+CES preferences over varieties:
+\[
+C = \left(\int_i c_i^{\frac{\sigma-1}{\sigma}}\right)^{\frac{\sigma}{\sigma-1}}
+\tag{CES-Preferences}
+\]
+
+Optimal pricing (monopolistic competition):
+\[
+p_i = \frac{\sigma}{\sigma-1} \frac{x}{A_i}
+\tag{Pricing}
+\]
+where marginal cost $x = \left(\frac{r}{\alpha}\right)^\alpha \left(\frac{w}{1-\alpha}\right)^{1-\alpha}$.
+
+Output relative to productivity:
+\[
+y_i \propto A_i^{\sigma}
+\tag{HK-Output}
+\]
+
+\subsection*{Distortions}
+
+Add firm-specific distortions:
+\[
+\max_{y_i,k_i,l_i} (1-\tau_i^Y)p_i y_i - wl_i - (1+\tau_i^K)rk_i
+\tag{Distorted-Problem}
+\]
+
+Distorted capital-labor ratio:
+\[
+\frac{k_i}{l_i} = \frac{\alpha}{1-\alpha}\frac{w}{r}\frac{1}{1+\tau_i^K}
+\tag{Distorted-KL}
+\]
+
+Distorted output:
+\[
+y_i \propto A_i^{\sigma} \left(\frac{1-\tau_i^Y}{1+\tau_i^K}\right)^{\sigma}
+\tag{Distorted-Output}
+\]
+
+\subsection*{TFPR and TFPQ}
+
+Define Total Factor Productivity Revenue:
+\[
+\tfpr_i \equiv p_i A_i = \frac{\sigma}{\sigma-1}x\frac{(1+\tau_i^K)^\alpha}{1-\tau_i^Y}
+\tag{TFPR}
+\]
+
+Aggregate TFPQ:
+\[
+\tfpQ = \left[\int_j \left(A_j \frac{\tfpr}{\tfpr_j}\right)^{\sigma-1}\right]^{\frac{1}{\sigma-1}}
+\tag{TFPQ}
+\]
+
+Key insight: Dispersion in $\tfpr$ reduces aggregate productivity.
+
+%==============================================================================
+\section{HK Counterfactuals}
+%==============================================================================
+
+TFP gains from equalizing TFPR within industries:
+
+\begin{center}
+\begin{tabular}{lcccccc}
+\toprule
+Country & \multicolumn{2}{c}{Early} & \multicolumn{2}{c}{Mid} & \multicolumn{2}{c}{Late} \\
+\midrule
+ & Year & \% Gain & Year & \% Gain & Year & \% Gain \\
+\midrule
+China & 1998 & 115.1 & 2001 & 95.8 & 2005 & 86.6 \\
+India & 1987 & 100.4 & 1991 & 102.1 & 1994 & 127.5 \\
+United States & 1977 & 36.1 & 1987 & 30.7 & 1997 & 42.9 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\begin{center}
+\begin{tabular}{lcccccc}
+\toprule
+Country & \multicolumn{2}{c}{Early} & \multicolumn{2}{c}{Mid} & \multicolumn{2}{c}{Late} \\
+\midrule
+ & Year & \% Gain & Year & \% Gain & Year & \% Gain \\
+\midrule
+China & 1998 & 50.5 & 2001 & 37.0 & 2005 & 30.5 \\
+India & 1987 & 40.2 & 1991 & 41.4 & 1994 & 59.2 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\begin{resultbox}
+\textbf{Interpretation:} Large TFP gains possible if India/China had US-level allocation of resources across firms.
+\end{resultbox}
+
+%==============================================================================
+\section{Common Pitfalls}
+%==============================================================================
+
+\begin{enumerate}
+    \item \textbf{Confusing factor shares with elasticities:} Only equal under perfect competition, no fixed costs, no externalities.
+    
+    \item \textbf{Attributing causality:} Growth accounting is accounting, not causation. Capital accumulation may itself be driven by TFP.
+    
+    \item \textbf{Ignoring quality changes:} Labor quality (education) and capital quality (equipment quality) matter significantly.
+    
+    \item \textbf{Using wrong growth rates:} Remember technology growth $x$ affects effective variables.
+    
+    \item \textbf{Measuring capital incorrectly:} Perpetual inventory requires good initial $K_0$ and proper $\delta$.
+    
+    \item \textbf{Treating TFP as pure technology:} It contains misallocation, measurement error, and externalities.
+    
+    \item \textbf{Assuming Cobb-Douglas:} Elasticity of substitution = 1 may not hold.
+    
+    \item \textbf{Ignoring dual-primal discrepancies:} Different methods give different results in practice.
+\end{enumerate}
+
+%==============================================================================
+\section{Quick Reference Formulas}
+%==============================================================================
+
+\begin{resultbox}
+\begin{align*}
+\text{Growth Accounting:} & \quad \gammay = \gammaA + \alpha\gammaK + (1-\alpha)\gammaL \\
+\text{Solow Residual:} & \quad \gammaA = \gammay - \alpha\gammaK - (1-\alpha)\gammaL \\
+\text{Perpetual Inventory:} & \quad K_{t+1} = (1-\delta)K_t + I_t \\
+\text{Initial Capital:} & \quad K_0 = I_0/(g+\delta) \\
+\text{CD Output/Worker:} & \quad y = (K/Y)^{\alpha/(1-\alpha)} h A \\
+\text{HK TFPR:} & \quad \tfpr_i = p_i A_i \\
+\text{TFPQ:} & \quad A = \left[\int A_j^{\sigma-1}\right]^{1/(\sigma-1)} \\
+\text{Returns to Ed:} & \quad \phi(s) = 0.134s \text{ (first 4 yrs)} \\
+\end{align*}
+\end{resultbox}
+
+%==============================================================================
+\section{Problem-Solving Templates}
+%==============================================================================
+
+\subsection*{Template 1: Basic Growth Accounting}
+
+\begin{enumerate}
+    \item Identify production function and parameters
+    \item Compute growth rates of $Y$, $K$, $L$
+    \item Use factor share $\alpha$ (typically $1/3$)
+    \item Calculate Solow residual: $\gammaA = \gammay - \alpha\gammaK - (1-\alpha)\gammaL$
+    \item Interpret: what fraction of growth comes from TFP vs. factors
+\end{enumerate}
+
+\subsection*{Template 2: Development Accounting}
+
+\begin{enumerate}
+    \item Get data on $Y/L$, $K/Y$, $H/L$ for countries
+    \item Use $\alpha = 1/3$
+    \item Compute $A_i = y_i / [(K/Y)^{\alpha/(1-\alpha)} h_i]$
+    \item Compare TFP across countries
+    \item Decompose income gap into factors vs. TFP
+\end{enumerate}
+
+\subsection*{Template 3: Misallocation Analysis (HK)}
+
+\begin{enumerate}
+    \item Estimate TFPR dispersion across firms
+    \item Compute aggregate TFPQ from firm productivities
+    \item Calculate counterfactual: equalize TFPR
+    \item Compute TFP gain: $(A_{counterfactual}/A_{actual}) - 1$
+\end{enumerate}
+
+%==============================================================================
+\clearpage
+\section{Implementation Notes}
+%==============================================================================
+
+\subsection*{Packages Used}
+\begin{itemize}
+    \item amsmath, amssymb, mathtools: Mathematics typesetting
+    \item graphicx: Graphics support
+    \item xcolor: Color definitions
+    \item siunitx: Number formatting
+    \item cleveref: Cross-references
+    \item hyperref: Hyperlinks
+    \item tcolorbox: Colored derivation and result boxes
+    \item booktabs: Professional tables
+    \item enumitem: List formatting
+\end{itemize}
+
+\subsection*{Custom Notation}
+\begin{itemize}
+    \item \verb|\gammay|: Output growth rate $\gamma_Y$
+    \item \verb|\gammaA|: TFP growth rate $\gamma_A$
+    \item \verb|\ky|: Capital-output ratio $K/Y$
+    \item \verb|\tfpr|: Total Factor Productivity Revenue
+    \item \verb|\tfpQ|: Total Factor Productivity Quantity
+\end{itemize}
+
+\subsection*{Compilation}
+Compile with: \texttt{pdflatex -interaction=nonstopmode Growth\_Accounting\_CheatSheet.tex}
+
+Run twice to resolve cross-references.
+
+\end{document}

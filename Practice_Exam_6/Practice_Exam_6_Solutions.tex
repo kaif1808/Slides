@@ -1,0 +1,637 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage{geometry}
+\geometry{margin=1in, headheight=15pt}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\definecolor{blue3}{RGB}{0,0,180}
+\definecolor{green3}{RGB}{0,120,0}
+\definecolor{orange3}{RGB}{200,100,0}
+\definecolor{red3}{RGB}{180,0,0}
+\definecolor{grey3}{RGB}{80,80,80}
+\usepackage{siunitx}
+\sisetup{detect-all}
+\usepackage[colorlinks=true,linkcolor=blue3,citecolor=blue3,urlcolor=blue3]{hyperref}
+\usepackage{cleveref}
+\usepackage{tcolorbox}
+\tcbuselibrary{skins,breakable}
+\newtcolorbox{answerbox}[1][]{colback=red3!5,colframe=red3!60,coltitle=red3,title={Solution:},fonttitle=\bfseries,breakable,#1}
+\newtcolorbox{pointsbox}[1][]{colback=grey3!8,colframe=grey3,fonttitle=\bfseries\small,#1}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\newcommand{\ktilde}{\tilde{k}}
+\newcommand{\ytilde}{\tilde{y}}
+\newcommand{\ctilde}{\tilde{c}}
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\bgp}{\mathrm{BGP}}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\textbf{14E022 Macroeconomics I} \quad Practice Exam 6 --- Solutions}
+\rhead{BSE 2025--26}
+\cfoot{\thepage}
+
+\begin{document}
+
+% ============================================================
+%  TITLE
+% ============================================================
+\begin{center}
+  {\LARGE\bfseries 14E022 --- Macroeconomics I}\\[6pt]
+  {\Large Practice Exam 6 --- Answer Key}\\[4pt]
+  {\large BSE Master in Economics \quad 2025--26}\\[10pt]
+  \rule{\linewidth}{0.6pt}\\[6pt]
+  {\normalsize \textbf{Duration:} 2 hours \quad
+   \textbf{Total:} 100 points}\\[4pt]
+  {\small This document contains complete model solutions. Partial credit criteria indicated in brackets.}\\[2pt]
+  \rule{\linewidth}{0.4pt}
+\end{center}
+
+\vspace{4pt}
+\begin{pointsbox}[title=Point Allocation]
+  \begin{tabular}{lll}
+    \textbf{Q1} & Solow Model with Human Capital (MRW) & 25 pts \\
+    \textbf{Q2} & AK Model and Arrow Learning-by-Doing & 25 pts \\
+    \textbf{Q3} & Romer Expanding Varieties + Patent Policy & 25 pts \\
+    \textbf{SQ} & Short Questions (SQ1 + SQ2 + SQ3) & 25 pts \\
+    \multicolumn{2}{l}{\textbf{Total}} & \textbf{100 pts}
+  \end{tabular}
+\end{pointsbox}
+
+\clearpage
+
+% ============================================================
+%  QUESTION 1 SOLUTIONS
+% ============================================================
+\section*{Question 1 --- Solow Model with Human Capital: MRW \hfill (25 points)}
+
+Consider the Mankiw--Romer--Weil (1992) model:
+\[
+  Y_t = K_t^{\alpha}\, H_t^{\beta}\,(A_t L_t)^{1-\alpha-\beta}
+\]
+with $\alpha,\beta>0$, $\alpha+\beta<1$, population growth $n$, TFP growth $g$, depreciation $\delta$, saving rates $s_K$ and $s_H$.
+
+\bigskip
+\begin{enumerate}[label=\textbf{(\arabic*)},leftmargin=*]
+
+% --- Part 1 ---
+\item \textbf{[7 pts] Laws of motion and intensive-form production function}
+
+\begin{answerbox}
+\textbf{Step 1: Define per-effective-worker variables.}
+\[
+  \ktilde \equiv \frac{K}{AL}, \quad \tilde{h} \equiv \frac{H}{AL}, \quad \ytilde \equiv \frac{Y}{AL}
+\]
+
+\textbf{Step 2: Production function in intensive form.}
+\begin{align*}
+  \ytilde = \frac{Y}{AL}
+  &= \frac{K^{\alpha} H^{\beta} (AL)^{1-\alpha-\beta}}{AL} \\
+  &= \left(\frac{K}{AL}\right)^{\!\alpha} \left(\frac{H}{AL}\right)^{\!\beta}
+     \cdot (AL)^{\alpha+\beta} (AL)^{-(1-\alpha-\beta)} (AL)^{-(\alpha+\beta)} \\
+  &= \ktilde^{\alpha}\,\tilde{h}^{\,\beta} \tag{$\star$}
+\end{align*}
+(The key step: $Y/(AL) = (K/(AL))^\alpha (H/(AL))^\beta$ by constant returns to scale in $K$, $H$, $AL$.)
+
+\textbf{Step 3: Law of motion for $\ktilde$.}
+
+Capital accumulation: $\dot{K} = s_K Y - \delta K$. Differentiating $\ktilde = K/(AL)$:
+\[
+  \dot{\ktilde} = \frac{\dot{K}}{AL} - \ktilde \left(\frac{\dot{A}}{A} + \frac{\dot{L}}{L}\right) = \frac{s_K Y - \delta K}{AL} - \ktilde(g + n)
+\]
+\[
+  \boxed{\dot{\ktilde} = s_K \ytilde - (n + g + \delta)\ktilde = s_K \ktilde^{\alpha}\tilde{h}^{\beta} - (n+g+\delta)\ktilde}
+\]
+
+\textbf{Step 4: Law of motion for $\tilde{h}$.}
+
+By identical logic with $H$: $\dot{H} = s_H Y - \delta H$, so:
+\[
+  \boxed{\dot{\tilde{h}} = s_H \ytilde - (n + g + \delta)\tilde{h} = s_H \ktilde^{\alpha}\tilde{h}^{\beta} - (n+g+\delta)\tilde{h}}
+\]
+Both capital stocks face the same effective depreciation rate $(n+g+\delta)$ because we express them per effective worker.
+\end{answerbox}
+
+\bigskip
+
+% --- Part 2 ---
+\item \textbf{[7 pts] Steady state and log-linear regression equation}
+
+\begin{answerbox}
+\textbf{Step 1: Steady-state conditions.}
+
+Set $\dot{\ktilde} = \dot{\tilde{h}} = 0$:
+\[
+  s_K (\ktilde^*)^{\alpha}(\tilde{h}^*)^{\beta} = (n+g+\delta)\ktilde^*
+  \quad\text{and}\quad
+  s_H (\ktilde^*)^{\alpha}(\tilde{h}^*)^{\beta} = (n+g+\delta)\tilde{h}^*
+\]
+
+\textbf{Step 2: Ratio condition.}
+
+Dividing the two equations:
+\[
+  \frac{s_K}{s_H} = \frac{\ktilde^*}{\tilde{h}^*} \quad \Longrightarrow \quad \tilde{h}^* = \frac{s_H}{s_K}\ktilde^*
+\]
+
+\textbf{Step 3: Solve for $\ktilde^*$.}
+
+Substitute $\tilde{h}^* = (s_H/s_K)\ktilde^*$ into the first steady-state equation:
+\[
+  s_K (\ktilde^*)^{\alpha} \left(\frac{s_H}{s_K}\right)^{\!\beta} (\ktilde^*)^{\beta} = (n+g+\delta)\ktilde^*
+\]
+\[
+  s_K^{1-\beta} s_H^{\beta} (\ktilde^*)^{\alpha+\beta-1} = (n+g+\delta)
+\]
+\[
+  \boxed{\ktilde^* = \left(\frac{s_K^{1-\beta}\, s_H^{\beta}}{n+g+\delta}\right)^{\!1/(1-\alpha-\beta)}}
+\]
+
+Similarly: $\tilde{h}^* = \left(\frac{s_K^{\alpha}\,s_H^{1-\alpha}}{n+g+\delta}\right)^{1/(1-\alpha-\beta)}$.
+
+\textbf{Step 4: Steady-state output per worker.}
+
+$y^* = Y^*/L = A\cdot\ytilde^* = A\cdot(\ktilde^*)^\alpha(\tilde{h}^*)^\beta$.
+
+After substitution and simplification (writing $A = A_0 e^{gt}$):
+\[
+  y^* = A_0 e^{gt} \cdot \left(\frac{s_K^{1-\beta} s_H^{\beta}}{n+g+\delta}\right)^{\!\alpha/(1-\alpha-\beta)}
+  \cdot \left(\frac{s_K^{\alpha} s_H^{1-\alpha}}{n+g+\delta}\right)^{\!\beta/(1-\alpha-\beta)}
+\]
+
+Taking logs:
+\[
+  \boxed{\ln y^* = \ln A_0 + g t
+    + \frac{\alpha}{1-\alpha-\beta}\ln s_K
+    + \frac{\beta}{1-\alpha-\beta}\ln s_H
+    - \frac{\alpha+\beta}{1-\alpha-\beta}\ln(n+g+\delta)}
+\]
+
+\textbf{Coefficients:}
+\begin{itemize}
+  \item Coefficient on $\ln s_K$: $\;\dfrac{\alpha}{1-\alpha-\beta}$
+  \item Coefficient on $\ln s_H$: $\;\dfrac{\beta}{1-\alpha-\beta}$
+  \item Coefficient on $\ln(n+g+\delta)$: $\;-\dfrac{\alpha+\beta}{1-\alpha-\beta}$
+\end{itemize}
+The ratio of the $s_K$ and $s_H$ coefficients equals $\alpha/\beta$, which is testable. MRW find $\alpha \approx \beta \approx 1/3$, giving coefficients $\approx 1/3$ on each saving rate.
+\end{answerbox}
+
+\bigskip
+
+% --- Part 3 ---
+\item \textbf{[6 pts] Convergence speed}
+
+\begin{answerbox}
+\textbf{Convergence speed in MRW vs.\ basic Solow.}
+
+Log-linearising the two-dimensional system around steady state, the convergence speed is:
+\[
+  \beta_{\mathrm{conv}}^{\mathrm{MRW}} = (1-\alpha-\beta)(n+g+\delta)
+\]
+compared to the basic Solow model:
+\[
+  \beta_{\mathrm{conv}}^{\mathrm{Solow}} = (1-\alpha)(n+g+\delta)
+\]
+
+Since $\alpha+\beta > \alpha$ (because $\beta > 0$), we have $1-\alpha-\beta < 1-\alpha$, and therefore:
+\[
+  \beta_{\mathrm{conv}}^{\mathrm{MRW}} < \beta_{\mathrm{conv}}^{\mathrm{Solow}}
+\]
+
+\textbf{Intuition.} In the MRW model, the total capital share in production is $\alpha + \beta$ (physical plus human). Diminishing returns to the combined capital stock set in more slowly when the capital share is larger. Because both $K$ and $H$ must adjust to their respective steady states simultaneously, and human capital accumulation itself takes time, the economy spends longer in transition. More formally: the effective ``curvature'' of the production function is $1 - (\alpha+\beta)$ rather than $1-\alpha$, and this smaller curvature implies slower drag toward the steady state.
+
+\textbf{Empirical implication.} MRW find $\beta_{\mathrm{conv}} \approx 2\%$ per year, consistent with $\alpha+\beta \approx 2/3$ and $(n+g+\delta) \approx 0.06$, whereas the basic Solow with $\alpha = 1/3$ would predict $\approx 4\%$ per year --- too fast.
+\end{answerbox}
+
+\bigskip
+
+% --- Part 4 ---
+\item \textbf{[5 pts] Limitation of exogenous $s_H$}
+
+\begin{answerbox}
+\textbf{Limitation.} Treating $s_H$ as a fixed, exogenous constant ignores that households optimise over their education and training decisions. In the Ben-Porath (1967) framework, individuals choose how much time to invest in human capital by equating the return on human capital (higher future wages) with the opportunity cost (foregone current earnings). The optimal $s_H$ therefore responds endogenously to the market interest rate $r$, the wage profile, and the length of the working life.
+
+\textbf{Empirical problem.} Cross-country differences in $s_H$ (proxied by schooling rates) are themselves strongly correlated with income, institutions, and physical saving rates --- patterns inconsistent with $s_H$ being an independent exogenous parameter. The MRW regression may therefore suffer from omitted-variable bias.
+
+\textbf{Implications of endogenising $s_H$.}
+\begin{itemize}
+  \item \emph{Amplification channel:} If poor countries have a lower capital stock, the return to human capital investment may be lower (complementarity of physical and human capital), reinforcing poverty traps and slowing convergence further than MRW predicts.
+  \item \emph{Liquidity-constraint channel:} Poor households may be unable to borrow against future labour income to finance education, causing human capital under-investment in low-income countries --- a mechanism absent from the exogenous-$s_H$ version.
+  \item \emph{Policy implications change:} Education subsidies become a distortion-correcting policy rather than merely a shift in an exogenous parameter.
+\end{itemize}
+\end{answerbox}
+
+\end{enumerate}
+
+\clearpage
+
+% ============================================================
+%  QUESTION 2 SOLUTIONS
+% ============================================================
+\section*{Question 2 --- AK Model and Arrow Learning-by-Doing with Optimal Policy \hfill (25 points)}
+
+Each firm $j$: $y_j = a_j k_j^{\alpha} l_j^{1-\alpha}$ with $a_j = K^{1-\alpha}$, $l_j = L = 1$.
+
+\bigskip
+\begin{enumerate}[label=\textbf{(\arabic*)},leftmargin=*]
+
+% --- Part 1 ---
+\item \textbf{[5 pts] Aggregate production function}
+
+\begin{answerbox}
+\textbf{Derivation.}
+
+Substituting $a_j = K^{1-\alpha}$ and $l_j = 1$ into firm $j$'s production function:
+\[
+  y_j = K^{1-\alpha} k_j^{\alpha} \cdot 1^{1-\alpha} = K^{1-\alpha} k_j^{\alpha}
+\]
+
+In a symmetric equilibrium with a unit measure of identical firms each holding capital $k_j$, market clearing requires $\int_0^1 k_j\,\dd j = K$, so $k_j = K$.
+
+Aggregating:
+\[
+  Y = \int_0^1 y_j\,\dd j = \int_0^1 K^{1-\alpha} K^{\alpha}\,\dd j = K^{1-\alpha} K^{\alpha} \cdot 1 = K
+\]
+
+\[
+  \boxed{Y = AK \quad\text{with}\quad A = 1}
+\]
+
+\textbf{Interpretation of returns to capital.}
+\begin{itemize}
+  \item \emph{Private (market) return:} Each firm treats $K$ (and hence $a_j$) as fixed. The private marginal product of capital is:
+  \[
+    \frac{\partial y_j}{\partial k_j}\bigg|_{K \,\text{fixed}} = \alpha K^{1-\alpha} k_j^{\alpha-1} \xrightarrow{k_j = K} \alpha
+  \]
+  So the private net return is $r^{\mathrm{pvt}} = \alpha - \delta$, exhibiting diminishing returns at the firm level.
+  \item \emph{Social (planner) return:} The planner knows $k_j = K$, so the aggregate return is $\partial Y/\partial K = 1$, which is \emph{constant} --- no diminishing returns. The gap $1 - \alpha$ is the learning-by-doing externality.
+\end{itemize}
+\end{answerbox}
+
+\bigskip
+
+% --- Part 2 ---
+\item \textbf{[6 pts] Market Euler equation and BGP growth rate}
+
+\begin{answerbox}
+\textbf{Household problem.}
+
+Households take prices as given and solve:
+\[
+  \max \int_0^{\infty} \frac{c^{1-\sigma}-1}{1-\sigma} e^{-\rho t}\,\dd t \quad\text{s.t.}\quad \dot{a} = r a + w - c
+\]
+
+Standard Euler equation (no-Ponzi condition holding):
+\[
+  \frac{\dot{c}}{c} = \frac{r - \rho}{\sigma}
+\]
+
+\textbf{Market interest rate.}
+
+Firms hire capital at its private marginal product (net of depreciation):
+\[
+  r^{\mathrm{mkt}} = \alpha - \delta
+\]
+(from part 1: private MPK $= \alpha$, subtract $\delta$).
+
+\textbf{Market BGP growth rate.}
+
+On the BGP, $c$, $k$, $y$ all grow at the same constant rate $\gamma^{\mathrm{mkt}}$:
+\[
+  \boxed{\gamma^{\mathrm{mkt}} = \frac{\alpha - \delta - \rho}{\sigma}}
+\]
+
+\textbf{Existence condition.}
+
+For $\gamma^{\mathrm{mkt}} > 0$ we need:
+\[
+  \alpha > \rho + \delta
+\]
+i.e.\ the private net return to capital must exceed the household's rate of time preference. Since $\alpha \in (0,1)$ is the private marginal product, this is the Arrow-model analogue of the Ramsey transversality condition binding with a positive growth rate.
+\end{answerbox}
+
+\bigskip
+
+% --- Part 3 ---
+\item \textbf{[7 pts] Planner's solution and wedge}
+
+\begin{answerbox}
+\textbf{Planner's problem.}
+
+The planner maximises household utility subject to the resource constraint, \emph{internalising} that $a_j = K^{1-\alpha}$ varies with aggregate capital:
+\[
+  \dot{K} = Y - C = K - C \quad\Longrightarrow\quad \dot{K} = K - C
+\]
+(using $Y = K$ from part 1 with $A=1$).
+
+The planner's Hamiltonian is:
+\[
+  \mathcal{H} = \frac{C^{1-\sigma}-1}{1-\sigma} + \mu(K - C)
+\]
+FOCs:
+\[
+  C^{-\sigma} = \mu, \quad \dot{\mu} - \rho\mu = -\mu \cdot \frac{\partial Y}{\partial K}\bigg|_{\text{social}} = -\mu \cdot 1
+\]
+(The planner's social MPK is $\partial Y / \partial K = 1$, since $Y = K$.)
+
+From the costate equation: $\dot{\mu}/\mu = \rho - 1$. Since $\mu = C^{-\sigma}$, $\dot{\mu}/\mu = -\sigma\dot{C}/C$, giving:
+\[
+  \frac{\dot{C}}{C} = \frac{1 - \delta - \rho}{\sigma}
+\]
+(adding back depreciation: the net social return is $1 - \delta$.)
+
+\[
+  \boxed{\gamma^{\mathrm{plnr}} = \frac{1 - \delta - \rho}{\sigma} = \frac{A - \delta - \rho}{\sigma}}
+\]
+
+\textbf{Comparison.}
+
+\[
+  \gamma^{\mathrm{plnr}} - \gamma^{\mathrm{mkt}} = \frac{1-\alpha}{\sigma} > 0 \quad\text{since } \alpha < 1
+\]
+
+\textbf{Intuition for the wedge.}
+
+When any individual firm accumulates an extra unit of capital, it generates a positive externality: all other firms' productivity $a_j = K^{1-\alpha}$ rises. The private investor ignores this spillover, so the private return is only $\alpha$ while the social return is $1 = \alpha + (1-\alpha)$. The market undersaves and undergrows by the amount $(1-\alpha)/\sigma$. This is a classic Marshallian externality: the knowledge embedded in aggregate capital is a public good within the production sector, yet no mechanism compensates investors for the spillover they generate.
+\end{answerbox}
+
+\bigskip
+
+% --- Part 4 ---
+\item \textbf{[4 pts] Optimal capital income subsidy}
+
+\begin{answerbox}
+\textbf{Derivation.}
+
+With a proportional subsidy $s$ on capital income, the after-subsidy return to capital received by firms (and thus by households) is:
+\[
+  r^{\mathrm{sub}} = (1 + s)\cdot\alpha - \delta
+\]
+We want this to equal the social return net of depreciation:
+\[
+  (1 + s^*)\alpha - \delta = 1 - \delta \quad \Longrightarrow \quad (1+s^*)\alpha = 1
+\]
+\[
+  \boxed{s^* = \frac{1-\alpha}{\alpha}}
+\]
+
+\textbf{Interpretation.}
+
+The optimal subsidy rate equals the ratio of the externality to the private return. Since private investors capture only fraction $\alpha$ of the social return (and miss fraction $1-\alpha$), the government must top up each dollar of private return by $(1-\alpha)/\alpha$ dollars to align incentives. Note that $s^*$ depends only on $\alpha$ --- the curvature of the firm-level production function --- not on preferences or the discount rate.
+\end{answerbox}
+
+\bigskip
+
+% --- Part 5 ---
+\item \textbf{[3 pts] Practical challenges}
+
+\begin{answerbox}
+\textbf{Challenge 1: Measuring $\alpha$.}
+
+The optimal subsidy $s^* = (1-\alpha)/\alpha$ requires knowledge of $\alpha$, the private capital elasticity. In practice, $\alpha$ varies across industries, regions, and time periods and cannot be directly observed. Estimates of the aggregate capital share from national accounts conflate physical capital, human capital, and rents --- making it very difficult to pin down the externality parameter precisely. Policy calibrated to a wrong $\alpha$ may over- or under-subsidise, potentially worsening welfare.
+
+\textbf{Challenge 2: Fiscal financing and second-best distortions.}
+
+The subsidy must be financed through government revenue, which typically requires distortionary taxation (e.g.\ labour income taxes or consumption taxes). The net welfare gain from correcting the capital externality must be set against the dead-weight loss introduced by raising the required revenue. In a second-best world, the optimal subsidy is generally \emph{smaller} than $s^* = (1-\alpha)/\alpha$, and may depend on the entire tax structure of the economy rather than just the externality parameter.
+\end{answerbox}
+
+\end{enumerate}
+
+\clearpage
+
+% ============================================================
+%  QUESTION 3 SOLUTIONS
+% ============================================================
+\section*{Question 3 --- Romer Expanding Varieties + Patent Policy \hfill (25 points)}
+
+Final output: $Y_t = L_{Y,t}^{1-\alpha}\int_0^{A_t} x_i^{\alpha}\,\dd i$. R\&D: $\dot{A} = \delta_A L_A$. Labour: $L_Y + L_A = L$.
+
+\bigskip
+\begin{enumerate}[label=\textbf{(\arabic*)},leftmargin=*]
+
+% --- Part 1 ---
+\item \textbf{[5 pts] Monopoly pricing and profits}
+
+\begin{answerbox}
+\textbf{Demand for variety $i$.}
+
+Final-goods firms are competitive; they maximise profits taking prices $p_i$ as given. The FOC for $x_i$:
+\[
+  \frac{\partial Y}{\partial x_i} = \alpha L_Y^{1-\alpha} x_i^{\alpha-1} = p_i \quad \Longrightarrow \quad x_i = L_Y \left(\frac{\alpha}{p_i}\right)^{1/(1-\alpha)}
+\]
+
+This is the iso-elastic demand faced by monopolist $i$, with price elasticity $-1/(1-\alpha)$.
+
+\textbf{Monopoly pricing.}
+
+Each intermediate producer has constant marginal cost $r$ (one unit of capital per unit of output). The monopolist maximises $\pi_i = (p_i - r)x_i$:
+\[
+  \text{MR} = p_i\left(1 - (1-\alpha)\right) = \alpha p_i = MC = r
+\]
+\[
+  \boxed{p_i^* = \frac{r}{\alpha}}
+\]
+The markup is $1/\alpha > 1$.
+
+\textbf{Equilibrium output and profits.}
+
+Substituting $p_i^* = r/\alpha$ into demand (symmetry: all $x_i = x$):
+\[
+  x^* = L_Y \left(\frac{\alpha^2}{r}\right)^{1/(1-\alpha)}
+\]
+
+Monopoly profit:
+\[
+  \pi_i = (p_i^* - r)x^* = \left(\frac{r}{\alpha} - r\right)x^* = \frac{(1-\alpha)}{\alpha}\,r\,x^*
+\]
+\[
+  \boxed{\pi_i = \frac{1-\alpha}{\alpha}\,r\,x^*}
+\]
+The profit equals the markup times cost, reflecting the wedge between price and marginal cost.
+\end{answerbox}
+
+\bigskip
+
+% --- Part 2 ---
+\item \textbf{[7 pts] BGP equilibrium and growth rate}
+
+\begin{answerbox}
+\textbf{No-arbitrage Bellman equation.}
+
+The value of a blueprint $V_t$ satisfies the standard asset-pricing equation (no creative destruction):
+\[
+  r_t V_t = \pi_t + \dot{V}_t
+\]
+This says: the required return on the blueprint asset (left side) equals the dividend (monopoly profit $\pi_t$) plus capital gain $\dot{V}_t$.
+
+\textbf{BGP solution.}
+
+On the BGP, $\pi_t$ is constant and $\dot{V}/V = g_A$ (blueprint value grows at the innovation rate). Rearranging:
+\[
+  r V = \pi + g_A V \quad \Longrightarrow \quad \boxed{V = \frac{\pi}{r - g_A}}
+\]
+(requires $r > g_A$ for convergence, analogous to the Gordon growth model).
+
+\textbf{Free-entry condition.}
+
+Labour is the only input to R\&D. If $\delta_A$ blueprints can be produced per unit of research labour, the value of the labour time equals the value of the patent:
+\[
+  \delta_A V = w \tag{free entry}
+\]
+If $\delta_A V > w$, researchers could earn more in R\&D and would switch; equilibrium requires equality.
+
+\textbf{BGP growth rate.}
+
+Innovation occurs at rate $g_A = \dot{A}/A = \delta_A L_A$ (from the R\&D equation $\dot{A} = \delta_A L_A$). So:
+\[
+  g_A^* = \delta_A L_A^* = \delta_A(L - L_Y^*)
+\]
+$L_Y^*$ is determined by the goods-market equilibrium: given $r$, $x^*$ pinned down by monopoly pricing, total capital demand $A x^*$ pins down $K$, and the household Euler equation determines $r$ on the BGP. Simultaneously, the free-entry condition ties the wage to $\delta_A V = \delta_A \pi/(r - g_A)$, and the labour market clears at $L_A^* = g_A^*/\delta_A$.
+\end{answerbox}
+
+\bigskip
+
+% --- Part 3 ---
+\item \textbf{[5 pts] Scale effect}
+
+\begin{answerbox}
+\textbf{Mechanism.}
+
+From the R\&D equation $\dot{A} = \delta_A L_A$ and the BGP condition $g_A = \delta_A L_A$: if the labour force $L$ rises permanently, in equilibrium $L_A$ rises proportionally (labour market clearing), so $g_A$ rises proportionally. Growth is \emph{scale-dependent}: larger economies (more researchers) grow permanently faster.
+
+\textbf{Empirical problem.}
+
+This prediction is strongly rejected by data. The US labour force grew roughly 3-fold between 1950 and 2000, with the number of scientists and engineers rising even faster --- yet trend TFP growth did not increase. Across countries, large economies (e.g.\ India, China) do not systematically grow faster in TFP terms than small ones. The scale effect is a fundamental empirical failure of the Romer (1990) formulation.
+
+\textbf{Jones (1995) fix.}
+
+Replace the linear R\&D equation with:
+\[
+  \dot{A} = \delta_A A^{\phi} L_A, \qquad \phi < 1
+\]
+The term $A^{\phi}$ captures diminishing returns to the existing stock of knowledge (``fishing out'' of ideas). On the BGP:
+\[
+  g_A^* = \frac{n}{1-\phi}
+\]
+The scale effect is eliminated: $g_A^*$ depends only on the \emph{growth rate} of population $n$, not on the \emph{level} $L$.
+
+\textbf{Theoretical cost.}
+
+Long-run growth is now driven entirely by the exogenous variable $n$. Policy instruments (R\&D subsidies, taxes) can affect the \emph{level} of $A$ (and hence per-capita income) but not its long-run growth rate. In this sense the model is ``semi-endogenous'' rather than fully endogenous, and the engine of long-run growth is again placed outside the model.
+\end{answerbox}
+
+\bigskip
+
+% --- Part 4 ---
+\item \textbf{[5 pts] Market vs.\ planner: two wedges}
+
+\begin{answerbox}
+\textbf{Wedge (a): Monopoly markup (static/output distortion).}
+
+Given a fixed variety set $A_t$, each monopolist charges $p = r/\alpha > r$ and produces $x^{\mathrm{mkt}} < x^{\mathrm{FB}}$ (first-best would have $p = r$, competitive pricing). This causes \emph{under-use} of each existing variety: final output is too low for a given $A$. The planner would set $x_i = x^{\mathrm{FB}} = L_Y (\alpha/r)^{1/(1-\alpha)} \cdot \alpha^{-1/(1-\alpha)}$... The markup reduces the level of output but affects incentives for innovation only through its effect on the profit stream.
+
+\textbf{Wedge (b): Appropriability externality (dynamic/R\&D distortion).}
+
+The monopolist's profit $\pi = (1-\alpha)/\alpha \cdot r x^*$ captures only the \emph{producer} surplus from the innovation. The \emph{consumer surplus} accruing to final-goods firms (area under demand curve above $p^*$) is lost to the innovator. Since $V = \pi/(r - g_A) < $ social value of blueprint, private R\&D investment is suboptimal: $L_A^{\mathrm{mkt}} < L_A^{\mathrm{plnr}}$, and therefore $g_A^{\mathrm{mkt}} < g_A^{\mathrm{plnr}}$.
+
+\textbf{Sign of overall bias.}
+
+Both distortions push in the same direction for R\&D: the market innovates \emph{too slowly}. Hence:
+\[
+  g_A^{\mathrm{mkt}} < g_A^{\mathrm{plnr}}
+\]
+
+\textbf{Policy mix.}
+\begin{itemize}
+  \item \emph{R\&D subsidy} (corrects appropriability): Subsidise research labour costs or patent revenues so that $\delta_A V^{\mathrm{eff}} = w$ at the social optimum. This raises $g_A$ toward the planner's rate.
+  \item \emph{Output subsidy on intermediate goods} (corrects markup distortion): A per-unit subsidy $(1-\alpha)/\alpha \cdot r$ to intermediate producers brings $p$ down to $r$ and eliminates static dead-weight loss, raising $x$ to the first-best level.
+  \item In practice: compulsory licensing, patent reform, or publicly funded basic research combine both objectives.
+\end{itemize}
+\end{answerbox}
+
+\bigskip
+
+% --- Part 5 ---
+\item \textbf{[3 pts] Finite patent lifetime}
+
+\begin{answerbox}
+\textbf{Effect of increasing $T$.}
+
+A longer patent lifetime $T$ increases the expected present value of monopoly profits:
+\[
+  V(T) = \int_0^T \pi e^{-rt}\,\dd t = \frac{\pi}{r}\left(1 - e^{-rT}\right)
+\]
+A higher $V$ strengthens the free-entry condition $\delta_A V = w$, making R\&D more attractive. In equilibrium, more labour flows into R\&D ($L_A^*$ rises), and the BGP growth rate $g_A^* = \delta_A L_A^*$ increases.
+
+\textbf{Welfare trade-off.}
+
+However, increasing $T$ also extends the period of monopoly distortion: for $t \in [0,T]$, each variety is under-produced ($p > r$) causing static dead-weight loss. Once $T$ expires, the variety is produced competitively at $p = r$ and the static distortion vanishes.
+
+\textbf{Is $T = \infty$ optimal?}
+
+No. The optimal $T$ trades off:
+\begin{itemize}
+  \item \emph{Benefit:} Higher $g_A$ (dynamic gain from more innovation)
+  \item \emph{Cost:} Permanent monopoly distortion (static loss from $p > MC$)
+\end{itemize}
+At $T = \infty$ (perpetual patents), the growth rate is maximised but the static inefficiency is permanent. At $T = 0$ (no patents), there is no incentive to innovate and $g_A = 0$. The optimal $T^*$ is interior. In Nordhaus (1969) style models, $T^*$ increases with the elasticity of innovation with respect to $V$ and decreases with the size of the dead-weight loss triangle.
+\end{answerbox}
+
+\end{enumerate}
+
+\clearpage
+
+% ============================================================
+%  SHORT QUESTION SOLUTIONS
+% ============================================================
+\section*{Short Questions --- Solutions \hfill (25 points)}
+
+\bigskip
+
+\begin{enumerate}[label=\textbf{SQ\arabic*.},leftmargin=*]
+
+\item \textbf{[8 pts] Scale Effects: Mechanism, Problem, Fix}
+
+\begin{answerbox}
+\textbf{Mechanism.} In Romer (1990), the R\&D equation is $\dot{A} = \delta_A L_A$. On the BGP, $g_A = \delta_A L_A$ and in equilibrium $L_A \propto L$ (labour market clearing). Therefore $g_A \propto L$: a permanently larger labour force generates a permanently higher innovation rate. This is the scale effect.
+
+\textbf{Empirical problem.} No cross-country or time-series evidence supports scale-dependent growth rates. The US experienced rapid growth in the number of scientists and engineers during the 20th century, yet TFP growth was roughly trendless. Larger countries (China, India) do not exhibit systematically higher TFP growth than small open economies (Singapore, Sweden). The scale effect is a fundamental empirical failure.
+
+\textbf{Jones (1995) fix.} Replace $\dot{A} = \delta_A L_A$ with $\dot{A} = \delta_A A^{\phi} L_A$ ($\phi < 1$, ``fishing-out'' of ideas). On the BGP: $g_A^* = n/(1-\phi)$. The level of $L$ no longer appears; only population growth $n$ matters for long-run growth.
+
+\textbf{Theoretical cost.} Long-run growth is driven by the exogenous demographic variable $n$ rather than by endogenous policy choices. R\&D subsidies affect the transition path and level of income, but not the steady-state growth rate. The model is ``semi-endogenous'': growth appears endogenous in the model machinery but is ultimately pinned down by an exogenous factor.
+\end{answerbox}
+
+\bigskip
+
+\item \textbf{[9 pts] Monopolistic Competition and Endogenous Growth}
+
+\begin{answerbox}
+\textbf{Why perfect competition fails.} Knowledge (blueprints) is non-rival: once created, a blueprint can be used simultaneously by many producers at zero marginal cost. Under perfect competition, price equals marginal cost; for a non-rival good the marginal cost of an additional user is zero, so the equilibrium price is zero. But creating the blueprint requires fixed costs (research labour), which cannot be recovered at a zero price. Hence perfect competition cannot sustain positive R\&D investment.
+
+\textbf{Role of the markup.} Monopoly power (via patent protection) enables innovators to charge $p > MC$, generating profits $\pi > 0$. These profits are the private return to innovation: they cover the fixed cost of R\&D. Without the markup, the market for new varieties collapses.
+
+\textbf{Appropriability externality.} The monopolist's profit captures only producer surplus. Consumer surplus (the value to final-goods firms above the monopoly price) accrues to others and is not internalised by the innovator. As a result, the private value of a blueprint $V = \pi/(r - g_A)$ is \emph{less} than the social value, causing under-investment in R\&D.
+
+\textbf{Under-use distortion (static monopoly inefficiency).} At $p = r/\alpha > r$, each variety is under-produced relative to the first-best ($p = r$). This causes a static dead-weight loss: some consumer--producer surplus is destroyed by the markup.
+
+\textbf{Conflict for patent policy.} Both distortions justify R\&D subsidies (market innovates too little). But for patent policy they conflict: longer patents raise $V$ (correcting appropriability, boosting $g_A$) but extend the under-use distortion (worsening static efficiency). This is the fundamental tension in optimal IP policy: innovation incentive vs.\ diffusion efficiency.
+\end{answerbox}
+
+\bigskip
+
+\item \textbf{[8 pts] Non-Homotheticity and Structural Change}
+
+\begin{answerbox}
+\textbf{Non-homothetic preferences.} A utility function is homothetic if all income elasticities of demand equal 1 (Engel curves are linear through the origin). Non-homothetic preferences allow income elasticities to differ from 1 and to vary with income. For services (e.g.\ health, entertainment), the income elasticity exceeds 1 (``luxury'' goods): as real income rises, households devote an increasing \emph{budget share} to services.
+
+\textbf{Structural change without Baumol.} In a two-sector model (manufacturing, services) with non-homothetic preferences and identical total factor productivity growth in both sectors (no Baumol), rising per-capita income shifts consumption demand toward services. With constant relative prices (same TFP growth), higher expenditure share on services requires a higher employment share in services. This is a pure demand-side driver of structural change.
+
+\textbf{Simultaneous Baumol and non-homotheticity.} Baumol cost disease (supply channel): services have slower TFP growth, so relative service prices rise over time. If the demand elasticity with respect to relative price is less than one (which is the empirical finding), expenditure shares in services rise further, pulling in even more employment. Non-homotheticity (demand channel): rising income raises budget shares in services independently of relative prices. Both forces increase the service employment share, so they \textbf{reinforce} each other. In the data, the employment shift from manufacturing to services is driven by both channels simultaneously, and their combined effect explains the large magnitudes observed in developed economies over the 20th century.
+\end{answerbox}
+
+\end{enumerate}
+
+\end{document}

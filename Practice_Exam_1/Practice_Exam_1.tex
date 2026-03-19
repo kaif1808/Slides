@@ -1,0 +1,393 @@
+\documentclass[a4paper,11pt]{article}
+
+% ─── Geometry ────────────────────────────────────────────────────────────────
+\usepackage{geometry}
+\geometry{margin=1in, headheight=15pt}
+
+% ─── Mathematics ─────────────────────────────────────────────────────────────
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathtools}
+
+% ─── Graphics / Colours ──────────────────────────────────────────────────────
+\usepackage{graphicx}
+\usepackage{xcolor}
+\definecolor{blue3}{RGB}{0,0,180}
+\definecolor{green3}{RGB}{0,120,0}
+\definecolor{orange3}{RGB}{200,100,0}
+\definecolor{red3}{RGB}{180,0,0}
+\definecolor{grey3}{RGB}{80,80,80}
+
+% ─── Units ───────────────────────────────────────────────────────────────────
+\usepackage{siunitx}
+\sisetup{detect-all}
+
+% ─── Links (hyperref BEFORE cleveref) ────────────────────────────────────────
+\usepackage[colorlinks=true,linkcolor=blue3,citecolor=blue3,urlcolor=blue3]{hyperref}
+\usepackage{cleveref}
+
+% ─── Boxes ───────────────────────────────────────────────────────────────────
+\usepackage{tcolorbox}
+\tcbuselibrary{skins,breakable}
+
+\newtcolorbox{pointsbox}[1][]{
+    colback=grey3!8,
+    colframe=grey3,
+    fonttitle=\bfseries\small,
+    #1
+}
+
+\newtcolorbox{hintbox}[1][]{
+    colback=orange3!8,
+    colframe=orange3,
+    title={Hint:},
+    fonttitle=\bfseries,
+    #1
+}
+
+% ─── Tables / Lists ──────────────────────────────────────────────────────────
+\usepackage{booktabs}
+\usepackage{enumitem}
+
+% ─── Notation commands ───────────────────────────────────────────────────────
+\newcommand{\ktilde}{\tilde{k}}
+\newcommand{\ytilde}{\tilde{y}}
+\newcommand{\ctilde}{\tilde{c}}
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\bgp}{\mathrm{BGP}}
+
+% ─── Header / Footer ─────────────────────────────────────────────────────────
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\textbf{14E022 Macroeconomics I} \quad Practice Exam 1}
+\rhead{BSE 2025--26}
+\cfoot{\thepage}
+
+% ═════════════════════════════════════════════════════════════════════════════
+\begin{document}
+% ═════════════════════════════════════════════════════════════════════════════
+
+\begin{center}
+    {\LARGE \textbf{14E022 Macroeconomics I}}\\[6pt]
+    {\Large \textbf{Practice Exam 1}}\\[8pt]
+    {\large BSE --- Academic Year 2025--26}
+\end{center}
+
+\vspace{8pt}
+\noindent\textit{Instructions: the exam is made of 3 problems and a set of short questions totalling \textbf{100 points}.
+You have \textbf{2 hours}. Show all derivations clearly. For short questions, concise and precise answers score highest.}
+\vspace{4pt}
+
+\noindent\rule{\textwidth}{0.4pt}
+
+% ─────────────────────────────────────────────────────────────────────────────
+\section{Question 1 --- Ramsey Model with a Capital Income Tax \hfill (25 points)}
+% ─────────────────────────────────────────────────────────────────────────────
+
+Consider a standard Ramsey/Cass/Koopmans economy in continuous time.  A representative household of
+mass $N_t = e^{nt}$ maximises
+\[
+    \int_0^{\infty} e^{-(\rho - n)t}\,\frac{c_t^{1-\sigma}-1}{1-\sigma}\,\dd t,
+    \qquad \rho - n > 0,\; \sigma > 0.
+\]
+The household accumulates assets $a_t$ (claims on capital) according to
+\[
+    \dot{a}_t = \bigl(r_t(1-\tau) - n\bigr)\,a_t + w_t + T_t - c_t,
+\]
+where $\tau \in (0,1)$ is a flat tax on capital income, and $T_t = \tau r_t k_t$ is a lump-sum
+transfer from the government that rebates all tax revenue.  Firms use a Cobb-Douglas technology
+\[
+    Y_t = K_t^{\alpha}(A_t L_t)^{1-\alpha}, \qquad \dot{A}_t/A_t = x > 0.
+\]
+Markets are competitive and factors are paid their marginal products.
+
+\begin{enumerate}[label=\textbf{\arabic*.}, leftmargin=*, itemsep=6pt]
+
+    \item \textbf{(5 points)} Define per-effective-worker variables
+    $\ktilde = K/(AL)$ and $\ctilde = C/(AL)$.  Write the resource constraint for
+    $\ktilde$ and set up the \emph{current-value} Hamiltonian for the household's problem.
+    Identify the \textbf{state variable}, the \textbf{control variable}, and the
+    \textbf{costate variable}.
+
+    \item \textbf{(7 points)} Derive the two first-order conditions of the Hamiltonian.
+    Eliminate the costate variable and its derivative to obtain the
+    \textbf{Euler equation} for $\ctilde$.  Write it in the form
+    \[
+        \frac{\dot{\ctilde}}{\ctilde} = \frac{1}{\sigma}\bigl[\,\cdot\,\bigr].
+    \]
+    Show explicitly how $\tau$ modifies the standard (no-tax) result, and state the
+    Transversality Condition.
+
+    \item \textbf{(7 points)} Characterise the \textbf{Balanced Growth Path (BGP)}.
+    \begin{enumerate}[label=(\alph*), itemsep=4pt]
+        \item Using the Euler equation from part 2, derive the \textbf{modified golden rule}
+        under the tax.  Express $\ktilde^*(\tau)$ in closed form for the Cobb-Douglas case
+        $f(\ktilde) = \ktilde^{\alpha}$.
+        \item Show formally that $\ktilde^*(\tau) < \ktilde^*(0)$, i.e.\ the tax reduces
+        steady-state capital per effective worker.
+        \item Provide economic intuition: why does the household save less when capital
+        income is taxed, even though the tax revenue is returned lump-sum?
+    \end{enumerate}
+
+    \item \textbf{(6 points)} Suppose the economy is initially at its no-tax BGP
+    ($\tau = 0$) and the tax $\tau > 0$ is \emph{unexpectedly} introduced at $t=0$.
+    \begin{enumerate}[label=(\alph*), itemsep=4pt]
+        \item Draw the \textbf{phase diagram} in $(\ktilde,\ctilde)$ space, indicating the
+        old and new $\dot{\ktilde}=0$ and $\dot{\ctilde}=0$ loci and saddle paths.
+        \item Describe the \textbf{impact effect} on $\ctilde$ and the subsequent
+        transition dynamics.  Does $\ktilde$ jump on impact?  Why or why not?
+    \end{enumerate}
+
+\end{enumerate}
+
+\clearpage
+
+% ─────────────────────────────────────────────────────────────────────────────
+\section{Question 2 --- AK Model and Learning-by-Doing Externalities \hfill (25 points)}
+% ─────────────────────────────────────────────────────────────────────────────
+
+Consider a model with a unit continuum of firms indexed by $j \in [0,1]$.  Each firm $j$
+operates the production function
+\[
+    Y_j = \bar{A}\,K_j^{\alpha}\,L_j^{1-\alpha}, \qquad \alpha \in (0,1),
+\]
+where $\bar{A} = A_0 K^{\eta}$ is aggregate TFP, driven by an \textbf{Arrow learning-by-doing
+externality}: firms generate knowledge as a by-product of capital accumulation, but each firm
+takes $\bar{A}$ as exogenous.  Aggregate capital is $K = \int_0^1 K_j\,\dd j$ and aggregate
+labour (inelastically supplied) is $L = \int_0^1 L_j\,\dd j = \bar{L}$.
+
+\begin{enumerate}[label=\textbf{\arabic*.}, leftmargin=*, itemsep=6pt]
+
+    \item \textbf{(5 points)}
+    \begin{enumerate}[label=(\alph*), itemsep=4pt]
+        \item Aggregate the production function across all firms and write aggregate output
+        $Y$ as a function of $K$, $\bar{L}$, $A_0$, $\alpha$, and $\eta$.
+        \item Show that if $\eta = 1-\alpha$ and $\bar{L}$ is normalised to 1, the aggregate
+        production function collapses to $Y = AK$ where $A \equiv A_0$.  What is the
+        economic meaning of this knife-edge condition?
+    \end{enumerate}
+
+    \item \textbf{(6 points)} Assume $\eta = 1-\alpha$ and $\bar{L}=1$ so that $Y = AK$.
+    Suppose the aggregate saving rate is a constant $s$.
+    \begin{enumerate}[label=(\alph*), itemsep=4pt]
+        \item Derive the growth rate of capital $\gamma_K$ and of output $\gamma_Y$.
+        \item Show that, unlike in the Solow model, the saving rate $s$ affects the
+        \emph{long-run growth rate}.  Provide intuition.
+        \item Under what condition does output per worker grow in the long run?
+    \end{enumerate}
+
+    \item \textbf{(7 points)} Now endogenise household saving.  Households have CRRA
+    preferences with risk-aversion parameter $\sigma$ and discount rate $\rho$.  There is no
+    population growth.  Set up the household's current-value Hamiltonian with resource
+    constraint $\dot{k} = (A-\delta)k - c$.
+    \begin{enumerate}[label=(\alph*), itemsep=4pt]
+        \item Derive the \textbf{Euler equation}.
+        \item What is the BGP growth rate $\gamma_c^{\mathrm{mkt}}$ in the decentralised
+        equilibrium?  What return $r$ does the household face, and why?
+        \item State the condition on parameters for a well-defined (bounded utility) BGP.
+    \end{enumerate}
+
+    \item \textbf{(7 points)} Compare the decentralised equilibrium to the
+    \textbf{social planner's solution}.
+    \begin{enumerate}[label=(\alph*), itemsep=4pt]
+        \item Write the planner's problem and derive the planner's Euler equation.
+        Show that $\gamma_c^{\mathrm{plnr}} > \gamma_c^{\mathrm{mkt}}$.  Explain which
+        externality drives this wedge.
+        \item Compute the optimal capital \textbf{subsidy} $s^*$ that a government should
+        introduce to restore the planner's allocation in the decentralised equilibrium.
+        Express $s^*$ in terms of $\alpha$ only and interpret it.
+        \item Briefly discuss one practical challenge in implementing this subsidy.
+    \end{enumerate}
+
+\end{enumerate}
+
+\clearpage
+
+% ─────────────────────────────────────────────────────────────────────────────
+\section{Question 3 --- Quality Ladders and Schumpeterian Growth \hfill (25 points)}
+% ─────────────────────────────────────────────────────────────────────────────
+
+Consider a Schumpeterian quality-ladder economy.  Final output is produced by a competitive
+representative firm using labour $L_Y$ and a continuum of intermediate goods:
+\[
+    Y_t = L_Y^{1-\alpha}\int_0^N \bigl(q^{k(s)}\,x_s\bigr)^{\alpha}\,\dd s, \qquad
+    \alpha \in (0,1),\; q > 1.
+\]
+Here $q^{k(s)}$ denotes the quality of the current leading vintage of good $s$, and $x_s$ is
+the quantity of that intermediate used.  Each intermediate is produced one-for-one from the
+final good (marginal cost $= 1$).  The quality leader in sector $s$ is a \emph{monopolist}
+until the next innovator displaces it (creative destruction).  Assume $q \geq 1/\alpha$.
+
+Innovations in each sector arrive as a Poisson process.  A firm that spends $h$ units of
+final output on R\&D in a given sector obtains a successful innovation with flow probability
+$\mu h$.
+
+\begin{enumerate}[label=\textbf{\arabic*.}, leftmargin=*, itemsep=6pt]
+
+    \item \textbf{(5 points)} Set up the profit-maximisation problem of the final good firm
+    (taking the final good as numeraire).  Derive the \textbf{demand function} for
+    intermediate good $x_s$ as a function of $L_Y$, the quality-adjusted aggregate, and the
+    price $p_s$.
+
+    \item \textbf{(6 points)}
+    \begin{enumerate}[label=(\alph*), itemsep=4pt]
+        \item Set up the monopolist's profit-maximisation problem in sector $s$ and derive
+        the \textbf{unconstrained monopoly price}.
+        \item Explain the \textbf{limit-pricing} argument: why does the constraint
+        $p_s \leq q$ arise, and why does the assumption $q \geq 1/\alpha$ imply it is
+        \emph{not} binding?
+        \item Derive the \textbf{monopoly profits} $\pi_s$ of the current quality leader as
+        a proportion of output.  Show that $\pi_s = \alpha(1-\alpha)\,Y/N$.
+    \end{enumerate}
+
+    \item \textbf{(7 points)}
+    \begin{enumerate}[label=(\alph*), itemsep=4pt]
+        \item Let $\iota$ denote the \textbf{Poisson rate of creative destruction} in each
+        sector (the rate at which a given monopolist is displaced).  Write the
+        \textbf{no-arbitrage (Bellman) equation} for the value $V_s$ of a monopoly position
+        in sector $s$ on the BGP (where $V_s$ grows at rate $g_Y$).  Solve for $V_s$.
+        \item Using the R\&D free-entry condition (zero-profit for R\&D firms), write an
+        equation that pins down the equilibrium.
+        \item Using the household Euler equation $\dot{c}/c = r - \rho$ evaluated on the BGP
+        (where $\dot{c}/c = g_Y$), combine with the free-entry condition to find an
+        expression relating $\iota$, $\pi$, $\rho$, $\mu$, and $g_Y$.
+    \end{enumerate}
+
+    \item \textbf{(7 points)} Identify and discuss the two key \textbf{externalities} in
+    this model:
+    \begin{enumerate}[label=(\alph*), itemsep=4pt]
+        \item \textbf{Business-stealing (creative destruction) externality:} define it, state
+        its direction (over- or under-innovation), and give intuition.
+        \item \textbf{Appropriability (consumer-surplus) externality:} define it, state its
+        direction, and give intuition.
+        \item In general, which externality dominates in the Aghion--Howitt model?  What
+        does this imply for optimal R\&D policy?  Can the government implement the
+        first-best with a single instrument?
+    \end{enumerate}
+
+\end{enumerate}
+
+\clearpage
+
+% ─────────────────────────────────────────────────────────────────────────────
+\section{Short Questions \hfill (25 points)}
+% ─────────────────────────────────────────────────────────────────────────────
+
+\noindent\textit{For these questions, short and sharp answers will receive the highest marks.
+Aim for 3--6 sentences per sub-question unless otherwise indicated.}
+
+\vspace{8pt}
+
+\begin{enumerate}[label=\textbf{\arabic*.}, leftmargin=*, itemsep=14pt]
+
+    % ── SQ1 ──────────────────────────────────────────────────────────────────
+    \item \textbf{(9 points) Convergence in the Solow Model.}
+
+    \begin{enumerate}[label=(\alph*), itemsep=6pt]
+        \item Define \textbf{absolute convergence} and \textbf{conditional convergence}.
+        Which concept does the basic Solow model predict, and what does ``conditioning''
+        mean in practice?
+
+        \item Barro and Sala-i-Martin (1992) find a negative relationship between initial
+        income per capita and subsequent growth \emph{within} a set of US states, but the
+        relationship is weak or absent in an unconditional cross-country regression.  Is this
+        evidence consistent with the Solow model?  Explain carefully.
+
+        \item The Solow model also predicts a specific \textbf{speed of convergence}
+        $\beta$.  Write the formula for $\beta$ around the steady state and explain which
+        parameter(s) control how fast an economy closes the gap to its steady state.
+    \end{enumerate}
+
+    % ── SQ2 ──────────────────────────────────────────────────────────────────
+    \item \textbf{(8 points) Scale Effects and the Jones Fix.}
+
+    \begin{enumerate}[label=(\alph*), itemsep=6pt]
+        \item The Romer (1990) model implies that economies with larger populations should
+        grow permanently faster.  Explain the mechanism that generates this \textbf{scale
+        effect} and state the empirical reason why this is problematic.
+
+        \item Jones (1995) proposes the \textbf{semi-endogenous growth} fix.  Write the
+        modified R\&D equation
+        \[
+            \dot{M}_t = \lambda\,M_t^{\phi}\,L_{R,t}, \qquad \phi < 1,
+        \]
+        and derive the BGP growth rate of $M$ (and hence of $Y$).  Show that the scale
+        effect disappears and sustained growth now requires \emph{population growth}.
+
+        \item What is the key criticism of the Jones fix from a theoretical standpoint?
+    \end{enumerate}
+
+    % ── SQ3 ──────────────────────────────────────────────────────────────────
+    \item \textbf{(8 points) Non-Homotheticity and Structural Change.}
+
+    \begin{enumerate}[label=(\alph*), itemsep=6pt]
+        \item Define \textbf{non-homotheticity} of preferences.  Explain, using the concept
+        of the \textbf{income elasticity of demand}, why non-homothetic preferences
+        generate structural change as an economy grows richer.
+
+        \item In a two-sector economy (manufacturing $M$ and services $S$) with
+        Cobb-Douglas aggregation $Y = Y_M^{\beta}Y_S^{1-\beta}$, expenditure shares are
+        constant (both equal to their Cobb-Douglas weight).  What feature of preferences or
+        technology must be added to generate a \emph{rising} employment share in services
+        as income grows?  Give one concrete example.
+
+        \item The Baumol (1967) model predicts that the service sector grows as a share of
+        employment even without non-homotheticity.  What drives this result, and what does
+        it imply for aggregate productivity growth?
+    \end{enumerate}
+
+\end{enumerate}
+
+\vspace{20pt}
+\noindent\rule{\textwidth}{0.4pt}
+
+\begin{center}
+    \textit{End of Practice Exam 1. Good luck!}
+\end{center}
+
+% ─────────────────────────────────────────────────────────────────────────────
+\clearpage
+\appendix
+\section*{Appendix: Key Formulas Permitted in Exam}
+% ─────────────────────────────────────────────────────────────────────────────
+
+The following results may be used without re-derivation unless the question explicitly asks
+you to derive them.
+
+\subsection*{A.1 ~ Log-differentiation}
+If $Z_t = X_t^a Y_t^b$, then $\gamma_Z = a\gamma_X + b\gamma_Y$.
+
+\subsection*{A.2 ~ Ramsey / Euler Equation (standard)}
+\[
+    \frac{\dot{c}}{c} = \frac{1}{\sigma}(r - \rho - \sigma n),
+    \qquad
+    \frac{\dot{\ctilde}}{\ctilde} = \frac{1}{\sigma}(r - \delta - \rho - \sigma x)
+\]
+where $r = f'(\ktilde) - \delta$ is the net return to capital, $x$ is TFP growth, and
+$n$ is population growth.
+
+\subsection*{A.3 ~ Hamiltonian first-order conditions (current-value)}
+Control $u$, state $x$, costate $\lambda$, discount $\rho$:
+\[
+    H_u = 0, \qquad \dot{\lambda} = \rho\lambda - H_x.
+\]
+
+\subsection*{A.4 ~ Cobb-Douglas factor payments}
+$r K = \alpha Y$, $wL = (1-\alpha)Y$, so $r = \alpha Y/K$ and $w = (1-\alpha)Y/L$.
+
+\subsection*{A.5 ~ CES monopoly markup}
+With isoelastic demand elasticity $\varepsilon$:
+$p = \frac{\varepsilon}{\varepsilon-1}\cdot MC$.
+For the production function $Y = L^{1-\alpha}\!\int_0^N x_s^{\alpha}\,\dd s$
+(or quality-ladder variant), $\varepsilon = 1/(1-\alpha)$ and
+\[
+    p^* = \frac{1}{\alpha},\qquad \pi = \left(\frac{1}{\alpha}-1\right)x = \frac{1-\alpha}{\alpha}\,x.
+\]
+
+\subsection*{A.6 ~ Integral result}
+\[
+    \int_0^T e^{-as}\,\dd s = \frac{1 - e^{-aT}}{a}.
+\]
+
+\end{document}

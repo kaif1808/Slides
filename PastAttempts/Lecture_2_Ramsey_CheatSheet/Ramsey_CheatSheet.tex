@@ -1,0 +1,677 @@
+\documentclass[a4paper,11pt]{article}
+
+\usepackage{geometry}
+\geometry{margin=1in}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\definecolor{blue3}{RGB}{0,0,180}
+\definecolor{green3}{RGB}{0,120,0}
+\definecolor{orange3}{RGB}{200,100,0}
+
+\usepackage{siunitx}
+\sisetup{detect-all}
+
+\usepackage[colorlinks=true,linkcolor=blue3,citecolor=blue3,urlcolor=blue3]{hyperref}
+\usepackage{cleveref}
+
+\usepackage{tcolorbox}
+\tcbuselibrary{skins,breakable}
+
+\newtcolorbox{derivationbox}[1][]{
+    colback=blue!10,
+    colframe=blue3,
+    coltitle=blue3,
+    title={Derivation:},
+    fonttitle=\bfseries,
+    #1
+}
+
+\newtcolorbox{resultbox}[1][]{
+    colback=green!10,
+    colframe=green3,
+    coltitle=green3,
+    title={Result Summary:},
+    fonttitle=\bfseries,
+    #1
+}
+
+\usepackage{booktabs}
+\usepackage{enumitem}
+
+% Custom notation commands
+\newcommand{\ktilde}{\tilde{k}}
+\newcommand{\ytilde}{\tilde{y}}
+\newcommand{\ctilde}{\tilde{c}}
+\newcommand{\khat}{\hat{k}}
+\newcommand{\chat}{\hat{c}}
+\newcommand{\diff}{\mathrm{d}}
+
+\begin{document}
+
+\title{Ramsey/Cass/Koopmans Model Cheatsheet}
+\author{Macroeconomics I - Lecture 2}
+\date{January 2026}
+
+\maketitle
+
+\tableofcontents
+
+\newpage
+
+%==============================================================================
+\section{Notation and Definitions}
+%==============================================================================
+
+\subsection*{Core Variables}
+\begin{itemize}
+    \item $K_t$: Aggregate capital stock
+    \item $L_t$: Labor force (population), grows at rate $n$
+    \item $Y_t$: Aggregate output
+    \item $C_t$: Aggregate consumption
+    \item $A_t$: Technology level (also denoted $B_t$), grows at rate $x$
+    \item $N_t$: Family size at time $t$, $N_t = N_0 e^{nt}$ (normalize $N_0 = 1$)
+\end{itemize}
+
+\subsection*{Per-Worker Variables}
+\begin{align*}
+    k_t &= \frac{K_t}{L_t} & \text{(capital per worker)} \\
+    c_t &= \frac{C_t}{L_t} & \text{(consumption per worker)} \\
+    y_t &= \frac{Y_t}{L_t} & \text{(output per worker)}
+\end{align*}
+
+\subsection*{Per-Effective-Worker Variables (Efficiency Units)}
+\begin{align*}
+    \ktilde_t &= \frac{K_t}{A_t L_t} & \text{(capital per efficiency unit)} \\
+    \ctilde_t &= \frac{C_t}{A_t L_t} & \text{(consumption per efficiency unit)} \\
+    \ytilde_t &= \frac{Y_t}{A_t L_t} & \text{(output per efficiency unit)}
+\end{align*}
+
+\subsection*{Parameters}
+\begin{itemize}
+    \item $n$: Population growth rate
+    \item $x$: Technology (TFP) growth rate, $\dot{B}_t/B_t = x$
+    \item $\delta$: Depreciation rate
+    \item $\rho$: Subjective discount rate ($\rho > 0$)
+    \item $\sigma$: CRRA curvature parameter (relative risk aversion)
+    \item $\alpha$: Capital share in Cobb-Douglas production
+\end{itemize}
+
+\subsection*{Prices}
+\begin{itemize}
+    \item $r_t$: Real interest rate (net of depreciation)
+    \item $w_t$: Real wage rate
+\end{itemize}
+
+%==============================================================================
+\section{Model Setup}
+%==============================================================================
+
+\subsection*{Environment}
+\begin{itemize}
+    \item Closed economy (no trade)
+    \item Single homogeneous good (can be consumed or invested)
+    \item Representative household and representative firm
+    \item Three competitive markets: capital, labor, final good
+    \item Infinite-lived households (dynasty)
+\end{itemize}
+
+\subsection*{Production Function}
+\begin{align*}
+    Y_t &= F(K_t, B_t L_t) \quad \text{or} \quad F(K_t, A_t L_t) \\
+    \text{with CRS:} &\quad F(\lambda K, \lambda B L) = \lambda F(K, BL)
+\end{align*}
+
+Technology $B_t$ grows at constant rate:
+\[
+\frac{\dot{B}_t}{B_t} = x \quad \Rightarrow \quad B_t = B_0 e^{xt}
+\]
+
+For balanced growth, technology must be labor-augmenting (Uzawa 1961).
+
+%==============================================================================
+\section{Household Optimization}
+%==============================================================================
+
+\subsection*{Household Problem}
+Representative household chooses $\{c_t, a_t\}$ to maximize:
+\[
+\max_{\{c_t, a_t\}} \left\{ \int_0^\infty u(c_t) e^{-(\rho-n)t} \, \diff t \right\}
+\]
+
+Subject to:
+\[
+c_t + \dot{a}_t + n a_t \leq w_t + r_t a_t
+\]
+with $a_0$ given and No-Ponzi Game condition:
+\[
+\lim_{t \to \infty} a_t \exp\left(-\int_0^t (r_s - n) \, \diff s\right) \geq 0
+\]
+
+Where $a_t = A_t/N_t$ is assets per worker.
+
+\subsection*{Present-Value Hamiltonian}
+\[
+\mathcal{J} = u(c_t) e^{-(\rho-n)t} + \nu_t \left[ w_t + (r_t - n)a_t - c_t \right]
+\]
+
+\begin{derivationbox}
+\textbf{Necessary FOCs from Hamiltonian:}
+
+\textbf{1. Control variable ($c_t$):}
+\[
+\mathcal{J}_{c} = 0 \Rightarrow \nu_t = u_c(c_t) e^{-(\rho-n)t}
+\tag{FOC-C}
+\]
+
+\textbf{2. State variable ($a_t$):}
+\[
+\mathcal{J}_{a} = -\dot{\nu}_t \Rightarrow \dot{\nu}_t = -(r_t - n)\nu_t
+\tag{FOC-A}
+\]
+
+\textbf{3. State evolution:}
+\[
+\mathcal{J}_{\nu} = \dot{a}_t \Rightarrow \dot{a}_t = w_t + (r_t - n)a_t - c_t
+\tag{State}
+\]
+\end{derivationbox}
+
+\subsection*{Euler Equation Derivation}
+
+\begin{derivationbox}
+\textbf{Step 1: Take logs of FOC-C}
+\[
+\log \nu_t = \log u_c(c_t) - (\rho - n)t
+\]
+
+\textbf{Step 2: Differentiate with respect to $t$}
+\[
+\frac{\dot{\nu}_t}{\nu_t} = \frac{u_{cc} \dot{c}_t}{u_c} - (\rho - n)
+\]
+
+\textbf{Step 3: Use FOC-A ($\dot{\nu}_t = -(r_t - n)\nu_t$)}
+\[
+-(r_t - n) = \frac{u_{cc} c_t}{u_c} \frac{\dot{c}_t}{c_t} - (\rho - n)
+\]
+
+\textbf{Step 4: Rearrange to get Euler Equation}
+\[
+\frac{\dot{c}_t}{c_t} = \left[ -\frac{u_{cc}(c_t) c_t}{u_c(c_t)} \right]^{-1} (r_t - \rho)
+\tag{Euler-General}
+\]
+\end{derivationbox}
+
+The term in brackets is the inverse of the elasticity of intertemporal substitution (EIS).
+
+\subsection*{CRRA Utility Case}
+
+\begin{resultbox}
+For CRRA utility: $u(c) = \frac{c^{1-\sigma} - 1}{1-\sigma}$, we have:
+\[
+-\frac{u_{cc} c}{u_c} = \sigma \quad \text{(constant)}
+\]
+
+Therefore:
+\[
+\boxed{\frac{\dot{c}_t}{c_t} = \frac{1}{\sigma}(r_t - \rho)}
+\tag{Euler-CRRA}
+\]
+\end{resultbox}
+
+\textbf{Intuition:}
+\begin{itemize}
+    \item If $r = \rho$: $\dot{c} = 0$, constant consumption
+    \item If $r > \rho$: $\dot{c} > 0$, consumption grows over time
+    \item If $r < \rho$: $\dot{c} < 0$, consumption declines over time
+    \item Higher $\sigma$: smaller response of consumption to interest rate differentials
+\end{itemize}
+
+%==============================================================================
+\section{Firm Problem and Equilibrium}
+%==============================================================================
+
+\subsection*{Firm Optimization}
+Representative firm rents capital and labor to maximize profits:
+\[
+\Pi_t = F(K_t, B_t L_t) - (r_t + \delta)K_t - w_t L_t
+\]
+
+\begin{derivationbox}
+\textbf{Firm FOCs (static problem):}
+
+\textbf{1. Capital:}
+\[
+\frac{\partial \Pi}{\partial K} = F_K(K_t, B_t L_t) - (r_t + \delta) = 0
+\Rightarrow \boxed{F_K = r_t + \delta}
+\tag{FOC-K}
+\]
+
+\textbf{2. Labor:}
+\[
+\frac{\partial \Pi}{\partial L} = F_L(K_t, B_t L_t) - w_t = 0
+\Rightarrow \boxed{F_L = w_t}
+\tag{FOC-L}
+\]
+\end{derivationbox}
+
+Note: $F_K$ is MPK (marginal product of capital), $F_L$ is MPL.
+
+\subsection*{Market Clearing}
+\begin{itemize}
+    \item Labor market: $L_t = N_t$
+    \item Asset market: $K_t = N_t a_t$
+    \item Aggregate resource: $Y_t = C_t + I_t$ where $I_t = \dot{K}_t + \delta K_t$
+\end{itemize}
+
+%==============================================================================
+\section{Dynamic System}
+%==============================================================================
+
+\subsection*{Capital Accumulation (Per Worker)}
+
+From household BC and market clearing:
+\[
+\dot{k}_t = y_t - c_t - (n + \delta)k_t
+\tag{Capital-Law}
+\]
+
+This is identical to Solow, except $c_t$ is endogenously determined.
+
+\subsection*{Dynamic System in Efficiency Units}
+
+Transform to per-effective-worker terms ($\ktilde = k / B$):
+
+\begin{resultbox}
+\begin{align*}
+\dot{\ktilde}_t &= f(\ktilde_t) - \ctilde_t - (n + x + \delta)\ktilde_t
+\tag{Dynamics-k} \\[4pt]
+\frac{\dot{\ctilde}_t}{\ctilde}_t + x &= \frac{1}{\sigma}\left(f'(\ktilde_t) - \delta - \rho\right)
+\tag{Dynamics-c}
+\end{align*}
+\end{resultbox}
+
+Where $f(\ktilde) = F(\ktilde, 1)$ is the intensive form of the production function.
+
+%==============================================================================
+\section{Steady State Analysis}
+%==============================================================================
+
+\subsection*{Steady State Conditions}
+Steady state requires $\dot{\ktilde} = 0$ and $\dot{\ctilde} = 0$:
+
+\begin{resultbox}
+\begin{align*}
+\dot{\ktilde} = 0 &\Rightarrow \ctilde^* = f(\ktilde^*) - (n + x + \delta)\ktilde^*
+\tag{SS-Capital} \label{SS-Capital} \\[4pt]
+\dot{\ctilde} = 0 &\Rightarrow f'(\ktilde^*) = \delta + \rho + \sigma x
+\tag{SS-Consumption} \label{SS-Consumption}
+\end{align*}
+\end{resultbox}
+
+Equation \eqref{SS-Consumption} is the \textbf{Modified Golden Rule}.
+
+\subsection*{Cobb-Douglas Special Case}
+
+With $f(\ktilde) = \ktilde^\alpha$ (Cobb-Douglas):
+
+\begin{resultbox}
+\begin{align*}
+\ktilde^* &= \left( \frac{\alpha}{\delta + \rho + \sigma x} \right)^{\frac{1}{1-\alpha}}
+\tag{SS-k-Cobb} \\[4pt]
+\ytilde^* &= \left( \frac{\alpha}{\delta + \rho + \sigma x} \right)^{\frac{\alpha}{1-\alpha}}
+\tag{SS-y-Cobb} \\[4pt]
+\ctilde^* &= \ytilde^* - (n + x + \delta)\ktilde^*
+\tag{SS-c-Cobb}
+\end{align*}
+\end{resultbox}
+
+\subsection*{Comparison: Modified Golden Rule vs. Golden Rule}
+
+\begin{itemize}
+    \item \textbf{Golden Rule (Solow):} $f'(\ktilde_{GR}) = n + x + \delta$
+    \item \textbf{Modified Golden Rule (Ramsey):} $f'(\ktilde^*) = \delta + \rho + \sigma x$
+\end{itemize}
+
+Since $\rho > 0$ and $\sigma > 0$:
+\[
+f'(\ktilde^*) = \delta + \rho + \sigma x > \delta + n + x = f'(\ktilde_{GR})
+\]
+
+Because $f'$ is decreasing, we have:
+\[
+\boxed{\ktilde^* < \ktilde_{GR}}
+\tag{Key-Insight}
+\]
+
+The Ramsey steady state always has less capital than the Golden Rule.
+
+%==============================================================================
+\section{Transversality Condition and Dynamic Efficiency}
+%==============================================================================
+
+\subsection*{TVC Statement}
+\[
+\lim_{t \to \infty} \nu_t a_t = 0
+\tag{TVC}
+\]
+
+With CRRA utility and equilibrium conditions:
+
+\begin{derivationbox}
+\textbf{Transforming the TVC:}
+
+Using $\nu_t = \ctilde_t^{-\sigma} e^{-(\rho-n)t}$ and $a_t = \ktilde_t B_t$:
+
+\[
+\lim_{t \to \infty} \ctilde_t^{-\sigma} \ktilde_t B_t e^{-(\rho-n)t} = 0
+\]
+
+Since $\ktilde, \ctilde$ are bounded in steady state and $B_t = B_0 e^{xt}$:
+
+\[
+\lim_{t \to \infty} e^{(n + (1-\sigma)x - \rho)t} = 0
+\]
+
+Therefore:
+\[
+\boxed{n + (1-\sigma)x - \rho < 0}
+\tag{TVC-Condition}
+\]
+\end{derivationbox}
+
+\subsection*{Implications of TVC}
+
+\begin{resultbox}
+\begin{enumerate}
+    \item \textbf{Dynamic Efficiency:} The Ramsey equilibrium is always dynamically efficient
+    \item \textbf{Interest Rate:} In steady state, $r^* = \rho + \sigma x$
+    \item \textbf{Capital Level:} $\ktilde^* < \ktilde_{GR}$ (cannot over-accumulate)
+    \item \textbf{Savings Rate:} $s^* = \alpha \frac{n+x+\delta}{\rho+\sigma x+\delta} < \alpha$
+\end{enumerate}
+\end{resultbox}
+
+The TVC rules out Ponzi schemes and ensures the household does not leave positive assets at infinity.
+
+%==============================================================================
+\section{Phase Diagram and Transitional Dynamics}
+%==============================================================================
+
+\subsection*{Phase Diagram: Key Loci}
+
+\begin{center}
+\begin{tikzpicture}[scale=0.85]
+    % Axes
+    \draw[->] (-0.3,0) -- (6,0) node[right] {$\ktilde$};
+    \draw[->] (0,-0.3) -- (0,4.5) node[above] {$\ctilde$};
+    
+    % \dot{c} = 0 locus (vertical line)
+    \draw[blue3,thick] (2.8,0) -- (2.8,4.2) node[above left,blue3] {$\dot{\ctilde}=0$};
+    \node[blue3] at (2.8,-0.3) {$\ktilde^*$};
+    
+    % \dot{k} = 0 locus (inverted U)
+    \draw[red,thick] plot[domain=0:5.5,smooth] (\x,{2.2 - 0.25*\x + 0.03*\x*\x}) 
+        node[above right,red] {$\dot{\ktilde}=0$};
+    
+    % Steady state point
+    \draw[fill=black] (2.8,1.55) circle (0.08) node[above right] {$E=(\ktilde^*,\ctilde^*)$};
+    
+    % Saddle path (stable arm)
+    \draw[green3,thick,dashed] (0.3,0.4) .. controls (1.5,1.2) .. (2.8,1.55) .. controls (4.5,2) .. (5.2,0.8);
+    \node[green3] at (4.8,0.6) {Saddle path};
+    
+    % Directional arrows
+    \draw[->,thin] (1.5,2.5) -> (1.5,2.0);
+    \draw[->,thin] (4.0,2.5) -> (4.0,3.0);
+    \draw[->,thin] (1.5,0.8) -> (2.0,0.8);
+    \draw[->,thin] (4.0,0.8) -> (3.5,0.8);
+    
+    % Labels for regions
+    \node at (1.2,3.3) {I};
+    \node at (4.2,3.3) {II};
+    \node at (1.2,0.4) {III};
+    \node at (4.2,0.4) {IV};
+    
+    % Legend
+    \node[blue3] at (0.2,4.3) {(I) $\dot{c}>0$, $\dot{k}>0$};
+    \node[blue3] at (3.5,4.3) {(II) $\dot{c}<0$, $\dot{k}>0$};
+\end{tikzpicture}
+\end{center}
+
+\begin{center}
+\begin{tabular}{lll}
+\toprule
+Region & $\dot{\ctilde}$ & $\dot{\ktilde}$ \\
+\midrule
+I (above both loci) & $< 0$ & $> 0$ \\
+II (left of $\dot{c}=0$, below $\dot{k}=0$) & $> 0$ & $> 0$ \\
+III (below both loci) & $> 0$ & $< 0$ \\
+IV (right of $\dot{c}=0$, above $\dot{k}=0$) & $< 0$ & $< 0$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\subsection*{Stability Analysis: Saddle Path}
+
+\begin{resultbox}
+\textbf{Saddle-Path Stability:}
+
+For any initial $\ktilde_0$, there is a unique $\ctilde_0$ on the stable arm that leads to the steady state.
+
+\begin{itemize}
+    \item \textbf{Above saddle path}: $\ctilde > \ctilde_{sp}$ $\Rightarrow$ $\dot{\ctilde} < 0$ and $\dot{\ktilde} < 0$ $\Rightarrow$ eventually $k \to 0$ (violates feasibility)
+    \item \textbf{Below saddle path}: $\ctilde < \ctilde_{sp}$ $\Rightarrow$ $\dot{\ctilde} > 0$ and $\dot{\ktilde} > 0$ $\Rightarrow$ eventually violates TVC ($k \to \infty$)
+\end{itemize}
+\end{resultbox}
+
+Only the saddle path satisfies both the Euler equation and the TVC.
+
+%==============================================================================
+\section{Comparative Statics}
+%==============================================================================
+
+\subsection*{Parameter Changes and Steady State Effects}
+
+\begin{center}
+\begin{tabular}{lcccccc}
+\toprule
+Parameter & $\ktilde^*$ & $\ctilde^*$ & $\ytilde^*$ & $r^*$ & Savings Rate \\
+\midrule
+$\rho \uparrow$ (more impatient) & $\downarrow$ & $\downarrow$ & $\downarrow$ & — & $\downarrow$ \\
+$\sigma \uparrow$ (more risk averse) & $\downarrow$ & $\downarrow$ & $\downarrow$ & — & $\downarrow$ \\
+$\delta \uparrow$ & $\uparrow$ & $\downarrow$ & ambiguous & — & $\uparrow$ \\
+$n \uparrow$ & no effect & no effect & no effect & — & no effect \\
+$x \uparrow$ (tech growth) & $\downarrow$ & $\downarrow$ & no effect & $\uparrow$ & $\downarrow$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\begin{derivationbox}
+\textbf{Intuition for $\rho \uparrow$ (or $\sigma \uparrow$):}
+
+\begin{enumerate}
+    \item The $\dot{\ctilde} = 0$ locus shifts left (lower $\ktilde$ for given $\ctilde$)
+    \item New steady state: lower $\ktilde^*$, lower $\ctilde^*$, lower $\ytilde^*$
+    \item Households are more impatient, save less, accumulate less capital
+    \item Cannot distinguish $\rho$ and $\sigma$ from steady-state data alone
+\end{enumerate}
+\end{derivationbox}
+
+\begin{resultbox}
+\textbf{Key Insight on Population Growth:}
+
+In Ramsey (unlike Solow), $n$ does NOT affect the steady-state levels of $\ktilde^*$, $\ctilde^*$, $\ytilde^*$.
+
+The determination of $\ktilde^*$ comes directly from the Euler equation, where $n$ plays no role.
+\end{resultbox}
+
+%==============================================================================
+\section{Problem-Solving Templates}
+%==============================================================================
+
+\subsection*{Template 1: Household Optimization (Hamiltonian Method)}
+
+\begin{enumerate}
+    \item \textbf{Set up objective:} $\max \int_0^\infty u(c_t)e^{-(\rho-n)t}\diff t$
+    \item \textbf{Write BC:} $c_t + \dot{a}_t + na_t = w_t + r_t a_t$
+    \item \textbf{Form Hamiltonian:} $\mathcal{J} = u(c)e^{-(\rho-n)t} + \nu[w + (r-n)a - c]$
+    \item \textbf{FOCs:}
+        \begin{itemize}
+            \item $u_c(c)e^{-(\rho-n)t} = \nu$
+            \item $\dot{\nu} = -(r-n)\nu$
+        \end{itemize}
+    \item \textbf{Eliminate $\nu$:} Take logs, differentiate, combine to get Euler equation
+    \item \textbf{Add TVC:} $\lim_{t\to\infty} \nu_t a_t = 0$
+\end{enumerate}
+
+\subsection*{Template 2: Find Steady State}
+
+\begin{enumerate}
+    \item Write dynamic system in per-efficient-worker form:
+        \begin{align*}
+            \dot{\ktilde} &= f(\ktilde) - \ctilde - (n+x+\delta)\ktilde \\
+            \dot{\ctilde} &= \frac{\ctilde}{\sigma}[f'(\ktilde) - \delta - \rho - \sigma x]
+        \end{align*}
+    \item Set $\dot{\ktilde} = 0$ and $\dot{\ctilde} = 0$
+    \item Solve for $\ktilde^*$: $f'(\ktilde^*) = \delta + \rho + \sigma x$
+    \item Solve for $\ctilde^*$: $\ctilde^* = f(\ktilde^*) - (n+x+\delta)\ktilde^*$
+    \item For Cobb-Douglas: $\ktilde^* = \left[\frac{\alpha}{\delta + \rho + \sigma x}\right]^{1/(1-\alpha)}$
+\end{enumerate}
+
+\subsection*{Template 3: Phase Diagram Analysis}
+
+\begin{enumerate}
+    \item Draw $\dot{\ctilde} = 0$ locus: vertical line at $\ktilde^*$ where $f'(\ktilde^*) = \delta + \rho + \sigma x$
+    \item Draw $\dot{\ktilde} = 0$ locus: $\ctilde = f(\ktilde) - (n+x+\delta)\ktilde$ (inverted U)
+    \item Find intersection: steady state $E = (\ktilde^*, \ctilde^*)$
+    \item Identify stable arm (saddle path): negatively sloped curve through $E$
+    \item Add arrows: use sign charts for each region
+    \item Analyze dynamics: convergence only along saddle path
+\end{enumerate}
+
+\subsection*{Template 4: Policy Shock Analysis (Comparative Statics)}
+
+\begin{enumerate}
+    \item Identify which loci shift:
+        \begin{itemize}
+            \item $\rho$, $\sigma$, $x$ affect $\dot{\ctilde} = 0$ locus
+            \item $n$, $x$, $\delta$ affect $\dot{\ktilde} = 0$ locus
+        \end{itemize}
+    \item Determine direction of shift
+    \item Find new steady state (intersection of shifted loci)
+    \item Discuss transition: does economy converge? What happens to variables?
+\end{enumerate}
+
+%==============================================================================
+\section{Common Pitfalls}
+%==============================================================================
+
+\begin{enumerate}
+    \item \textbf{Confusing $\rho$ with $r$:} $\rho$ is subjective discount rate (patience), $r$ is market interest rate. They are equal only in steady state.
+    
+    \item \textbf{Forgetting technology growth $x$:} In the accumulation equation, use $(n + x + \delta)$, not just $(n + \delta)$.
+    
+    \item \textbf{Mixing per-worker vs. per-effective variables:} Always transform: $k = \ktilde \cdot B$. Growth rates differ by $x$.
+    
+    \item \textbf{Forgetting TVC:} Many students omit the transversality condition, but it's essential for dynamic efficiency and ruling out Ponzi schemes.
+    
+    \item \textbf{Phase diagram errors:}
+        \begin{itemize}
+            \item $\dot{c} = 0$ locus is VERTICAL (depends only on $k$)
+            \item $\dot{k} = 0$ locus is INVERTED U (depends on both $k$ and $c$)
+        \end{itemize}
+    
+    \item \textbf{Signs in Euler equation:} Remember $\dot{c}/c = (1/\sigma)(r - \rho)$, not $(r + \rho)$.
+    
+    \item \textbf{Golden Rule confusion:}
+        \begin{itemize}
+            \item Solow GR: $f'(k_{GR}) = n + \delta$
+            \item Ramsey GR: $f'(k^*) = \delta + \rho + \sigma x$
+        \end{itemize}
+    
+    \item \textbf{Discount factor in Hamiltonian:} Remember to use $e^{-(\rho-n)t}$, not $e^{-\rho t}$, when population growth exists.
+\end{enumerate}
+
+%==============================================================================
+\section{Quick Reference Formulas}
+%==============================================================================
+
+\begin{resultbox}
+\begin{align*}
+\text{Euler Equation:} & \quad \frac{\dot{c}}{c} = \frac{1}{\sigma}(r - \rho) \\
+\text{Capital Law of Motion:} & \quad \dot{k} = y - c - (n + \delta)k \\
+\text{Per-Efficient Capital:} & \quad \dot{\ktilde} = f(\ktilde) - \ctilde - (n + x + \delta)\ktilde \\
+\text{Modified Golden Rule:} & \quad f'(\ktilde^*) = \delta + \rho + \sigma x \\
+\text{SS Interest Rate:} & \quad r^* = \rho + \sigma x \\
+\text{Cobb-Douglas SS:} & \quad \ktilde^* = \left[\frac{\alpha}{\delta + \rho + \sigma x}\right]^{1/(1-\alpha)} \\
+\text{TVC Condition:} & \quad n + (1-\sigma)x - \rho < 0 \\
+\text{SS Savings Rate:} & \quad s^* = \alpha \frac{n + x + \delta}{\rho + \sigma x + \delta}
+\end{align*}
+\end{resultbox}
+
+%==============================================================================
+\section{Key Formulas Summary Table}
+%==============================================================================
+
+\begin{center}
+\begin{tabular}{lll}
+\toprule
+Concept & Formula & Equation \\
+\midrule
+Household BC & $c + \dot{a} + na = w + ra$ & (1) \\
+Euler (CRRA) & $\dot{c}/c = (r - \rho)/\sigma$ & (2) \\
+MPK condition & $F_K = r + \delta$ & (3) \\
+Capital law & $\dot{k} = y - c - (n+\delta)k$ & (4) \\
+Per-efficient & $\dot{\ktilde} = f(\ktilde) - \ctilde - (n+x+\delta)\ktilde$ & (5) \\
+Modified GR & $f'(\ktilde^*) = \delta + \rho + \sigma x$ & (6) \\
+SS interest & $r^* = \rho + \sigma x$ & (7) \\
+TVC & $n + (1-\sigma)x < \rho$ & (8) \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+%==============================================================================
+\section{Ramsey vs. Solow Comparison}
+%==============================================================================
+
+\begin{center}
+\begin{tabular}{lll}
+\toprule
+Feature & Solow Model & Ramsey Model \\
+\midrule
+Consumption decision & Exogenously given ($c = (1-s)y$) & Endogenous (Euler equation) \\
+Savings rate & Fixed $s$ & Determined by optimization \\
+Steady state $k^*$ & $s/(n+\delta)$ weighted avg & From Euler: $f'(k^*) = \delta + \rho + \sigma x$ \\
+Role of $n$ in $k^*$ & Critical & No effect (in efficiency units) \\
+Dynamic efficiency & May be inefficient (too much $k$) & Always efficient (TVC) \\
+Golden Rule & $f'(k_{GR}) = n + \delta$ & $f'(k^*) = \delta + \rho + \sigma x$ \\
+Transition & Monotonic & Saddle path dynamics \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+%==============================================================================
+\clearpage
+\section{Implementation Notes}
+%==============================================================================
+
+\subsection*{Compilation}
+Compile with: \texttt{pdflatex -interaction=nonstopmode Ramsey\_CheatSheet.tex}
+
+\subsection*{Packages Used}
+\begin{itemize}
+    \item amsmath, amssymb, mathtools: Mathematics typesetting
+    \item graphicx: Graphics support
+    \item xcolor: Color definitions
+    \item siunitx: Number formatting
+    \item cleveref: Cross-references
+    \item hyperref: Hyperlinks
+    \item tcolorbox: Colored derivation and result boxes
+    \item booktabs: Professional tables
+    \item enumitem: List formatting
+\end{itemize}
+
+\end{document}

@@ -1,0 +1,461 @@
+\documentclass[a4paper,11pt]{article}
+
+% ─── Geometry ────────────────────────────────────────────────────────────────
+\usepackage{geometry}
+\geometry{margin=1in, headheight=15pt}
+
+% ─── Mathematics ─────────────────────────────────────────────────────────────
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathtools}
+
+% ─── Graphics / Colours ──────────────────────────────────────────────────────
+\usepackage{graphicx}
+\usepackage{xcolor}
+\definecolor{blue3}{RGB}{0,0,180}
+\definecolor{green3}{RGB}{0,120,0}
+\definecolor{orange3}{RGB}{200,100,0}
+\definecolor{red3}{RGB}{180,0,0}
+\definecolor{grey3}{RGB}{80,80,80}
+
+% ─── Units ───────────────────────────────────────────────────────────────────
+\usepackage{siunitx}
+\sisetup{detect-all}
+
+% ─── Links ───────────────────────────────────────────────────────────────────
+\usepackage[colorlinks=true,linkcolor=blue3,citecolor=blue3,urlcolor=blue3]{hyperref}
+\usepackage{cleveref}
+
+% ─── Boxes ───────────────────────────────────────────────────────────────────
+\usepackage{tcolorbox}
+\tcbuselibrary{skins,breakable}
+
+\newtcolorbox{answerbox}[1][]{
+    colback=red3!5,
+    colframe=red3!60,
+    coltitle=red3,
+    title={Solution:},
+    fonttitle=\bfseries,
+    breakable,
+    #1
+}
+
+% ─── Tables / Lists ──────────────────────────────────────────────────────────
+\usepackage{booktabs}
+\usepackage{enumitem}
+
+% ─── Notation commands ───────────────────────────────────────────────────────
+\newcommand{\ktilde}{\tilde{k}}
+\newcommand{\ytilde}{\tilde{y}}
+\newcommand{\ctilde}{\tilde{c}}
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\bgp}{\mathrm{BGP}}
+
+% ─── Header / Footer ─────────────────────────────────────────────────────────
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\textbf{14E022 Macroeconomics I} \quad Practice Exam 4 -- Solutions}
+\rhead{BSE 2025--26}
+\cfoot{\thepage}
+
+% ═════════════════════════════════════════════════════════════════════════════
+\begin{document}
+% ═════════════════════════════════════════════════════════════════════════════
+
+\begin{center}
+    {\LARGE \textbf{14E022 Macroeconomics I}}\\[6pt]
+    {\Large \textbf{Practice Exam 4 --- Answer Key}}\\[8pt]
+    {\large BSE --- Academic Year 2025--26}
+\end{center}
+
+\noindent\rule{\textwidth}{0.4pt}
+
+% ═════════════════════════════════════════════════════════════════════════════
+\section{Question 1 --- Growth Accounting and Development Accounting}
+% ═════════════════════════════════════════════════════════════════════════════
+
+\subsection*{1.\ (8 points)}
+
+\begin{answerbox}
+\textbf{Step 1: Decompose output per worker.}
+
+Divide $Y_i = K_i^{\alpha}(h_i L_i)^{1-\alpha} A_i$ by $L_i$:
+\[
+    y_i \;=\; \frac{Y_i}{L_i} \;=\; K_i^{\alpha}\,h_i^{1-\alpha}\,L_i^{-\alpha}\,A_i
+    \;=\; \left(\frac{K_i}{Y_i}\right)^{\!\alpha/(1-\alpha)} h_i\,A_i.
+\]
+The last step uses $K_i^{\alpha} L_i^{-\alpha} = (K_i/Y_i)^{\alpha/(1-\alpha)} y_i^{\alpha/(1-\alpha)} \cdot y_i^{-(1-\alpha)/(1-\alpha)}$; collecting $y_i$ on the left gives the \emph{development accounting} identity:
+\[
+    \boxed{y_i \;=\; \left(\frac{K_i}{Y_i}\right)^{\!\alpha/(1-\alpha)} h_i\, A_i.}
+\]
+With $\alpha = 1/3$ the exponent $\alpha/(1-\alpha) = 1/2$.
+
+\textbf{Step 2: Compute relative contributions.}
+
+Taking ratios relative to the US ($y_{US}=1$, $K_{US}/Y_{US}=3$, $h_{US}=1$, $A_{US}=1$):
+\[
+    \frac{y_D}{y_{US}} = \left(\frac{2.4}{3.0}\right)^{1/2}\!\cdot\,\frac{0.60}{1.00}\cdot\frac{A_D}{A_{US}}.
+\]
+Compute each factor:
+\[
+    \left(\frac{2.4}{3.0}\right)^{1/2} = (0.80)^{1/2} \approx 0.894,
+    \qquad h_D/h_{US} = 0.60.
+\]
+Combined factor contribution: $0.894 \times 0.60 \approx 0.536$.
+
+The observed income ratio is $y_D/y_{US} = 0.20$, so
+\[
+    A_D/A_{US} = \frac{0.20}{0.536} \approx 0.373.
+\]
+
+\textbf{Step 3: Fraction of the gap attributable to each source.}
+
+The income gap (in logs) is $\ln(1/0.20) = \ln 5 \approx 1.609$.  Decompose:
+\begin{align*}
+    \text{Capital-intensity contribution:} & \quad \tfrac{1}{2}\ln(3.0/2.4) = \tfrac{1}{2}(0.223) \approx 0.112 \quad (7\%) \\
+    \text{Human-capital contribution:}     & \quad \ln(1/0.60) \approx 0.511 \quad (32\%) \\
+    \text{TFP contribution:}               & \quad \ln(1/0.373) \approx 0.986 \quad (61\%)
+\end{align*}
+TFP accounts for roughly \textbf{61\%} of the log income gap, factor accumulation for the remaining 39\%.  This is consistent with the Hall-Jones (1999) finding that TFP dominates cross-country income differences.
+\end{answerbox}
+
+\subsection*{2.\ (9 points)}
+
+\begin{answerbox}
+\textbf{TFPR: definition.}
+
+In a monopolistically competitive framework (Hsieh-Klenow 2009), each firm $s$ has physical productivity $\mathrm{TFPQ}_s$ and faces distortions $\tau_{Y,s}$ (output wedge, reducing revenue) and $\tau_{K,s}$ (capital wedge, raising the cost of capital).  Revenue total factor productivity is:
+\[
+    \mathrm{TFPR}_s \;\equiv\; P_s\,\mathrm{TFPQ}_s,
+\]
+where $P_s$ is the firm's output price.  It is the product of the price the firm charges and its physical productivity, and can be computed directly from revenue, capital, and labour data without requiring quantity data.
+
+\textbf{Why TFPR would be equalised under no distortions.}
+
+Profit maximisation with a CES demand system implies that the firm's optimal price is a fixed markup over marginal cost.  With no wedges, the markup is the same for all firms, and cost is proportional to factor prices (common across firms), so $P_s \cdot \mathrm{TFPQ}_s$ is the same for every $s$.  Intuitively: a firm with higher physical productivity faces lower marginal cost, sets a lower price, and sells more --- but the revenue product $P_s \cdot \mathrm{TFPQ}_s$ is equalised by competition.
+
+\textbf{Dispersion in TFPR as a measure of misallocation.}
+
+With wedges, the first-order conditions become:
+\[
+    \mathrm{TFPR}_s = \frac{\rho}{\rho-1}\cdot\frac{w^{1-\alpha_s}\,r_s^{\alpha_s}}{1 - \tau_{Y,s}},
+    \qquad r_s = r(1+\tau_{K,s}).
+\]
+Firms with high $\tau_{Y,s}$ or high $\tau_{K,s}$ have distorted input demands.  High-wedge firms operate at a scale below optimum; low-wedge firms at a scale above optimum.  The cross-sectional standard deviation of log TFPR is thus a sufficient statistic for the severity of misallocation: under the frictionless benchmark, $\mathrm{std}(\log \mathrm{TFPR}) = 0$.
+
+\textbf{Aggregate TFP loss.}
+
+Let $\overline{\mathrm{TFPQ}}$ be the size-weighted average of firm-level physical productivities.  Hsieh and Klenow show that aggregate TFP (relative to the frictionless case) is:
+\[
+    \frac{A}{A^*} = \prod_s \left(\frac{\mathrm{TFPR}^*}{\mathrm{TFPR}_s}\right)^{\text{share}_s} < 1,
+\]
+whenever $\mathrm{TFPR}_s$ is not equalised.  Intuitively, misallocation prevents the economy from fully exploiting high-productivity firms: their output share is too low because distortions constrain their factor use, dragging down the aggregate.  Hsieh and Klenow estimate that eliminating misallocation could raise manufacturing TFP by 30--60\% in China and India.
+\end{answerbox}
+
+\subsection*{3.\ (8 points)}
+
+\begin{answerbox}
+\textbf{Evaluating the claim.}
+
+The claim has a factual kernel --- development accounting consistently finds that TFP differences explain more than half of cross-country income gaps --- but the policy conclusion is too strong for three reasons.
+
+\textbf{1.\ Capital and TFP are complements, not substitutes.}  Even if TFP accounts for 60\% of the gap, the remaining 40\% is not trivial.  Moreover, capital deepening and TFP are jointly determined: higher TFP raises the return to capital and stimulates investment.  Policies that raise physical and human capital accumulation may simultaneously attract technology adoption and managerial know-how, partly raising TFP.
+
+\textbf{2.\ High TFP may be partly a consequence of income.}  Rich countries have better institutions, property rights, and contract enforcement --- these raise measured TFP.  The TFP residual in the development accounting equation captures everything not explained by $K$ and $h$: omitted factors, measurement error in inputs, and institutional quality all load onto $A$.  Reverse causality (income → institutions → TFP) makes it hard to interpret TFP as a pure supply-side driver.
+
+\textbf{3.\ Identification challenge.}  The TFP residual is computed as a \emph{Solow residual}: $A_i = y_i / (K_i/Y_i)^{\alpha/(1-\alpha)} h_i$.  Any mismeasurement of $\alpha$, $K$, or $h$ inflates or deflates measured TFP.  In particular, human capital is notoriously hard to measure (years of schooling vs.\ quality of education vs.\ on-the-job training), and capital stocks in developing countries are uncertain due to data gaps.  Errors in measuring factors are mechanically attributed to the TFP residual.
+
+\textbf{Implication of the misallocation literature.}  Hsieh and Klenow show that much of the TFP gap is \emph{within}-sector misallocation of resources --- a finding that points squarely to policies affecting firm-level incentives (entry barriers, credit market frictions, product market distortions).  These are in many ways \emph{factor allocation} policies, not purely productivity policies.  The distinction between accumulation and allocation blurs: improving resource allocation raises measured TFP without any exogenous technology transfer.
+\end{answerbox}
+
+\clearpage
+
+% ═════════════════════════════════════════════════════════════════════════════
+\section{Question 2 --- Baumol's Cost Disease and Structural Change}
+% ═════════════════════════════════════════════════════════════════════════════
+
+\subsection*{1.\ (7 points)}
+
+\begin{answerbox}
+\textbf{Step 1: Wages.}
+
+Firms in each sector hire labour competitively.  Taking the progressive good as numeraire ($p_{P,t} = 1$), the wage equals the value marginal product of labour in each sector:
+\[
+    w_t = p_{P,t}\,A_{P,t} = A_{P,t} = A_0 e^{gt}.
+\]
+The stagnant sector must pay the same wage:
+\[
+    w_t = p_{S,t} \cdot 1 \implies p_{S,t} = w_t = A_0 e^{gt}.
+\]
+
+\textbf{Step 2: Relative price.}
+
+\[
+    \boxed{\frac{p_{S,t}}{p_{P,t}} = A_0 e^{gt}.}
+\]
+The relative price of stagnant services rises exponentially at rate $g$: the progressive sector's productivity gains translate one-for-one into a rising opportunity cost of stagnant-sector labour.  This is the \emph{Baumol cost disease}.
+
+\textbf{Step 3: Labour allocation under Cobb-Douglas preferences.}
+
+Households maximise $U = Y_P^{\beta} Y_S^{1-\beta}$ subject to $p_{P}Y_P + p_{S}Y_S = w\bar{L}$.  Cobb-Douglas preferences imply constant expenditure shares:
+\[
+    p_{P,t} Y_{P,t} = \beta w_t \bar{L}, \qquad p_{S,t} Y_{S,t} = (1-\beta)w_t\bar{L}.
+\]
+Using $p_{P}=1$, $Y_P = A_P L_P$, and $Y_S = L_S$:
+\[
+    A_{P,t} L_P = \beta A_{P,t}\bar{L} \implies L_P = \beta\bar{L},
+    \qquad L_S = (1-\beta)\bar{L}.
+\]
+Both shares are \textbf{constant over time}.
+
+\textbf{Mechanism.}  The rising relative price of services ($p_S/p_P \to \infty$) would normally shift spending toward the progressive good.  But under Cobb-Douglas, the price elasticity of substitution equals unity exactly: the substitution effect is exactly offset by the income effect (consumers become richer as wages rise), keeping nominal expenditure shares pinned at $\beta$ and $1-\beta$.
+\end{answerbox}
+
+\subsection*{2.\ (9 points)}
+
+\begin{answerbox}
+\textbf{Demand channel: non-homotheticity.}
+
+With homothetic (Cobb-Douglas) preferences, expenditure shares are fixed and employment shares are constant as shown in question~1.  Non-homotheticity breaks this: if the income elasticity of stagnant services exceeds~1 at high income levels, consumers allocate a rising share of additional income to services as they grow richer.  Formally, for a Stone-Geary or hierarchic-utility preference system, the Engel curve for services is convex: the fraction of income spent on services rises with income.  As aggregate wages $w_t = A_0 e^{gt}$ grow, households devote more of their budget to the stagnant sector.  Since productivity there is fixed, more labour is required to meet demand, raising $L_S/\bar{L}$ over time.
+
+\textbf{Supply channel: Baumol cost disease.}
+
+The supply channel operates even under Cobb-Douglas preferences if we shift attention to \emph{employment} rather than \emph{expenditure} shares.  If preferences are non-homothetic with a high income elasticity for services, the rising price $p_S \propto e^{gt}$ must be paid for each unit of service output, which requires rising labour income.  But the productivity of stagnant-sector labour is fixed, so employing more workers there absorbs an ever-larger fraction of the labour force.  This is Baumol's core mechanism: constant productivity in services means that as real wages rise (driven by the progressive sector), the \emph{real} cost of providing a unit of service output grows without bound.  The economy must deploy ever more workers there to maintain any given (or growing) level of service consumption.
+
+\textbf{Interaction of channels.}
+
+The two channels reinforce each other.  The demand channel generates a rising expenditure share on services (because they are luxury goods at high income).  The supply channel means that, for any given expenditure share, an increasing employment share is needed because labour productivity in services does not grow.  Together: rising demand for a good whose production cannot be made more efficient implies a secular increase in the fraction of the workforce in the stagnant sector.  This is the empirical pattern observed across all advanced economies: rising employment in services (healthcare, education, personal care) alongside stagnant sectoral labour productivity.
+\end{answerbox}
+
+\subsection*{3.\ (9 points)}
+
+\begin{answerbox}
+\textbf{Step 1: Growth rate of aggregate output.}
+
+With $Y = Y_P^{\beta} Y_S^{1-\beta}$, log-differentiate:
+\[
+    \gamma_Y = \beta\,\frac{\dot{Y}_P}{Y_P} + (1-\beta)\,\frac{\dot{Y}_S}{Y_S}.
+\]
+From question~1, $L_P = \beta\bar{L}$ and $L_S = (1-\beta)\bar{L}$ are constant, so:
+\[
+    Y_P = A_{P,t}\cdot\beta\bar{L} \implies \gamma_{Y_P} = g,
+    \qquad Y_S = (1-\beta)\bar{L} \implies \gamma_{Y_S} = 0.
+\]
+Therefore:
+\[
+    \boxed{\gamma_Y = \beta\,g + (1-\beta)\cdot 0 = \beta\,g.}
+\]
+
+\textbf{Step 2: Aggregate growth is strictly between 0 and $g$.}
+
+Since $\beta \in (0,1)$:
+\[
+    0 < \beta\,g < g.
+\]
+The lower bound is strict because $\beta > 0$ (some weight on the progressive sector); the upper bound is strict because $\beta < 1$ (some weight on the stagnant sector, which contributes zero growth).
+
+\textbf{Step 3: Why measured aggregate TFP understates progressive-sector productivity growth.}
+
+Aggregate TFP growth is measured as output growth minus a weighted average of input growth.  Here labour is fixed ($\bar{L}$ constant), so measured aggregate TFP growth equals $\gamma_Y = \beta g$.  But the \emph{actual} productivity advance in the economy occurs entirely in the progressive sector at rate $g$.  The discrepancy ($\beta g < g$) arises because:
+\begin{enumerate}[label=(\roman*), itemsep=3pt]
+    \item The stagnant sector contributes zero productivity growth but absorbs $(1-\beta)$ of aggregate labour, dragging down the average.
+    \item National accounts aggregate output using nominal expenditure weights.  Since $p_S$ rises while $p_P = 1$ is fixed, the nominal weight on services rises over time (even though the real allocation is fixed under Cobb-Douglas), further diluting measured aggregate TFP growth in real terms.
+\end{enumerate}
+
+\textbf{Implication for cross-country comparisons.}
+
+Countries differ in their sectoral composition.  An advanced economy with a large service sector (high $1-\beta$) will exhibit lower measured aggregate TFP growth than an otherwise identical economy with a larger manufacturing share --- not because its technology is worse, but because its stagnant sector weighs more heavily in the aggregate.  This creates a \emph{composition bias} in international productivity comparisons: countries that have already undergone structural change toward services will appear to be growing more slowly in aggregate TFP, misleadingly suggesting technological stagnation.  Properly interpreting productivity data requires sector-level decompositions rather than relying solely on aggregate residuals.
+\end{answerbox}
+
+\clearpage
+
+% ═════════════════════════════════════════════════════════════════════════════
+\section{Question 3 --- Jones (1995) Semi-Endogenous Growth}
+% ═════════════════════════════════════════════════════════════════════════════
+
+\subsection*{1.\ (8 points)}
+
+\begin{answerbox}
+\textbf{Step 1: BGP growth rate of $A$.}
+
+On the BGP, $g_A \equiv \dot{A}/A$ must be constant.  Taking logs of the knowledge-accumulation equation:
+\[
+    \ln\dot{A} = \ln\lambda + \phi\ln A + \ln L_{A}.
+\]
+Differentiate with respect to time:
+\[
+    \frac{\ddot{A}}{\dot{A}} = \phi\,\frac{\dot{A}}{A} + \frac{\dot{L}_A}{L_A}.
+\]
+On the BGP $\ddot{A}/\dot{A} = g_A$, and $L_A = \ell_A L$ grows at rate $n$ (since $\ell_A$ is constant on the BGP).  Substituting:
+\[
+    g_A = \phi\,g_A + n \implies g_A(1-\phi) = n \implies \boxed{g_A = \frac{n}{1-\phi}.}
+\]
+
+\textbf{Step 2: Growth rate of output per worker.}
+
+From $Y_t = A_t^{\alpha/(1-\alpha)} L_{Y,t}$ and using log-differentiation:
+\[
+    \gamma_Y = \frac{\alpha}{1-\alpha}\,g_A + n, \qquad
+    \gamma_{Y/L} = \frac{\alpha}{1-\alpha}\,g_A = \frac{\alpha\,n}{(1-\alpha)(1-\phi)}.
+\]
+
+\textbf{Step 3: No strong scale effect.}
+
+In Romer (1990) with $\phi = 1$, the BGP growth rate of $A$ depends on the \emph{level} of $L_A$.  Doubling the population doubles $L_A$ and permanently raises $g_A$.  In the Jones model, $g_A = n/(1-\phi)$ depends only on the \emph{growth rate} of population, not its level.  Doubling $L$ in one instant shifts the level of $L_A$ up but leaves $n = \dot{L}/L$ unchanged, so $g_A$ is unaffected after the transient.  The strong scale effect is absent.
+
+\textbf{Role of $n$.}  Long-run growth in $Y/L$ is driven entirely by $n$ and the structural parameters $\alpha$ and $\phi$.  Population growth is necessary: if $n = 0$, then $g_A = 0$ and output per worker is constant in the long run.  This is the knife-edge result that the Jones model inherits from its semi-endogenous structure --- positive sustained growth requires an exogenous demographic engine.
+\end{answerbox}
+
+\subsection*{2.\ (9 points)}
+
+\begin{answerbox}
+\textbf{Step 1: Value of a blueprint.}
+
+Let $\pi_t$ denote instantaneous monopoly profits from one blueprint.  From the Romer intermediates structure, $\pi_t \propto Y_t$.  On the BGP, $Y_t$ grows at rate $\gamma_Y = \frac{\alpha}{1-\alpha}g_A + n$, so $\pi_t = \pi_0 e^{\gamma_Y t}$.  The no-arbitrage Bellman equation for the value $V_t$ of a blueprint (with no creative destruction in the Jones model) is:
+\[
+    r_t V_t = \pi_t + \dot{V}_t.
+\]
+On the BGP, $\dot{V}_t/V_t = \gamma_Y$ (value grows with profits), so:
+\[
+    V_t = \frac{\pi_t}{r - \gamma_Y}.
+\]
+
+\textbf{Step 2: Free-entry condition.}
+
+A researcher who hires herself out receives wage $w_t$.  Her contribution to knowledge creation is $\lambda A_t^{\phi}$ new blueprints per unit of time (from $\dot{A} = \lambda A^{\phi} L_A$), each worth $V_t$.  Free entry into research requires:
+\[
+    \lambda\,A_t^{\phi}\,V_t = w_t.
+\]
+
+\textbf{Step 3: Household Euler equation.}
+
+With CRRA preferences (risk aversion $\sigma$) and discount rate $\rho$:
+\[
+    r = \rho + \sigma\,\gamma_c,
+\]
+where $\gamma_c = \gamma_{Y/L} = \frac{\alpha n}{(1-\alpha)(1-\phi)}$ on the BGP.  Thus $r = \rho + \sigma\,\gamma_{Y/L}$.
+
+\textbf{Step 4: Equilibrium $\ell_A$.}
+
+Combine the free-entry condition with the Bellman value $V_t = \pi_t/(r-\gamma_Y)$.  Wages equal the marginal product of labour in final goods: $w_t = (1-\alpha)A_t^{\alpha/(1-\alpha)} = \frac{1-\alpha}{\alpha}\pi_t / \ell_Y$ (using the proportionality of $w$ and $\pi$).  After substituting $\pi_t \propto (1-\alpha)\alpha Y_t/A_t$ (from the CES intermediates structure) and using the labour market condition $L_Y + L_A = L$, one obtains a constant equilibrium share:
+\[
+    \ell_A^* = \frac{\lambda A_t^{\phi-1} L_t \cdot \pi_t / (r-\gamma_Y)}{w_t} = \text{constant}.
+\]
+Because $\ell_A$ is constant and $L_t$ grows at rate $n$, $L_{A,t} = \ell_A^* L_t$ grows at rate $n$.  This is the \textbf{semi-endogenous growth property}: R\&D employment tracks population, so $\dot{A}/A = \lambda A^{\phi-1} L_A \to n/(1-\phi)$ as $A$ grows, exactly consistent with question~1.
+\end{answerbox}
+
+\subsection*{3.\ (8 points)}
+
+\begin{answerbox}
+\textbf{Is Jones growth truly endogenous?}
+
+In a narrow sense, yes: agents optimise over R\&D effort, and the model has a well-defined equilibrium growth path.  But in the deeper sense that growth is determined by \emph{economic} variables, the answer is largely no: long-run growth $g_A = n/(1-\phi)$ is pinned down by the exogenous population growth rate $n$ and the exogenous technology parameter $\phi$.  Changes in preferences ($\rho$, $\sigma$), subsidies, or the research productivity $\lambda$ affect only the level of $A$ (transitional dynamics), not the long-run growth rate.  Growth is ``endogenous'' only in the sense that it is generated within the model --- it is exogenous in the policy-relevant sense.
+
+\textbf{Main theoretical objection.}
+
+The Jones model simply replaces one unsatisfying knife-edge ($\phi = 1$ in Romer) with another: $\phi < 1$ is imposed without micro-foundation.  Moreover, making growth depend on population growth $n$ raises its own empirical problem: the model predicts faster long-run growth in countries with faster population growth, while cross-country evidence shows no such relationship (and often a negative one, via capital dilution).
+
+\textbf{Fully endogenous alternatives: Peretto (1998) and Young (1998).}
+
+These models add a \emph{product proliferation} margin.  As the economy grows, new product lines are created, diluting the R\&D effort per product.  The key insight is that with $N$ product varieties, each variety-level knowledge stock grows slowly, but aggregate knowledge grows because both the stock per variety and the number of varieties increase.  On the BGP, quality growth per variety is constant without requiring population growth to fuel it.  The scale effect is eliminated not by dampening the spillover ($\phi < 1$) but by endogenising the division of R\&D across an expanding product space.
+
+\textbf{Empirical comparison.}
+
+Jones (1995) originally motivated his model by noting that the number of US scientists grew rapidly after WWII while the growth rate of TFP did not accelerate --- consistent with $\phi < 1$ and scale-invariance.  However, the prediction that long-run growth requires population growth $n > 0$ is empirically contentious: Japan and many European countries maintained positive per-capita growth through periods of near-zero or negative population growth.  The fully endogenous alternatives, by tying growth to innovation incentives rather than demographics, arguably produce a more robust and policy-relevant set of predictions, though their micro-foundations are also parametrically sensitive.
+\end{answerbox}
+
+\clearpage
+
+% ═════════════════════════════════════════════════════════════════════════════
+\section{Short Questions}
+% ═════════════════════════════════════════════════════════════════════════════
+
+\subsection*{SQ1.\ (8 points) Dynamic Inefficiency and the Transversality Condition}
+
+\begin{answerbox}
+\textbf{Why the Ramsey model rules out dynamic inefficiency.}
+
+In the Solow model the saving rate $s$ is exogenous; it can be set so high that capital per worker exceeds the Golden Rule $k^{GR}$ (where $f'(k^{GR}) = \delta + n$).  Beyond the Golden Rule, reducing $k$ frees up resources and raises consumption in every future period --- a Pareto improvement --- but the Solow model has no mechanism to enforce the correction.
+
+In the Ramsey model households are utility-maximising and forward-looking.  If $k > k^{GR}$, the net return to capital $r = f'(k) - \delta < n + \rho$ (for standard parameter values with $\rho > 0$).  This implies the growth-adjusted return on assets is below the discount rate, so households find it optimal to decumulate, driving $k$ back toward the steady state.
+
+\textbf{The Transversality Condition (TVC).}
+
+The TVC for the household's problem in terms of the costate variable $\mu_t$ (value of wealth) is:
+\[
+    \lim_{t\to\infty} e^{-\rho t}\,\mu_t\,k_t = 0.
+\]
+In per-effective-worker terms this becomes:
+\[
+    \lim_{t\to\infty} e^{-(\rho - n - x)t}\,\mu_t\,\ktilde_t = 0.
+\]
+Economically: the present value of terminal wealth must be zero.  The household must not be holding assets that have positive value at infinity --- it would be suboptimal to die (or reach infinity) with unconsumed wealth.
+
+\textbf{How the TVC eliminates over-accumulation.}
+
+Suppose the economy were on a path with $k_t \to \infty$.  On such a path, the marginal product of capital $f'(k_t) \to 0 < \delta + n$, so the asset value $\mu_t = u'(c_t)$ grows faster than $e^{\rho t}$ along this trajectory (the costate grows explosively).  Hence $e^{-\rho t}\mu_t k_t \to \infty$, violating the TVC.  The TVC therefore rules out all paths that converge to over-accumulated steady states.
+
+\textbf{Relationship to the No-Ponzi condition.}
+
+The No-Ponzi condition (NPC) constrains the \emph{household}: it cannot roll over debt indefinitely,
+\[
+    \lim_{t\to\infty} a_t\,e^{-\int_0^t r_s\,\dd s} \geq 0.
+\]
+The TVC is the optimality counterpart for a non-satiated household: it holds with equality.  Together, NPC and TVC imply that the household's intertemporal budget constraint holds with equality --- all lifetime resources are consumed, with no infinite bequest and no Ponzi scheme.
+\end{answerbox}
+
+\subsection*{SQ2.\ (9 points) Level Effects, Growth Effects, and the Optimal Subsidy}
+
+\begin{answerbox}
+\textbf{Level vs.\ growth effect: the mechanism.}
+
+In the Ramsey model, the production function $f(k)$ exhibits \emph{diminishing returns to capital}: $f''(k) < 0$.  A higher saving rate raises investment and capital per worker, but each additional unit of capital yields less output than the last.  The economy converges to a new (higher) steady state, generating a permanent \emph{level} gain but no permanent change in the \emph{growth rate} (which returns to the exogenous rate $x$ on the new BGP).
+
+In the AK model, $Y = AK$: the production function is linear in capital with no diminishing returns.  There is no steady-state capital level to converge to.  A higher saving rate $s$ raises the growth rate $\gamma_K = sA - \delta$ permanently.  The linearity means every additional unit of capital yields the same marginal product $A$, so the growth rate is $sA - \delta$ forever.  This is the fundamental source of the difference.
+
+\textbf{Optimal capital subsidy in the Arrow learning-by-doing economy.}
+
+Firms take aggregate TFP $\bar{A} = A_0 K^{1-\alpha}$ as given.  Each firm faces an individual return to capital equal to the private marginal product:
+\[
+    r^{\mathrm{mkt}} = \alpha A_0 K^{1-\alpha} \bar{L}^{1-\alpha} = \alpha A,
+\]
+after aggregating with $\bar{L}=1$ and using the AK structure.  The social planner internalises the externality: accumulating one more unit of capital raises aggregate TFP, yielding a social return:
+\[
+    r^{\mathrm{plnr}} = \frac{\partial Y}{\partial K}\bigg|_{\text{planner}} = A_0 K^{1-\alpha} = A,
+\]
+since the planner accounts for the full contribution of $K$ to $\bar{A}$.
+
+The wedge is $r^{\mathrm{plnr}} - r^{\mathrm{mkt}} = A - \alpha A = (1-\alpha)A$.  To implement the planner's allocation, the government should subsidise capital at rate:
+\[
+    \boxed{s^* = 1 - \alpha,}
+\]
+expressed as a fraction of the market return.  The subsidy $s^*$ equals the exponent of the externality: the higher is $\alpha$ (larger private return already captured), the smaller the required subsidy.  At $\alpha = 0$ the firm captures nothing privately and the full return must be subsidised; at $\alpha = 1$ no externality exists and no subsidy is needed.
+\end{answerbox}
+
+\subsection*{SQ3.\ (8 points) Business-Stealing, Appropriability, and First-Best R\&D Policy}
+
+\begin{answerbox}
+\textbf{Business-stealing externality.}
+
+A successful innovator in the quality-ladder model displaces the incumbent monopolist.  From a social perspective, the rents transferred from the old monopolist to the new one are a pure redistribution --- no new resources are created by this transfer.  But the entrant does not internalise the \emph{loss} it imposes on the incumbent.  This leads to over-investment in R\&D from the social viewpoint: entrepreneurs compete for monopoly rents that the social planner would not value (since they merely shift who captures existing rents).  The business-stealing externality pushes equilibrium R\&D \emph{above} the social optimum.
+
+\textbf{Appropriability (consumer-surplus) externality.}
+
+A successful innovation raises the quality of an intermediate good, benefiting downstream final-good producers and ultimately consumers.  The innovating firm captures only its monopoly profits --- a fraction $\alpha(1-\alpha)$ of the quality improvement's social value (with the rest accruing as consumer surplus).  The innovator cannot appropriate the full social return, so private incentives to innovate are too low relative to the social optimum.  The appropriability externality pushes equilibrium R\&D \emph{below} the social optimum.
+
+\textbf{Dominance and policy implications.}
+
+In the basic Aghion-Howitt model, the two externalities operate in opposite directions and their net effect is ambiguous in general.  However, Aghion and Howitt (1992) show that in their baseline calibration the \emph{appropriability} externality tends to dominate when the step size $q$ is not too large, meaning the equilibrium involves \emph{too little} R\&D.  But for large $q$ (large step-size innovations), business-stealing can dominate, giving too much R\&D.
+
+Because the two externalities push in opposite directions, a single policy instrument (e.g., a uniform R\&D subsidy) cannot simultaneously correct both distortions.  Addressing the appropriability externality calls for a subsidy to innovation; correcting business-stealing requires a tax.  Implementing the first-best requires at minimum two instruments --- for example, an R\&D subsidy combined with a tax on the profits of successful innovators that recaptures the business-stealing component, or a patent-length policy that trades off static appropriation against dynamic incentives.
+\end{answerbox}
+
+\vspace{20pt}
+\noindent\rule{\textwidth}{0.4pt}
+
+\begin{center}
+    \textit{End of Practice Exam 4 Answer Key.}
+\end{center}
+
+\end{document}

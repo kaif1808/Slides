@@ -1,0 +1,605 @@
+\documentclass[a4paper,11pt]{article}
+
+% ─── Geometry ────────────────────────────────────────────────────────────────
+\usepackage{geometry}
+\geometry{margin=1in, headheight=15pt}
+
+% ─── Mathematics ─────────────────────────────────────────────────────────────
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathtools}
+
+% ─── Graphics / Colours ──────────────────────────────────────────────────────
+\usepackage{graphicx}
+\usepackage{xcolor}
+\definecolor{blue3}{RGB}{0,0,180}
+\definecolor{green3}{RGB}{0,120,0}
+\definecolor{orange3}{RGB}{200,100,0}
+\definecolor{red3}{RGB}{180,0,0}
+\definecolor{grey3}{RGB}{80,80,80}
+
+% ─── Units ───────────────────────────────────────────────────────────────────
+\usepackage{siunitx}
+\sisetup{detect-all}
+
+% ─── Links ───────────────────────────────────────────────────────────────────
+\usepackage[colorlinks=true,linkcolor=blue3,citecolor=blue3,urlcolor=blue3]{hyperref}
+\usepackage{cleveref}
+
+% ─── Boxes ───────────────────────────────────────────────────────────────────
+\usepackage{tcolorbox}
+\tcbuselibrary{skins,breakable}
+
+\newtcolorbox{answerbox}[1][]{
+    colback=red3!5,
+    colframe=red3!60,
+    coltitle=red3,
+    title={Solution:},
+    fonttitle=\bfseries,
+    breakable,
+    #1
+}
+
+% ─── Tables / Lists ──────────────────────────────────────────────────────────
+\usepackage{booktabs}
+\usepackage{enumitem}
+
+% ─── Notation commands ───────────────────────────────────────────────────────
+\newcommand{\ktilde}{\tilde{k}}
+\newcommand{\ytilde}{\tilde{y}}
+\newcommand{\ctilde}{\tilde{c}}
+\newcommand{\htilde}{\tilde{h}}
+\newcommand{\dd}{\mathrm{d}}
+
+% ─── Header / Footer ─────────────────────────────────────────────────────────
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\textbf{14E022 Macroeconomics I} \quad Practice Exam 2 -- Solutions}
+\rhead{BSE 2025--26}
+\cfoot{\thepage}
+
+% ═════════════════════════════════════════════════════════════════════════════
+\begin{document}
+% ═════════════════════════════════════════════════════════════════════════════
+
+\begin{center}
+    {\LARGE \textbf{14E022 Macroeconomics I}}\\[6pt]
+    {\Large \textbf{Practice Exam 2 --- Answer Key}}\\[8pt]
+    {\large BSE --- Academic Year 2025--26}
+\end{center}
+
+\noindent\rule{\textwidth}{0.4pt}
+
+% ═════════════════════════════════════════════════════════════════════════════
+\section{Question 1 --- Augmented Solow Model with Human Capital}
+% ═════════════════════════════════════════════════════════════════════════════
+
+\subsection*{1.\ (5 points)}
+
+\begin{answerbox}
+\textbf{Output per effective worker.}
+
+\[
+    \ytilde = \frac{Y}{AL}
+    = \frac{K^{\alpha}H^{\beta}(AL)^{1-\alpha-\beta}}{AL}
+    = \frac{K^{\alpha}}{(AL)^{\alpha}}\cdot\frac{H^{\beta}}{(AL)^{\beta}}
+    = \ktilde^{\alpha}\htilde^{\beta}. \quad\checkmark
+\]
+
+\textbf{Law of motion for $\ktilde$.}
+
+Since $\ktilde = K/(AL)$, differentiate by the quotient/product rule:
+\[
+    \dot{\ktilde} = \frac{\dot{K}}{AL} - K\,\frac{\dot{A}L + A\dot{L}}{(AL)^2}
+    = \frac{\dot{K}}{AL} - \ktilde\!\left(\frac{\dot{A}}{A} + \frac{\dot{L}}{L}\right)
+    = \frac{\dot{K}}{AL} - (g + n)\,\ktilde.
+\]
+Substituting $\dot{K} = s_K Y - \delta K$:
+\[
+    \dot{\ktilde}
+    = \frac{s_K Y - \delta K}{AL}
+    - (n+g)\,\ktilde
+    = s_K\ytilde - \delta\ktilde - (n+g)\ktilde.
+\]
+\[
+    \boxed{\dot{\ktilde} = s_K\,\ktilde^{\alpha}\htilde^{\beta}
+    - (n+g+\delta)\,\ktilde.}
+\]
+
+\textbf{Law of motion for $\htilde$.}  An identical calculation with $\dot{H} = s_H Y - \delta H$ gives:
+\[
+    \boxed{\dot{\htilde} = s_H\,\ktilde^{\alpha}\htilde^{\beta}
+    - (n+g+\delta)\,\htilde.}
+\]
+\end{answerbox}
+
+\subsection*{2.\ (7 points)}
+
+\begin{answerbox}
+\textbf{(a)} Setting $\dot{\ktilde}=0$ and $\dot{\htilde}=0$:
+\begin{align*}
+    s_K\,\ktilde^{*\alpha}\htilde^{*\beta} &= (n+g+\delta)\,\ktilde^*, \\
+    s_H\,\ktilde^{*\alpha}\htilde^{*\beta} &= (n+g+\delta)\,\htilde^*.
+\end{align*}
+Dividing the first by the second:
+\[
+    \frac{s_K}{s_H} = \frac{\ktilde^*}{\htilde^*}
+    \quad\Longrightarrow\quad
+    \boxed{\htilde^* = \frac{s_H}{s_K}\,\ktilde^*.}
+\]
+
+\textbf{(b)} Substituting $\htilde^* = (s_H/s_K)\ktilde^*$ into the first steady-state equation:
+\[
+    s_K\,\ktilde^{*\alpha}\left(\frac{s_H}{s_K}\right)^{\!\beta}\ktilde^{*\beta}
+    = (n+g+\delta)\,\ktilde^*.
+\]
+Collect powers of $s_K$ and $s_H$ and of $\ktilde^*$:
+\[
+    s_K\cdot s_K^{-\beta}\cdot s_H^{\beta}\cdot \ktilde^{*(\alpha+\beta)}
+    = (n+g+\delta)\,\ktilde^*.
+\]
+\[
+    s_K^{1-\beta}\,s_H^{\beta}\,\ktilde^{*(\alpha+\beta-1)} = (n+g+\delta).
+\]
+Raise both sides to the power $1/(\alpha+\beta-1)$.  Since $\alpha+\beta < 1$, the exponent
+$\alpha+\beta-1 < 0$, so $1/(\alpha+\beta-1) = -1/(1-\alpha-\beta)$:
+\[
+    \ktilde^* = \left[\frac{s_K^{1-\beta}\,s_H^{\beta}}{n+g+\delta}
+    \right]^{1/(1-\alpha-\beta)}.
+\]
+Using $\htilde^* = (s_H/s_K)\ktilde^*$:
+\[
+    \htilde^* = \frac{s_H}{s_K}\left[\frac{s_K^{1-\beta}\,s_H^{\beta}}{n+g+\delta}
+    \right]^{1/(1-\alpha-\beta)}
+    = \left[\frac{s_K^{\alpha}\,s_H^{1-\alpha}}{n+g+\delta}
+    \right]^{1/(1-\alpha-\beta)}.
+\]
+\[
+    \boxed{\ktilde^* = \left[\frac{s_K^{1-\beta}\,s_H^{\beta}}{n+g+\delta}
+    \right]^{1/(1-\alpha-\beta)},\qquad
+    \htilde^* = \left[\frac{s_K^{\alpha}\,s_H^{1-\alpha}}{n+g+\delta}
+    \right]^{1/(1-\alpha-\beta)}.}
+\]
+
+Steady-state output per effective worker:
+\[
+    \ytilde^* = \ktilde^{*\alpha}\htilde^{*\beta}
+    = \left[\frac{s_K^{1-\beta}\,s_H^{\beta}}{n+g+\delta}\right]^{\!\alpha/(1-\alpha-\beta)}
+      \cdot\left[\frac{s_K^{\alpha}\,s_H^{1-\alpha}}{n+g+\delta}\right]^{\!\beta/(1-\alpha-\beta)}.
+\]
+Combining exponents ($s_K$ exponent: $(1-\beta)\alpha/D + \alpha\beta/D = \alpha/D$;
+$s_H$ exponent: $\beta\alpha/D + (1-\alpha)\beta/D = \beta/D$, where $D = 1-\alpha-\beta$):
+\[
+    \boxed{\ytilde^* = \left[\frac{s_K^{\alpha}\,s_H^{\beta}}{(n+g+\delta)^{\alpha+\beta}}
+    \right]^{1/(1-\alpha-\beta)}.}
+\]
+\end{answerbox}
+
+\subsection*{3.\ (7 points)}
+
+\begin{answerbox}
+Since $y^* = A_t\,\ytilde^*$:
+\[
+    \ln y^* = \ln A_0 + g\,t
+    + \frac{\alpha}{1-\alpha-\beta}\ln s_K
+    + \frac{\beta}{1-\alpha-\beta}\ln s_H
+    - \frac{\alpha+\beta}{1-\alpha-\beta}\ln(n+g+\delta).
+\]
+
+\textbf{(a)} Elasticity of $y^*$ w.r.t.\ $s_K$:
+\begin{itemize}
+    \item \textbf{Basic Solow} ($\beta=0$): $\varepsilon = \alpha/(1-\alpha)$.
+    For $\alpha=1/3$: $\varepsilon = 1/2$.
+    \item \textbf{Augmented Solow} ($\alpha=\beta=1/3$):
+    $\varepsilon = (1/3)/(1-1/3-1/3) = (1/3)/(1/3) = 1$.
+\end{itemize}
+The elasticity \textbf{doubles} from $0.5$ to $1.0$.
+
+\textbf{(b)} The augmented model amplifies the effect of $s_K$ differences (because
+$\alpha+\beta > \alpha$ reduces the denominator $1-\alpha-\beta$) and adds a
+\emph{second channel} through $s_H$.  Cross-country variation in both physical and
+human capital investment rates can now explain a much larger fraction of income
+differences.  MRW showed this model can explain roughly 80\% of cross-country income
+variation (vs.\ $\sim$60\% for basic Solow), substantially reducing the unexplained
+residual attributed to TFP.
+\end{answerbox}
+
+\subsection*{4.\ (6 points)}
+
+\begin{answerbox}
+\textbf{Key limitation:} The model treats $s_H$ (human capital investment rate) as
+exogenous.  In reality, $s_H$ is itself an endogenous choice driven by institutions,
+returns to education, credit constraints, and government policy.  Countries with low
+$s_H$ may have low $s_H$ \emph{because} of their low income or weak institutions, not
+as an independent causal factor.  This creates an \textbf{endogeneity problem}: the
+model can ``explain'' income differences with $s_H$, but $s_H$ itself needs to be
+explained.  A deeper theory would endogenise the education decision (e.g.\ the
+Uzawa-Lucas model) to understand \emph{why} $s_H$ differs across countries.
+
+Additionally, TFP ($A$) is treated as equal across countries.  Residual TFP differences
+(even after adding $H$) remain large and may reflect institutional quality,
+misallocation, or technology adoption barriers --- factors the augmented Solow model
+does not address.
+\end{answerbox}
+
+\clearpage
+% ═════════════════════════════════════════════════════════════════════════════
+\section{Question 2 --- Ramsey Model: Permanent Increase in TFP Growth}
+% ═════════════════════════════════════════════════════════════════════════════
+
+\subsection*{1.\ (5 points)}
+
+\begin{answerbox}
+\textbf{(a)} Law of motion:
+\[
+    \dot{\ktilde} = \ktilde^{\alpha} - \ctilde - (n + x + \delta)\,\ktilde.
+\]
+
+\textbf{(b)} Euler equation (per-effective-worker):
+\[
+    \frac{\dot{\ctilde}}{\ctilde}
+    = \frac{1}{\sigma}\bigl(\alpha\ktilde^{\alpha-1} - \delta - \rho - \sigma x\bigr).
+\]
+
+\textbf{(c)} Loci:
+\begin{itemize}
+    \item $\dot{\ctilde}=0$: vertical line at $\ktilde^*$ where
+    $\alpha\ktilde^{*(\alpha-1)} = \delta + \rho + \sigma x$.
+    To the left, $\dot{\ctilde}>0$; to the right, $\dot{\ctilde}<0$.
+    \item $\dot{\ktilde}=0$: $\ctilde = \ktilde^{\alpha} - (n+x+\delta)\ktilde$
+    (hump-shaped curve).  Above it, $\dot{\ktilde}<0$; below, $\dot{\ktilde}>0$.
+\end{itemize}
+The steady state is at the intersection.  The saddle path approaches it from both sides.
+\end{answerbox}
+
+\subsection*{2.\ (7 points)}
+
+\begin{answerbox}
+\textbf{(a)} Modified Golden Rule: $\alpha\ktilde^{*(\alpha-1)} = \delta + \rho + \sigma x$.
+\[
+    \boxed{\ktilde^* = \left[\frac{\alpha}{\delta + \rho + \sigma x}
+    \right]^{1/(1-\alpha)}.}
+\]
+\[
+    \ctilde^* = \ktilde^{*\alpha} - (n+x+\delta)\,\ktilde^*.
+\]
+
+\textbf{(b)} Modified Golden Rule: $f'(\ktilde^*) = \delta + \rho + \sigma x$.
+
+\textbf{(c)} The TVC (in per-effective-worker form) is
+$\lim_{t\to\infty}\lambda(t)\,\ktilde(t)\,e^{-\rho'\!t} = 0$,
+where $\rho' = \rho - n - (1-\sigma)x$.
+
+On the BGP, $\ktilde$ is constant (growth rate 0), and from the FOC $\lambda = \ctilde^{-\sigma}$
+with $\ctilde$ growing at rate $\dot{\ctilde}/\ctilde = (1/\sigma)(\alpha\ktilde^{*(\alpha-1)}-\delta-\rho-\sigma x)$.
+On the BGP this equals 0 (since we are at the steady state $\ktilde^*$), so $\lambda$ is
+constant.  Thus $\lambda(t)\ktilde(t) \to \text{const}$, and the TVC requires
+$e^{-\rho' t}\to 0$, i.e.\ $\rho' > 0$:
+\[
+    \rho' = \rho - n - (1-\sigma)x > 0
+    \quad\Longleftrightarrow\quad
+    \rho - n > (1-\sigma)x.
+\]
+This ensures that the discount factor dominates growth in the costate and that lifetime
+utility is bounded (otherwise the household's objective integral diverges).
+\end{answerbox}
+
+\subsection*{3.\ (7 points)}
+
+\begin{answerbox}
+\textbf{(a)} New steady state with $x' > x$:
+\[
+    \ktilde^{*\prime} = \left[\frac{\alpha}{\delta + \rho + \sigma x'}
+    \right]^{1/(1-\alpha)} < \ktilde^*
+    = \left[\frac{\alpha}{\delta + \rho + \sigma x}\right]^{1/(1-\alpha)}
+\]
+since $\delta + \rho + \sigma x' > \delta + \rho + \sigma x$ and the exponent
+$1/(1-\alpha) > 0$, so the expression decreases.
+
+For per-effective-worker consumption, use the $\dot{\ktilde}=0$ locus evaluated at the
+steady state:
+\[
+    \ctilde^{*\prime} = \ktilde^{*\prime\alpha} - (n+x'+\delta)\,\ktilde^{*\prime}
+    = \ktilde^{*\prime}\bigl[\ktilde^{*\prime\alpha-1} - (n+x'+\delta)\bigr].
+\]
+Comparing with $\ctilde^* = \ktilde^*\bigl[\ktilde^{*\alpha-1} - (n+x+\delta)\bigr]$,
+there are two reinforcing effects both reducing $\ctilde^{*\prime}$:
+\begin{enumerate}[label=(\roman*), itemsep=2pt]
+    \item \textbf{Lower $\ktilde^{*\prime}$}: since $\ktilde^{*\prime} < \ktilde^*$,
+    the production term $\ktilde^{*\prime\alpha} < \ktilde^{*\alpha}$.
+    \item \textbf{Higher effective depreciation}: $(n+x'+\delta) > (n+x+\delta)$,
+    so more output is required to keep $\ktilde$ constant.
+\end{enumerate}
+Both channels reduce $\ctilde^{*\prime}$ below $\ctilde^*$.  Indeed, since $\ktilde^{*\prime}$
+satisfies the Modified Golden Rule $\alpha\ktilde^{*\prime\alpha-1} = \delta+\rho+\sigma x'$,
+we can also write $\ctilde^{*\prime} = \ktilde^{*\prime\alpha}(1 - (n+x'+\delta)/
+\ktilde^{*\prime\alpha-1}\cdot\alpha^{-1}\cdot\alpha)$; the key point is that $\ktilde^{*\prime}$
+is strictly smaller, and the $\dot{\ktilde}=0$ locus is shifted down, confirming
+$\ctilde^{*\prime} < \ctilde^*$.
+
+\textbf{Intuition:} Faster TFP growth means that per-effective-worker capital depreciates
+faster (the ``effective worker'' grows faster), so the economy sustains a lower level
+of $\ktilde$ in steady state.  The household also requires a higher return to save (to
+compensate for faster-growing consumption), which further discourages capital accumulation
+in effective units.
+
+\textbf{(b) Shifts:}
+\begin{itemize}
+    \item $\dot{\ctilde}=0$ shifts \textbf{left}: from $\ktilde^*$ to
+    $\ktilde^{*\prime} < \ktilde^*$.
+    \item $\dot{\ktilde}=0$ shifts \textbf{down}: higher $(n+x'+\delta)$ steepens the
+    effective depreciation line, lowering the curve
+    $\ctilde = \ktilde^{\alpha} - (n+x'+\delta)\ktilde$.
+\end{itemize}
+
+\textbf{(c)}
+\begin{itemize}
+    \item $\ktilde$ does \textbf{not jump}: $K$, $A$, and $L$ are all continuous at $t=0$
+    (only $\dot{A}/A$ changes, not $A$ itself).
+    \item $\ctilde$ \textbf{jumps up}: the household immediately raises per-effective-worker
+    consumption to reach the new saddle path.  Since $\ktilde(0) = \ktilde^* > \ktilde^{*\prime}$,
+    the economy is to the right of the new steady state.
+    \item \textbf{Transition}: both $\ctilde$ and $\ktilde$ fall gradually along the new
+    saddle path from $(\ktilde^*, \ctilde(0^+))$ to $(\ktilde^{*\prime}, \ctilde^{*\prime})$.
+\end{itemize}
+\end{answerbox}
+
+\subsection*{4.\ (6 points)}
+
+\begin{answerbox}
+Per-capita consumption and income:
+\[
+    c_t = \ctilde_t\,A_t, \qquad y_t = \ytilde_t\,A_t.
+\]
+
+Before the shock, $c_t$ and $y_t$ grow at rate $x$.  After the shock, they grow at rate
+$x' > x$ in the long run (since $\ctilde_t \to \ctilde^{*\prime}$ and $A_t$ grows at $x'$).
+
+Although $\ctilde^{*\prime} < \ctilde^*$ (the per-effective-worker \emph{level} falls),
+the per-capita \emph{growth rate} is permanently higher.  At some finite time, the new
+path overtakes the old one:
+\[
+    \ctilde^{*\prime}\,A_0 e^{x' t} > \ctilde^*\,A_0 e^{x t}
+    \quad\text{for all } t > \frac{\ln(\ctilde^*/\ctilde^{*\prime})}{x'-x}.
+\]
+
+The household is better off because the present discounted value of lifetime utility is
+higher: faster permanent growth outweighs the short-run reduction in consumption level.
+Faster technological progress is unambiguously welfare-improving.
+\end{answerbox}
+
+\clearpage
+% ═════════════════════════════════════════════════════════════════════════════
+\section{Question 3 --- Development Accounting and Misallocation}
+% ═════════════════════════════════════════════════════════════════════════════
+
+\subsection*{1.\ (5 points)}
+
+\begin{answerbox}
+\textbf{(a)} Take logs: $\ln Y = \ln A + \alpha\ln K + (1-\alpha)\ln L$.
+
+Differentiate w.r.t.\ time:
+\[
+    \boxed{\gamma_Y = \gamma_A + \alpha\,\gamma_K + (1-\alpha)\,\gamma_L.}
+\]
+
+The \textbf{Solow residual} is:
+$\gamma_A = \gamma_Y - \alpha\gamma_K - (1-\alpha)\gamma_L$.
+It captures everything that contributes to output growth beyond measured factor
+accumulation --- including technology, efficiency, measurement error, and institutional
+change.
+
+\textbf{(b)} Two factors besides technology: (i) \textbf{misallocation} of resources
+across firms/sectors (changes in allocative efficiency show up as TFP changes);
+(ii) \textbf{mismeasurement} of input quality --- e.g.\ not adjusting labour for
+human capital or capital for quality improvements.
+\end{answerbox}
+
+\subsection*{2.\ (7 points)}
+
+\begin{answerbox}
+In per-worker terms: $y = A k^{\alpha}$.
+
+Taking ratios:
+$\ln(y_R/y_P) = \ln(A_R/A_P) + \alpha\ln(k_R/k_P)$.
+
+With $y_R/y_P = 27$, $k_R/k_P = 27$, $\alpha = 1/3$:
+
+\textbf{(a)} Capital contribution:
+$\alpha\ln(k_R/k_P) = \tfrac{1}{3}\ln 27 = \tfrac{1}{3}\cdot 3\ln 3 = \ln 3$.
+
+As a fraction of $\ln(y_R/y_P) = \ln 27 = 3\ln 3$:
+\[
+    \text{Capital share} = \frac{\ln 3}{3\ln 3} = \boxed{\frac{1}{3} \approx 33\%.}
+\]
+
+\textbf{(b)} TFP contribution (residual):
+$\ln(A_R/A_P) = 3\ln 3 - \ln 3 = 2\ln 3$.
+\[
+    \text{TFP share} = \frac{2\ln 3}{3\ln 3} = \boxed{\frac{2}{3} \approx 67\%.}
+\]
+
+\textbf{(c)} TFP differences are the \textbf{dominant} proximate source of cross-country
+income differences, accounting for about two-thirds of the gap.  This motivates studying
+what drives TFP: technology adoption, institutions, and misallocation.
+\end{answerbox}
+
+\subsection*{3.\ (7 points)}
+
+\begin{answerbox}
+\textbf{(a)} Efficient allocation equalises MPK across firms:
+$\alpha A k_1^{\alpha-1} = \alpha A k_2^{\alpha-1}$ $\Rightarrow$ $k_1 = k_2 = K/2$.
+\[
+    Y^{\mathrm{eff}} = 2A(K/2)^{\alpha} = 2^{1-\alpha}A\,K^{\alpha}.
+\]
+
+\textbf{(b)} With the subsidy, firm~1 optimises taking its effective rental cost as
+$(1-\tau)r$; firm~2 takes $r$.  Profit-maximising capital demands equate MPK to
+effective rental cost:
+\begin{align*}
+    \text{Firm 1:}\quad \alpha A k_1^{\alpha-1} &= (1-\tau)r, \\
+    \text{Firm 2:}\quad \alpha A k_2^{\alpha-1} &= r.
+\end{align*}
+Divide the first equation by the second ($\alpha A$ cancels):
+\[
+    \frac{k_1^{\alpha-1}}{k_2^{\alpha-1}} = (1-\tau)
+    \quad\Longrightarrow\quad
+    \left(\frac{k_1}{k_2}\right)^{\!\alpha-1} = (1-\tau).
+\]
+Raise both sides to the power $\tfrac{1}{\alpha-1}$.  Since $\alpha < 1$,
+$\alpha - 1 < 0$, so $\tfrac{1}{\alpha-1} = -\tfrac{1}{1-\alpha}$:
+\[
+    \frac{k_1}{k_2}
+    = (1-\tau)^{1/(\alpha-1)}
+    = (1-\tau)^{-1/(1-\alpha)}.
+\]
+Because $\tau \in (0,1)$, we have $(1-\tau) \in (0,1)$, so $(1-\tau)^{-1/(1-\alpha)} > 1$.
+\[
+    \boxed{\frac{k_1}{k_2} = (1-\tau)^{-1/(1-\alpha)} > 1.}
+\]
+Firm 1 (subsidised) receives \emph{too much} capital relative to the efficient allocation.
+
+\textbf{(c)} Aggregate output with misallocation:
+$Y^{\mathrm{mis}} = A(k_1^{\alpha} + k_2^{\alpha})$ with $k_1 \neq k_2$ but
+$k_1 + k_2 = K$.
+
+Since $f(k) = k^{\alpha}$ is \textbf{strictly concave} (for $\alpha < 1$), Jensen's
+inequality gives:
+\[
+    \frac{k_1^{\alpha} + k_2^{\alpha}}{2} < \left(\frac{k_1 + k_2}{2}\right)^{\!\alpha}
+    = (K/2)^{\alpha}
+\]
+whenever $k_1 \neq k_2$.  Therefore:
+\[
+    Y^{\mathrm{mis}} = A(k_1^{\alpha} + k_2^{\alpha}) < 2A(K/2)^{\alpha} = Y^{\mathrm{eff}}.
+    \quad\checkmark
+\]
+
+\textbf{Intuition:} The subsidy channels too much capital to firm~1, where the marginal
+product is low, and too little to firm~2, where the marginal product is high.  Aggregate
+output would be higher if capital were reallocated from firm~1 to firm~2 until marginal
+products are equalised.  This is the \textbf{essence of misallocation}: dispersion in
+marginal products signals that a reallocation of inputs could increase aggregate output
+without using more resources.
+\end{answerbox}
+
+\subsection*{4.\ (6 points)}
+
+\begin{answerbox}
+\textbf{(a)} \textbf{Misallocation} is defined as the dispersion of marginal revenue
+products across firms: $\text{Var}(\text{MRPK}_i) > 0$.  In an efficient economy with no
+frictions, all firms equalise MRPK to the common rental rate $r$, so
+$\text{Var}(\text{MRPK}) = 0$.  Positive variance means that some firms have higher
+returns to capital than others, implying that total output could be increased by
+reallocating capital from low-MRPK firms to high-MRPK firms.
+
+\textbf{(b)} Two concrete examples of policies/frictions creating capital wedges:
+\begin{enumerate}[label=(\roman*)]
+    \item \textbf{Directed/subsidised credit:} State-owned banks in China provide
+    below-market loans to state-owned enterprises (SOEs), giving them artificially low
+    capital costs.  Private firms face higher borrowing rates $\Rightarrow$ MRPK dispersion.
+    \item \textbf{Size-dependent regulations:} In India, labour laws (e.g.\ the Industrial
+    Disputes Act) impose high firing costs on firms above a size threshold.  This
+    discourages productive firms from growing to efficient scale, keeping capital trapped
+    in smaller, less productive establishments.
+\end{enumerate}
+
+Other valid examples: trade protection for specific sectors, entry barriers from
+licensing, corruption/connections determining access to resources, land-use regulations
+preventing reallocation.
+\end{answerbox}
+
+\clearpage
+% ═════════════════════════════════════════════════════════════════════════════
+\section{Short Questions}
+% ═════════════════════════════════════════════════════════════════════════════
+
+\subsection*{1.\ (9 points) --- Golden Rule vs.\ Modified Golden Rule}
+
+\begin{answerbox}
+\textbf{(a)} In the Solow model, steady-state consumption is
+$c^* = f(\ktilde^*) - (n+g+\delta)\ktilde^*$.  Maximising over $\ktilde^*$:
+\[
+    \frac{\dd c^*}{\dd\ktilde^*} = f'(\ktilde^*_{GR}) - (n+g+\delta) = 0
+    \quad\Longrightarrow\quad
+    \boxed{f'(\ktilde^*_{GR}) = n + g + \delta.}
+\]
+This is \emph{independent of $s$} because $s$ determines which steady state the economy
+reaches, but the Golden Rule picks the $\ktilde^*$ that maximises $c^*$ regardless of
+how you get there.
+
+\textbf{(b)} In the Ramsey model, the Modified Golden Rule is:
+$f'(\ktilde^*) = \delta + \rho + \sigma x$.
+
+This generally differs from the Golden Rule because the Ramsey household is
+\emph{impatient} ($\rho > 0$): it discounts future consumption, so it does not save
+enough to reach the Golden Rule level.  The two coincide if and only if
+$\rho + \sigma x = n + g$, i.e.\ $\rho = n + (1-\sigma)g$ (with $g=x$), which is
+a knife-edge condition.
+
+\textbf{(c)} The Solow economy \emph{can} be dynamically inefficient: if $s$ is high
+enough that $\ktilde^* > \ktilde^*_{GR}$, the economy over-accumulates capital (MPK $< n+g+\delta$).
+Reducing $s$ would raise consumption in every period.
+
+The Ramsey economy \emph{cannot} be dynamically inefficient: optimising households never
+accumulate beyond the Modified Golden Rule, which satisfies $f'(\ktilde^*) > n+g+\delta$
+(given the TVC constraint $\rho - n > (1-\sigma)x$).  Dynamic efficiency is guaranteed
+by forward-looking optimisation.
+\end{answerbox}
+
+\subsection*{2.\ (8 points) --- Role of Monopolistic Competition}
+
+\begin{answerbox}
+\textbf{(a)} Ideas are \textbf{non-rival}: once created, they can be used by everyone at
+zero marginal cost.  Under perfect competition, price equals marginal cost, so $p = MC = 0$
+for ideas.  But then innovators earn zero revenue and cannot recoup the fixed cost of R\&D.
+No firm would invest in innovation $\Rightarrow$ no endogenous growth.  The fundamental
+problem: non-rivalry requires increasing returns, which is incompatible with perfect
+competition.
+
+\textbf{(b)} Monopolistic competition gives innovators \emph{temporary market power}.
+In the Romer model, the markup $p = 1/\alpha > 1$ (above marginal cost of production)
+generates positive profits $\pi > 0$.  These profits are the \emph{reward for innovation}
+and are essential for financing R\&D.  Without the markup, the value of creating a new
+variety $V = \pi/r = 0$, and no one would innovate.
+
+\textbf{(c)} The markup creates a \textbf{static inefficiency}: monopolists restrict
+output below the socially optimal level ($x^{\text{mkt}} < x^{\text{plnr}}$).  A
+\textbf{subsidy on intermediate purchases} equal to $1 - \alpha$ (so the effective price
+faced by final good producers falls from $1/\alpha$ to $1$) corrects this distortion.
+This raises intermediate usage to the efficient level while preserving the innovator's
+profit incentive (profits are replaced by the subsidy).
+\end{answerbox}
+
+\subsection*{3.\ (8 points) --- Expanding Varieties vs.\ Quality Ladders}
+
+\begin{answerbox}
+\textbf{(a)} In Romer, new varieties \emph{coexist} with old ones --- no firm is displaced.
+In Aghion--Howitt, new quality improvements \emph{replace} old producers.  Key implication:
+in quality ladders, incumbent monopolists \textbf{lose their rents} when a successor
+innovates.  This creates a direct conflict between incumbents and entrants that is absent
+in the expanding varieties framework.
+
+\textbf{(b)} \textbf{Creative destruction}: the process by which new innovators displace
+incumbents.  The \textbf{business-stealing externality}: the entrant captures the entire
+market, destroying the incumbent's profit stream, but does not internalise this cost.
+This leads to \textbf{over-innovation} relative to the social optimum, because the private
+return to innovation includes ``stealing'' rents that were already generating social value.
+
+\textbf{(c)} The \textbf{appropriability externality}: the innovator cannot capture all
+the social value of the innovation --- consumers benefit from quality improvements beyond
+what monopoly profits reflect (consumer surplus).  This pushes toward
+\textbf{under-innovation}.
+
+The two externalities act in \emph{opposite} directions.  The net effect is ambiguous and
+depends on parameters.  This means the market innovation rate can be either too high or
+too low relative to the social optimum.  Optimal policy requires balancing both
+externalities, potentially with multiple instruments (R\&D subsidies/taxes + output subsidies).
+\end{answerbox}
+
+\vspace{12pt}
+\noindent\rule{\textwidth}{0.4pt}
+\begin{center}\textit{End of Answer Key --- Practice Exam 2.}\end{center}
+
+\end{document}

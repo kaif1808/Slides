@@ -1,0 +1,326 @@
+\documentclass[a4paper,11pt]{article}
+
+% ─── Geometry ────────────────────────────────────────────────────────────────
+\usepackage{geometry}
+\geometry{margin=1in, headheight=15pt}
+
+% ─── Mathematics ─────────────────────────────────────────────────────────────
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathtools}
+
+% ─── Graphics / Colours ──────────────────────────────────────────────────────
+\usepackage{graphicx}
+\usepackage{xcolor}
+\definecolor{blue3}{RGB}{0,0,180}
+\definecolor{green3}{RGB}{0,120,0}
+\definecolor{orange3}{RGB}{200,100,0}
+\definecolor{red3}{RGB}{180,0,0}
+\definecolor{grey3}{RGB}{80,80,80}
+
+% ─── Units ───────────────────────────────────────────────────────────────────
+\usepackage{siunitx}
+\sisetup{detect-all}
+
+% ─── Links (hyperref BEFORE cleveref) ────────────────────────────────────────
+\usepackage[colorlinks=true,linkcolor=blue3,citecolor=blue3,urlcolor=blue3]{hyperref}
+\usepackage{cleveref}
+
+% ─── Boxes ───────────────────────────────────────────────────────────────────
+\usepackage{tcolorbox}
+\tcbuselibrary{skins,breakable}
+
+\newtcolorbox{pointsbox}[1][]{
+    colback=grey3!8,
+    colframe=grey3,
+    fonttitle=\bfseries\small,
+    #1
+}
+
+% ─── Tables / Lists ──────────────────────────────────────────────────────────
+\usepackage{booktabs}
+\usepackage{enumitem}
+
+% ─── Notation commands ───────────────────────────────────────────────────────
+\newcommand{\ktilde}{\tilde{k}}
+\newcommand{\ytilde}{\tilde{y}}
+\newcommand{\ctilde}{\tilde{c}}
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\bgp}{\mathrm{BGP}}
+
+% ─── Header / Footer ─────────────────────────────────────────────────────────
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\textbf{14E022 Macroeconomics I} \quad Practice Exam 4}
+\rhead{BSE 2025--26}
+\cfoot{\thepage}
+
+% ═════════════════════════════════════════════════════════════════════════════
+\begin{document}
+% ═════════════════════════════════════════════════════════════════════════════
+
+\begin{center}
+    {\LARGE \textbf{14E022 Macroeconomics I}}\\[6pt]
+    {\Large \textbf{Practice Exam 4}}\\[8pt]
+    {\large BSE --- Academic Year 2025--26}
+\end{center}
+
+\vspace{8pt}
+\noindent\textit{Instructions: the exam is made of 3 problems and a set of short questions totalling \textbf{100 points}.
+You have \textbf{2 hours}. Show all derivations clearly. For short questions, concise and precise answers score highest.}
+\vspace{4pt}
+
+\noindent\rule{\textwidth}{0.4pt}
+
+% ─────────────────────────────────────────────────────────────────────────────
+\section{Question 1 --- Growth Accounting and Development Accounting \hfill (25 points)}
+% ─────────────────────────────────────────────────────────────────────────────
+
+Consider a Cobb-Douglas economy in which output of country $i$ is
+\[
+    Y_i = K_i^{\alpha}\,(h_i\,L_i)^{1-\alpha}\,A_i,
+    \qquad \alpha = 1/3,
+\]
+where $K_i$ is physical capital, $L_i$ is the number of workers, $h_i$ is average human capital
+per worker, and $A_i$ is TFP.  Two countries are observed:
+
+\vspace{6pt}
+\begin{center}
+\begin{tabular}{lccc}
+\toprule
+Country & $Y_i/L_i$ (normalised) & $(K_i/Y_i)$ & $h_i$ \\
+\midrule
+US (benchmark) & 1.00 & 3.0 & 1.00 \\
+Country D      & 0.20 & 2.4 & 0.60 \\
+\bottomrule
+\end{tabular}
+\end{center}
+\vspace{6pt}
+
+\noindent All quantities are in units relative to the US benchmark.
+
+\begin{enumerate}[label=\textbf{\arabic*.}, leftmargin=*, itemsep=8pt]
+
+    \item \textbf{(8 points)} Derive the \emph{development accounting} decomposition that
+    expresses output per worker $y_i = Y_i/L_i$ as a product of a capital-intensity term,
+    a human-capital term, and TFP.  Using the data in the table, compute the fraction of the
+    income gap between Country~D and the US that is explained by each factor.
+    State clearly what fraction of the gap remains attributable to TFP.
+
+    \item \textbf{(9 points)} Introduce firm-level heterogeneity following Hsieh and Klenow
+    (2009).  Each firm $s$ faces an output wedge $\tau_{Y,s}$ and a capital wedge
+    $\tau_{K,s}$.  Define revenue total factor productivity (TFPR) for a firm and explain
+    why, under perfect competition with no distortions, TFPR would be equalised across all
+    firms.  Show that dispersion in TFPR signals resource misallocation, and derive
+    qualitatively how aggregate TFP falls below the frictionless benchmark when wedges are
+    present.
+
+    \item \textbf{(8 points)} ``Since TFP differences account for the bulk of cross-country
+    income gaps, policies aimed at raising capital accumulation are largely irrelevant for
+    development.''  Critically evaluate this claim.  Address whether high measured TFP is a
+    cause or a consequence of higher income, identify one important identification challenge
+    in interpreting TFP residuals causally, and discuss what the misallocation literature
+    implies for development policy.
+
+\end{enumerate}
+
+\clearpage
+
+% ─────────────────────────────────────────────────────────────────────────────
+\section{Question 2 --- Baumol's Cost Disease and Structural Change \hfill (25 points)}
+% ─────────────────────────────────────────────────────────────────────────────
+
+Consider a two-sector economy with a \emph{progressive} sector~$P$ and a \emph{stagnant}
+sector~$S$.  Output in each sector is produced using only labour:
+\[
+    Y_P = A_{P,t}\,L_P, \qquad Y_S = L_S,
+\]
+where productivity in the progressive sector grows at the constant rate
+$\dot{A}_{P,t}/A_{P,t} = g > 0$, while productivity in the stagnant sector is fixed at~1.
+A single competitive labour market equalises wages across sectors.  The total labour
+endowment is $\bar{L}$ and is supplied inelastically.
+
+Households have \textbf{Cobb-Douglas} preferences over the two goods:
+\[
+    U = Y_P^{\,\beta}\,Y_S^{\,1-\beta}, \qquad \beta \in (0,1).
+\]
+
+\begin{enumerate}[label=\textbf{\arabic*.}, leftmargin=*, itemsep=8pt]
+
+    \item \textbf{(7 points)} Derive the equilibrium wage $w_t$ and the relative price
+    $p_{S,t}/p_{P,t}$ as functions of $t$.  Show that, under Cobb-Douglas preferences, the
+    labour allocation $(L_P/\bar{L},\, L_S/\bar{L})$ is constant over time.  Explain the
+    economic mechanism that keeps expenditure shares constant even as relative prices rise.
+
+    \item \textbf{(9 points)} Replace Cobb-Douglas preferences with non-homothetic
+    preferences in which the income elasticity of stagnant services exceeds unity at high
+    income levels.  Without solving a specific utility function, explain how the employment
+    share of the stagnant sector evolves as income grows.  Carefully distinguish the
+    \emph{demand channel} (rising income elasticity) from the \emph{supply channel}
+    (Baumol cost disease), and discuss how the two channels interact to produce structural
+    change.
+
+    \item \textbf{(9 points)} Return to the Cobb-Douglas preference specification.  Derive
+    the growth rate of aggregate output $Y = Y_P^{\,\beta}\,Y_S^{\,1-\beta}$.  Show
+    formally that aggregate productivity growth lies strictly between 0 and $g$ regardless
+    of the expenditure share $\beta$.  Explain why measured aggregate TFP growth
+    systematically understates productivity growth in the progressive sector, and discuss the
+    implication for interpreting cross-country productivity comparisons when countries differ
+    in their sectoral composition.
+
+\end{enumerate}
+
+\clearpage
+
+% ─────────────────────────────────────────────────────────────────────────────
+\section{Question 3 --- Jones (1995) Semi-Endogenous Growth \hfill (25 points)}
+% ─────────────────────────────────────────────────────────────────────────────
+
+Consider a Romer-style economy with a continuum of differentiated intermediate goods of
+measure $A_t$.  Final output is
+\[
+    Y_t = A_t^{\,\alpha/(1-\alpha)}\,L_{Y,t},
+\]
+where $L_{Y,t}$ is labour employed in final-goods production.  Knowledge (the measure of
+blueprints) evolves according to
+\[
+    \dot{A}_t = \lambda\,A_t^{\,\phi}\,L_{A,t}, \qquad \phi \in (0,1),
+\]
+where $L_{A,t}$ is labour employed in R\&D and $\lambda > 0$ is research productivity.
+Population grows exogenously at rate $n > 0$:
+\[
+    L_t = L_{Y,t} + L_{A,t}, \qquad \dot{L}_t/L_t = n.
+\]
+
+\begin{enumerate}[label=\textbf{\arabic*.}, leftmargin=*, itemsep=8pt]
+
+    \item \textbf{(8 points)} On the balanced growth path, derive the long-run growth rate
+    of $A_t$ (call it $g_A$) and the long-run growth rate of output per worker $Y_t/L_t$.
+    Show explicitly that doubling the \emph{level} of population does not permanently raise
+    $g_A$ --- the strong scale effect of Romer (1990) is absent.  Identify which
+    parameter(s) determine long-run growth and explain the role of population growth~$n$.
+
+    \item \textbf{(9 points)} Let $V_t$ denote the value of a new blueprint.  Write the
+    free-entry condition for researchers and the no-arbitrage (Bellman) equation for $V_t$
+    on the BGP.  Using the household Euler equation, derive the equilibrium share of labour
+    devoted to R\&D, $\ell_A \equiv L_{A,t}/L_t$.  Show that $L_{A,t}$ grows
+    proportionally to $L_t$ along the BGP --- the semi-endogenous growth property --- and
+    verify consistency with your answer to question~1.
+
+    \item \textbf{(8 points)} Compare Jones (1995) to Romer (1990).  In the Jones model, is
+    long-run growth truly ``endogenous'' in any meaningful sense?  State the main
+    theoretical objection to the Jones fix.  Briefly describe how fully endogenous
+    alternatives (e.g.\ Peretto 1998 or Young 1998) eliminate scale effects without making
+    growth depend on population growth, and discuss which set of predictions --- Jones or the
+    fully endogenous alternatives --- appears more consistent with the available empirical
+    evidence.
+
+\end{enumerate}
+
+\clearpage
+
+% ─────────────────────────────────────────────────────────────────────────────
+\section{Short Questions \hfill (25 points)}
+% ─────────────────────────────────────────────────────────────────────────────
+
+\noindent\textit{For these questions, short and sharp answers will receive the highest marks.
+Aim for 3--6 sentences per question unless otherwise indicated.}
+
+\vspace{8pt}
+
+\begin{enumerate}[label=\textbf{\arabic*.}, leftmargin=*, itemsep=14pt]
+
+    % ── SQ1 ──────────────────────────────────────────────────────────────────
+    \item \textbf{(8 points) Dynamic Inefficiency and the Transversality Condition.}
+
+    The Solow model can exhibit dynamic inefficiency --- capital accumulation beyond the
+    Golden Rule level --- but the Ramsey model cannot.  Explain why the Ramsey model rules
+    out dynamic inefficiency.  Define the Transversality Condition (TVC) precisely and show
+    how it eliminates over-accumulation paths.  State the relationship between the TVC and
+    the No-Ponzi condition on household borrowing.
+
+    % ── SQ2 ──────────────────────────────────────────────────────────────────
+    \item \textbf{(9 points) Level Effects, Growth Effects, and the Optimal Subsidy in
+    Learning-by-Doing.}
+
+    In a standard Ramsey economy, a permanent increase in the saving rate has only a
+    \emph{level effect} on output per worker.  In the AK model, the same increase
+    permanently raises the \emph{growth rate}.  Explain the mechanism behind this
+    difference, with reference to the shape of the production function and the absence or
+    presence of diminishing returns to capital.  In the Arrow (1962) learning-by-doing
+    economy with aggregate production function $Y = AK$ (where $A$ embodies the
+    externality), the decentralised growth rate is inefficiently low.  Derive the optimal
+    subsidy to capital that restores the planner's allocation, expressing your answer in
+    terms of the externality parameter $\alpha$ only, and interpret the result.
+
+    % ── SQ3 ──────────────────────────────────────────────────────────────────
+    \item \textbf{(8 points) Business-Stealing, Appropriability, and First-Best R\&D Policy.}
+
+    In the Aghion--Howitt quality ladder model, equilibrium R\&D can be simultaneously too
+    high \emph{and} too low relative to the social optimum.  Precisely define the
+    business-stealing externality and the appropriability (consumer-surplus) externality.
+    State the direction of each distortion, identify which tends to dominate in the basic
+    model, and explain why implementing the first-best allocation requires more than one
+    policy instrument.
+
+\end{enumerate}
+
+\vspace{20pt}
+\noindent\rule{\textwidth}{0.4pt}
+
+\begin{center}
+    \textit{End of Practice Exam 4. Good luck!}
+\end{center}
+
+% ─────────────────────────────────────────────────────────────────────────────
+\clearpage
+\appendix
+\section*{Appendix: Key Formulas Permitted in Exam}
+% ─────────────────────────────────────────────────────────────────────────────
+
+The following results may be used without re-derivation unless the question explicitly asks
+you to derive them.
+
+\subsection*{A.1 ~ Log-differentiation}
+If $Z_t = X_t^a Y_t^b$, then $\gamma_Z = a\gamma_X + b\gamma_Y$.
+
+\subsection*{A.2 ~ Ramsey / Euler Equation (standard)}
+\[
+    \frac{\dot{c}}{c} = \frac{1}{\sigma}(r - \rho - \sigma n),
+    \qquad
+    \frac{\dot{\ctilde}}{\ctilde} = \frac{1}{\sigma}(r - \delta - \rho - \sigma x)
+\]
+where $r = f'(\ktilde) - \delta$ is the net return to capital, $x$ is TFP growth, and
+$n$ is population growth.
+
+\subsection*{A.3 ~ Hamiltonian first-order conditions (current-value)}
+Control $u$, state $x$, costate $\lambda$, discount $\rho$:
+\[
+    H_u = 0, \qquad \dot{\lambda} = \rho\lambda - H_x.
+\]
+
+\subsection*{A.4 ~ Cobb-Douglas factor payments}
+$r K = \alpha Y$, $wL = (1-\alpha)Y$, so $r = \alpha Y/K$ and $w = (1-\alpha)Y/L$.
+
+\subsection*{A.5 ~ Development accounting identity}
+With $y_i = Y_i/L_i$, $\alpha = 1/3$, and capital-output ratio $\kappa_i = K_i/Y_i$:
+\[
+    \frac{y_i}{y_{US}} = \left(\frac{\kappa_i}{\kappa_{US}}\right)^{\alpha/(1-\alpha)}
+    \cdot \frac{h_i}{h_{US}}
+    \cdot \frac{A_i}{A_{US}}.
+\]
+
+\subsection*{A.6 ~ Jones (1995) BGP growth rate}
+With $\dot{A}/A = \lambda A^{\phi-1} L_A$ and $L_A \propto L \propto e^{nt}$:
+\[
+    g_A^* = \frac{n}{1-\phi}.
+\]
+
+\subsection*{A.7 ~ CES monopoly markup}
+With isoelastic demand elasticity $\varepsilon = 1/(1-\alpha)$:
+\[
+    p^* = \frac{1}{\alpha}, \qquad \pi = \frac{1-\alpha}{\alpha}\,x.
+\]
+
+\end{document}

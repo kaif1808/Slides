@@ -1,0 +1,11 @@
+\contentsline {section}{\numberline {1}Notation and Definitions}{2}{section.1}%
+\contentsline {section}{\numberline {2}AK Model: Basic Setup (Exogenous Savings)}{3}{section.2}%
+\contentsline {section}{\numberline {3}AK-Ramsey Model (Endogenous Savings, Euler Equation)}{5}{section.3}%
+\contentsline {section}{\numberline {4}Learning-by-Doing Externality (Arrow-Frankel)}{7}{section.4}%
+\contentsline {section}{\numberline {5}Romer Expanding Varieties: Market Equilibrium}{9}{section.5}%
+\contentsline {section}{\numberline {6}Romer: Social Planner vs.\ Market (Distortions and Subsidy)}{12}{section.6}%
+\contentsline {section}{\numberline {7}Scale Effects and Jones (1995) Fix}{14}{section.7}%
+\contentsline {section}{\numberline {8}Comparative Analysis: Solow vs.\ AK vs.\ Romer}{16}{section.8}%
+\contentsline {section}{\numberline {9}Problem-Solving Templates}{17}{section.9}%
+\contentsline {section}{\numberline {10}Common Pitfalls}{19}{section.10}%
+\contentsline {section}{\numberline {11}Quick Reference Formulas}{20}{section.11}%

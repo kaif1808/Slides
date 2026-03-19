@@ -1,0 +1,622 @@
+\documentclass[a4paper,11pt]{article}
+
+% ─── Geometry ────────────────────────────────────────────────────────────────
+\usepackage{geometry}
+\geometry{margin=1in, headheight=15pt}
+
+% ─── Mathematics ─────────────────────────────────────────────────────────────
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathtools}
+
+% ─── Graphics / Colours ──────────────────────────────────────────────────────
+\usepackage{graphicx}
+\usepackage{xcolor}
+\definecolor{blue3}{RGB}{0,0,180}
+\definecolor{green3}{RGB}{0,120,0}
+\definecolor{orange3}{RGB}{200,100,0}
+\definecolor{red3}{RGB}{180,0,0}
+\definecolor{grey3}{RGB}{80,80,80}
+
+% ─── Units ───────────────────────────────────────────────────────────────────
+\usepackage{siunitx}
+\sisetup{detect-all}
+
+% ─── Links (hyperref BEFORE cleveref) ────────────────────────────────────────
+\usepackage[colorlinks=true,linkcolor=blue3,citecolor=blue3,urlcolor=blue3]{hyperref}
+\usepackage{cleveref}
+
+% ─── Boxes ───────────────────────────────────────────────────────────────────
+\usepackage{tcolorbox}
+\tcbuselibrary{skins,breakable}
+
+\newtcolorbox{pointsbox}[1][]{
+    colback=grey3!8,
+    colframe=grey3,
+    fonttitle=\bfseries\small,
+    #1
+}
+
+\newtcolorbox{hintbox}[1][]{
+    colback=orange3!8,
+    colframe=orange3,
+    title={Hint:},
+    fonttitle=\bfseries,
+    #1
+}
+
+% ─── Tables / Lists ──────────────────────────────────────────────────────────
+\usepackage{booktabs}
+\usepackage{enumitem}
+
+% ─── Notation commands ───────────────────────────────────────────────────────
+\newcommand{\ktilde}{\tilde{k}}
+\newcommand{\ytilde}{\tilde{y}}
+\newcommand{\ctilde}{\tilde{c}}
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\bgp}{\mathrm{BGP}}
+
+% ─── Header / Footer ─────────────────────────────────────────────────────────
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\textbf{14E022 Macroeconomics I} \quad Practice Exam 3}
+\rhead{BSE 2025--26}
+\cfoot{\thepage}
+
+% ═════════════════════════════════════════════════════════════════════════════
+\begin{document}
+% ═════════════════════════════════════════════════════════════════════════════
+
+\begin{center}
+    {\LARGE \textbf{14E022 Macroeconomics I}}\\[6pt]
+    {\Large \textbf{Practice Exam 3}}\\[8pt]
+    {\large BSE --- Academic Year 2025--26}
+\end{center}
+
+\vspace{8pt}
+\noindent\textit{Instructions: the exam is made of 3 problems and a set of short questions totalling \textbf{100 points}.
+You have \textbf{2 hours}. Show all derivations clearly. For short questions, concise and precise answers score highest.}
+\vspace{4pt}
+
+\noindent\rule{\textwidth}{0.4pt}
+
+% ─────────────────────────────────────────────────────────────────────────────
+\section{Question 1 --- Romer (1990) Expanding Varieties \hfill (25 points)}
+% ─────────────────────────────────────────────────────────────────────────────
+
+Consider a three-sector economy consisting of a final goods sector, an intermediate goods sector,
+and an R\&D sector.  The representative final goods firm produces output using production workers
+$L_Y$ and a continuum of differentiated intermediate inputs:
+\[
+    Y_t = L_Y^{1-\alpha} \int_0^{M_t} x_i^{\alpha}\,\dd i,
+    \qquad \alpha \in (0,1),
+\]
+where $M_t$ is the total mass of available varieties and $x_i$ is the quantity of variety $i$
+used.  Each intermediate variety is produced one-for-one from the final good (marginal cost
+$= 1$).  The R\&D technology expands the variety frontier at rate
+\[
+    \dot{M}_t = \lambda M_t L_{A,t},
+\]
+where $L_{A,t}$ is the mass of workers employed in R\&D and $\lambda > 0$ is a productivity
+parameter.  Households have CRRA preferences with risk-aversion $\sigma > 0$, discount rate
+$\rho > 0$, and there is no population growth.  Total labour supply is $L = L_Y + L_A$.
+
+\begin{enumerate}[label=\textbf{\arabic*.}, leftmargin=*, itemsep=6pt]
+
+    \item \textbf{(5 points)} Final goods sector FOC.
+
+    \begin{enumerate}[label=(\alph*), itemsep=4pt]
+        \item Set up the final goods firm's profit-maximisation problem taking output as
+        the num\'{e}raire and each $p_i$ as given.  Derive the isoelastic inverse demand
+        for variety $i$:
+        \[
+            p_i = \alpha L_Y^{1-\alpha}\,x_i^{\alpha-1}.
+        \]
+        \item Invert this to obtain the demand function $x_i(p_i)$ and show that the price
+        elasticity of demand is $\varepsilon = 1/(1-\alpha) > 1$.
+    \end{enumerate}
+
+    \item \textbf{(6 points)} Intermediate monopolist's pricing and profits.
+
+    Each variety $i$ is supplied by a monopolist who bought the blueprint from the R\&D sector.
+
+    \begin{enumerate}[label=(\alph*), itemsep=4pt]
+        \item Using the demand function from part 1 and the CES markup formula
+        $p = MC \cdot \varepsilon/(\varepsilon - 1)$, derive the monopoly price
+        $p_i^* = 1/\alpha$.  (You may alternatively derive it directly from the
+        monopolist's FOC.)
+        \item Substitute $p_i^* = 1/\alpha$ into the demand function to obtain the
+        equilibrium quantity:
+        \[
+            x_i^* = \alpha^{2/(1-\alpha)}\,L_Y.
+        \]
+        \item Show that equilibrium flow profit is
+        \[
+            \pi = (p_i^* - 1)\,x_i^* = (1-\alpha)\,\alpha^{\alpha/(1-\alpha)}\,L_Y.
+        \]
+        Verify that $\pi = \tfrac{1-\alpha}{\alpha}\,x_i^*$.
+    \end{enumerate}
+
+    \item \textbf{(7 points)} R\&D equilibrium and the BGP growth rate.
+
+    \begin{enumerate}[label=(\alph*), itemsep=4pt]
+        \item \textbf{No-arbitrage (Bellman equation).}  Let $V_t$ be the value of owning
+        one blueprint (one variety).  Unlike quality ladders, there is no creative
+        destruction in Romer: once created, a variety exists forever.  Write the
+        no-arbitrage condition $r V = \pi + \dot{V}$.  On the BGP where $V$ is constant,
+        show this simplifies to $r V = \pi$.
+
+        \item \textbf{R\&D free entry.}  A researcher can create a new variety by hiring
+        labour at wage $w$.  The cost of discovering one new variety is $w/(\lambda M)$
+        (the reciprocal of the marginal product of research labour).  Free entry drives
+        profits from R\&D to zero:
+        \[
+            V = \frac{w}{\lambda M}.
+        \]
+        Combine with the no-arbitrage condition to show $r = \lambda M \pi / w$.
+
+        \item \textbf{Labour market and Euler equation.}  The wage equals the marginal
+        product of $L_Y$ in the final sector: $w = (1-\alpha)Y/L_Y$.  Use the resource
+        allocations $L_Y + L_A = L$ and the Euler equation $\dot{\ctilde}/\ctilde =
+        (r-\rho)/\sigma$ to derive the BGP growth rate:
+        \[
+            g^{\mathrm{mkt}} = \frac{\lambda(1-\alpha)L - \rho}{\sigma + 1}.
+        \]
+        Identify the \textbf{scale effect}: explain why $g^{\mathrm{mkt}}$ rises with total
+        labour supply $L$.
+    \end{enumerate}
+
+    \begin{hintbox}
+        On the BGP, $L_Y$ and $L_A$ are constant fractions of $L$.  Use the free-entry
+        condition and wage expression to pin down $L_Y^*$, substitute into the Euler
+        equation.
+    \end{hintbox}
+
+    \item \textbf{(7 points)} Social planner vs.\ market.
+
+    \begin{enumerate}[label=(\alph*), itemsep=4pt]
+        \item Explain the \textbf{two distortions} in the decentralised equilibrium:
+        \begin{enumerate}[label=(\roman*), itemsep=2pt]
+            \item \emph{Markup distortion}: the monopolist sets $p_i = 1/\alpha > 1 = MC$,
+            so each variety is under-used relative to the social optimum.  How does the
+            planner set quantity?
+            \item \emph{Knowledge spillover}: when a new variety is created, the inventor
+            captures only the discounted flow of monopoly profits $V$, but the social value
+            also includes consumer surplus and the indirect effect of variety expansion on
+            the productivity of future R\&D ($\partial \dot{M}/\partial M$).  State the
+            direction of each distortion (under- or over-provision).
+        \end{enumerate}
+        \item Show that $g^{\mathrm{plnr}} > g^{\mathrm{mkt}}$.  You do not need to
+        derive $g^{\mathrm{plnr}}$ explicitly; it suffices to argue that the planner uses
+        more of each variety (correcting the markup) and internalises the spillover,
+        both of which raise the incentive to conduct R\&D.
+
+        \item Identify the \textbf{optimal policy mix} that implements the first-best:
+        \begin{enumerate}[label=(\roman*), itemsep=2pt]
+            \item A subsidy $s_x = 1-\alpha$ to intermediate goods purchasers (final goods
+            firms pay only $\alpha$ per unit, eliminating the markup wedge).
+            \item An R\&D subsidy that internalises the knowledge-spillover externality.
+        \end{enumerate}
+        Argue that a single instrument \emph{cannot} achieve the first-best because the
+        two distortions are independent.
+    \end{enumerate}
+
+\end{enumerate}
+
+\clearpage
+
+% ─────────────────────────────────────────────────────────────────────────────
+\section{Question 2 --- Structural Change: Baumol Effect and Non-Homothetic Preferences \hfill (25 points)}
+% ─────────────────────────────────────────────────────────────────────────────
+
+Consider a two-sector economy with manufacturing ($M$) and services ($S$).  Production
+technologies are linear in labour:
+\[
+    Y_M = A_M L_M, \qquad Y_S = A_S L_S,
+\]
+with productivity dynamics $\dot{A}_M/A_M = g > 0$ and $\dot{A}_S/A_S = 0$ (services are
+the stagnant sector).  Labour markets are competitive and the total labour force is fixed:
+$L_M + L_S = L$.
+
+\begin{enumerate}[label=\textbf{\arabic*.}, leftmargin=*, itemsep=6pt]
+
+    \item \textbf{(5 points)} Competitive factor markets and relative prices.
+
+    \begin{enumerate}[label=(\alph*), itemsep=4pt]
+        \item With a competitive labour market, wages are equalised across sectors.  Show
+        that profit maximisation in each sector implies $p_M A_M = p_S A_S = w$.  Hence
+        derive:
+        \[
+            \frac{p_S}{p_M} = \frac{A_M}{A_S}.
+        \]
+        \item Explain why this relative price grows at rate $g$ over time.  What is the
+        economic interpretation?  This is the \textbf{cost disease} (Baumol, 1967):
+        wages in the stagnant sector must keep pace with the productive sector,
+        pushing up services prices.
+    \end{enumerate}
+
+    \item \textbf{(7 points)} Baumol mechanism with CES preferences.
+
+    Households have CES preferences:
+    \[
+        U = \bigl[\omega\,Y_M^{\rho} + (1-\omega)\,Y_S^{\rho}\bigr]^{1/\rho},
+        \qquad \rho \in (-\infty, 1)\setminus\{0\},
+    \]
+    with elasticity of substitution $\sigma_s = 1/(1-\rho)$.
+
+    \begin{enumerate}[label=(\alph*), itemsep=4pt]
+        \item Derive the expenditure-optimal consumption ratio from the household's static
+        optimum:
+        \[
+            \frac{Y_S}{Y_M} = \left[\frac{(1-\omega)}{\omega}\cdot\frac{p_M}{p_S}
+            \right]^{\sigma_s}.
+        \]
+        \item Using $Y_j = A_j L_j$, convert the output ratio to an employment ratio:
+        \[
+            \frac{L_S}{L_M} = \left(\frac{1-\omega}{\omega}\right)^{\sigma_s}
+            \left(\frac{A_M}{A_S}\right)^{1-\sigma_s}.
+        \]
+        \item Analyse the dynamics of $L_S/L_M$ over time (as $A_M$ grows):
+        \begin{enumerate}[label=(\roman*), itemsep=2pt]
+            \item If $\sigma_s = 1$ (Cobb-Douglas): show employment shares are
+            \textbf{constant} despite rising $p_S$.
+            \item If $\sigma_s < 1$ (complements): show $L_S/L_M$ rises over time,
+            so labour flows to the stagnant sector (\textbf{Baumol result}).
+            \item If $\sigma_s > 1$ (substitutes): show labour flows to the productive
+            sector.
+        \end{enumerate}
+        \item Show that aggregate productivity growth satisfies $\gamma_Y = g\cdot(L_M/L)$
+        and explain why structural change implies $\gamma_Y \to 0$ as $L_M/L \to 0$
+        (the Baumol growth drag).
+    \end{enumerate}
+
+    \item \textbf{(6 points)} Non-homothetic preferences.
+
+    Suppose instead that households have Stone-Geary utility:
+    \[
+        U = \log(Y_M - \bar{c}_M) + \log(Y_S), \qquad \bar{c}_M > 0,
+    \]
+    where $\bar{c}_M$ is a subsistence level of manufactured consumption.  Total
+    nominal income is $I = p_M Y_M + p_S Y_S$.
+
+    \begin{enumerate}[label=(\alph*), itemsep=4pt]
+        \item Derive the demand functions by maximising $U$ subject to the budget
+        constraint.  Show:
+        \[
+            Y_M = \bar{c}_M + \frac{I - p_M \bar{c}_M}{2\,p_M},
+            \qquad
+            Y_S = \frac{I - p_M \bar{c}_M}{2\,p_S}.
+        \]
+        \item Derive the \textbf{income elasticity of demand} for manufacturing:
+        \[
+            \varepsilon_M^I = \frac{\partial Y_M}{\partial I}\cdot\frac{I}{Y_M}
+            = 1 - \frac{\bar{c}_M p_M}{I - \bar{c}_M p_M} \cdot \frac{p_M \bar{c}_M}{p_M Y_M} \,.
+        \]
+        Show that $\varepsilon_M^I < 1$, i.e.\ manufacturing is a \textbf{necessity}.
+        \item As income $I$ rises (with prices fixed), show that the expenditure share of
+        manufacturing falls.  This is \textbf{demand-side structural change} that occurs
+        even with equal productivity growth across sectors.
+    \end{enumerate}
+
+    \item \textbf{(7 points)} Synthesis and empirical comparison.
+
+    \begin{enumerate}[label=(\alph*), itemsep=4pt]
+        \item In the Baumol model (part 2), structural change occurs even with
+        \textbf{homothetic preferences} provided $\sigma_s < 1$.  What is the key
+        supply-side mechanism?  Why is the elasticity of substitution the critical
+        parameter?
+
+        \item In the non-homothetic model (part 3), structural change occurs even with
+        \textbf{equal productivity growth} across sectors.  What is the key demand-side
+        mechanism?  What does the income elasticity below unity imply for how households
+        allocate their marginal dollar as they grow richer?
+
+        \item Duarte and Restuccia (2010) document average annual TFP growth rates of
+        approximately 3.8\% in agriculture, 2.4\% in manufacturing, and 1.3\% in services
+        over 1956--2004 across a broad panel of countries.  Is this differential consistent
+        with the Baumol cost-disease mechanism?  In the data, employment shares in services
+        rise and manufacturing employment falls as countries grow richer.  Based on this
+        evidence, discuss the relative importance of supply-side (Baumol) versus
+        demand-side (non-homothetic) channels for understanding structural change.
+    \end{enumerate}
+
+\end{enumerate}
+
+\clearpage
+
+% ─────────────────────────────────────────────────────────────────────────────
+\section{Question 3 --- Solow Model: Golden Rule, Convergence Speed, and Dynamic Inefficiency \hfill (25 points)}
+% ─────────────────────────────────────────────────────────────────────────────
+
+Consider the standard Solow growth model in continuous time.  Aggregate production is
+\[
+    Y_t = K_t^{\alpha}(A_t L_t)^{1-\alpha}, \qquad \alpha \in (0,1),
+\]
+with saving rate $s \in (0,1)$, population growth $\dot{L}/L = n > 0$, TFP growth
+$\dot{A}/A = g > 0$, and capital depreciation $\delta > 0$.
+
+\begin{enumerate}[label=\textbf{\arabic*.}, leftmargin=*, itemsep=6pt]
+
+    \item \textbf{(5 points)} Per-effective-worker dynamics.
+
+    \begin{enumerate}[label=(\alph*), itemsep=4pt]
+        \item Define per-effective-worker variables $\ktilde \equiv K/(AL)$ and
+        $\ytilde \equiv Y/(AL) = \ktilde^{\alpha}$.  Derive the law of motion:
+        \[
+            \dot{\ktilde} = s\,\ktilde^{\alpha} - (n+g+\delta)\,\ktilde.
+        \]
+        \item Show using the Inada conditions ($f'(\ktilde) \to \infty$ as $\ktilde \to 0$,
+        $f'(\ktilde) \to 0$ as $\ktilde \to \infty$) that a unique interior steady state
+        $\ktilde^* > 0$ exists.  Solve for it:
+        \[
+            \ktilde^* = \left[\frac{s}{n+g+\delta}\right]^{\!1/(1-\alpha)}.
+        \]
+    \end{enumerate}
+
+    \item \textbf{(7 points)} Golden Rule capital accumulation.
+
+    \begin{enumerate}[label=(\alph*), itemsep=4pt]
+        \item At the steady state $\ktilde^*$, express per-effective-worker consumption as:
+        \[
+            \ctilde^* = f(\ktilde^*) - (n+g+\delta)\,\ktilde^* = \ktilde^{*\alpha}
+            - (n+g+\delta)\,\ktilde^*.
+        \]
+        (Note: $\ctilde^* = (1-s)\ktilde^{*\alpha}$; both expressions are equivalent at
+        the steady state.)
+
+        \item To find the \textbf{Golden Rule saving rate} that maximises $\ctilde^*$,
+        treat $\ktilde^*$ as a free variable (each $s$ pins down a different $\ktilde^*$).
+        Differentiate $\ctilde^*$ with respect to $\ktilde^*$ and set to zero:
+        \[
+            \frac{\partial \ctilde^*}{\partial \ktilde^*} = 0
+            \;\Longrightarrow\;
+            f'(\ktilde^*_{\mathrm{GR}}) = n+g+\delta.
+        \]
+        For Cobb-Douglas, solve explicitly: $\alpha\,(\ktilde^*_{\mathrm{GR}})^{\alpha-1}
+        = n+g+\delta$.  Show that the corresponding saving rate is $s_{\mathrm{GR}} = \alpha$.
+
+        \item Interpret the Golden Rule.  What happens to steady-state consumption if
+        $s > s_{\mathrm{GR}}$?  If $s < s_{\mathrm{GR}}$?  Define the concept of
+        \textbf{dynamic inefficiency} (over-saving) and explain why a Pareto improvement
+        is possible when $s > s_{\mathrm{GR}}$.
+    \end{enumerate}
+
+    \item \textbf{(6 points)} Speed of convergence.
+
+    \begin{enumerate}[label=(\alph*), itemsep=4pt]
+        \item Linearise the law of motion $\dot{\ktilde} = s\ktilde^{\alpha}
+        - (n+g+\delta)\ktilde$ around $\ktilde^*$.  Define the log-deviation
+        $\hat{k}_t \equiv \ln(\ktilde_t/\ktilde^*)$ and show that:
+        \[
+            \dot{\hat{k}}_t \approx -\beta\,\hat{k}_t,
+            \qquad \text{where} \quad
+            \beta = (1-\alpha)(n+g+\delta).
+        \]
+        This implies $\hat{k}_t = \hat{k}_0\,e^{-\beta t}$: the gap to steady state
+        shrinks exponentially at rate $\beta$.
+
+        \item Calibrate the formula.  With $\alpha = 1/3$, $n = 0.01$, $g = 0.02$,
+        $\delta = 0.05$, compute $\beta$.  The empirical estimate from cross-country
+        regressions (Mankiw, Romer, Weil 1992) is approximately 2\% per year.
+        Why is the empirical estimate slower than the basic calibration?
+        (\textit{Hint}: human capital augmentation effectively raises the capital share
+        toward $2/3$.)
+
+        \item How does $\beta$ depend on $\alpha$?  Provide economic intuition: why does
+        a higher capital share imply \emph{slower} convergence to the steady state?
+    \end{enumerate}
+
+    \item \textbf{(7 points)} Dynamic inefficiency.
+
+    \begin{enumerate}[label=(\alph*), itemsep=4pt]
+        \item Define \textbf{dynamic inefficiency} formally: the steady state is
+        dynamically inefficient if $r^* < n + g$, where $r^* = \alpha\ktilde^{*\alpha-1}
+        - \delta$ is the net return to capital.  Show that this condition is equivalent
+        to $s > s_{\mathrm{GR}} = \alpha$ using the expression for $\ktilde^*$ and the
+        fact that $r^* K = \alpha Y$ at the steady state.
+
+        \item \textbf{Abel et al.\ (1989) test.}  A sufficient condition for dynamic
+        \emph{efficiency} in a stochastic economy is that gross capital income exceeds
+        gross investment:
+        \[
+            r^* K \;\geq\; \delta K + \dot{K},
+            \quad\text{i.e.,}\quad
+            \alpha Y \;\geq\; (n+g+\delta)K.
+        \]
+        Abel et al.\ document that this inequality holds for all G7 economies throughout
+        the post-war period.  What does this imply about the empirical relevance of
+        dynamic inefficiency?
+
+        \item Can the \textbf{Ramsey model} be dynamically inefficient?  Explain
+        rigorously.  Specifically, show that the Transversality Condition (TVC):
+        \[
+            \lim_{t\to\infty} e^{-\rho t}\,\lambda_t\,k_t = 0
+        \]
+        implies $r^* > n + g$ on the BGP (where $\lambda_t$ is the costate on capital
+        in per-capita terms and $\rho > n$ by assumption for bounded utility).  Contrast
+        this with the Solow model, where $s$ is exogenous and may inadvertently push the
+        economy into the over-saving region.
+    \end{enumerate}
+
+\end{enumerate}
+
+\clearpage
+
+% ─────────────────────────────────────────────────────────────────────────────
+\section{Short Questions \hfill (25 points)}
+% ─────────────────────────────────────────────────────────────────────────────
+
+\noindent\textit{For these questions, short and sharp answers will receive the highest marks.
+Aim for 3--6 sentences per sub-question unless otherwise indicated.}
+
+\vspace{8pt}
+
+\begin{enumerate}[label=\textbf{\arabic*.}, leftmargin=*, itemsep=14pt]
+
+    % ── SQ1 ──────────────────────────────────────────────────────────────────
+    \item \textbf{(9 points) Kaldor Facts and Balanced Growth.}
+
+    \begin{enumerate}[label=(\alph*), itemsep=6pt]
+        \item State \textbf{five} Kaldor (1961) stylized facts about long-run economic
+        growth in developed economies.  Which family of production functions is consistent
+        with all five facts on a Balanced Growth Path (BGP)?  Explain \emph{why} this
+        family is special.
+
+        \item Show formally that a Cobb-Douglas production function
+        $Y = K^{\alpha}(AL)^{1-\alpha}$ implies a \textbf{constant capital income share}
+        $\alpha = rK/Y$ regardless of the levels of $K$, $L$, or $A$.  Relate this
+        property to why Solow + Cobb-Douglas generates a BGP with constant growth rates
+        of all per-worker variables.
+
+        \item Karabarbounis and Neiman (2014) document a declining global labour share
+        since the 1980s.  Does this violation of the constant-shares Kaldor fact
+        invalidate the Solow framework?  Briefly describe one model modification
+        (e.g.\ a non-unit elasticity of substitution between capital and labour) that
+        could accommodate a trending labour share while preserving balanced growth.
+    \end{enumerate}
+
+    % ── SQ2 ──────────────────────────────────────────────────────────────────
+    \item \textbf{(8 points) Knowledge Spillovers and the $\phi$ Parameter.}
+
+    Consider the general R\&D technology
+    \[
+        \dot{M}_t = \lambda\,M_t^{\phi}\,L_{A,t}, \qquad \lambda > 0.
+    \]
+
+    \begin{enumerate}[label=(\alph*), itemsep=6pt]
+        \item Derive the BGP growth rate $g_M \equiv \dot{M}/M$ for three cases:
+        (i)~$\phi = 1$ (Romer 1990); (ii)~$\phi < 1$ (Jones 1995 semi-endogenous growth);
+        (iii)~$\phi = 0$ (no knowledge spillovers).
+        In each case, what is the role of \textbf{population growth} $n$ in sustaining
+        positive long-run growth in $M$?
+
+        \item ``\textit{Standing on shoulders}'' (past knowledge raises the productivity
+        of current researchers) vs.\ ``\textit{fishing out}'' (the stock of easy
+        discoveries is depleted by past R\&D):  which value of $\phi$ corresponds to
+        each metaphor?  What empirical evidence from patent citation studies informs
+        the plausible range of $\phi$?
+
+        \item An R\&D subsidy raises $L_A$.  In which case(s) does this permanently
+        raise the \textbf{long-run growth rate} $g_M$?  In which case(s) does it affect
+        only the \textbf{level} of the BGP path (transitional effect)?  State the key
+        equation that distinguishes the two outcomes.
+    \end{enumerate}
+
+    % ── SQ3 ──────────────────────────────────────────────────────────────────
+    \item \textbf{(8 points) Consumption Tax vs.\ Capital Income Tax in the Ramsey Model.}
+
+    Consider a Ramsey economy where the government levies a \textbf{proportional
+    consumption tax} $\tau_c \in (0,1)$, returning all revenue as a lump-sum transfer $T_t$
+    to households.  The household's flow budget constraint is:
+    \[
+        \dot{a}_t = r_t a_t + w_t + T_t - (1+\tau_c)\,c_t,
+    \]
+    where $a_t$ denotes assets, and households maximise $\int_0^{\infty} e^{-\rho t}
+    u(c_t)\,\dd t$ with $u(c) = c^{1-\sigma}/(1-\sigma)$.
+
+    \begin{enumerate}[label=(\alph*), itemsep=6pt]
+        \item Set up the \emph{current-value} Hamiltonian with costate variable $\mu_t$.
+        Derive the optimality conditions and eliminate $\mu_t$ to obtain the
+        \textbf{Euler equation} for $\dot{c}/c$.
+
+        \item Show that the consumption tax \textbf{does not distort} the intertemporal
+        allocation of consumption: the Euler equation is \emph{identical} to the no-tax
+        case.  Provide intuition: why does taxing consumption at a constant proportional
+        rate leave the intertemporal price ratio $c_{t+\dd t}/c_t$ unchanged?
+
+        \item Contrast with the \textbf{capital income tax} $\tau_K$ studied in
+        Practice Exam 1, which replaces $r$ with $r(1-\tau_K)$ in the Euler equation.
+        Explain the asymmetry: why does $\tau_K$ distort saving while $\tau_c$ does not,
+        even though both taxes reduce household resources?  What is the implication of
+        this asymmetry for \textbf{optimal tax theory} (e.g., the Chamley-Judd result)?
+    \end{enumerate}
+
+\end{enumerate}
+
+\vspace{20pt}
+\noindent\rule{\textwidth}{0.4pt}
+
+\begin{center}
+    \textit{End of Practice Exam 3. Good luck!}
+\end{center}
+
+% ─────────────────────────────────────────────────────────────────────────────
+\clearpage
+\appendix
+\section*{Appendix: Key Formulas Permitted in Exam}
+% ─────────────────────────────────────────────────────────────────────────────
+
+The following results may be used without re-derivation unless the question explicitly asks
+you to derive them.
+
+\subsection*{A.1 ~ Log-differentiation}
+If $Z_t = X_t^a Y_t^b$, then $\gamma_Z = a\gamma_X + b\gamma_Y$.
+
+\subsection*{A.2 ~ Ramsey / Euler equation (standard, no tax)}
+\[
+    \frac{\dot{c}}{c} = \frac{1}{\sigma}(r - \rho),
+    \qquad
+    \frac{\dot{\ctilde}}{\ctilde} = \frac{1}{\sigma}(r - \delta - \rho - \sigma x),
+\]
+where $r = f'(\ktilde) - \delta$, $x = \dot{A}/A$, and $n$ is population growth.
+
+\subsection*{A.3 ~ Hamiltonian first-order conditions (current-value)}
+Control $u$, state $x$, costate $\lambda$, discount $\rho$:
+\[
+    H_u = 0, \qquad \dot{\lambda} = \rho\lambda - H_x.
+\]
+
+\subsection*{A.4 ~ Romer (1990) demand function and monopoly markup}
+Final sector: $Y = L_Y^{1-\alpha}\int_0^M x_i^\alpha\,\dd i$.
+\[
+    \text{Demand for variety } i{:}\quad x_i = \left(\frac{\alpha L_Y^{1-\alpha}}{p_i}\right)^{1/(1-\alpha)}, \qquad
+    \varepsilon = \frac{1}{1-\alpha}.
+\]
+\[
+    p_i^* = \frac{1}{\alpha}, \qquad
+    x_i^* = \alpha^{2/(1-\alpha)}L_Y, \qquad
+    \pi = (1-\alpha)\alpha^{\alpha/(1-\alpha)}L_Y.
+\]
+
+\subsection*{A.5 ~ Romer BGP growth rate}
+\[
+    g^{\mathrm{mkt}} = \frac{\lambda(1-\alpha)L - \rho}{\sigma + 1}.
+\]
+Scale effect: $\partial g^{\mathrm{mkt}}/\partial L > 0$.
+
+\subsection*{A.6 ~ Solow steady state and Golden Rule}
+\[
+    \ktilde^* = \left[\frac{s}{n+g+\delta}\right]^{1/(1-\alpha)}, \qquad
+    s_{\mathrm{GR}} = \alpha \quad (\text{Cobb-Douglas}).
+\]
+
+\subsection*{A.7 ~ Speed of convergence}
+\[
+    \beta = (1-\alpha)(n+g+\delta).
+\]
+Interpretation: the gap $\hat{k}_t = \ln(\ktilde_t/\ktilde^*)$ closes at rate $\beta$ per year.
+
+\subsection*{A.8 ~ Abel et al.\ (1989) dynamic efficiency test}
+Economy is dynamically efficient if gross capital income $\geq$ gross investment:
+\[
+    \alpha Y \;\geq\; (n+g+\delta)K.
+\]
+
+\subsection*{A.9 ~ Stone-Geary demand functions}
+Utility $U = \log(Y_M - \bar{c}_M) + \log Y_S$, income $I = p_M Y_M + p_S Y_S$:
+\[
+    Y_M = \bar{c}_M + \frac{I - p_M\bar{c}_M}{2p_M},
+    \qquad
+    Y_S = \frac{I - p_M\bar{c}_M}{2p_S}.
+\]
+
+\subsection*{A.10 ~ General R\&D technology ($\phi$ parameter)}
+$\dot{M} = \lambda M^{\phi} L_A$.  On the BGP:
+\[
+    \phi = 1{:}\quad g_M = \lambda L_A; \qquad
+    \phi < 1{:}\quad g_M = \frac{n}{1-\phi}; \qquad
+    \phi = 0{:}\quad g_M = \lambda L_A \text{ (requires growing $L_A$)}.
+\]
+
+\end{document}

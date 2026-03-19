@@ -1,0 +1,21 @@
+{
+  "worktrees": {
+    "wt-1773232574077-1": {
+      "branch": "kilo-1773232574046",
+      "path": "/Users/kai/Documents/BSE/14E022_Macroeconomics_I/Slides/.kilocode/worktrees/kilo-1773232574046",
+      "parentBranch": "main",
+      "createdAt": "2026-03-11T12:36:14.077Z",
+      "remote": "origin"
+    }
+  },
+  "sessions": {
+    "ses_32322b698ffebuuoMc5FEIQyCn": {
+      "worktreeId": "wt-1773232574077-1",
+      "createdAt": "2026-03-11T12:36:14.077Z"
+    },
+    "ses_3227377c3ffeELNphW3h4jnhO6": {
+      "worktreeId": null,
+      "createdAt": "2026-03-11T15:38:20.606Z"
+    }
+  }
+}

@@ -1,0 +1,14 @@
+\contentsline {section}{\numberline {1}Notation and Definitions}{2}{section.1}%
+\contentsline {section}{\numberline {2}Stylized Facts of Structural Change}{3}{section.2}%
+\contentsline {section}{\numberline {3}Demand-Side: Homotheticity and Engel Curves}{4}{section.3}%
+\contentsline {section}{\numberline {4}Stone-Geary Preferences and Demand Derivation}{5}{section.4}%
+\contentsline {section}{\numberline {5}Demand Model: CGP and Sectoral Growth Rates}{8}{section.5}%
+\contentsline {section}{\numberline {6}Employment Dynamics under Demand-Driven Structural Change}{10}{section.6}%
+\contentsline {section}{\numberline {7}Supply-Side: Baumol's Cost Disease Framework}{11}{section.7}%
+\contentsline {section}{\numberline {8}Supply Model: Capital and Labor Allocation}{12}{section.8}%
+\contentsline {section}{\numberline {9}Key Result: Reallocation Direction ($\varepsilon < 1$ vs $\varepsilon > 1$)}{13}{section.9}%
+\contentsline {section}{\numberline {10}Testing Demand vs Supply: Herrendorf, Rogerson \& Valentinyi (2013)}{15}{section.10}%
+\contentsline {section}{\numberline {11}Empirical Results and Literature}{17}{section.11}%
+\contentsline {section}{\numberline {12}Problem-Solving Templates}{18}{section.12}%
+\contentsline {section}{\numberline {13}Common Pitfalls}{20}{section.13}%
+\contentsline {section}{\numberline {14}Quick Reference Formulas}{22}{section.14}%

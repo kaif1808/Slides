@@ -1,0 +1,392 @@
+\documentclass[a4paper,11pt]{article}
+
+% ─── Geometry ────────────────────────────────────────────────────────────────
+\usepackage{geometry}
+\geometry{margin=1in, headheight=15pt}
+
+% ─── Mathematics ─────────────────────────────────────────────────────────────
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathtools}
+
+% ─── Graphics / Colours ──────────────────────────────────────────────────────
+\usepackage{graphicx}
+\usepackage{xcolor}
+\definecolor{blue3}{RGB}{0,0,180}
+\definecolor{green3}{RGB}{0,120,0}
+\definecolor{orange3}{RGB}{200,100,0}
+\definecolor{red3}{RGB}{180,0,0}
+\definecolor{grey3}{RGB}{80,80,80}
+
+% ─── Units ───────────────────────────────────────────────────────────────────
+\usepackage{siunitx}
+\sisetup{detect-all}
+
+% ─── Links (hyperref BEFORE cleveref) ────────────────────────────────────────
+\usepackage[colorlinks=true,linkcolor=blue3,citecolor=blue3,urlcolor=blue3]{hyperref}
+\usepackage{cleveref}
+
+% ─── Boxes ───────────────────────────────────────────────────────────────────
+\usepackage{tcolorbox}
+\tcbuselibrary{skins,breakable}
+
+\newtcolorbox{hintbox}[1][]{
+    colback=orange3!8,
+    colframe=orange3,
+    title={Hint:},
+    fonttitle=\bfseries,
+    #1
+}
+
+% ─── Tables / Lists ──────────────────────────────────────────────────────────
+\usepackage{booktabs}
+\usepackage{enumitem}
+
+% ─── Notation commands ───────────────────────────────────────────────────────
+\newcommand{\ktilde}{\tilde{k}}
+\newcommand{\ytilde}{\tilde{y}}
+\newcommand{\ctilde}{\tilde{c}}
+\newcommand{\htilde}{\tilde{h}}
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\bgp}{\mathrm{BGP}}
+
+% ─── Header / Footer ─────────────────────────────────────────────────────────
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\textbf{14E022 Macroeconomics I} \quad Practice Exam 2}
+\rhead{BSE 2025--26}
+\cfoot{\thepage}
+
+% ═════════════════════════════════════════════════════════════════════════════
+\begin{document}
+% ═════════════════════════════════════════════════════════════════════════════
+
+\begin{center}
+    {\LARGE \textbf{14E022 Macroeconomics I}}\\[6pt]
+    {\Large \textbf{Practice Exam 2}}\\[8pt]
+    {\large BSE --- Academic Year 2025--26}
+\end{center}
+
+\vspace{8pt}
+\noindent\textit{Instructions: the exam is made of 3 problems and a set of short questions
+totalling \textbf{100 points}. You have \textbf{2 hours}. Show all derivations clearly.
+For short questions, concise and precise answers score highest.}
+\vspace{4pt}
+
+\noindent\rule{\textwidth}{0.4pt}
+
+% ─────────────────────────────────────────────────────────────────────────────
+\section{Question 1 --- Augmented Solow Model with Human Capital
+\hfill (25 points)}
+% ─────────────────────────────────────────────────────────────────────────────
+
+Consider a Solow model augmented with human capital \`a la Mankiw--Romer--Weil (1992).
+Output is produced according to
+\[
+    Y_t = K_t^{\alpha}\,H_t^{\beta}\,(A_t L_t)^{1-\alpha-\beta},
+    \qquad \alpha,\beta > 0,\quad \alpha + \beta < 1,
+\]
+where $K$ is physical capital, $H$ is human capital, $A$ is labour-augmenting technology,
+and $L$ is labour.  Accumulation follows
+\[
+    \dot{K}_t = s_K Y_t - \delta K_t,\qquad
+    \dot{H}_t = s_H Y_t - \delta H_t,
+\]
+with \emph{common} depreciation rate $\delta$, constant investment rates $s_K$ and $s_H$,
+technology growth $\dot{A}/A = g > 0$, and population growth $\dot{L}/L = n > 0$.
+
+\begin{enumerate}[label=\textbf{\arabic*.}, leftmargin=*, itemsep=6pt]
+
+    \item \textbf{(5 points)}
+    Define per-effective-worker variables $\ktilde = K/(AL)$,
+    $\htilde = H/(AL)$, $\ytilde = Y/(AL)$.  Show that $\ytilde = \ktilde^{\alpha}\htilde^{\beta}$
+    and derive the two laws of motion $\dot{\ktilde}$ and $\dot{\htilde}$.
+
+    \item \textbf{(7 points)}
+    Set $\dot{\ktilde} = 0$ and $\dot{\htilde} = 0$ simultaneously.
+    \begin{enumerate}[label=(\alph*), itemsep=4pt]
+        \item Show that the steady-state ratio satisfies $\htilde^*/\ktilde^* = s_H/s_K$.
+        \item Solve for $\ktilde^*$, $\htilde^*$, and $\ytilde^*$ in closed form as
+        functions of $s_K$, $s_H$, $n$, $g$, $\delta$, $\alpha$, $\beta$.
+    \end{enumerate}
+
+    \item \textbf{(7 points)}
+    Take logs of the steady-state output per worker $y^* = A_t\,\ytilde^*$ to obtain the
+    \textbf{MRW regression equation}:
+    \[
+        \ln y_t^* = \ln A_0 + g\,t
+        + \frac{\alpha}{1-\alpha-\beta}\,\ln s_K
+        + \frac{\beta}{1-\alpha-\beta}\,\ln s_H
+        - \frac{\alpha+\beta}{1-\alpha-\beta}\,\ln(n+g+\delta).
+    \]
+    \begin{enumerate}[label=(\alph*), itemsep=4pt]
+        \item Compare the elasticity of $y^*$ with respect to $s_K$ in this model versus
+        the basic Solow model ($\beta=0$).  Evaluate both elasticities numerically for
+        $\alpha = \beta = 1/3$.
+        \item Explain why the augmented model better accounts for cross-country income
+        differences than the basic Solow model.
+    \end{enumerate}
+
+    \item \textbf{(6 points)}
+    Discuss \emph{one} important limitation of the MRW framework as a theory of
+    cross-country income differences.
+
+    \begin{hintbox}
+        Think about whether $s_H$ can genuinely be treated as exogenous, and about
+        what ultimately determines human capital investment.
+    \end{hintbox}
+
+\end{enumerate}
+
+\clearpage
+
+% ─────────────────────────────────────────────────────────────────────────────
+\section{Question 2 --- Ramsey Model: Permanent Increase in TFP Growth
+\hfill (25 points)}
+% ─────────────────────────────────────────────────────────────────────────────
+
+Consider a standard Ramsey/Cass/Koopmans economy.  The household has CRRA utility with
+risk-aversion $\sigma > 0$ and discount rate $\rho > 0$.  Production is Cobb-Douglas:
+$Y = K^{\alpha}(AL)^{1-\alpha}$.  Technology grows at rate $\dot{A}/A = x > 0$ and
+population at rate $n$.  All markets are competitive.
+
+\begin{enumerate}[label=\textbf{\arabic*.}, leftmargin=*, itemsep=6pt]
+
+    \item \textbf{(5 points)}
+    Working in per-effective-worker terms ($\ktilde = K/(AL)$,
+    $\ctilde = C/(AL)$, $f(\ktilde) = \ktilde^{\alpha}$), write:
+    \begin{enumerate}[label=(\alph*), itemsep=4pt]
+        \item The law of motion for $\ktilde$.
+        \item The Euler equation for $\ctilde$.
+        \item The $\dot{\ktilde}=0$ and $\dot{\ctilde}=0$ loci, and draw the
+        \textbf{phase diagram} with the saddle path for the initial economy.
+    \end{enumerate}
+
+    \item \textbf{(7 points)}
+    Characterise the initial BGP:
+    \begin{enumerate}[label=(\alph*), itemsep=4pt]
+        \item Derive $\ktilde^*$ and $\ctilde^*$ in closed form using
+        $f(\ktilde)=\ktilde^{\alpha}$.
+        \item State the \textbf{modified golden rule}.
+        \item State the Transversality Condition and the parameter restriction it
+        imposes.
+    \end{enumerate}
+
+    \item \textbf{(7 points)}
+    Suppose the economy begins at its BGP, and at $t=0$ the rate of technological
+    progress \emph{permanently} increases from $x$ to $x' > x$.
+    \begin{enumerate}[label=(\alph*), itemsep=4pt]
+        \item Compute the \emph{new} steady state $\ktilde^{*\prime}$ and
+        $\ctilde^{*\prime}$.  Show that $\ktilde^{*\prime} < \ktilde^*$ and give economic
+        intuition.
+        \item On the phase diagram, show how \emph{both} the $\dot{\ctilde}=0$ and
+        $\dot{\ktilde}=0$ loci shift.  Clearly mark the old and new steady states.
+        \item Does $\ktilde$ jump at $t=0$?  Does $\ctilde$ jump at $t=0$?  Describe the
+        \textbf{transition dynamics} from the old to the new steady state: in which
+        direction do $\ktilde$ and $\ctilde$ move along the new saddle path?
+    \end{enumerate}
+
+    \item \textbf{(6 points)}
+    Despite the fall in per-effective-worker capital and consumption, argue that the
+    household is \textbf{better off} after the shock.
+
+    \begin{hintbox}
+        Consider what happens to per-capita variables $c_t = \ctilde_t A_t$ and
+        $y_t = \ytilde_t A_t$ in the long run.  Compare their growth rates before and
+        after the shock.
+    \end{hintbox}
+
+\end{enumerate}
+
+\clearpage
+
+% ─────────────────────────────────────────────────────────────────────────────
+\section{Question 3 --- Development Accounting and Misallocation
+\hfill (25 points)}
+% ─────────────────────────────────────────────────────────────────────────────
+
+Consider economies with a Cobb-Douglas aggregate production function
+\[
+    Y = A\,K^{\alpha}\,L^{1-\alpha},\qquad \alpha \in (0,1),
+\]
+where $A$ is total factor productivity (TFP), $K$ is capital, and $L$ is labour.
+
+\bigskip
+
+\textbf{Part I: Growth and Development Accounting}
+
+\begin{enumerate}[label=\textbf{\arabic*.}, leftmargin=*, itemsep=6pt]
+
+    \item \textbf{(5 points)}
+    \begin{enumerate}[label=(\alph*), itemsep=4pt]
+        \item Using log-differentiation, derive the \textbf{growth accounting}
+        decomposition:
+        \[
+            \gamma_Y = \gamma_A + \alpha\,\gamma_K + (1-\alpha)\,\gamma_L.
+        \]
+        Define the \textbf{Solow residual} and explain what it captures.
+        \item List two factors besides technology that could show up in the Solow residual.
+    \end{enumerate}
+
+    \item \textbf{(7 points)}
+    In per-worker terms, $y = Ak^{\alpha}$.  Consider two countries: Rich ($R$) and
+    Poor ($P$) with $y_R/y_P = 27$ and $k_R/k_P = 27$.  Set $\alpha = 1/3$.
+    \begin{enumerate}[label=(\alph*), itemsep=4pt]
+        \item Compute the fraction of the log income gap $\ln(y_R/y_P)$ attributable to
+        differences in capital per worker.
+        \item Compute the fraction attributable to TFP differences.
+        \item On the basis of this exercise, what is the most important proximate source
+        of cross-country income differences?
+    \end{enumerate}
+
+\end{enumerate}
+
+\bigskip
+
+\textbf{Part II: Misallocation}
+
+\medskip
+\noindent Now consider an economy with two firms ($i=1,2$), each with one unit of labour
+(fixed) and the production function $y_i = A\,k_i^{\alpha}$.  Total capital $K$ is fixed
+and must be divided between the two firms: $k_1 + k_2 = K$.
+
+\begin{enumerate}[label=\textbf{\arabic*.}, leftmargin=*, itemsep=6pt]
+    \setcounter{enumi}{2}
+
+    \item \textbf{(7 points)}
+    \begin{enumerate}[label=(\alph*), itemsep=4pt]
+        \item Derive the \textbf{efficient allocation} of capital.  What condition must
+        hold across firms?  What is aggregate output $Y^{\mathrm{eff}}$?
+        \item Now suppose firm~1 receives a government \textbf{capital subsidy}: its
+        effective rental rate is $(1-\tau)r$ while firm~2 pays $r$.  Show that the
+        resulting allocation satisfies
+        \[
+            \frac{k_1}{k_2} = (1-\tau)^{-1/(1-\alpha)}.
+        \]
+        \item Using the \textbf{strict concavity} of $k^{\alpha}$ (or Jensen's inequality),
+        show that $Y^{\mathrm{mis}} < Y^{\mathrm{eff}}$.  Provide economic intuition.
+    \end{enumerate}
+
+    \item \textbf{(6 points)}
+    \begin{enumerate}[label=(\alph*), itemsep=4pt]
+        \item Define \textbf{misallocation} in terms of the dispersion of
+        \emph{marginal revenue products of capital} (MRPK) across firms.
+        Why does MRPK dispersion signal inefficiency?
+        \item Hsieh and Klenow (2009) estimate that moving to US-level allocative
+        efficiency would raise manufacturing TFP by 30--50\% in China and 40--60\% in
+        India.  Give \textbf{two} concrete examples of government policies or market
+        frictions that could generate the capital wedges behind these estimates.
+    \end{enumerate}
+
+\end{enumerate}
+
+\clearpage
+
+% ─────────────────────────────────────────────────────────────────────────────
+\section{Short Questions \hfill (25 points)}
+% ─────────────────────────────────────────────────────────────────────────────
+
+\noindent\textit{For these questions, short and sharp answers will receive the highest marks.}
+
+\vspace{8pt}
+
+\begin{enumerate}[label=\textbf{\arabic*.}, leftmargin=*, itemsep=14pt]
+
+    % ── SQ1 ──────────────────────────────────────────────────────────────────
+    \item \textbf{(9 points) Golden Rule vs.\ Modified Golden Rule.}
+
+    \begin{enumerate}[label=(\alph*), itemsep=6pt]
+        \item In the \textbf{Solow model}, the Golden Rule level of capital maximises
+        steady-state consumption.  Derive the condition $f'(k^*_{GR}) = \delta + n + g$
+        and explain why it is independent of the saving rate.
+
+        \item In the \textbf{Ramsey model}, the steady state satisfies the
+        \emph{Modified Golden Rule}: $f'(\ktilde^*) = \delta + \rho + \sigma x$.
+        Why does the Ramsey steady state generally \emph{not} coincide with the Golden
+        Rule?  Under what condition on $\rho$ and $n$ would the two coincide?
+
+        \item Can the Solow economy be dynamically inefficient (i.e.\ accumulate too
+        much capital)?  Can the Ramsey economy?  Explain.
+    \end{enumerate}
+
+    % ── SQ2 ──────────────────────────────────────────────────────────────────
+    \item \textbf{(8 points) The Role of Monopolistic Competition in Endogenous Growth.}
+
+    \begin{enumerate}[label=(\alph*), itemsep=6pt]
+        \item Explain why \emph{perfectly competitive} intermediate goods markets
+        cannot sustain R\&D-based endogenous growth.  What is the fundamental problem
+        with pricing new ideas at marginal cost?
+
+        \item In the Romer model, intermediate firms charge a \textbf{markup}
+        $p = 1/\alpha > 1$.  What is the source of this markup, and why is it necessary
+        for the model to function?
+
+        \item This markup creates a static distortion: intermediate goods are
+        \emph{under-used} relative to the social optimum.  What policy instrument can
+        correct this, and how should it be set?
+    \end{enumerate}
+
+    % ── SQ3 ──────────────────────────────────────────────────────────────────
+    \item \textbf{(8 points) Expanding Varieties vs.\ Quality Ladders.}
+
+    \begin{enumerate}[label=(\alph*), itemsep=6pt]
+        \item In the \textbf{Romer (1990)} expanding varieties model, growth occurs
+        through the introduction of \emph{new} goods.  In the \textbf{Aghion--Howitt
+        (1992)} quality ladder model, growth occurs through \emph{improvements} to
+        existing goods.  What is the key economic implication of this distinction for
+        incumbent firms?
+
+        \item Define \textbf{creative destruction} and explain the associated
+        \textbf{business-stealing externality}.  Does this externality cause
+        over-innovation or under-innovation relative to the social optimum?
+
+        \item What is the \textbf{appropriability (consumer surplus) externality}?
+        Does it push in the same direction as or the opposite direction from the
+        business-stealing externality?  What does this imply for the overall efficiency
+        of the market innovation rate?
+    \end{enumerate}
+
+\end{enumerate}
+
+\vspace{20pt}
+\noindent\rule{\textwidth}{0.4pt}
+
+\begin{center}
+    \textit{End of Practice Exam 2. Good luck!}
+\end{center}
+
+% ─────────────────────────────────────────────────────────────────────────────
+\clearpage
+\appendix
+\section*{Appendix: Key Formulas Permitted in Exam}
+% ─────────────────────────────────────────────────────────────────────────────
+
+The following results may be used without re-derivation unless the question explicitly asks
+you to derive them.
+
+\subsection*{A.1 ~ Log-differentiation}
+If $Z_t = X_t^a Y_t^b$, then $\gamma_Z = a\gamma_X + b\gamma_Y$.
+
+\subsection*{A.2 ~ Ramsey / Euler Equation (standard, per-effective-worker)}
+\[
+    \frac{\dot{\ctilde}}{\ctilde}
+    = \frac{1}{\sigma}\bigl(f'(\ktilde) - \delta - \rho - \sigma x\bigr),
+    \qquad
+    f'(\ktilde) = \alpha\ktilde^{\alpha-1}.
+\]
+
+\subsection*{A.3 ~ Solow per-effective-worker dynamics}
+\[
+    \dot{\ktilde} = s\,f(\ktilde) - (n+g+\delta)\,\ktilde.
+\]
+
+\subsection*{A.4 ~ Cobb-Douglas factor payments}
+$rK = \alpha Y$, \quad $wL = (1-\alpha)Y$.
+
+\subsection*{A.5 ~ Jensen's inequality}
+For a strictly concave function $f$: \;
+$f(x_1) + f(x_2) < 2\,f\!\bigl(\tfrac{x_1+x_2}{2}\bigr)$
+whenever $x_1 \neq x_2$.
+
+\end{document}

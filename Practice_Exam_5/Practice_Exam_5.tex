@@ -1,0 +1,313 @@
+\documentclass[a4paper,11pt]{article}
+
+% ─── Geometry ────────────────────────────────────────────────────────────────
+\usepackage{geometry}
+\geometry{margin=1in, headheight=15pt}
+
+% ─── Mathematics ─────────────────────────────────────────────────────────────
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathtools}
+
+% ─── Graphics / Colours ──────────────────────────────────────────────────────
+\usepackage{graphicx}
+\usepackage{xcolor}
+\definecolor{blue3}{RGB}{0,0,180}
+\definecolor{green3}{RGB}{0,120,0}
+\definecolor{orange3}{RGB}{200,100,0}
+\definecolor{red3}{RGB}{180,0,0}
+\definecolor{grey3}{RGB}{80,80,80}
+
+% ─── Units ───────────────────────────────────────────────────────────────────
+\usepackage{siunitx}
+\sisetup{detect-all}
+
+% ─── Links (hyperref BEFORE cleveref) ────────────────────────────────────────
+\usepackage[colorlinks=true,linkcolor=blue3,citecolor=blue3,urlcolor=blue3]{hyperref}
+\usepackage{cleveref}
+
+% ─── Boxes ───────────────────────────────────────────────────────────────────
+\usepackage{tcolorbox}
+\tcbuselibrary{skins,breakable}
+
+\newtcolorbox{pointsbox}[1][]{
+    colback=grey3!8,
+    colframe=grey3,
+    fonttitle=\bfseries\small,
+    #1
+}
+
+% ─── Tables / Lists ──────────────────────────────────────────────────────────
+\usepackage{booktabs}
+\usepackage{enumitem}
+
+% ─── Notation commands ───────────────────────────────────────────────────────
+\newcommand{\ktilde}{\tilde{k}}
+\newcommand{\ytilde}{\tilde{y}}
+\newcommand{\ctilde}{\tilde{c}}
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\bgp}{\mathrm{BGP}}
+
+% ─── Header / Footer ─────────────────────────────────────────────────────────
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\textbf{14E022 Macroeconomics I} \quad Practice Exam 5}
+\rhead{BSE 2025--26}
+\cfoot{\thepage}
+
+% ═════════════════════════════════════════════════════════════════════════════
+\begin{document}
+% ═════════════════════════════════════════════════════════════════════════════
+
+\begin{center}
+    {\LARGE \textbf{14E022 Macroeconomics I}}\\[6pt]
+    {\Large \textbf{Practice Exam 5}}\\[8pt]
+    {\large BSE --- Academic Year 2025--26}
+\end{center}
+
+\vspace{8pt}
+\noindent\textit{Instructions: the exam consists of 3 problems and a set of short questions
+totalling \textbf{100 points}. You have \textbf{2 hours}. Show all derivations clearly.
+For short questions, concise and precise answers score highest.}
+\vspace{4pt}
+
+\noindent\rule{\textwidth}{0.4pt}
+
+% ─────────────────────────────────────────────────────────────────────────────
+\section{Question 1 --- Ramsey Model with Labour Income Tax \hfill (25 points)}
+% ─────────────────────────────────────────────────────────────────────────────
+
+Consider a standard Ramsey--Cass--Koopmans economy with no population growth ($n=0$) and
+no exogenous TFP growth. The representative household has preferences
+\[
+    \int_0^\infty e^{-\rho t}\frac{c_t^{1-\sigma}-1}{1-\sigma}\,\dd t,
+    \qquad \sigma > 0,\;\rho > 0.
+\]
+The household inelastically supplies one unit of labour. The government levies a
+proportional tax $\tau \in (0,1)$ on \emph{labour income} and returns all revenue as a
+lump-sum transfer $T_t = \tau w_t$ to the household. There is no tax on capital income.
+Firms operate with a neoclassical production function $Y_t = F(K_t, L_t)$ satisfying CRS
+and positive, diminishing marginal products. Write $f(k) = F(k,1)$ and
+$r_t = f'(k_t) - \delta$.
+
+\begin{enumerate}[label=\textbf{\arabic*.}, leftmargin=*, itemsep=10pt]
+
+    \item \textbf{(6 points)} Write the household's flow budget constraint, accounting for
+    the lump-sum transfer. Set up the current-value Hamiltonian and derive the Euler
+    equation for consumption. Show that the tax $\tau$ does \emph{not} appear in the Euler
+    equation, and explain intuitively why.
+
+    \item \textbf{(7 points)} Characterise the balanced growth path (BGP). Write the two
+    conditions that define the steady state $(k^*, c^*)$: the modified Golden Rule for
+    capital and market clearing for consumption. Compare $k^*$ to the no-tax Ramsey steady
+    state and to the Golden Rule capital level $k^{GR}$. Is the labour income tax
+    distortionary in this model? Justify your answer.
+
+    \item \textbf{(6 points)} Suppose the economy is at the no-tax Ramsey steady state when,
+    unexpectedly at $t=0$, the government announces and immediately implements $\tau > 0$.
+    Describe the transition dynamics. What happens to $c$ and $k$ on impact and along the
+    transition path? Use the phase diagram to support your answer.
+
+    \item \textbf{(6 points)} Now suppose the government uses the tax revenue to finance a
+    public good $G_t = \tau w_t$ that does not affect production or household utility
+    directly (instead of rebating as a lump-sum transfer). How do your answers to parts
+    1--3 change? Is the labour income tax now distortionary? How does the steady state
+    differ?
+
+\end{enumerate}
+
+\clearpage
+
+% ─────────────────────────────────────────────────────────────────────────────
+\section{Question 2 --- Aghion--Howitt Quality Ladders \hfill (25 points)}
+% ─────────────────────────────────────────────────────────────────────────────
+
+Consider the Aghion--Howitt (1992) model of Schumpeterian growth. There is a single
+intermediate good whose current quality level is $q_t$. Final output is
+\[
+    Y_t = A\,q_t\,x_t^{\alpha}, \qquad \alpha \in (0,1),
+\]
+where $x_t$ is the quantity of the intermediate good and $A > 0$ is a constant.
+The intermediate good is produced one-for-one from labour. A successful innovation arrives
+at aggregate rate $\iota$ (the creative destruction rate chosen by entrant researchers).
+Each unit of research labour generates a Poisson innovation at rate $\lambda > 0$.
+The new quality leader sets quality $\lambda q_t$ (multiplicative improvement,
+$\lambda > 1$). The interest rate is $r$. Labour market clears:
+\[
+    x_t + L_{R,t} = L,
+\]
+where $L_{R,t}$ is research labour and $L$ is fixed total labour supply.
+
+\begin{enumerate}[label=\textbf{\arabic*.}, leftmargin=*, itemsep=10pt]
+
+    \item \textbf{(5 points)} Derive the monopoly price $p^*$ and monopoly profits $\pi$
+    for the quality leader. Express $\pi$ in terms of $\alpha$, $\lambda$, $A$, $q_t$, and
+    the wage $w$.
+
+    \item \textbf{(7 points)} Write the no-arbitrage Bellman equation for the value $V$ of
+    being the current quality leader. Solving on the BGP (where $\dot{V}=0$ and $r$, $\iota$,
+    $\pi$ are constant), find the equilibrium value $V^*$. Write the free-entry condition
+    for researchers. Derive the equilibrium creative destruction rate $\iota^*$ as a function
+    of the model parameters.
+
+    \item \textbf{(5 points)} Identify and precisely define the two key externalities in
+    this model: the \textbf{business-stealing externality} and the
+    \textbf{appropriability (consumer-surplus) externality}. State the direction of each
+    distortion (does it push $\iota$ above or below the social optimum?) and explain the
+    economic intuition.
+
+    \item \textbf{(4 points)} Under what condition on the model parameters does equilibrium
+    R\&D ($\iota^*$) exceed the socially optimal level? Write the condition and explain
+    which externality dominates when this holds.
+
+    \item \textbf{(4 points)} Propose a policy mix that could implement the social optimum.
+    Explain why a single instrument is generally insufficient.
+
+\end{enumerate}
+
+\clearpage
+
+% ─────────────────────────────────────────────────────────────────────────────
+\section{Question 3 --- Development Accounting with Heterogeneous Human Capital
+\hfill (25 points)}
+% ─────────────────────────────────────────────────────────────────────────────
+
+Output of country $i$ is
+\[
+    Y_i = K_i^{\alpha}(h_i L_i)^{1-\alpha} A_i, \qquad \alpha = 1/3.
+\]
+Two countries are observed:
+
+\vspace{6pt}
+\begin{center}
+\begin{tabular}{lccc}
+\toprule
+Country & $Y_i/L_i$ (normalised) & $K_i/Y_i$ & $h_i$ \\
+\midrule
+US (benchmark) & 1.00 & 3.00 & 1.00 \\
+Country E       & 0.10 & 2.00 & 0.55 \\
+\bottomrule
+\end{tabular}
+\end{center}
+\vspace{6pt}
+
+\begin{enumerate}[label=\textbf{\arabic*.}, leftmargin=*, itemsep=10pt]
+
+    \item \textbf{(6 points)} Starting from the production function, derive the development
+    accounting decomposition expressing $y_i = Y_i/L_i$ as a product of a
+    capital-intensity factor, a human-capital factor, and TFP. Be explicit about the
+    algebra.
+
+    \item \textbf{(8 points)} Using the data, compute the fraction of the income gap (in
+    logs) between Country E and the US explained by: (a) physical capital intensity,
+    (b) human capital, (c) TFP. Show all calculations.
+
+    \item \textbf{(6 points)} A referee argues: ``The large TFP residual does not reflect
+    true technology differences --- it simply captures resource misallocation.'' Explain
+    this critique carefully with reference to the Hsieh--Klenow (2009) framework. What
+    does TFPR dispersion reveal, and how does it affect measured aggregate TFP?
+
+    \item \textbf{(5 points)} Given that TFP explains the bulk of income gaps, and given
+    the misallocation critique, what are the implications for development policy? Discuss
+    two specific policy recommendations and their limitations.
+
+\end{enumerate}
+
+\clearpage
+
+% ─────────────────────────────────────────────────────────────────────────────
+\section{Short Questions \hfill (25 points)}
+% ─────────────────────────────────────────────────────────────────────────────
+
+\noindent\textit{For these questions, short and sharp answers will receive the highest marks.
+Aim for 3--6 sentences per question unless otherwise indicated.}
+
+\vspace{8pt}
+
+\begin{enumerate}[label=\textbf{\arabic*.}, leftmargin=*, itemsep=14pt]
+
+    % ── SQ1 ──────────────────────────────────────────────────────────────────
+    \item \textbf{(8 points) Kaldor Facts and Balanced Growth.}
+
+    State \emph{three} Kaldor stylised facts about long-run growth. Which families of
+    production functions are consistent with balanced growth (constant growth rates and
+    constant factor shares) and why? Why does the Cobb-Douglas production function play a
+    privileged role among these?
+
+    % ── SQ2 ──────────────────────────────────────────────────────────────────
+    \item \textbf{(9 points) TVC and the No-Ponzi Condition.}
+
+    Define the Transversality Condition (TVC) precisely in the Ramsey model. Define the
+    No-Ponzi condition on household debt. Show formally how the TVC rules out
+    over-accumulation (dynamic inefficiency) in the Ramsey model. Contrast this with the
+    Solow model, where dynamic inefficiency is possible.
+
+    % ── SQ3 ──────────────────────────────────────────────────────────────────
+    \item \textbf{(8 points) Baumol Cost Disease and Aggregate Productivity.}
+
+    What is Baumol's cost disease? Explain the mechanism: why does the stagnant sector's
+    relative price rise over time, and what drives rising employment in that sector?
+    Discuss whether rising service employment necessarily implies a fall in aggregate
+    productivity growth, and under what preference assumption the employment share of
+    services stays constant over time.
+
+\end{enumerate}
+
+\vspace{20pt}
+\noindent\rule{\textwidth}{0.4pt}
+
+\begin{center}
+    \textit{End of Practice Exam 5. Good luck!}
+\end{center}
+
+% ─────────────────────────────────────────────────────────────────────────────
+\clearpage
+\appendix
+\section*{Appendix: Key Formulas Permitted in Exam}
+% ─────────────────────────────────────────────────────────────────────────────
+
+The following results may be used without re-derivation unless the question explicitly
+asks you to derive them.
+
+\subsection*{A.1 \enspace Log-differentiation}
+If $Z_t = X_t^a Y_t^b$, then $\gamma_Z = a\gamma_X + b\gamma_Y$.
+
+\subsection*{A.2 \enspace Ramsey / Euler Equation (standard, $n=0$)}
+\[
+    \frac{\dot{c}}{c} = \frac{1}{\sigma}\bigl(r - \rho\bigr),
+    \qquad r = f'(k) - \delta.
+\]
+
+\subsection*{A.3 \enspace Hamiltonian first-order conditions (current-value)}
+Control $u$, state $x$, costate $\mu$, discount $\rho$:
+\[
+    \frac{\partial H}{\partial u} = 0, \qquad
+    \dot{\mu} = \rho\mu - \frac{\partial H}{\partial x}.
+\]
+
+\subsection*{A.4 \enspace Cobb-Douglas factor payments}
+$rK = \alpha Y$, $wL = (1-\alpha)Y$, so $r = \alpha Y/K$ and $w = (1-\alpha)Y/L$.
+
+\subsection*{A.5 \enspace Development accounting identity}
+With $y_i = Y_i/L_i$, $\alpha = 1/3$, and capital-output ratio $\kappa_i = K_i/Y_i$:
+\[
+    \frac{y_i}{y_{US}} = \left(\frac{\kappa_i}{\kappa_{US}}\right)^{\!\alpha/(1-\alpha)}
+    \cdot \frac{h_i}{h_{US}}
+    \cdot \frac{A_i}{A_{US}}.
+\]
+
+\subsection*{A.6 \enspace Monopoly markup and profits (Aghion--Howitt)}
+With intermediate production one-for-one from labour at wage $w$ and final-good demand
+$x = (\alpha A q / p)^{1/(1-\alpha)}$:
+\[
+    p^* = \frac{w}{\alpha}, \qquad
+    \pi = \frac{1-\alpha}{\alpha}\,w\,x^*.
+\]
+
+\subsection*{A.7 \enspace Aghion--Howitt Bellman on BGP ($\dot{V}=0$)}
+\[
+    V^* = \frac{\pi}{r + \iota}.
+\]
+
+\end{document}

@@ -1,0 +1,631 @@
+\documentclass[a4paper,11pt]{article}
+
+% ─── Geometry ────────────────────────────────────────────────────────────────
+\usepackage{geometry}
+\geometry{margin=1in, headheight=15pt}
+
+% ─── Mathematics ─────────────────────────────────────────────────────────────
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathtools}
+
+% ─── Graphics / Colours ──────────────────────────────────────────────────────
+\usepackage{graphicx}
+\usepackage{xcolor}
+\definecolor{blue3}{RGB}{0,0,180}
+\definecolor{green3}{RGB}{0,120,0}
+\definecolor{orange3}{RGB}{200,100,0}
+\definecolor{red3}{RGB}{180,0,0}
+\definecolor{grey3}{RGB}{80,80,80}
+
+% ─── Units ───────────────────────────────────────────────────────────────────
+\usepackage{siunitx}
+\sisetup{detect-all}
+
+% ─── Links ───────────────────────────────────────────────────────────────────
+\usepackage[colorlinks=true,linkcolor=blue3,citecolor=blue3,urlcolor=blue3]{hyperref}
+\usepackage{cleveref}
+
+% ─── Boxes ───────────────────────────────────────────────────────────────────
+\usepackage{tcolorbox}
+\tcbuselibrary{skins,breakable}
+
+\newtcolorbox{answerbox}[1][]{
+    colback=red3!5,
+    colframe=red3!60,
+    coltitle=red3,
+    title={Solution:},
+    fonttitle=\bfseries,
+    breakable,
+    #1
+}
+
+% ─── Tables / Lists ──────────────────────────────────────────────────────────
+\usepackage{booktabs}
+\usepackage{enumitem}
+
+% ─── Notation commands ───────────────────────────────────────────────────────
+\newcommand{\ktilde}{\tilde{k}}
+\newcommand{\ytilde}{\tilde{y}}
+\newcommand{\ctilde}{\tilde{c}}
+\newcommand{\dd}{\mathrm{d}}
+
+% ─── Header / Footer ─────────────────────────────────────────────────────────
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\textbf{14E022 Macroeconomics I} \quad Practice Exam 1 -- Solutions}
+\rhead{BSE 2025--26}
+\cfoot{\thepage}
+
+% ═════════════════════════════════════════════════════════════════════════════
+\begin{document}
+% ═════════════════════════════════════════════════════════════════════════════
+
+\begin{center}
+    {\LARGE \textbf{14E022 Macroeconomics I}}\\[6pt]
+    {\Large \textbf{Practice Exam 1 --- Answer Key}}\\[8pt]
+    {\large BSE --- Academic Year 2025--26}
+\end{center}
+
+\noindent\rule{\textwidth}{0.4pt}
+
+% ═════════════════════════════════════════════════════════════════════════════
+\section{Question 1 --- Ramsey Model with a Capital Income Tax}
+% ═════════════════════════════════════════════════════════════════════════════
+
+\subsection*{1.\ (5 points)}
+
+\begin{answerbox}
+\textbf{Step 1: Resource constraint in per-effective-worker terms.}
+
+Starting from $\dot{K} = Y - C - \delta K$ (aggregate feasibility), divide both sides by $AL$:
+\[
+    \frac{\dot{K}}{AL} = \frac{Y}{AL} - \frac{C}{AL} - \delta\,\frac{K}{AL}
+    = f(\ktilde) - \ctilde - \delta\ktilde.
+\]
+Since $\ktilde = K/(AL)$, differentiating by the product rule:
+\[
+    \dot{\ktilde} = \frac{\dot{K}}{AL} - \frac{\dot{A}}{A}\ktilde - \frac{\dot{L}}{L}\ktilde
+    = \frac{\dot{K}}{AL} - x\ktilde - n\ktilde.
+\]
+Combining:
+\[
+    \boxed{\dot{\ktilde} = f(\ktilde) - \ctilde - (n + x + \delta)\,\ktilde
+    = \ktilde^{\alpha} - \ctilde - (n + x + \delta)\,\ktilde.}
+\]
+
+\textbf{Step 2: Transforming the household problem.}
+
+The per-capita budget constraint is $\dot{a} = (r(1-\tau) - n)a + w + T - c$.  Defining
+$a = \ktilde \cdot A$ and $c = \ctilde \cdot A$ (so that $\dot{a} = \dot{\ktilde}A + \ktilde\dot{A}
+= (\dot{\ktilde} + x\ktilde)A$), and dividing through by $A$:
+\[
+    \dot{\ktilde} + x\ktilde
+    = \bigl(r(1-\tau) - n\bigr)\ktilde + \tilde{w} + \tilde{T} - \ctilde,
+\]
+\[
+    \dot{\ktilde}
+    = \bigl(r(1-\tau) - n - x\bigr)\ktilde + \tilde{w} + \tilde{T} - \ctilde
+    = \bigl(f'(\ktilde)(1-\tau) - \delta - n - x\bigr)\ktilde + \tilde{w} + \tilde{T} - \ctilde,
+\]
+where $\tilde{w} = w/A$ and $\tilde{T} = T/A$.
+
+\textbf{Step 3: Current-value Hamiltonian.}
+
+The household maximises $\int_0^{\infty}e^{-(\rho-n)t}
+\frac{c_t^{1-\sigma}-1}{1-\sigma}\,\dd t$.  Expressing utility in per-effective-worker terms
+($c = \ctilde A$, $A = A_0 e^{xt}$):
+\[
+    c^{1-\sigma} = (\ctilde A)^{1-\sigma} = \ctilde^{1-\sigma}\,A_0^{1-\sigma}\,e^{(1-\sigma)xt}.
+\]
+Absorbing the constant $A_0^{1-\sigma}$ and collecting exponentials, the effective discount
+rate in per-effective-worker form is $\rho' \equiv \rho - n - (1-\sigma)x$.  The
+current-value Hamiltonian is:
+\[
+    \mathcal{H}^{CV} = \frac{\ctilde^{1-\sigma} - 1}{1-\sigma}
+    + \lambda\bigl[\bigl(f'(\ktilde)(1-\tau) - \delta - n - x\bigr)\ktilde
+    + \tilde{w} + \tilde{T} - \ctilde\bigr].
+\]
+
+\textbf{State variable:} $\ktilde$ (per-effective-worker capital).\\
+\textbf{Control variable:} $\ctilde$ (per-effective-worker consumption).\\
+\textbf{Costate variable:} $\lambda$ (shadow value of an extra unit of $\ktilde$).
+
+Note: Because the government rebates all tax revenue lump-sum ($T = \tau r k$), the
+\emph{economy-wide resource constraint} is unaffected by $\tau$.  The tax only distorts
+the household's \emph{perceived} return to saving.
+\end{answerbox}
+
+\subsection*{2.\ (7 points)}
+
+\begin{answerbox}
+\textbf{FOC w.r.t.\ $\ctilde$} ($\partial\mathcal{H}/\partial\ctilde = 0$):
+\[
+    \ctilde^{-\sigma} = \lambda. \tag{i}
+\]
+
+\textbf{Costate equation} ($\dot{\lambda} = \rho'\lambda - \partial\mathcal{H}/\partial\ktilde$,
+where $\rho' = \rho - n - (1-\sigma)x$ is the effective discount rate derived in part~1):
+\[
+    \frac{\partial\mathcal{H}}{\partial\ktilde}
+    = \lambda\bigl[f'(\ktilde)(1-\tau) - \delta - n - x\bigr].
+\]
+Therefore:
+\[
+    \dot{\lambda} = \rho'\lambda - \lambda\bigl[f'(\ktilde)(1-\tau) - \delta - n - x\bigr]
+    = \lambda\bigl[\rho' - f'(\ktilde)(1-\tau) + \delta + n + x\bigr].
+    \tag{ii}
+\]
+
+\textbf{Eliminating the costate variable.} Differentiating (i) with respect to time:
+\[
+    -\sigma\,\ctilde^{-\sigma-1}\,\dot{\ctilde} = \dot{\lambda}
+    \quad\Longrightarrow\quad
+    \frac{\dot{\lambda}}{\lambda} = -\sigma\,\frac{\dot{\ctilde}}{\ctilde}.
+\]
+From (ii): $\dot{\lambda}/\lambda = \rho' - f'(\ktilde)(1-\tau) + \delta + n + x$.  Equating:
+\[
+    -\sigma\,\frac{\dot{\ctilde}}{\ctilde} = \rho' - f'(\ktilde)(1-\tau) + \delta + n + x.
+\]
+
+\textbf{Substituting $\rho' = \rho - n - (1-\sigma)x$:}
+\begin{align*}
+    -\sigma\,\frac{\dot{\ctilde}}{\ctilde}
+    &= \bigl[\rho - n - (1-\sigma)x\bigr] - f'(\ktilde)(1-\tau) + \delta + n + x \\
+    &= \rho - n - x + \sigma x - f'(\ktilde)(1-\tau) + \delta + n + x \\
+    &= \rho + \sigma x + \delta - f'(\ktilde)(1-\tau).
+\end{align*}
+Dividing both sides by $-\sigma$:
+\[
+    \boxed{\frac{\dot{\ctilde}}{\ctilde}
+    = \frac{1}{\sigma}\bigl[f'(\ktilde)(1-\tau) - \delta - \rho - \sigma x\bigr].}
+\]
+
+\textbf{Effect of $\tau$:} The tax reduces the perceived net return from $f'(\ktilde)-\delta$
+to $f'(\ktilde)(1-\tau)-\delta$.  Consumption growth is lower for any given $\ktilde$
+compared to the no-tax case.
+
+\textbf{TVC:} $\displaystyle\lim_{t\to\infty}\lambda(t)\,\ktilde(t)\,e^{-\rho' t} = 0$.
+\end{answerbox}
+
+\subsection*{3.\ (7 points)}
+
+\begin{answerbox}
+\textbf{(a) Modified Golden Rule:}  Setting $\dot{\ctilde}/\ctilde = 0$:
+\[
+    f'(\ktilde^*)(1-\tau) = \delta + \rho + \sigma x
+    \quad\Longrightarrow\quad
+    f'(\ktilde^*) = \frac{\delta + \rho + \sigma x}{1-\tau}.
+\]
+
+With Cobb-Douglas $f(\ktilde) = \ktilde^{\alpha}$, $f'(\ktilde) = \alpha\ktilde^{\alpha-1}$:
+\[
+    \alpha(\ktilde^*)^{\alpha-1} = \frac{\delta + \rho + \sigma x}{1-\tau}
+    \quad\Longrightarrow\quad
+    \boxed{\ktilde^*(\tau) = \left[\frac{\alpha(1-\tau)}{\delta + \rho + \sigma x}\right]^{1/(1-\alpha)}.}
+\]
+
+\textbf{(b)} Without tax ($\tau=0$):
+$\ktilde^*(0) = \bigl[\alpha/(\delta+\rho+\sigma x)\bigr]^{1/(1-\alpha)}$.
+
+Since $(1-\tau) < 1$ for $\tau > 0$:
+\[
+    \ktilde^*(\tau) = (1-\tau)^{1/(1-\alpha)}\,\ktilde^*(0) < \ktilde^*(0). \qquad\checkmark
+\]
+
+\textbf{(c) Intuition:} Although the tax revenue is returned lump-sum, the household's
+\emph{marginal} return to saving an extra unit of capital is reduced by the factor $(1-\tau)$.
+Lump-sum transfers are \emph{inframarginal}: they add to wealth but do not change the
+return to saving at the margin.  The household therefore saves less, and the economy
+converges to a lower capital stock.
+\end{answerbox}
+
+\subsection*{4.\ (6 points)}
+
+\begin{answerbox}
+\textbf{(a) Phase diagram:}
+
+\begin{itemize}
+    \item $\dot{\ctilde}=0$ locus: vertical line at $\ktilde^*(\tau)$, which shifts
+    \emph{left} relative to $\ktilde^*(0)$ (since $\ktilde^*(\tau) < \ktilde^*(0)$).
+    \item $\dot{\ktilde}=0$ locus: $\ctilde = \ktilde^{\alpha} - (n+x+\delta)\ktilde$
+    (hump-shaped).  This locus does \emph{not} shift (the aggregate resource constraint
+    is unaffected by $\tau$; the tax only redistributes within the household).
+    \item The new saddle path goes through the new steady state
+    $(\ktilde^*(\tau),\,\ctilde^*(\tau))$, which lies on the $\dot{\ktilde}=0$ curve
+    to the left of the old steady state.  Since the $\dot{\ktilde}=0$ curve is
+    hump-shaped and $\ktilde^*(\tau) < \ktilde^*(0) < \ktilde^*_{GR}$, the new $\ctilde^*$
+    is lower than the old $\ctilde^*$.
+\end{itemize}
+
+\textbf{(b) Impact and dynamics:}
+\begin{itemize}
+    \item $\ktilde$ does \textbf{not} jump at $t=0$ --- capital is a state (predetermined)
+    variable.
+    \item $\ctilde$ \textbf{jumps up} at $t=0$ to land on the new saddle path.  The
+    household now perceives a lower return to saving, so it immediately raises
+    consumption.
+    \item Transition: with $\ctilde$ above the $\dot{\ktilde}=0$ locus,
+    $\dot{\ktilde} < 0$ (capital decumulates).  Meanwhile $\dot{\ctilde} < 0$ (we are
+    to the right of the new $\dot{\ctilde}=0$ locus).  Both $\ktilde$ and $\ctilde$
+    gradually fall along the saddle path until the new steady state
+    $(\ktilde^*(\tau),\ctilde^*(\tau))$ is reached.
+\end{itemize}
+\end{answerbox}
+
+\clearpage
+% ═════════════════════════════════════════════════════════════════════════════
+\section{Question 2 --- AK Model and Learning-by-Doing Externalities}
+% ═════════════════════════════════════════════════════════════════════════════
+
+\subsection*{1.\ (5 points)}
+
+\begin{answerbox}
+\textbf{(a)} Each firm: $Y_j = \bar{A}\,K_j^{\alpha}L_j^{1-\alpha}$ with
+$\bar{A} = A_0 K^{\eta}$.  Integrating over $j\in[0,1]$, using symmetry
+($K_j = K$, $L_j = \bar{L}$):
+\[
+    Y = A_0\,K^{\eta+\alpha}\,\bar{L}^{1-\alpha}.
+\]
+
+\textbf{(b)} With $\eta = 1-\alpha$ and $\bar{L}=1$:
+$Y = A_0\,K^{(1-\alpha)+\alpha}\cdot 1 = A_0\,K \equiv AK$
+where $A = A_0$.
+
+\textbf{Economic meaning:} The externality parameter $\eta$ exactly offsets diminishing
+returns to capital ($1-\alpha$).  Learning-by-doing generates enough knowledge spillovers
+to keep the aggregate marginal product of capital constant, removing the tendency for
+growth to slow down as capital accumulates.
+\end{answerbox}
+
+\subsection*{2.\ (6 points)}
+
+\begin{answerbox}
+\textbf{(a)} With $\dot{K} = sY - \delta K = sAK - \delta K$:
+\[
+    \boxed{\gamma_K = \frac{\dot{K}}{K} = sA - \delta = \gamma_Y.}
+\]
+Since $Y = AK$, $\gamma_Y = \gamma_K = sA - \delta$.
+
+\textbf{(b)} Unlike Solow (where $s$ affects only the \emph{level} of $y^*$), here $s$
+directly enters the \emph{growth rate} formula.  A higher $s$ raises $\gamma_Y$
+permanently.  Intuition: with constant returns to capital ($f''=0$), more saving never
+runs into diminishing returns, so it sustains a permanently higher growth rate.
+
+\textbf{(c)} Output per worker grows if $\gamma_Y - n > 0$, i.e.\ $sA - \delta > n$,
+or equivalently $sA > \delta + n$.  (With $\bar{L}$ normalised to 1 and $n=0$, the
+condition is simply $sA > \delta$.)
+\end{answerbox}
+
+\subsection*{3.\ (7 points)}
+
+\begin{answerbox}
+\textbf{(a) Setting up the household's Hamiltonian correctly.}
+
+A key subtlety: the question gives the equilibrium resource constraint
+$\dot{k} = (A-\delta)k - c$, but this combines \emph{both} capital income
+\emph{and} labour income.  To derive the correct market Euler, we must set up the
+household's Hamiltonian using the \emph{household's budget constraint} (in which
+the wage is taken as exogenous):
+\[
+    \dot{a} = (r - \delta)\,a + w - c,
+\]
+where the household takes $r$ and $w$ as time paths given by the market.  In the
+competitive equilibrium, firms pay $r = \alpha \bar{A} K^{\alpha-1} = \alpha A$ (private
+MPK before depreciation) and $w = (1-\alpha)\bar{A}K^{\alpha} = (1-\alpha)Ak$ (wage per
+worker, with $\bar{L}=1$).  In equilibrium $a = k$, so:
+\[
+    \dot{k} = (\alpha A - \delta)k + (1-\alpha)Ak - c = (A-\delta)k - c. \quad\checkmark
+\]
+The equilibrium budget constraint and the resource constraint coincide, but the correct
+Hamiltonian for the household uses the return on \emph{assets} only (wage is exogenous):
+\[
+    \mathcal{H}^{CV} = \frac{c^{1-\sigma}-1}{1-\sigma}
+    + \lambda\bigl[(\alpha A - \delta)\,a + w - c\bigr].
+\]
+
+FOC $\partial\mathcal{H}/\partial c = 0$: $c^{-\sigma} = \lambda$.
+
+Costate ($\dot{\lambda} = \rho\lambda - \partial\mathcal{H}/\partial a$):
+$\dot{\lambda} = \rho\lambda - \lambda(\alpha A - \delta)$, so
+$\dot{\lambda}/\lambda = \rho - (\alpha A - \delta)$.
+
+Differentiating $c^{-\sigma} = \lambda$: $\dot{\lambda}/\lambda = -\sigma\dot{c}/c$.
+
+Combining:
+\[
+    -\sigma\,\frac{\dot{c}}{c} = \rho - (\alpha A - \delta)
+    \quad\Longrightarrow\quad
+    \boxed{\frac{\dot{c}}{c} = \frac{\alpha A - \delta - \rho}{\sigma}
+    \equiv \gamma_c^{\mathrm{mkt}}.}
+\]
+
+\textbf{(b)} The household faces the \emph{private} return $r = \alpha A$ because each
+competitive firm takes $\bar{A} = A_0 K^{1-\alpha}$ as given and sets
+$r = \partial Y_j/\partial K_j = \alpha\bar{A}K_j^{\alpha-1} = \alpha A$ in equilibrium.
+The household \emph{does not} internalise that its own saving raises $\bar{A}$, so it
+only earns the private return $\alpha A < A$ (the social return), giving a lower market
+growth rate than the planner's.
+
+\textbf{(c)} TVC: $\lim_{t\to\infty} \lambda(t)k(t)e^{-\rho t} = 0$ requires
+$\rho > (1-\sigma)\gamma_c^{\mathrm{mkt}}$, ensuring bounded lifetime utility.
+\end{answerbox}
+
+\subsection*{4.\ (7 points)}
+
+\begin{answerbox}
+\textbf{(a)} The planner internalises $\bar{A} = A_0 K^{1-\alpha}$ and sees social MPK $= A$
+(since $Y = AK$ at the aggregate level).
+
+Planner's Euler:
+\[
+    \gamma_c^{\mathrm{plnr}} = \frac{A - \delta - \rho}{\sigma}.
+\]
+
+Since $\alpha < 1$: $\gamma_c^{\mathrm{plnr}} - \gamma_c^{\mathrm{mkt}}
+= \frac{(1-\alpha)A}{\sigma} > 0$.
+
+\textbf{Externality:} The market under-invests because firms do not internalise the
+positive knowledge spillover: each firm's capital accumulation raises aggregate $\bar{A}$
+for all firms, but this benefit is external and uncompensated.
+
+\textbf{(b)} To restore the planner's allocation, subsidise the return to capital by $s^*$
+so that the private perceived return equals the social return:
+\[
+    \alpha A(1 + s^*) = A \quad\Longrightarrow\quad
+    \boxed{s^* = \frac{1-\alpha}{\alpha}.}
+\]
+
+Interpretation: the subsidy rate equals the ratio of the external benefit $(1-\alpha)A$ to
+the private return $\alpha A$.  For $\alpha = 1/3$: $s^* = 2$, a 200\% subsidy.
+
+\textbf{(c)} Practical challenge: the government must know $\alpha$ precisely (or
+equivalently, the magnitude of the externality $\eta$) to set the subsidy correctly.  If
+the externality is overestimated, the subsidy induces over-accumulation.  Additionally,
+financing the subsidy requires taxation, which may create its own distortions.
+\end{answerbox}
+
+\clearpage
+% ═════════════════════════════════════════════════════════════════════════════
+\section{Question 3 --- Quality Ladders and Schumpeterian Growth}
+% ═════════════════════════════════════════════════════════════════════════════
+
+\subsection*{1.\ (5 points)}
+
+\begin{answerbox}
+Final good firm maximises:
+\[
+    \max_{L_Y,\{x_s\}} \; L_Y^{1-\alpha}\int_0^N (q^{k(s)}x_s)^{\alpha}\,\dd s
+    - w L_Y - \int_0^N p_s\,x_s\,\dd s.
+\]
+
+FOC for $x_s$:
+\[
+    \alpha L_Y^{1-\alpha}(q^{k(s)})^{\alpha}\,x_s^{\alpha-1} = p_s
+    \quad\Longrightarrow\quad
+    \boxed{x_s = \left(\frac{\alpha L_Y^{1-\alpha}(q^{k(s)})^{\alpha}}{p_s}\right)^{1/(1-\alpha)}.}
+\]
+Demand is isoelastic with elasticity $\varepsilon = 1/(1-\alpha)$.
+\end{answerbox}
+
+\subsection*{2.\ (6 points)}
+
+\begin{answerbox}
+\textbf{(a)} The monopolist in sector $s$ (with quality $q^{k(s)}$, MC $= 1$) chooses
+$x_s$ to maximise profit:
+\[
+    \pi_s = (p_s - 1)\,x_s,
+\]
+subject to the final-good firm's demand $x_s = \bigl(\alpha L_Y^{1-\alpha}(q^{k(s)})^\alpha
+/ p_s\bigr)^{1/(1-\alpha)}$, or equivalently $p_s = \alpha L_Y^{1-\alpha}(q^{k(s)})^\alpha
+x_s^{\alpha-1}$.
+
+Substituting into profit and differentiating with respect to $x_s$ (treating demand
+as the inverse-demand curve):
+\[
+    \pi_s = p_s(x_s)\,x_s - x_s
+    = \alpha L_Y^{1-\alpha}(q^{k(s)})^{\alpha}\,x_s^{\alpha} - x_s.
+\]
+\[
+    \frac{\partial\pi_s}{\partial x_s}
+    = \alpha^2 L_Y^{1-\alpha}(q^{k(s)})^{\alpha}\,x_s^{\alpha-1} - 1
+    = \alpha\,p_s - 1 = 0
+    \quad\Longrightarrow\quad
+    p_s^* = \frac{1}{\alpha}.
+\]
+Equivalently, using the isoelastic demand elasticity $\varepsilon = 1/(1-\alpha)$, the
+optimal markup is $p^* = \varepsilon/(\varepsilon-1)\cdot MC = (1/(1-\alpha))/(\alpha/(1-\alpha))
+\cdot 1 = \boxed{1/\alpha}$.
+
+\textbf{(b) Limit pricing:}  The previous-generation producer has quality $q^{k(s)-1}$
+and $MC = 1$.  A consumer buying from the old firm gets value $\propto q^{k(s)-1}/p_{\mathrm{old}}$.
+The new monopolist (quality $q^{k(s)}$) can charge up to $p = q$ before the old firm
+undercuts.  Since $q \geq 1/\alpha$ and the unconstrained monopoly price is $1/\alpha$,
+we have $1/\alpha \leq q$, so the limit-pricing constraint is \emph{not binding}.
+
+\textbf{(c)} From the final good firm's equilibrium with symmetric firms ($x_s = x$):
+\[
+    p\cdot x = \frac{\alpha Y}{N} \quad(\text{total intermediate payments = }\alpha Y).
+\]
+Profits:
+\[
+    \pi_s = (p - 1)x = \left(\frac{1}{\alpha}-1\right)x = \frac{1-\alpha}{\alpha}\,x.
+\]
+Since $px = \alpha Y/N$ and $p = 1/\alpha$:
+$x = \alpha^2 Y/N$, so
+\[
+    \boxed{\pi_s = \frac{(1-\alpha)}{\alpha}\cdot\frac{\alpha^2 Y}{N}
+    = \frac{\alpha(1-\alpha)\,Y}{N}.}
+\]
+\end{answerbox}
+
+\subsection*{3.\ (7 points)}
+
+\begin{answerbox}
+\textbf{(a)} On the BGP, profits grow at rate $g_Y$ (since $\pi \propto Y$).  The value
+$V_s$ also grows at rate $g_Y$.  The no-arbitrage (Bellman) equation for $V_s$:
+\[
+    r\,V_s = \pi_s + \dot{V}_s - \iota\,V_s = \pi_s + g_Y V_s - \iota V_s.
+\]
+Solving:
+\[
+    \boxed{V_s = \frac{\pi_s}{r + \iota - g_Y}.}
+\]
+Interpretation: the ``effective discount rate'' is $r + \iota - g_Y$, augmented by
+$\iota$ (risk of displacement through creative destruction) and reduced by $g_Y$
+(capital gains from growing profits).
+
+\textbf{(b)} Free entry into R\&D: a firm spending $h$ units of final output gets
+innovation probability $\mu h$.  Zero profit requires:
+\[
+    \mu V_s = 1 \quad\Longrightarrow\quad V_s = \frac{1}{\mu}.
+\]
+
+Combining: $\pi_s/(r + \iota - g_Y) = 1/\mu$, so $r = \mu\pi_s - \iota + g_Y$.
+
+\textbf{(c)} The household Euler equation is $\dot{c}/c = r - \rho$ (with $\sigma = 1$
+for simplicity, or more precisely $r - \rho = g_Y$ on the BGP where $\dot{c}/c = g_Y$).
+On the BGP by definition $\dot{c}/c = g_Y$, so:
+\[
+    g_Y = r - \rho \quad\Longrightarrow\quad r = \rho + g_Y.
+\]
+
+From part (b), the free-entry condition gives $r = \mu\pi_s - \iota + g_Y$.
+Substituting $r = \rho + g_Y$:
+\[
+    \rho + g_Y = \mu\pi_s - \iota + g_Y.
+\]
+The $g_Y$ terms cancel, leaving:
+\[
+    \boxed{\iota = \mu\pi_s - \rho.}
+\]
+
+The BGP growth rate of output is $g_Y = \iota\ln q$ (each innovation raises quality by
+factor $q$ in one sector, and innovations arrive at rate $\iota$ per sector):
+\[
+    \boxed{g_Y = (\mu\pi - \rho)\ln q.}
+\]
+\end{answerbox}
+
+\subsection*{4.\ (7 points)}
+
+\begin{answerbox}
+\textbf{(a) Business-stealing (creative destruction) externality:}
+When a new innovator succeeds, it destroys the incumbent monopolist's profit stream.
+The entrant does not account for this loss imposed on the incumbent.
+$\Rightarrow$ \textbf{Over-innovation} relative to social optimum: the private incentive
+to innovate is inflated because the entrant captures the \emph{entire} market value,
+ignoring the rents it destroys.
+
+\textbf{(b) Appropriability (consumer-surplus) externality:}
+The innovator cannot appropriate all consumer surplus from the quality improvement.
+Consumers benefit from higher quality beyond what the monopolist extracts through pricing.
+$\Rightarrow$ \textbf{Under-innovation}: the private value of innovation is less than
+the social value because the innovator's profits understate the total welfare gain.
+
+\textbf{(c)} In the Aghion--Howitt model, \emph{either} externality can dominate,
+depending on parameters ($q$, $\alpha$, $\sigma$).  When $q$ is large (drastic
+innovations), business stealing is severe and the market may over-innovate.  When
+innovations are incremental, the appropriability effect may dominate, leading to
+under-innovation.  In general, a single instrument (e.g., an R\&D subsidy or tax)
+may not achieve the first-best, because correcting one externality may worsen the other.
+Optimal policy may require \emph{two} instruments: an R\&D subsidy/tax to correct the
+innovation rate, and a production subsidy to correct the static under-use of intermediates.
+\end{answerbox}
+
+\clearpage
+% ═════════════════════════════════════════════════════════════════════════════
+\section{Short Questions}
+% ═════════════════════════════════════════════════════════════════════════════
+
+\subsection*{1.\ (9 points) --- Convergence}
+
+\begin{answerbox}
+\textbf{(a)} \textbf{Absolute convergence}: poorer countries grow faster than richer
+countries regardless of their structural parameters.
+\textbf{Conditional convergence}: each country converges to its own steady state; poorer
+countries grow faster \emph{conditional on} having the same structural parameters
+($s$, $n$, $\delta$, etc.).
+
+The basic Solow model predicts \textbf{conditional convergence} (not absolute), because
+steady states differ across countries.  ``Conditioning'' means comparing countries with
+similar savings rates, population growth, and technology.
+
+\textbf{(b)} Yes.  US states share similar institutions, savings behaviour, and technology
+access, so they approximately share the same steady state $\Rightarrow$ we observe
+conditional (and approximately absolute) convergence among them.  In the cross-country
+sample, steady states differ widely $\Rightarrow$ the unconditional correlation is weak.
+This is exactly what the Solow model predicts.
+
+\textbf{(c)} The speed of convergence around the steady state:
+\[
+    \beta = (1-\alpha)(n + g + \delta).
+\]
+$\beta$ governs the rate at which $\ln\ktilde$ closes the gap to $\ln\ktilde^*$.
+A higher $\alpha$ (capital share) slows convergence (diminishing returns kick in more
+slowly); higher $n$, $g$, or $\delta$ speed it up (larger effective depreciation of
+per-effective-worker capital).
+\end{answerbox}
+
+\subsection*{2.\ (8 points) --- Scale Effects and the Jones Fix}
+
+\begin{answerbox}
+\textbf{(a)} In Romer (1990), the R\&D equation is $\dot{M} = \lambda M L_R$.  More
+R\&D workers $L_R$ generate more varieties, raising the growth rate.  Since $L_R$ is
+proportional to population $L$, larger economies grow permanently faster.  Empirically,
+this is problematic: the number of scientists has grown enormously since 1950, yet
+growth rates in developed countries have been roughly constant.
+
+\textbf{(b)} Jones replaces $\dot{M} = \lambda M L_R$ with
+$\dot{M} = \lambda M^{\phi} L_R$ where $\phi < 1$.  On the BGP, $M$ grows at rate
+$g_M$ and $L_R$ grows at rate $n$ (population growth):
+\[
+    g_M = \frac{\dot{M}}{M} = \lambda M^{\phi-1}L_R.
+\]
+For $g_M$ to be constant, $(\phi-1)g_M + n = 0$, so
+\[
+    \boxed{g_M = \frac{n}{1-\phi}.}
+\]
+The growth rate depends on population \emph{growth} $n$, not population \emph{level} $L$.
+Scale effect disappears.  If $n = 0$, long-run growth is zero --- sustained growth requires
+positive population growth.
+
+\textbf{(c)} Key criticism: growth becomes ``semi-endogenous'' --- it depends on the
+exogenous demographic parameter $n$.  Policy (R\&D subsidies, patent protection) cannot
+affect the long-run growth rate, only the level.  This contradicts the motivation for
+endogenous growth theory and limits its policy relevance.
+\end{answerbox}
+
+\subsection*{3.\ (8 points) --- Non-Homotheticity and Structural Change}
+
+\begin{answerbox}
+\textbf{(a)} Preferences are \textbf{non-homothetic} when the ratio of goods demanded
+changes as income increases, holding prices fixed.  Formally, the income elasticity of
+demand $\varepsilon_I \neq 1$ for at least one good.  As economies grow richer,
+households shift spending toward goods with $\varepsilon_I > 1$ (luxuries, e.g.\
+services) and away from goods with $\varepsilon_I < 1$ (necessities, e.g.\ food).
+This demand-side reallocation drives structural change.
+
+\textbf{(b)} With Cobb-Douglas aggregation, expenditure shares are constant by
+construction (regardless of income).  To generate a rising service share, one must add
+either: (i) \textbf{non-homothetic preferences} (e.g.\ Stone-Geary with subsistence
+requirements), or (ii) \textbf{differential productivity growth} across sectors with
+elasticity of substitution $<1$ (supply-side structural change).  Concrete example:
+Stone-Geary utility $U = (c_M - \bar{c}_M)^{\beta}c_S^{1-\beta}$ with subsistence
+$\bar{c}_M > 0$; as income rises, the share spent on $M$ above subsistence falls.
+
+\textbf{(c)} Baumol's ``cost disease'': if manufacturing has faster productivity growth
+than services, and goods are complementary (low substitution elasticity), the relative
+price of services rises.  At constant nominal expenditure shares, the \emph{employment}
+share in services rises because services require ever more labour per unit of output.
+For aggregate growth: the economy's overall productivity growth is a weighted average,
+with increasing weight on the stagnant sector $\Rightarrow$ aggregate growth slows over
+time (``Baumol's disease'').
+\end{answerbox}
+
+\vspace{12pt}
+\noindent\rule{\textwidth}{0.4pt}
+\begin{center}\textit{End of Answer Key --- Practice Exam 1.}\end{center}
+
+\end{document}

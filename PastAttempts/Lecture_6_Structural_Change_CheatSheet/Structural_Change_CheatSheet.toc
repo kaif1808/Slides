@@ -1,0 +1,19 @@
+\contentsline {section}{\numberline {1}Notation and Definitions}{2}{section.1}%
+\contentsline {section}{\numberline {2}Stylized Facts: Structural Change}{3}{section.2}%
+\contentsline {section}{\numberline {3}Demand-Side Explanations: Engel Curves}{4}{section.3}%
+\contentsline {section}{\numberline {4}Stone-Geary Preferences}{5}{section.4}%
+\contentsline {section}{\numberline {5}Demand-Side Model: Production and Equilibrium}{6}{section.5}%
+\contentsline {section}{\numberline {6}Constant Growth Path (CGP)}{7}{section.6}%
+\contentsline {section}{\numberline {7}Employment Dynamics (Demand Side)}{8}{section.7}%
+\contentsline {section}{\numberline {8}Supply-Side Explanations: Baumol's Cost Disease}{9}{section.8}%
+\contentsline {section}{\numberline {9}Supply-Side Model: CES Aggregator}{10}{section.9}%
+\contentsline {section}{\numberline {10}Supply-Side: Factor Allocation}{11}{section.10}%
+\contentsline {section}{\numberline {11}Supply-Side: Response to Capital Accumulation}{12}{section.11}%
+\contentsline {section}{\numberline {12}Supply-Side: Long-Run Dynamics}{13}{section.12}%
+\contentsline {section}{\numberline {13}Long-Run Equilibrium}{14}{section.13}%
+\contentsline {section}{\numberline {14}Testing Demand vs Supply Explanations}{15}{section.14}%
+\contentsline {section}{\numberline {15}Empirical Findings}{16}{section.15}%
+\contentsline {section}{\numberline {16}Problem-Solving Templates}{17}{section.16}%
+\contentsline {section}{\numberline {17}Common Pitfalls}{18}{section.17}%
+\contentsline {section}{\numberline {18}Quick Reference Formulas}{19}{section.18}%
+\contentsline {section}{\numberline {19}Implementation Notes}{20}{section.19}%

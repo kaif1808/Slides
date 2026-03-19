@@ -1,0 +1,817 @@
+\documentclass[a4paper,11pt]{article}
+
+% ─── Geometry ────────────────────────────────────────────────────────────────
+\usepackage{geometry}
+\geometry{margin=1in, headheight=15pt}
+
+% ─── Mathematics ─────────────────────────────────────────────────────────────
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathtools}
+
+% ─── Graphics / Colours ──────────────────────────────────────────────────────
+\usepackage{graphicx}
+\usepackage{xcolor}
+\definecolor{blue3}{RGB}{0,0,180}
+\definecolor{green3}{RGB}{0,120,0}
+\definecolor{orange3}{RGB}{200,100,0}
+\definecolor{red3}{RGB}{180,0,0}
+\definecolor{grey3}{RGB}{80,80,80}
+
+% ─── Units ───────────────────────────────────────────────────────────────────
+\usepackage{siunitx}
+\sisetup{detect-all}
+
+% ─── Links (hyperref BEFORE cleveref) ────────────────────────────────────────
+\usepackage[colorlinks=true,linkcolor=blue3,citecolor=blue3,urlcolor=blue3]{hyperref}
+\usepackage{cleveref}
+
+% ─── Boxes ───────────────────────────────────────────────────────────────────
+\usepackage{tcolorbox}
+\tcbuselibrary{skins,breakable}
+
+\newtcolorbox{answerbox}[1][]{
+    colback=red3!5,
+    colframe=red3!60,
+    coltitle=red3,
+    title={Solution:},
+    fonttitle=\bfseries,
+    breakable,
+    #1
+}
+
+% ─── Tables / Lists ──────────────────────────────────────────────────────────
+\usepackage{booktabs}
+\usepackage{enumitem}
+
+% ─── Notation commands ───────────────────────────────────────────────────────
+\newcommand{\ktilde}{\tilde{k}}
+\newcommand{\ytilde}{\tilde{y}}
+\newcommand{\ctilde}{\tilde{c}}
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\bgp}{\mathrm{BGP}}
+
+% ─── Header / Footer ─────────────────────────────────────────────────────────
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\textbf{14E022 Macroeconomics I} \quad Practice Exam 3 -- Solutions}
+\rhead{BSE 2025--26}
+\cfoot{\thepage}
+
+% ═════════════════════════════════════════════════════════════════════════════
+\begin{document}
+% ═════════════════════════════════════════════════════════════════════════════
+
+\begin{center}
+    {\LARGE \textbf{14E022 Macroeconomics I}}\\[6pt]
+    {\Large \textbf{Practice Exam 3 --- Answer Key}}\\[8pt]
+    {\large BSE --- Academic Year 2025--26}
+\end{center}
+
+\noindent\rule{\textwidth}{0.4pt}
+
+% ═════════════════════════════════════════════════════════════════════════════
+\section{Question 1 --- Romer (1990) Expanding Varieties}
+% ═════════════════════════════════════════════════════════════════════════════
+
+\subsection*{1.\ (5 points)}
+
+\begin{answerbox}
+\textbf{(a) Profit-maximisation problem for the final goods firm:}
+
+Taking output as the numeraire, the final goods firm solves:
+\[
+    \max_{L_Y,\{x_i\}} \; L_Y^{1-\alpha}\int_0^M x_i^\alpha\,\dd i - wL_Y - \int_0^M p_i x_i\,\dd i.
+\]
+
+FOC with respect to $x_i$ (setting the derivative to zero):
+\[
+    \frac{\partial}{\partial x_i}\left[\text{profit}\right]
+    = \alpha L_Y^{1-\alpha}x_i^{\alpha-1} - p_i = 0
+    \quad\Longrightarrow\quad
+    \boxed{p_i = \alpha L_Y^{1-\alpha}x_i^{\alpha-1}.}
+\]
+
+\textbf{(b) Demand function and elasticity:}
+
+Inverting the inverse demand curve:
+\[
+    x_i = \left(\frac{\alpha L_Y^{1-\alpha}}{p_i}\right)^{1/(1-\alpha)}.
+\]
+
+The price elasticity of demand is:
+\[
+    \varepsilon = -\frac{\partial \ln x_i}{\partial \ln p_i}
+    = -\frac{\partial}{\partial \ln p_i}\left[\frac{1}{1-\alpha}\ln(\alpha L_Y^{1-\alpha}) - \frac{1}{1-\alpha}\ln p_i\right]
+    = \boxed{\frac{1}{1-\alpha} > 1.}
+\]
+
+Demand is elastic, which makes sense: higher input quality increases firms' willingness to substitute toward the input, so demand is responsive to price.
+\end{answerbox}
+
+\subsection*{2.\ (6 points)}
+
+\begin{answerbox}
+\textbf{(a) Monopoly price via markup formula:}
+
+The isoelastic markup formula is $p^* = MC \cdot \varepsilon/(\varepsilon-1)$.  With $MC = 1$ and $\varepsilon = 1/(1-\alpha)$:
+\[
+    p^* = 1 \cdot \frac{1/(1-\alpha)}{1/(1-\alpha)-1}
+    = \frac{1/(1-\alpha)}{\alpha/(1-\alpha)}
+    = \boxed{\frac{1}{\alpha}.}
+\]
+
+\textbf{(b) Equilibrium quantity:}
+
+Substituting $p_i^* = 1/\alpha$ into the demand function:
+\[
+    x_i^* = \left(\frac{\alpha L_Y^{1-\alpha}}{1/\alpha}\right)^{1/(1-\alpha)}
+    = \left(\alpha^2 L_Y^{1-\alpha}\right)^{1/(1-\alpha)}
+    = \boxed{\alpha^{2/(1-\alpha)}\,L_Y.}
+\]
+
+\textbf{(c) Equilibrium profit:}
+
+Profit is:
+\[
+    \pi = (p_i^* - 1)x_i^*
+    = \left(\frac{1}{\alpha} - 1\right)\alpha^{2/(1-\alpha)}L_Y
+    = \frac{1-\alpha}{\alpha}\,\alpha^{2/(1-\alpha)}L_Y
+    = (1-\alpha)\,\alpha^{2/(1-\alpha)-1}L_Y.
+\]
+
+Since $2/(1-\alpha) - 1 = (2-(1-\alpha))/(1-\alpha) = (1+\alpha)/(1-\alpha)$...
+
+\textbf{Alternative (simpler) derivation:}  From the FOC, we verified that $\pi = (1-\alpha)/\alpha \cdot x_i^*$. Therefore:
+\[
+    \pi = \frac{1-\alpha}{\alpha}\,\alpha^{2/(1-\alpha)}L_Y = \boxed{(1-\alpha)\,\alpha^{\alpha/(1-\alpha)}\,L_Y.}
+\]
+
+\textbf{Verification:} $(1-\alpha)/\alpha \cdot x_i^* = (1-\alpha)/\alpha \cdot \alpha^{2/(1-\alpha)}L_Y = (1-\alpha)\alpha^{2/(1-\alpha)-1}L_Y = (1-\alpha)\alpha^{\alpha/(1-\alpha)}L_Y$. \checkmark
+\end{answerbox}
+
+\subsection*{3.\ (7 points)}
+
+\begin{answerbox}
+\textbf{(a) No-arbitrage (Bellman equation) on BGP:}
+
+The no-arbitrage condition for owning a blueprint is:
+\[
+    rV = \pi + \dot{V}.
+\]
+
+On the BGP, the value $V$ grows at rate $g$ (the same rate as profits and output), so $\dot{V} = g V$.  Thus:
+\[
+    rV = \pi + gV
+    \quad\Longrightarrow\quad
+    \boxed{(r-g)V = \pi \quad\text{or}\quad rV = \pi \quad\text{(if } \dot{V}=0 \text{ in steady state)}.}
+\]
+
+Since $\dot{V}/V = g$ and $V$ itself is growing, we correctly use $(r-g)V = \pi$.
+
+\textbf{(b) Free entry and equilibrium interest rate:}
+
+Free entry requires that the value of creating a new variety equals the cost:
+\[
+    V = \frac{w}{\lambda M}.
+\]
+
+Combining with the no-arbitrage condition $rV = \pi + gV$:
+\[
+    r = \frac{\pi}{V} + g = \frac{\pi}{\omega/(\lambda M)} + g
+    = \boxed{\lambda M \frac{\pi}{w} + g.}
+\]
+
+On the BGP, $g$ is constant, so:
+\[
+    r - g = \lambda M \frac{\pi}{w}.
+\]
+
+\textbf{(c) BGP growth rate:}
+
+The wage equals the marginal product of final-sector labour: $w = (1-\alpha)Y/L_Y$.
+
+On the BGP, $L_Y$ and $L_A$ are constant fractions of total labour $L$. Let $L_Y^*$ denote the long-run allocation. From free entry and the wage:
+\[
+    r - g = \lambda M \frac{\pi}{(1-\alpha)Y/L_Y^*}
+    = \lambda M L_Y^* \frac{\pi}{(1-\alpha)Y}.
+\]
+
+Using $\pi = (1-\alpha)\alpha^{\alpha/(1-\alpha)}L_Y^*$ (from part~2c), we can show:
+\[
+    r - g = \lambda(1-\alpha)L_Y^*.
+\]
+
+From the household Euler equation $\dot{\ctilde}/\ctilde = (r - \rho)/\sigma = g$ (on the BGP, consumption growth equals output growth):
+\[
+    \sigma g = r - \rho = \lambda(1-\alpha)L_Y^* - \rho.
+\]
+
+With $L_Y^* = L - L_A$ and $L_A = g/\lambda$ (from $g_M = \lambda L_A = g$ on the BGP):
+\[
+    \sigma g = \lambda(1-\alpha)\left(L - \frac{g}{\lambda}\right) - \rho
+    = \lambda(1-\alpha)L - (1-\alpha)g - \rho.
+\]
+
+Rearranging:
+\[
+    \sigma g + (1-\alpha)g = \lambda(1-\alpha)L - \rho
+    \quad\Longrightarrow\quad
+    g[\sigma + 1] = \lambda(1-\alpha)L - \rho.
+\]
+
+Therefore:
+\[
+    \boxed{g^{\mathrm{mkt}} = \frac{\lambda(1-\alpha)L - \rho}{\sigma + 1}.}
+\]
+
+\textbf{Scale effect:} $\partial g^{\mathrm{mkt}}/\partial L = \lambda(1-\alpha)/(\sigma+1) > 0$. Larger economies have more workers in R\&D, accelerating variety expansion and output growth permanently. This is problematic empirically: the research workforce has grown enormously since 1950, yet growth rates are stable.
+\end{answerbox}
+
+\subsection*{4.\ (7 points)}
+
+\begin{answerbox}
+\textbf{(a) Two distortions in the decentralised equilibrium:}
+
+\begin{enumerate}[label=(\roman*), itemsep=4pt]
+    \item \textbf{Markup distortion:} The monopolist sets $p_i = 1/\alpha > 1 = MC$, creating a wedge between price and marginal cost. This causes each variety to be under-used relative to the social optimum. The planner would set $p = MC = 1$, resulting in higher quantity demanded and greater consumer surplus.
+
+    \item \textbf{Knowledge spillover:} When a new variety is invented, the monopolist captures only the discounted flow of monopoly profits $V$. However, the social value includes: (i) the consumer surplus generated by the new variety, and (ii) the external benefit that the expanded variety stock enhances future R\&D productivity ($\partial \dot{M}/\partial M = \lambda L_A > 0$ in the R\&D equation). Both the inventor under-considers, implying \textbf{under-innovation} in the market equilibrium.
+\end{enumerate}
+
+\textbf{(b) Market vs.\ planner growth comparison:}
+
+Since the planner corrects the markup distortion (using each variety more intensively) and internalises the knowledge spillover, both the output of existing intermediates and the incentive for R\&D increase.  Higher R\&D effort means faster variety expansion, so $g^{\mathrm{plnr}} > g^{\mathrm{mkt}}$.
+
+\textbf{(c) Optimal policy mix:}
+
+Two independent distortions require two policy instruments:
+
+\begin{enumerate}[label=(\roman*), itemsep=4pt]
+    \item \textbf{Subsidy to intermediate purchases:} $s_x = 1-\alpha$. This reduces the effective price paid by final-goods firms from $1/\alpha$ to $1/\alpha \cdot (1-s_x) = 1/\alpha \cdot \alpha = 1 = MC$, eliminating the markup wedge.
+
+    \item \textbf{R\&D subsidy:} Subsidise R\&D labour costs to account for the knowledge spillover, raising private incentives for innovation to match social returns.
+\end{enumerate}
+
+A single instrument cannot achieve the first-best because the markup and spillover distortions are independent. For example, a pure R\&D subsidy raises the innovation rate but leaves the markup distortion in place (varieties still under-used). Conversely, subsidising intermediate consumption without R\&D support does not correct the under-provision of knowledge.
+\end{answerbox}
+
+\clearpage
+
+% ═════════════════════════════════════════════════════════════════════════════
+\section{Question 2 --- Structural Change}
+% ═════════════════════════════════════════════════════════════════════════════
+
+\subsection*{1.\ (5 points)}
+
+\begin{answerbox}
+\textbf{(a) Competitive factor pricing and relative prices:}
+
+With a competitive labour market, workers earn the same wage $w$ in both sectors. Firms in each sector maximise profit:
+\[
+    \text{Manufacturing:}\quad \pi_M = p_M A_M L_M - w L_M = 0 \quad(\text{zero profit, competitive})
+    \quad\Longrightarrow\quad w = p_M A_M.
+\]
+\[
+    \text{Services:}\quad \pi_S = p_S A_S L_S - w L_S = 0
+    \quad\Longrightarrow\quad w = p_S A_S.
+\]
+
+Equating the two expressions for $w$:
+\[
+    p_M A_M = p_S A_S
+    \quad\Longrightarrow\quad
+    \boxed{\frac{p_S}{p_M} = \frac{A_M}{A_S}.}
+\]
+
+\textbf{(b) Growth of relative prices:}
+
+Taking time derivatives:
+\[
+    \frac{d\ln(p_S/p_M)}{\dd t} = \frac{\dot{A}_M}{A_M} - \frac{\dot{A}_S}{A_S}
+    = g - 0 = \boxed{g.}
+\]
+
+\textbf{Interpretation:} This is the \textbf{Baumol cost disease}. Manufacturing productivity grows at rate $g$, so to maintain equal wages, the service sector's relative price must rise at rate $g$. Wages in the stagnant services sector must keep pace with the growing wage bill in manufacturing, pushing up the price of services. Over time, services become increasingly expensive.
+\end{answerbox}
+
+\subsection*{2.\ (7 points)}
+
+\begin{answerbox}
+\textbf{(a) Optimal consumption ratio from CES preferences:}
+
+The household maximises $U = [\omega Y_M^\rho + (1-\omega)Y_S^\rho]^{1/\rho}$ subject to $p_M Y_M + p_S Y_S = I$.
+
+The MRS condition requires:
+\[
+    \frac{MU_M}{MU_S} = \frac{p_M}{p_S}
+    \quad\Longrightarrow\quad
+    \frac{(1-\omega)Y_S}{\omega Y_M} = \left(\frac{p_S}{p_M}\right)^{\rho}.
+\]
+
+Rearranging and using $\sigma_s = 1/(1-\rho)$:
+\[
+    \frac{Y_S}{Y_M} = \frac{1-\omega}{\omega}\left(\frac{p_M}{p_S}\right)^{\rho}
+    = \boxed{\left[\frac{1-\omega}{\omega}\cdot\frac{p_M}{p_S}\right]^{\sigma_s}.}
+\]
+
+\textbf{(b) Employment ratio:}
+
+With $Y_j = A_j L_j$:
+\[
+    \frac{L_S}{L_M} = \frac{Y_S/A_S}{Y_M/A_M}
+    = \frac{Y_S}{Y_M}\cdot\frac{A_M}{A_S}
+    = \left[\frac{1-\omega}{\omega}\cdot\frac{p_M}{p_S}\right]^{\sigma_s}\cdot\frac{A_M}{A_S}
+    = \boxed{\left(\frac{1-\omega}{\omega}\right)^{\sigma_s}\left(\frac{A_M}{A_S}\right)^{1-\sigma_s}.}
+\]
+
+\textbf{(c) Dynamics of employment reallocation:}
+
+\begin{enumerate}[label=(\roman*), itemsep=3pt]
+    \item \textbf{$\sigma_s = 1$ (Cobb-Douglas):} The exponent $1-\sigma_s = 0$, so $(A_M/A_S)^0 = 1$. Thus $L_S/L_M = [(1-\omega)/\omega]^1$ is constant over time. Despite the rising relative price of services, employment shares remain stable. Households always allocate a constant fraction of income to each sector.
+
+    \item \textbf{$\sigma_s < 1$ (complements):} The exponent $1-\sigma_s > 0$. As $A_M$ grows, $(A_M/A_S)^{1-\sigma_s}$ rises, so $L_S/L_M$ increases. Labour \textbf{flows to the stagnant services sector} (Baumol result): the sector's rising relative price, combined with low substitutability, forces workers into services despite no productivity improvement there.
+
+    \item \textbf{$\sigma_s > 1$ (substitutes):} The exponent $1-\sigma_s < 0$. As $A_M$ grows, $(A_M/A_S)^{1-\sigma_s}$ falls, so $L_S/L_M$ decreases. Labour flows to the productive manufacturing sector.
+\end{enumerate}
+
+\textbf{(d) Aggregate productivity growth and Baumol drag:}
+
+Aggregate output is $Y = Y_M + p_S Y_S/p_M$ (measuring in manufacturing units). On the BGP, using log-differentiation:
+\[
+    \gamma_Y = \frac{\dot{Y}}{Y} = \frac{Y_M \gamma_M + (p_S/p_M)Y_S\gamma_S}{Y_M + (p_S/p_M)Y_S}.
+\]
+
+With $\gamma_M = g$ (manufacturing TFP) and $\gamma_S = 0$ (services stagnant):
+\[
+    \gamma_Y = \frac{Y_M \cdot g}{Y_M + (p_S/p_M)Y_S} = g \cdot \frac{Y_M}{Y} \approx \boxed{g \cdot \frac{L_M}{L}.}
+\]
+
+As $L_M/L \to 0$ (labour shifts to services), $\gamma_Y \to 0$. This is the \textbf{Baumol growth drag}: aggregate growth slows asymptotically to zero as the economy's labour force increasingly concentrates in the unproductive service sector.
+\end{answerbox}
+
+\subsection*{3.\ (6 points)}
+
+\begin{answerbox}
+\textbf{(a) Stone-Geary demand functions:}
+
+The household maximises $U = \log(Y_M - \bar{c}_M) + \log Y_S$ subject to $p_M Y_M + p_S Y_S = I$.
+
+Lagrangian: $\mathcal{L} = \log(Y_M - \bar{c}_M) + \log Y_S - \lambda(p_M Y_M + p_S Y_S - I)$.
+
+FOCs:
+\[
+    \frac{\partial\mathcal{L}}{\partial Y_M} = \frac{1}{Y_M - \bar{c}_M} - \lambda p_M = 0 \quad\Longrightarrow\quad Y_M - \bar{c}_M = \frac{1}{\lambda p_M}.
+\]
+\[
+    \frac{\partial\mathcal{L}}{\partial Y_S} = \frac{1}{Y_S} - \lambda p_S = 0 \quad\Longrightarrow\quad Y_S = \frac{1}{\lambda p_S}.
+\]
+
+Substituting into the budget constraint:
+\[
+    p_M\left(\bar{c}_M + \frac{1}{\lambda p_M}\right) + p_S \cdot \frac{1}{\lambda p_S} = I
+    \quad\Longrightarrow\quad
+    p_M\bar{c}_M + \frac{2}{\lambda} = I
+    \quad\Longrightarrow\quad
+    \lambda = \frac{2}{I - p_M\bar{c}_M}.
+\]
+
+Therefore:
+\[
+    Y_S = \frac{1}{\lambda p_S} = \boxed{\frac{I - p_M\bar{c}_M}{2p_S}.}
+\]
+\[
+    Y_M = \bar{c}_M + \frac{1}{\lambda p_M} = \boxed{\bar{c}_M + \frac{I - p_M\bar{c}_M}{2p_M}.}
+\]
+
+\textbf{(b) Income elasticity of demand for manufacturing:}
+
+\[
+    \frac{\partial Y_M}{\partial I} = \frac{1}{2p_M}.
+\]
+
+The income elasticity is:
+\[
+    \varepsilon_M^I = \frac{\partial Y_M}{\partial I}\cdot\frac{I}{Y_M}
+    = \frac{1}{2p_M}\cdot\frac{I}{Y_M}.
+\]
+
+From part (a), $Y_M = \bar{c}_M + (I-p_M\bar{c}_M)/(2p_M)$, so:
+\[
+    p_M Y_M = p_M\bar{c}_M + \frac{I-p_M\bar{c}_M}{2}
+    = \frac{p_M\bar{c}_M + I}{2}.
+\]
+
+Thus:
+\[
+    \varepsilon_M^I = \frac{I}{p_M Y_M} \cdot \frac{1}{2} = \frac{I}{p_M\bar{c}_M + I} < 1.
+\]
+
+\textbf{Interpretation:} Manufacturing is a \textbf{necessity} with income elasticity below unity. As income rises, the marginal dollar is less than proportionally allocated to manufacturing.
+
+\textbf{(c) Expenditure share dynamics:}
+
+The expenditure share is:
+\[
+    s_M = \frac{p_M Y_M}{I} = \frac{p_M\bar{c}_M + I}{2I} = \frac{1}{2} + \frac{p_M\bar{c}_M}{2I}.
+\]
+
+As $I \to \infty$, $s_M \to 1/2$ from above. The expenditure share \textbf{falls toward 1/2}, demonstrating demand-side structural change: even with unchanged prices and technology, richer households shift spending away from the necessity (manufacturing) toward services.
+\end{answerbox}
+
+\subsection*{4.\ (7 points)}
+
+\begin{answerbox}
+\textbf{(a) Baumol mechanism (supply-side):}
+
+In the Baumol model with homothetic CES preferences and $\sigma_s < 1$, structural change arises from the \textbf{supply side}. The key mechanism: manufacturing productivity grows ($\dot{A}_M/A_M = g > 0$), forcing the relative price of services up ($\dot{p}_S/p_S = g$). Since sectors are complements ($\sigma_s < 1$), a rising relative price of services causes labour to shift \emph{toward} services despite zero productivity growth there.
+
+The critical parameter is the elasticity of substitution $\sigma_s < 1$: services and manufacturing are imperfect substitutes, so consumers cannot easily shift away from services even as they become more expensive.
+
+\textbf{(b) Non-homothetic mechanism (demand-side):}
+
+In the Stone-Geary model with the same productivity growth (or even identical growth rates), structural change arises from the \textbf{demand side}. The key: manufacturing has income elasticity $\varepsilon_M^I < 1$ (it is a necessity with subsistence requirement $\bar{c}_M$). As income rises, the marginal dollar goes disproportionately to services. The expenditure share on manufacturing falls, and labour reallocates to services to serve rising demand for the non-necessity good.
+
+\textbf{(c) Empirical synthesis:}
+
+Duarte and Restuccia (2010) document differential TFP growth: agriculture 3.8\%, manufacturing 2.4\%, services 1.3\%. This differential is consistent with the Baumol cost-disease mechanism (productivity gap between manufacturing and services drives up service prices).
+
+Empirically, both channels appear operative: employment shares in services rise and manufacturing employment falls as countries grow richer, with both phenomena present in the data. The Baumol mechanism (supply-side: productivity differentials) explains some of the shift. The demand-side non-homothetic mechanism (non-unit income elasticity) explains additional reallocation. Researchers like Ngai and Pissarides (for supply-side) and Kongsamut et al.\ (for demand-side non-homotheticity) have documented both effects quantitatively. The relative importance varies by country and time period.
+\end{answerbox}
+
+\clearpage
+
+% ═════════════════════════════════════════════════════════════════════════════
+\section{Question 3 --- Solow Model}
+% ═════════════════════════════════════════════════════════════════════════════
+
+\subsection*{1.\ (5 points)}
+
+\begin{answerbox}
+\textbf{(a) Law of motion for per-effective-worker capital:}
+
+Define $\ktilde = K/(AL)$ and $\ytilde = Y/(AL) = \ktilde^\alpha$ (per-effective-worker variables).  Starting from the aggregate capital accumulation equation:
+\[
+    \dot{K} = sY - \delta K.
+\]
+
+Differentiating $\ktilde = K/(AL)$ using the product rule:
+\[
+    \dot{\ktilde} = \frac{\dot{K}}{AL} - \frac{\dot{A}}{A}\ktilde - \frac{\dot{L}}{L}\ktilde
+    = \frac{\dot{K}}{AL} - g\ktilde - n\ktilde.
+\]
+
+Substituting $\dot{K} = sY - \delta K$:
+\[
+    \dot{\ktilde} = \frac{sY - \delta K}{AL} - (g+n)\ktilde
+    = s\,\frac{Y}{AL} - \delta\,\frac{K}{AL} - (g+n)\ktilde
+    = s\ytilde - \delta\ktilde - (g+n)\ktilde
+    = \boxed{s\ktilde^\alpha - (n+g+\delta)\ktilde.}
+\]
+
+\textbf{(b) Steady-state capital stock:}
+
+At the steady state, $\dot{\ktilde} = 0$:
+\[
+    s(\ktilde^*)^\alpha = (n+g+\delta)\ktilde^*
+    \quad\Longrightarrow\quad
+    \boxed{\ktilde^* = \left[\frac{s}{n+g+\delta}\right]^{1/(1-\alpha)}.}
+\]
+
+Inada conditions ensure uniqueness: $f'(0) = \infty$ and $f'(\infty) = 0$, so the upward-sloping $s\ktilde^\alpha$ curve intersects the downward-sloping $(n+g+\delta)\ktilde$ line exactly once.
+\end{answerbox}
+
+\subsection*{2.\ (7 points)}
+
+\begin{answerbox}
+\textbf{(a) Steady-state consumption per effective worker:}
+
+At the steady state:
+\[
+    \ctilde^* = \ytilde^* - \dot{\ktilde}^* - (n+g)\ktilde^*
+    = \ktilde^{*\alpha} - 0 - (n+g+\delta)\ktilde^*
+    = \boxed{\ktilde^{*\alpha} - (n+g+\delta)\ktilde^*.}
+\]
+
+(Note: $\ctilde^* = (1-s)\ytilde^* = (1-s)(\ktilde^*)^\alpha$ is equivalent at the steady state.)
+
+\textbf{(b) Golden Rule saving rate:}
+
+To maximise steady-state consumption, treat $\ktilde^*$ as the choice variable (since each $s$ pins down a different steady state):
+\[
+    \max_{\ktilde^*} \left[\ctilde^* = (\ktilde^*)^\alpha - (n+g+\delta)\ktilde^*\right].
+\]
+
+FOC:
+\[
+    \frac{\partial \ctilde^*}{\partial \ktilde^*}
+    = \alpha(\ktilde^*)^{\alpha-1} - (n+g+\delta) = 0
+    \quad\Longrightarrow\quad
+    \boxed{f'(\ktilde^*_{\mathrm{GR}}) = n+g+\delta.}
+\]
+
+For Cobb-Douglas $f(\ktilde) = \ktilde^\alpha$:
+\[
+    \alpha(\ktilde^*_{\mathrm{GR}})^{\alpha-1} = n+g+\delta.
+\]
+
+But $s(\ktilde^*)^\alpha = (n+g+\delta)\ktilde^*$, so $(n+g+\delta) = s(\ktilde^*)^{\alpha-1}$. Comparing:
+\[
+    \alpha(\ktilde^*_{\mathrm{GR}})^{\alpha-1} = s(\ktilde^*_{\mathrm{GR}})^{\alpha-1}
+    \quad\Longrightarrow\quad
+    \boxed{s_{\mathrm{GR}} = \alpha.}
+\]
+
+\textbf{(c) Interpretation of the Golden Rule:}
+
+The Golden Rule saving rate $s_{\mathrm{GR}} = \alpha$ maximises consumption per effective worker at the steady state.
+
+\begin{itemize}
+    \item If $s > s_{\mathrm{GR}}$: the economy over-saves. The steady-state capital stock $\ktilde^*$ exceeds $\ktilde^*_{\mathrm{GR}}$, and steady-state consumption $\ctilde^*$ lies below its maximum. The economy sacrifices current and near-term consumption to accumulate excess capital beyond what maximises long-run welfare.
+
+    \item If $s < s_{\mathrm{GR}}$: the economy under-saves. Capital stock falls short, and steady-state consumption could be higher.
+\end{itemize}
+
+\textbf{Dynamic inefficiency:} When $s > \alpha$, the economy is \textbf{dynamically inefficient}: a Pareto improvement exists in which the current generation (and all future generations) consume more. For example, a reduction in $s$ could increase consumption at all future dates, making everyone better off. This violates the principle that an efficient allocation should not allow Pareto improvements.
+\end{answerbox}
+
+\subsection*{3.\ (6 points)}
+
+\begin{answerbox}
+\textbf{(a) Convergence speed:}
+
+Linearise the law of motion $\dot{\ktilde} = s\ktilde^\alpha - (n+g+\delta)\ktilde$ around $\ktilde^*$ using a first-order Taylor expansion.
+
+Define the log-deviation $\hat{k}_t = \ln(\ktilde_t/\ktilde^*)$. Then:
+\[
+    \dot{\hat{k}}_t = \frac{\dot{\ktilde}_t}{\ktilde_t} = \frac{s\alpha(\ktilde^*)^{\alpha-1} - (n+g+\delta)}{1}\cdot\hat{k}_t + \text{higher order terms}.
+\]
+
+At the steady state, $s(\ktilde^*)^\alpha = (n+g+\delta)\ktilde^*$, so $s(\ktilde^*)^{\alpha-1} = (n+g+\delta)/\ktilde^*$.  Thus:
+\[
+    \dot{\hat{k}}_t \approx -\left[(1-\alpha)(n+g+\delta)\right]\hat{k}_t = -\beta\,\hat{k}_t,
+\]
+where $\boxed{\beta = (1-\alpha)(n+g+\delta)}$.
+
+Solution: $\hat{k}_t = \hat{k}_0 e^{-\beta t}$. The log-gap to steady state closes exponentially at rate $\beta$ per year.
+
+\textbf{(b) Calibration and empirical mismatch:}
+
+With $\alpha = 1/3$, $n = 0.01$, $g = 0.02$, $\delta = 0.05$:
+\[
+    \beta = \left(1 - \frac{1}{3}\right)(0.01 + 0.02 + 0.05)
+    = \frac{2}{3} \times 0.08 = \frac{0.16}{3} \approx 0.0533 \approx 5.3\% \text{ per year}.
+\]
+
+Empirical estimates from Mankiw, Romer, and Weil (1992) using cross-country growth regressions find $\beta \approx 2\%$ per year, about 2.7 times slower than the basic calibration.
+
+\textbf{Explanation:} The basic Solow model assumes the capital share is $\alpha = 1/3$ in the aggregate production function. However, if we account for human capital (education and worker skills), the effective capital share is higher, perhaps $\alpha_{\text{eff}} \approx 2/3$ (combining physical and human capital). With this higher effective capital share:
+\[
+    \beta = (1 - 2/3)(0.08) = (1/3)(0.08) \approx 0.0267 \approx 2.7\% \text{ per year,}
+\]
+which is much closer to the empirical estimate.
+
+\textbf{(c) Effect of $\alpha$ on convergence speed:}
+
+From $\beta = (1-\alpha)(n+g+\delta)$, higher $\alpha$ reduces $\beta$, implying slower convergence.
+
+\textbf{Economic intuition:} A higher capital share means that capital's marginal product declines more slowly as capital per worker increases (diminishing returns are weaker). When the capital stock is below steady state, each additional unit of capital adds less to the gap, so the economy takes longer to close the gap to steady state. Conversely, lower $\alpha$ means sharper diminishing returns, allowing faster catch-up from below the steady state.
+\end{answerbox}
+
+\subsection*{4.\ (7 points)}
+
+\begin{answerbox}
+\textbf{(a) Dynamic inefficiency definition and equivalence to over-saving:}
+
+The steady state is \textbf{dynamically inefficient} if the net return to capital is below the growth rate:
+\[
+    r^* = f'(\ktilde^*) - \delta < n + g.
+\]
+
+With Cobb-Douglas, $f'(\ktilde) = \alpha\ktilde^{\alpha-1}$. At the steady state, $s(\ktilde^*)^\alpha = (n+g+\delta)\ktilde^*$, so:
+\[
+    \alpha(\ktilde^*)^{\alpha-1} = \frac{n+g+\delta}{s}\cdot\frac{s(\ktilde^*)^\alpha}{\ktilde^*} = \frac{(n+g+\delta)(\ktilde^*)^\alpha}{s\ktilde^*}.
+\]
+
+The condition $r^* < n+g$ becomes:
+\[
+    \alpha\ktilde^{*(\alpha-1)} - \delta < n+g
+    \quad\Longrightarrow\quad
+    \alpha(\ktilde^*)^{\alpha-1} < n+g+\delta
+    \quad\Longrightarrow\quad
+    \frac{s(\ktilde^*)^\alpha}{\ktilde^*} < n+g+\delta
+    \quad\Longrightarrow\quad
+    s(\ktilde^*)^\alpha < (n+g+\delta)\ktilde^*.
+\]
+
+But at the steady state, $s(\ktilde^*)^\alpha = (n+g+\delta)\ktilde^*$ by definition, so the above inequality becomes an equality.
+
+\textbf{Alternative derivation:} Capital income $rK = \alpha Y$ at the steady state. The condition for dynamic efficiency is:
+\[
+    \alpha Y \geq (n+g+\delta)K
+    \quad\Longrightarrow\quad
+    \alpha \geq (n+g+\delta)\frac{K}{Y} = (n+g+\delta)\frac{\ktilde}{y} = (n+g+\delta)\frac{\ktilde}{\ktilde^\alpha} = (n+g+\delta)\ktilde^{1-\alpha}.
+\]
+
+From the steady-state condition $s = (n+g+\delta)\ktilde^{1-\alpha}$, the economy is dynamically efficient iff $s \leq \alpha$.  When $s > \alpha = s_{\mathrm{GR}}$, the economy over-saves and is dynamically inefficient. \checkmark
+
+\textbf{(b) Abel et al.\ (1989) dynamic efficiency test:}
+
+Abel et al.\ show that the condition $\alpha Y \geq (n+g+\delta)K$ (or equivalently, gross capital income $\geq$ gross investment) is a sufficient condition for dynamic efficiency in a stochastic economy.
+
+Their empirical finding: this inequality holds for \emph{all G7 economies throughout the post-war period}. This implies that dynamic inefficiency (over-saving) is \textbf{not empirically relevant}. In practice, developed economies operate in the dynamically efficient region where the private return to capital exceeds the growth rate, making over-accumulation a non-issue. Policy discussions about reducing capital accumulation to correct dynamic inefficiency are not supported by the data.
+
+\textbf{(c) Can Ramsey be dynamically inefficient?}
+
+In the Ramsey model, households solve an optimal consumption-saving problem (unlike Solow, where $s$ is exogenous). The household's intertemporal Hamiltonian and the Transversality Condition (TVC) rule out dynamic inefficiency.
+
+\textbf{Rigorous argument:} Let $\lambda_t$ be the costate variable on capital (shadow value) in per-capita terms. The TVC on a BGP is:
+\[
+    \lim_{t\to\infty} e^{-\rho t}\lambda_t k_t = 0.
+\]
+
+On the BGP, $k$ grows at rate $n+g$, and $\lambda_t = e^{-\rho t}c_t^{-\sigma}$ also has a constant long-run growth rate.  From the costate equation, $\dot{\lambda} = \rho\lambda - \partial H/\partial k$, we find that on the BGP:
+\[
+    \frac{\dot{\lambda}}{\lambda} = \rho - r^*,
+\]
+where $r^*$ is the steady-state return. For the TVC to hold with $k$ growing at $n+g$ and $\lambda$ declining, we need:
+\[
+    \rho - r^* < -(n+g)
+    \quad\Longrightarrow\quad
+    \boxed{r^* > \rho + (n+g).}
+\]
+
+Since $\rho > n$ is a standard assumption (for bounded utility), we have $r^* > n+g$, ensuring dynamic efficiency. The optimal allocation from the Ramsey model cannot be dynamically inefficient because forward-looking households will not over-accumulate.
+
+\textbf{Contrast with Solow:} In Solow, the saving rate $s$ is \emph{exogenously fixed}. If $s$ is set too high (above the Golden Rule), the economy may over-save and become dynamically inefficient. But rational, forward-looking households in the Ramsey model will naturally choose an efficient saving rate, avoiding this trap.
+\end{answerbox}
+
+\clearpage
+
+% ═════════════════════════════════════════════════════════════════════════════
+\section{Short Questions}
+% ═════════════════════════════════════════════════════════════════════════════
+
+\subsection*{1.\ (9 points) --- Kaldor Facts and Balanced Growth}
+
+\begin{answerbox}
+\textbf{(a) Kaldor's five stylised facts and consistent production function:}
+
+The five Kaldor (1961) facts about long-run growth in developed economies are:
+\begin{enumerate}[label=(\roman*), itemsep=2pt]
+    \item Output per worker grows at a roughly \textbf{constant rate} over long periods (no secular acceleration or deceleration).
+    \item \textbf{Capital per worker} grows at a roughly constant rate (similar to output growth).
+    \item The \textbf{interest rate} (return to capital) is roughly constant.
+    \item The \textbf{capital-output ratio} $K/Y$ is roughly constant.
+    \item The \textbf{labour share} $(1-\alpha)$ and \textbf{capital share} $\alpha$ of income remain roughly constant.
+\end{enumerate}
+
+\textbf{Consistent production function family:} The \textbf{Cobb-Douglas} family $Y = K^\alpha(AL)^{1-\alpha}$ is uniquely consistent with all five facts on a Balanced Growth Path.
+
+\textbf{Why it is special:} Cobb-Douglas exhibits constant returns to scale and constant factor shares. On a BGP with constant growth rates $g_K$, $g_A$, $g_L$, all per-worker variables grow at the same rate $g_A = g$ (after removing labour growth). The constant-elasticity-of-substitution (CES) property ensures that the capital share remains proportional to $\alpha$ regardless of factor ratios, automatically satisfying the constant-shares condition.
+
+\textbf{(b) Capital income share in Cobb-Douglas:}
+
+The share of capital income is:
+\[
+    \frac{rK}{Y} = \frac{\partial Y/\partial K \cdot K}{Y}
+    = \alpha \frac{K^\alpha(AL)^{1-\alpha}}{K^\alpha(AL)^{1-\alpha}}
+    = \boxed{\alpha,}
+\]
+which is independent of the levels of $K$, $L$, and $A$. This constancy is why Cobb-Douglas generates a BGP with constant growth rates of all per-worker variables.
+
+\textbf{(c) Response to Karabarbounis-Neiman (2014) declining labour share:}
+
+The observation that the global labour share has declined since the 1980s (from roughly 0.65 to 0.60) appears to violate the constant-shares Kaldor fact. However, this does \textbf{not invalidate} the Solow framework; rather, it suggests the production function may not be Cobb-Douglas.
+
+\textbf{Model modification:} Adopt a CES production function $Y = [aK^\rho + (1-a)(AL)^\rho]^{1/\rho}$ with elasticity of substitution $\sigma = 1/(1-\rho)$. If $\sigma > 1$ (capital and labour are gross substitutes), then a falling price of capital (relative to labour) — due to the IT revolution and declining capital costs — causes firms to substitute capital for labour, reducing the labour share.  With appropriate choice of $\sigma$ and trend rates, this model maintains balanced growth while allowing a trending labour share.
+
+Alternative: introduce capital-augmenting technological change at a different rate than labour-augmenting change, permitting differential growth rates and non-constant factor shares while preserving a linear trend (modified BGP).
+\end{answerbox}
+
+\subsection*{2.\ (8 points) --- Knowledge Spillovers and the $\phi$ Parameter}
+
+\begin{answerbox}
+\textbf{(a) BGP growth rate for three R\&D specifications:}
+
+The general R\&D technology is $\dot{M}_t = \lambda M_t^\phi L_{A,t}$, so $\dot{M}/M = g_M = \lambda M^{\phi-1}L_A$.  On the BGP, $g_M$ is constant and $L_A$ grows at rate $n$ (population growth).
+
+\begin{enumerate}[label=(\roman*), itemsep=4pt]
+    \item \textbf{$\phi = 1$ (Romer 1990):} $g_M = \lambda L_A$. Since $L_A = n^{-1}g_M$ in steady state from $\dot{L}_A = nL_A$ and the resource allocation, the BGP growth rate is proportional to the \textbf{level} of researchers: $g_M = \lambda L_A$. \textbf{Population growth} $n$ affects the labour force size and thus the absolute number of R\&D workers, but the growth rate of $M$ depends on the level $L_A$, not the growth rate $n$. This generates the scale effect: larger economies have more $L_A$, faster $g_M$.
+
+    \item \textbf{$\phi < 1$ (Jones 1995, semi-endogenous):} On the BGP, $g_M = \lambda M^{\phi-1}L_A$ is constant. With $L_A$ growing at rate $n$ (from labour force expansion), we require $(\phi-1)g_M + n = 0$ (logarithmic differentiation of the BGP condition), giving $\boxed{g_M = \frac{n}{1-\phi}}$. Growth rate depends on \textbf{population growth rate} $n$, not the population level. If $n=0$, then $g_M = 0$ (only steady technological level, no long-run growth). Population growth sustains growth.
+
+    \item \textbf{$\phi = 0$ (no knowledge spillovers):} $\dot{M} = \lambda L_A$. The growth rate $g_M = \dot{M}/M = \lambda L_A / M$. For $g_M$ to be constant on the BGP, $L_A/M$ must be constant, requiring $\dot{L}_A/\dot{M} = n/g_M$. If total population grows at $n$, then $L_A$ must grow at rate $g_M$ for the ratio to stabilize. This requires $g_M = n$ (both labour and varieties grow at population rate). Long-run growth depends on population growth $n$.
+\end{enumerate}
+
+\textbf{(b) ``Standing on shoulders'' vs.\ ``fishing out'':}
+
+\begin{itemize}
+    \item \textbf{``Standing on shoulders''} (past knowledge facilitates discovery): $\phi > 0$. A larger stock of varieties $M$ increases the productivity of R\&D workers $\lambda M^\phi L_A$. Past innovation makes current research more productive.
+
+    \item \textbf{``Fishing out''} (depletion of easy discoveries): $\phi < 1$ (often $\phi < 0$, but more generally $\phi < 1$). Diminishing returns set in as the easy innovations are exhausted, so additional $M$ reduces marginal research productivity, or the rate of growth of $M$ slows despite growing $L_A$.
+\end{itemize}
+
+\textbf{Empirical evidence:} Bloom et al.\ (2020) analyse US patent data and find that despite exponential growth in R\&D expenditure and researcher headcount since 1930, the number of important patents per researcher has \textbf{declined}. This suggests $\phi < 1$ and declining research productivity, consistent with ``fishing out.''
+
+\textbf{(c) Effect of R\&D subsidy on long-run growth:}
+
+An R\&D subsidy raises the effective return to R\&D workers, inducing $L_A$ to increase.
+
+\begin{itemize}
+    \item \textbf{$\phi = 1$:} With $g_M = \lambda L_A$, a higher $L_A$ \textbf{permanently raises the long-run growth rate}. The level effect on $L_A$ maps directly into an effect on $g_M$. This is the original endogenous growth mechanism (Romer 1990).
+
+    \item \textbf{$\phi < 1$:} With $g_M = n/(1-\phi)$, the BGP growth rate is pinned down by the exogenous parameter $n$ and does not depend on $L_A$. An R\&D subsidy raises $L_A$ and accelerates growth in the \textbf{transition}, but the long-run growth rate reverts to $n/(1-\phi)$. Only a \textbf{level effect} persists: the BGP path is shifted upward, but the growth rate is unchanged.
+\end{itemize}
+
+\textbf{Key equation distinguishing outcomes:}
+\[
+    \boxed{g_M = n/(1-\phi) \text{ for } \phi < 1 \quad\text{vs.}\quad g_M = \lambda L_A \text{ for } \phi=1.}
+\]
+
+In the first case, $g_M$ is policy-invariant (in the long run); in the second, policy can raise $g_M$ permanently.
+\end{answerbox}
+
+\subsection*{3.\ (8 points) --- Consumption Tax vs.\ Capital Income Tax}
+
+\begin{answerbox}
+\textbf{(a) Current-value Hamiltonian and Euler equation:}
+
+The household maximises $\int_0^\infty e^{-\rho t} \frac{c_t^{1-\sigma}}{1-\sigma}\,\dd t$ subject to:
+\[
+    \dot{a}_t = r_t a_t + w_t + T_t - (1+\tau_c)c_t.
+\]
+
+The current-value Hamiltonian is:
+\[
+    \mathcal{H}^{CV} = \frac{c^{1-\sigma}}{1-\sigma} + \mu\left[ra + w + T - (1+\tau_c)c\right],
+\]
+where $\mu$ is the costate (shadow value of wealth).
+
+\textbf{FOC w.r.t.\ $c$:}
+\[
+    c^{-\sigma} = (1+\tau_c)\mu. \quad (*)
+\]
+
+\textbf{Costate equation:}
+\[
+    \dot{\mu} = \rho\mu - \frac{\partial\mathcal{H}}{\partial a} = \rho\mu - r\mu
+    \quad\Longrightarrow\quad
+    \frac{\dot{\mu}}{\mu} = \rho - r. \quad (**)
+\]
+
+Differentiating $(*)$ with respect to time:
+\[
+    -\sigma c^{-\sigma-1}\dot{c} = (1+\tau_c)\dot{\mu}
+    \quad\Longrightarrow\quad
+    \frac{\dot{\mu}}{\mu} = -\sigma\frac{\dot{c}}{c}.
+\]
+
+Equating with $(**)$:
+\[
+    -\sigma\frac{\dot{c}}{c} = \rho - r
+    \quad\Longrightarrow\quad
+    \boxed{\frac{\dot{c}}{c} = \frac{r - \rho}{\sigma}.}
+\]
+
+The consumption tax $\tau_c$ does \textbf{not appear} in the Euler equation!
+
+\textbf{(b) Why the consumption tax does not distort intertemporal choice:}
+
+The tax is \textbf{proportional and constant} over time. When we compare consumption at two different times $t$ and $t + \Delta t$, both face the same tax rate $\tau_c$. The intertemporal price (the rate at which the household trades consumption today for consumption tomorrow) is:
+\[
+    \frac{c_{t+\Delta t}}{c_t} = (1+r\Delta t + \text{h.o.t.}).
+\]
+
+With the consumption tax, the \textbf{after-tax intertemporal price} is:
+\[
+    \frac{(1+\tau_c)c_{t+\Delta t}}{(1+\tau_c)c_t} = \frac{c_{t+\Delta t}}{c_t},
+\]
+which is identical. The $(1+\tau_c)$ factor cancels out.
+
+Additionally, the lump-sum transfer $T$ returns all tax revenue, so there is no net wealth effect. The household's lifetime wealth is unaffected. Therefore, the consumption tax is \textbf{lump-sum equivalent in the intertemporal dimension}, leaving the Euler equation unchanged.
+
+\textbf{(c) Contrast with capital income tax and optimal tax theory:}
+
+The capital income tax $\tau_K$ replaces the return $r$ with $r(1-\tau_K)$ in the budget constraint:
+\[
+    \dot{a} = r(1-\tau_K)a + w + T - c.
+\]
+
+The Euler equation becomes:
+\[
+    \frac{\dot{c}}{c} = \frac{r(1-\tau_K) - \rho}{\sigma},
+\]
+which \textbf{explicitly depends on} $\tau_K$. The tax \textbf{distorts the intertemporal price}: the household perceives a lower return to saving, so it consumes more today and saves less.
+
+\textbf{Asymmetry:} The capital income tax distorts because it affects the \textbf{marginal} return to saving at each instant. A household considering whether to save an additional dollar faces a reduced return $(1-\tau_K)r$. In contrast, the consumption tax is applied uniformly to all consumption levels (proportionally), so the relative price of consumption across time is unaffected.
+
+\textbf{Implication for optimal tax theory (Chamley-Judd):} Since capital income tax distorts the savings margin and consumption tax does not, the long-run optimal capital income tax is \textbf{zero}. Consumption tax is the preferred instrument for financing government spending. With a consumption tax only, the government can finance its expenditure without distorting the saving decision, allowing the economy to achieve the first-best allocation of resources across time.
+\end{answerbox}
+
+\vspace{12pt}
+\noindent\rule{\textwidth}{0.4pt}
+\begin{center}\textit{End of Answer Key --- Practice Exam 3.}\end{center}
+
+\end{document}
